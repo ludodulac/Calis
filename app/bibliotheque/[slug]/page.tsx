@@ -18,285 +18,51 @@ type LearningCard = {
   secondaryNext?: { slug: string; label: string };
 };
 
-const pullUpCards: Record<string, LearningCard> = {
-  "suspension-barre": {
-    intro: "Avant de tirer ton corps vers la barre, apprends à y rester. La suspension construit la prise, l'habitude de supporter ton poids et les premiers repères autour des épaules.",
-    objective: "Une suspension calme, stable et reproductible.",
-    test: "Accroche-toi à la barre avec une prise confortable. Si tes mains lâchent immédiatement, si tu te crispes fortement ou si la position est inconfortable, travaille d'abord des expositions courtes et contrôlées.",
-    technique: [
-      "Utilise une prise complète et confortable, avec les poignets proches d'une position neutre.",
-      "Laisse les bras s'allonger sans transformer la position en relâchement douloureux.",
-      "Garde le tronc relativement stable et évite de chercher de l'élan.",
-      "Descends de la barre avant que la prise ou les épaules ne perdent complètement leur contrôle.",
-    ],
-    feel: ["Les mains et avant-bras travaillent.", "Le corps devient plus calme sous la barre.", "La position devient progressivement plus familière."],
-    avoid: ["Douleur vive à l'épaule, au coude ou au poignet.", "Glissement incontrôlé des mains.", "Balancer volontairement les jambes pour simplement tenir."],
-    advance: "Passe au contrôle scapulaire quand tu peux te suspendre plusieurs fois avec une prise stable et suffisamment de marge pour penser à la position de tes épaules, pas seulement à survivre à la suspension.",
-    next: { slug: "controle-scapulaire", label: "Apprendre le contrôle scapulaire" },
-  },
-  "controle-scapulaire": {
-    intro: "La traction ne commence pas uniquement en pliant les coudes. Cette étape t'apprend à reconnaître et contrôler le mouvement des omoplates avant de demander davantage aux bras.",
-    objective: "Initier un petit mouvement contrôlé sans transformer l'exercice en traction partielle.",
-    test: "Depuis une suspension stable, essaie de modifier légèrement la position de tes épaules tout en gardant les coudes presque tendus. Si les bras se plient immédiatement ou si tu ne distingues aucun mouvement, réduis l'amplitude et apprends d'abord le geste.",
-    technique: [
-      "Pars d'une suspension stable et garde les coudes presque tendus.",
-      "Déplace les épaules et les omoplates avec une faible amplitude plutôt que de chercher à monter haut.",
-      "Évite de verrouiller artificiellement les omoplates pendant tout le mouvement : cherche du contrôle, pas une posture figée.",
-      "Reviens lentement à la position de départ au lieu de retomber dans la suspension.",
-    ],
-    feel: ["Le haut du dos participe davantage.", "Le corps monte légèrement sans gros mouvement des coudes.", "Le retour vers la suspension reste contrôlé."],
-    avoid: ["Hausser brutalement les épaules vers les oreilles.", "Transformer chaque répétition en demi-traction.", "Forcer une amplitude qui provoque une douleur."],
-    advance: "Passe au rowing quand tu arrives à répéter ce petit mouvement sans élan et sans que les bras prennent immédiatement le dessus.",
-    next: { slug: "rowing-incline", label: "Construire le tirage avec le rowing" },
-  },
-  "rowing-incline": {
-    intro: "Le rowing incliné te permet d'apprendre à tirer ton corps avec une difficulté ajustable. C'est une excellente transition entre le travail de contrôle et la traction verticale complète.",
-    objective: "Développer un tirage propre que tu peux rendre progressivement plus difficile.",
-    test: "Place-toi sous une barre basse ou des anneaux et choisis un angle où tu peux tirer sans perdre l'alignement. Si chaque répétition devient immédiatement chaotique, rends ton corps plus vertical.",
-    technique: [
-      "Garde le corps organisé de la tête aux pieds plutôt que de laisser le bassin tomber.",
-      "Tire la poitrine vers le support avec les épaules et les coudes qui se déplacent naturellement.",
-      "Contrôle aussi le retour : ne te laisse pas simplement tomber vers l'arrière.",
-      "Ajuste l'inclinaison pour modifier la difficulté sans changer l'exercice.",
-    ],
-    feel: ["Le dos et les bras produisent le tirage ensemble.", "Le tronc travaille pour garder le corps stable.", "La difficulté augmente progressivement quand le corps devient plus horizontal."],
-    avoid: ["Donner un coup de bassin pour finir la répétition.", "Raccourcir de plus en plus l'amplitude au fil de la série.", "Choisir un angle si difficile que chaque répétition est différente."],
-    advance: "Passe à une traction assistée lorsque ton rowing est reproductible à une inclinaison exigeante et que tu peux conserver une trajectoire cohérente sans élan.",
-    next: { slug: "traction-assistee", label: "Passer à la traction assistée" },
-  },
-  "traction-assistee": {
-    intro: "L'assistance sert à pratiquer le vrai mouvement de traction avant d'être capable de déplacer seul tout ton poids. Elle doit t'aider juste assez pour conserver une répétition propre.",
-    objective: "Répéter une traction complète avec une aide mesurable et progressivement réduite.",
-    test: "Choisis une assistance qui te permet de parcourir l'amplitude sans te faire rebondir vers le haut. Si l'aide t'accélère fortement ou masque totalement le point difficile, elle est probablement trop importante.",
-    technique: [
-      "Pars d'une position stable et initie le mouvement sans balancement volontaire.",
-      "Laisse l'assistance aider sans modifier complètement ta trajectoire.",
-      "Monte et redescends avec contrôle, notamment dans la partie basse.",
-      "Réduis l'aide progressivement quand les répétitions deviennent régulières.",
-    ],
-    feel: ["Tu produis encore un effort important malgré l'assistance.", "La trajectoire ressemble à celle d'une traction non assistée.", "Le point difficile devient identifiable plutôt que masqué."],
-    avoid: ["Une bande tellement forte qu'elle te projette hors du bas du mouvement.", "Changer d'amplitude selon la tension de l'élastique.", "Accumuler des répétitions rapides uniquement parce que l'aide est importante."],
-    advance: "Passe davantage de temps sur les négatives lorsque tu peux réaliser des répétitions assistées cohérentes avec une aide modérée et que tu contrôles déjà bien le retour vers le bas.",
-    next: { slug: "traction-negative", label: "Renforcer la descente avec les négatives" },
-  },
-  "traction-negative": {
-    intro: "La négative consiste à commencer en haut puis à contrôler la descente. Elle te permet de travailler la phase excentrique du mouvement avant de pouvoir produire suffisamment de force pour monter seul.",
-    objective: "Contrôler la descente sur toute l'amplitude sans chute brutale.",
-    test: "Utilise un support stable ou une assistance pour placer le menton au niveau de la barre, puis retire progressivement l'aide. Si tu tombes immédiatement, ajoute de l'assistance ou raccourcis la descente contrôlée.",
-    technique: [
-      "Commence réellement en position haute plutôt qu'en sautant de façon incontrôlée vers la barre.",
-      "Descends aussi régulièrement que possible au lieu de bloquer en haut puis de tomber.",
-      "Garde les épaules, les bras et le tronc organisés pendant la descente.",
-      "Arrête la série lorsque tu ne peux plus contrôler nettement le retour.",
-    ],
-    feel: ["Une forte tension dans le dos et les bras pendant la descente.", "Un effort qui augmente à certains angles sans perte totale de contrôle.", "Une fatigue musculaire importante même avec peu de répétitions."],
-    avoid: ["Tomber brutalement dans la position basse.", "Faire énormément de négatives malgré une forte fatigue.", "Ignorer une douleur articulaire sous prétexte que la descente est lente."],
-    advance: "Teste une traction stricte lorsque tu peux répéter des descentes contrôlées et que l'assistance utilisée sur les tractions complètes a nettement diminué. Les négatives peuvent générer beaucoup de courbatures : augmente leur volume progressivement.",
-    next: { slug: "premiere-traction", label: "Tenter ta première traction stricte" },
-  },
-  "traction-technique": {
-    intro: "Une traction stricte n'est pas une pose figée : c'est un mouvement contrôlé entre une position basse stable et une position haute nette. L'objectif est de construire une répétition que tu peux reconnaître et reproduire.",
-    objective: "Une répétition complète, contrôlée et reproductible.",
-    test: "Filme-toi de profil ou de trois-quarts sur une répétition confortable. Vérifie si le départ, la montée et la descente se ressemblent d'une répétition à l'autre et si tu as besoin d'un balancement marqué pour passer le point difficile.",
-    technique: [
-      "Pars d'une suspension que tu peux contrôler plutôt que d'un balancement déjà lancé.",
-      "Initie le tirage en gardant le corps organisé ; les coudes se plient pendant que le haut du dos participe au mouvement.",
-      "Monte jusqu'à une position haute claire sans projeter brutalement la tête ou le menton vers la barre.",
-      "Redescends avec le même contrôle que pendant la montée et retrouve une position basse stable avant la répétition suivante.",
-    ],
-    feel: ["Le dos et les bras travaillent ensemble.", "Le tronc limite les oscillations inutiles.", "La dernière répétition ressemble encore à la première."],
-    avoid: ["Transformer chaque répétition en kipping involontaire.", "Réduire l'amplitude au fur et à mesure de la fatigue.", "Forcer une prise ou une trajectoire qui provoque une douleur articulaire."],
-    advance: "Quand tu possèdes une traction que tu peux reproduire sans devoir la réinventer à chaque tentative, commence à construire du volume. La technique peut encore évoluer, mais elle doit déjà être suffisamment stable pour servir de référence.",
-    next: { slug: "10-tractions", label: "Construire de 1 à 10 tractions" },
-  },
-  "10-tractions": {
-    intro: "Passer d'une traction à plusieurs ne consiste pas à tester son maximum tous les jours. Le socle se construit avec des répétitions de qualité, assez faciles pour être accumulées sans transformer chaque séance en épreuve.",
-    objective: "Augmenter le volume de tractions propres sans sacrifier la forme.",
-    test: "Fais une série confortable sans aller volontairement à l'échec. Si les dernières répétitions changent fortement de trajectoire ou d'amplitude, considère que ton volume de travail utile se situe avant cette dégradation.",
-    technique: [
-      "Garde une marge sur la majorité des séries au lieu de poursuivre systématiquement jusqu'à l'échec.",
-      "Accumule le volume avec plusieurs petites séries propres si une longue série détruit rapidement ta technique.",
-      "Conserve les exercices de base qui corrigent ton maillon faible : rowing, assistance ou négatives peuvent rester utiles après la première traction.",
-      "Augmente une variable à la fois : davantage de répétitions totales, davantage de séries ou une assistance moindre, plutôt que tout simultanément.",
-    ],
-    feel: ["Une fatigue musculaire progressive mais contrôlable.", "Des répétitions encore reconnaissables en fin de séance.", "Une récupération suffisante pour retrouver une bonne qualité lors de la séance suivante."],
-    avoid: ["Tester son maximum à chaque séance.", "Ajouter du volume alors que l'amplitude se raccourcit nettement.", "Ignorer une baisse durable de performance ou une douleur qui augmente."],
-    advance: "Quand dix tractions propres deviennent un repère réaliste et non un exploit exceptionnel, choisis une branche selon ton objectif : produire plus de hauteur et de vitesse, ou développer davantage de force avec du lest.",
-    next: { slug: "traction-explosive", label: "Développer la traction explosive" },
-    secondaryNext: { slug: "tractions-lestees", label: "Commencer les tractions lestées" },
-  },
-  "traction-explosive": {
-    intro: "La traction explosive cherche à produire beaucoup de force rapidement pour monter plus haut que sur une traction classique. Elle prépare notamment les objectifs où la hauteur de tirage devient déterminante.",
-    objective: "Monter plus haut sans perdre le contrôle du corps ni transformer l'exercice en balancement.",
-    test: "Sur une traction fraîche, observe jusqu'où monte naturellement ta poitrine lorsque tu tires vite. Si accélérer détruit complètement ta trajectoire, consolide d'abord ta force et ta technique stricte.",
-    technique: [
-      "Travaille lorsque tu es suffisamment frais pour produire de la vitesse ; l'explosivité chute vite avec la fatigue.",
-      "Cherche une accélération nette dès le début du tirage plutôt qu'un mouvement lent terminé par un coup de bassin.",
-      "Garde un nombre de répétitions assez faible pour que chaque tentative reste réellement rapide.",
-      "Conserve parallèlement des tractions strictes pour que la vitesse ne remplace pas la qualité du mouvement.",
-    ],
-    feel: ["Une accélération franche du corps vers la barre.", "Un tirage plus haut sans besoin d'un grand élan des jambes.", "Une forte intention de vitesse même si la hauteur progresse graduellement."],
-    avoid: ["Confondre explosivité et balancement.", "Multiplier les répétitions lorsque la vitesse s'effondre.", "Chercher une hauteur maximale avec une épaule ou un coude douloureux."],
-    advance: "Lorsque la hauteur de tirage augmente tout en gardant une trajectoire contrôlée, tu peux commencer à connecter cette capacité à des objectifs comme le muscle-up. Ce futur parcours aura ses propres prérequis et ne se résumera pas à tirer plus fort.",
-  },
-  "tractions-lestees": {
-    intro: "Le lest transforme la traction en travail de force plus facilement mesurable. Il n'est utile que lorsque ta traction au poids du corps est déjà suffisamment stable pour que le poids ajouté ne masque pas les défauts de base.",
-    objective: "Ajouter progressivement de la charge sans perdre la répétition de référence.",
-    test: "Avant d'ajouter du poids, vérifie que tes tractions au poids du corps restent propres sur plusieurs séries et que tu peux distinguer clairement une bonne répétition d'une répétition dégradée.",
-    technique: [
-      "Commence par une charge légère qui change peu ta mécanique habituelle.",
-      "Utilise un système de lest stable qui ne te force pas à modifier exagérément la position du bassin ou des jambes.",
-      "Garde une amplitude et une qualité comparables à tes tractions sans lest.",
-      "Augmente la charge progressivement et seulement lorsque la répétition actuelle reste contrôlée.",
-    ],
-    feel: ["Le mouvement est plus exigeant mais reste familier.", "La vitesse ralentit sans que la trajectoire s'effondre.", "Le dos, les bras et le tronc continuent à travailler comme un ensemble."],
-    avoid: ["Ajouter du poids pour compenser un manque de contrôle technique.", "Sauter brutalement de charge en charge.", "Laisser le lest se balancer fortement ou tirer sur une zone inconfortable."],
-    advance: "Le prochain niveau n'est pas une charge universelle. Utilise plutôt une progression régulière, une technique stable et un objectif clair : force maximale, streetlifting ou simple renforcement complémentaire.",
-  },
+const cards: Record<string, LearningCard> = {
+  "suspension-barre": { intro: "Avant de tirer ton corps vers la barre, apprends à y rester. La suspension construit la prise et les premiers repères autour des épaules.", objective: "Une suspension calme, stable et reproductible.", test: "Accroche-toi avec une prise confortable. Si tes mains lâchent immédiatement ou si tu te crispes fortement, commence par des expositions courtes et contrôlées.", technique: ["Utilise une prise complète et confortable.", "Laisse les bras s'allonger sans rechercher un relâchement douloureux.", "Garde le corps calme sans créer d'élan.", "Descends avant de perdre complètement le contrôle de la prise."], feel: ["Les mains et avant-bras travaillent.", "Le corps devient plus calme sous la barre.", "La position devient progressivement familière."], avoid: ["Douleur vive à l'épaule, au coude ou au poignet.", "Glissement incontrôlé des mains.", "Balancement volontaire pour simplement tenir."], advance: "Passe au contrôle scapulaire lorsque tu peux te suspendre avec assez de marge pour penser à tes épaules, pas seulement à ta prise.", next: { slug: "controle-scapulaire", label: "Apprendre le contrôle scapulaire" } },
+  "controle-scapulaire": { intro: "La traction ne commence pas uniquement en pliant les coudes. Apprends à reconnaître et contrôler le mouvement des omoplates.", objective: "Initier un petit mouvement contrôlé avec les coudes presque tendus.", test: "Depuis une suspension stable, modifie légèrement la position des épaules sans tirer avec les bras. Si les coudes plient immédiatement, réduis l'amplitude.", technique: ["Pars d'une suspension stable.", "Déplace épaules et omoplates avec une faible amplitude.", "Cherche du contrôle plutôt qu'une posture figée.", "Reviens lentement au départ."], feel: ["Le haut du dos participe.", "Le corps monte légèrement sans gros mouvement des coudes.", "Le retour reste contrôlé."], avoid: ["Hausser brutalement les épaules.", "Transformer chaque répétition en demi-traction.", "Forcer une amplitude douloureuse."], advance: "Passe au rowing quand ce petit mouvement est reproductible sans élan.", next: { slug: "rowing-incline", label: "Construire le tirage avec le rowing" } },
+  "rowing-incline": { intro: "Le rowing incliné apprend à tirer son corps avec une difficulté très facilement ajustable.", objective: "Développer un tirage propre et progressivement plus exigeant.", test: "Choisis un angle où tu peux tirer sans perdre l'alignement. Si tout devient chaotique, rends ton corps plus vertical.", technique: ["Garde le corps organisé de la tête aux pieds.", "Tire la poitrine vers le support.", "Contrôle aussi le retour.", "Modifie l'inclinaison pour ajuster la difficulté."], feel: ["Dos et bras tirent ensemble.", "Le tronc stabilise le corps.", "La difficulté augmente quand le corps devient plus horizontal."], avoid: ["Donner un coup de bassin.", "Raccourcir progressivement l'amplitude.", "Choisir un angle qui détruit la répétabilité."], advance: "Passe à une traction assistée lorsque ton rowing reste propre à une inclinaison exigeante.", next: { slug: "traction-assistee", label: "Passer à la traction assistée" } },
+  "traction-assistee": { intro: "L'assistance permet de pratiquer le vrai mouvement avant de déplacer seul tout son poids.", objective: "Répéter une traction complète avec une aide progressivement réduite.", test: "Choisis une assistance qui permet l'amplitude sans te projeter vers le haut.", technique: ["Pars sans balancement volontaire.", "Laisse l'aide assister sans dicter la trajectoire.", "Monte et redescends avec contrôle.", "Réduis progressivement l'assistance."], feel: ["Tu produis encore un effort important.", "La trajectoire ressemble à une traction libre.", "Le point difficile reste perceptible."], avoid: ["Une bande qui fait presque tout le travail.", "Une amplitude dictée par l'élastique.", "Accumuler des répétitions rapides sans contrôle."], advance: "Passe davantage de temps sur les négatives quand l'assistance est devenue modérée et le retour bien contrôlé.", next: { slug: "traction-negative", label: "Renforcer la descente" } },
+  "traction-negative": { intro: "La négative commence en haut et développe la capacité à contrôler toute la descente.", objective: "Descendre sur toute l'amplitude sans chute brutale.", test: "Place-toi en haut avec un support stable. Si tu tombes immédiatement, ajoute de l'aide ou raccourcis la portion contrôlée.", technique: ["Installe-toi proprement en position haute.", "Descends aussi régulièrement que possible.", "Garde épaules, bras et tronc organisés.", "Arrête lorsque la descente n'est plus contrôlée."], feel: ["Forte tension dans dos et bras.", "Effort variable selon l'angle.", "Fatigue musculaire importante avec peu de répétitions."], avoid: ["Tomber brutalement en bas.", "Accumuler beaucoup de négatives très fatigué.", "Ignorer une douleur articulaire."], advance: "Teste une traction stricte lorsque les descentes sont reproductibles et que ton assistance a nettement diminué.", next: { slug: "premiere-traction", label: "Tenter ta première traction" } },
+  "traction-technique": { intro: "Une traction stricte est un mouvement contrôlé entre une position basse stable et une position haute nette.", objective: "Une répétition complète, contrôlée et reproductible.", test: "Filme une répétition confortable et vérifie si départ, montée et descente restent cohérents sans balancement marqué.", technique: ["Pars d'une suspension contrôlée.", "Tire en gardant le corps organisé.", "Atteins une position haute claire sans projeter la tête.", "Redescends avec le même contrôle."], feel: ["Dos et bras travaillent ensemble.", "Le tronc limite les oscillations.", "La dernière répétition ressemble encore à la première."], avoid: ["Kipping involontaire.", "Amplitude qui raccourcit avec la fatigue.", "Prise ou trajectoire douloureuse."], advance: "Quand ta traction est reproductible, commence à construire du volume.", next: { slug: "10-tractions", label: "Construire de 1 à 10 tractions" } },
+  "10-tractions": { intro: "Passer d'une traction à plusieurs demande surtout d'accumuler des répétitions de qualité plutôt que de tester son maximum chaque jour.", objective: "Augmenter le volume sans sacrifier la forme.", test: "Fais une série confortable sans aller volontairement à l'échec et observe quand la technique commence à changer.", technique: ["Garde une marge sur la majorité des séries.", "Accumule plusieurs petites séries propres si nécessaire.", "Conserve les exercices qui corrigent ton maillon faible.", "Augmente une variable à la fois."], feel: ["Fatigue musculaire progressive et contrôlable.", "Répétitions encore reconnaissables en fin de séance.", "Bonne qualité retrouvée à la séance suivante."], avoid: ["Tester le maximum à chaque séance.", "Ajouter du volume avec une amplitude dégradée.", "Ignorer une baisse durable ou une douleur croissante."], advance: "Quand dix tractions propres deviennent un repère réaliste, choisis entre vitesse/hauteur et force lestée.", next: { slug: "traction-explosive", label: "Développer la traction explosive" }, secondaryNext: { slug: "tractions-lestees", label: "Commencer les tractions lestées" } },
+  "traction-explosive": { intro: "La traction explosive transforme la force de tirage en vitesse et en hauteur.", objective: "Monter plus haut sans remplacer la force par du balancement.", test: "Observe jusqu'où monte naturellement ta poitrine lorsque tu tires vite sur une répétition fraîche.", technique: ["Travaille suffisamment frais.", "Accélère dès le début du tirage.", "Garde peu de répétitions pour préserver la vitesse.", "Conserve parallèlement des tractions strictes."], feel: ["Accélération franche.", "Tirage plus haut sans grand élan des jambes.", "Intention de vitesse nette."], avoid: ["Confondre explosivité et balancement.", "Continuer lorsque la vitesse s'effondre.", "Chercher la hauteur avec une articulation douloureuse."], advance: "Une hauteur de tirage croissante et contrôlée prépare notamment le futur parcours muscle-up." },
+  "tractions-lestees": { intro: "Le lest est utile quand la traction au poids du corps est déjà stable et que l'objectif devient davantage la force.", objective: "Ajouter une résistance mesurable sans perdre la répétition de référence.", test: "Avant d'ajouter du poids, vérifie que tes tractions au poids du corps restent régulières et contrôlées.", technique: ["Commence avec une charge modeste.", "Garde la même amplitude qu'au poids du corps.", "Progresse par petites augmentations.", "Conserve du travail sans lest."], feel: ["Même mouvement, effort plus élevé.", "Tronc plus sollicité pour stabiliser la charge.", "Technique encore reconnaissable."], avoid: ["Lester une traction déjà instable.", "Augmenter le poids à chaque séance par principe.", "Laisser la charge se balancer fortement."], advance: "Continue tant que la charge augmente sans détériorer durablement la technique ; une programmation plus spécialisée viendra plus tard." },
+
+  "pompes-inclinees": { intro: "La pompe inclinée réduit la part de ton poids à pousser tout en conservant le mouvement général d'une pompe. C'est une régression simple, mesurable et accessible.", objective: "Réaliser des pompes contrôlées sur un support stable puis abaisser progressivement ce support.", test: "Choisis une surface solide à une hauteur où tu peux descendre et remonter sans casser immédiatement l'alignement du corps.", technique: ["Pose les mains sur un support réellement stable.", "Garde tête, tronc et bassin organisés ensemble.", "Descends la poitrine vers le support avec les coudes qui suivent une trajectoire confortable.", "Quand le mouvement devient facile et répétable, utilise un support légèrement plus bas."], feel: ["Poitrine, triceps et épaules participent ensemble.", "Le tronc empêche le bassin de s'affaisser.", "La difficulté augmente progressivement quand le support descend."], avoid: ["Support glissant ou instable.", "Bassin qui reste en arrière pendant que seule la poitrine avance.", "Descendre plus bas malgré une douleur nette à l'épaule ou au poignet."], advance: "Passe à la pompe au sol quand une faible inclinaison te permet encore de garder une répétition calme et complète.", next: { slug: "premiere-pompe", label: "Tenter ta première pompe au sol" } },
+  "pompe-technique": { intro: "La bonne pompe n'est pas une silhouette parfaite imposée à tout le monde : c'est une poussée stable où les mains, les épaules et le tronc coopèrent sur une amplitude que tu contrôles.", objective: "Construire une pompe reproductible du haut vers le bas puis retour.", test: "Filme quelques répétitions de profil. Observe surtout si ton bassin s'effondre, si ta tête part seule vers le sol ou si l'amplitude change à chaque répétition.", technique: ["Place les mains dans une largeur confortable plutôt que de chercher une mesure universelle.", "Organise le tronc avant de descendre pour que poitrine et bassin se déplacent ensemble.", "Laisse les coudes suivre une trajectoire naturelle plutôt que de les forcer complètement contre le corps ou à 90 degrés.", "Pousse le sol jusqu'à retrouver une position haute stable."], feel: ["Poitrine, triceps et avant d'épaule travaillent.", "Abdominaux et fessiers participent à l'alignement.", "La pression reste répartie dans les mains."], avoid: ["Douleur vive au poignet, coude ou épaule.", "Bassin qui tombe nettement avant la poitrine.", "Amplitude de plus en plus courte pour sauver les répétitions."], advance: "Quand tes pompes sont régulières, tu peux augmenter progressivement le volume ou passer vers une poussée plus exigeante comme les dips selon ton objectif.", next: { slug: "dips-debutant", label: "Découvrir le parcours dips" } },
+  "dips-debutant": { intro: "Les dips demandent davantage de charge aux épaules et aux bras qu'une pompe classique. Avant de chercher de la profondeur, apprends à supporter ton poids entre deux barres et à contrôler une petite amplitude.", objective: "Construire un appui stable puis un dip avec une amplitude confortable et maîtrisée.", test: "Sur des barres parallèles stables, prends un appui bras tendus. Si tu ne peux pas maintenir la position sans douleur ni perte immédiate de contrôle, reste sur le travail d'appui et de poussée plus accessible.", technique: ["Commence par un appui haut stable, épaules et tronc contrôlés.", "Descends progressivement plutôt que de chercher tout de suite une grande profondeur.", "Laisse le buste adopter une inclinaison naturelle sans effondrer les épaules.", "Pousse les barres pour revenir à une position haute nette."], feel: ["Triceps, poitrine et épaules travaillent fortement.", "Le tronc stabilise le corps entre les barres.", "L'amplitude reste sous ton contrôle."], avoid: ["Tomber rapidement dans le bas du dip.", "Chercher une profondeur maximale malgré une gêne antérieure d'épaule.", "Balancer les jambes pour sortir du point difficile."], advance: "Passe à la fiche technique lorsque tu peux réaliser des répétitions contrôlées sur une amplitude confortable et reproductible.", next: { slug: "dips-technique", label: "Affiner la technique des dips" } },
+  "dips-technique": { intro: "La profondeur et l'inclinaison d'un dip ne sont pas des concours. La priorité est une trajectoire que tes épaules tolèrent et que tu peux reproduire sans rebond.", objective: "Rendre le dip stable, contrôlé et adapté à ta mobilité.", test: "Observe une série de profil : repère l'endroit où le contrôle diminue, où les épaules deviennent inconfortables ou où tu dois rebondir pour remonter.", technique: ["Pars d'un appui haut stable.", "Descends avec une vitesse maîtrisée.", "Choisis une profondeur que tu peux contrôler et tolérer.", "Remonte sans coup de jambes et stabilise le haut avant la répétition suivante."], feel: ["Forte poussée des bras et de la poitrine.", "Épaules chargées mais sans douleur vive.", "Trajectoire similaire d'une répétition à l'autre."], avoid: ["Rebond en bas.", "Profondeur imposée malgré une gêne.", "Épaules qui perdent brutalement leur contrôle sous fatigue."], advance: "Quand le dip est solide, augmente le volume ou la difficulté progressivement ; le lest n'a d'intérêt que lorsque le mouvement de base est déjà fiable." },
+  "poignets-handstand": { intro: "Le handstand place beaucoup plus de charge sur les mains qu'une journée ordinaire. Les poignets ont surtout besoin d'une exposition progressive, pas d'un rituel magique.", objective: "Tolérer progressivement l'appui sur les mains dans plusieurs angles confortables.", test: "Au sol, place les mains à plat puis transfère doucement une partie du poids vers l'avant. Observe l'amplitude confortable et compare droite/gauche sans forcer.", technique: ["Commence par des transferts de poids légers.", "Explore progressivement l'extension du poignet sans rebond agressif.", "Répartis la pression sur toute la main, doigts compris.", "Augmente la durée et la charge au fil des séances plutôt que brutalement."], feel: ["Pression diffuse dans la paume.", "Avant-bras actifs.", "Étirement modéré et contrôlable au poignet."], avoid: ["Douleur vive ou pincement net.", "Forcer longtemps une amplitude qui s'aggrave.", "Passer directement de zéro appui à de longues séances de handstand."], advance: "Quand les appuis courts deviennent confortables et récupèrent bien, utilise-les dans le travail au mur.", next: { slug: "handstand-mur", label: "Apprendre le handstand au mur" } },
+  "handstand-mur": { intro: "Le mur retire une partie du problème d'équilibre pour te laisser apprendre les appuis, la ligne et la sortie. Il doit devenir un outil, pas une béquille permanente.", objective: "Tenir une position inversée contrôlée et savoir en sortir calmement.", test: "Avant de monter, vérifie que tu peux supporter ton poids sur les mains et que l'espace autour de toi permet une sortie sûre.", technique: ["Commence avec une distance au mur qui te laisse monter sans choc.", "Pousse activement le sol avec les mains et garde les bras organisés.", "Rapproche progressivement le corps du mur seulement si tu gardes le contrôle.", "Apprends à redescendre volontairement avant de chercher de longues tenues."], feel: ["Forte pression dans les mains.", "Épaules actives pour pousser le sol.", "Tronc engagé pour limiter la cambrure excessive."], avoid: ["Monter sans savoir redescendre.", "Cogner systématiquement le mur avec les jambes.", "Continuer malgré une douleur croissante aux poignets ou aux épaules."], advance: "Quand la position au mur devient calme et que tu peux réduire brièvement le contact sans paniquer, commence le travail d'équilibre plus libre.", next: { slug: "handstand-debutant", label: "Construire ton handstand" } },
+  "handstand-debutant": { intro: "Le handstand est une compétence : la force compte, mais l'équilibre se construit surtout par des expositions fréquentes et suffisamment propres pour apprendre quelque chose à chaque tentative.", objective: "Quitter progressivement le mur et trouver de courts instants d'équilibre contrôlé.", test: "Au mur, vérifie que tu peux entrer, tenir et sortir sans précipitation. Si toute ton attention sert encore à ne pas tomber, consolide d'abord cette étape.", technique: ["Travaille des tentatives courtes et fraîches plutôt que de lutter longtemps sous fatigue.", "Utilise les doigts et la paume pour corriger de petites variations d'équilibre.", "Cherche une ligne organisée sans exiger une perfection esthétique immédiate.", "Pratique une sortie sûre pour réduire la peur de dépasser le point d'équilibre."], feel: ["Les doigts corrigent finement l'équilibre.", "Les épaules restent actives.", "De brefs moments demandent moins d'effort que les tentatives désorganisées."], avoid: ["Multiplier les coups de pied de plus en plus forts.", "Rester systématiquement collé au mur sans apprendre à réduire le contact.", "Continuer quand les poignets ou épaules ne tolèrent plus la charge."], advance: "Mesure le progrès par la qualité des entrées, des sorties et des courts équilibres reproductibles, pas seulement par un record de secondes." },
 };
 
 function LearningCardPage({ slug }: { slug: string }) {
   const resource = v1Resources.find((item) => item.slug === slug)!;
-  const card = pullUpCards[slug];
-  const equipment = resource.equipment.length ? resource.equipment.join(", ") : "aucun matériel obligatoire";
-
-  return (
-    <article className="section shell narrow learningCard">
-      <div className="eyebrow">{resource.kind} · parcours tractions</div>
-      <h1>{resource.title}</h1>
-      <p className="lead">{card.intro}</p>
-
-      <div className="learningMeta">
-        <div><span>Objectif</span><strong>{card.objective}</strong></div>
-        <div><span>Capacité</span><strong>{resource.capability}</strong></div>
-        <div><span>Matériel</span><strong>{equipment}</strong></div>
-      </div>
-
-      <section className="articleSection">
-        <div className="eyebrow">Test de départ</div>
-        <h2>Vérifie ton point de départ</h2>
-        <p>{card.test}</p>
-      </section>
-
-      <section className="articleSection">
-        <div className="eyebrow">Technique</div>
-        <h2>Les repères à garder</h2>
-        <ol className="contentList numberedList">
-          {card.technique.map((item) => <li key={item}>{item}</li>)}
-        </ol>
-      </section>
-
-      <section className="articleSection sensationGrid">
-        <div className="signalCard positiveSignal">
-          <div className="eyebrow">Ce que tu dois ressentir</div>
-          <h2>Des signaux utiles</h2>
-          <ul>{card.feel.map((item) => <li key={item}>{item}</li>)}</ul>
-        </div>
-        <div className="signalCard cautionSignal">
-          <div className="eyebrow">Ce que tu ne devrais pas ignorer</div>
-          <h2>Quand réduire la difficulté</h2>
-          <ul>{card.avoid.map((item) => <li key={item}>{item}</li>)}</ul>
-          <p>Une douleur vive ou persistante n'est pas un critère de progression. Arrête ou adapte l'exercice et demande un avis professionnel si nécessaire.</p>
-        </div>
-      </section>
-
-      <section className="articleSection">
-        <div className="eyebrow">Critère de passage</div>
-        <h2>Quand continuer vers l'étape suivante ?</h2>
-        <p>{card.advance}</p>
-      </section>
-
-      {(card.next || card.secondaryNext) && (
-        <section className="articleSection">
-          <div className="eyebrow">Étape suivante</div>
-          <div className="nextGrid compactNextGrid">
-            {card.next && <Link className="nextCard" href={`/bibliotheque/${card.next.slug}`}><strong>{card.next.label}</strong><span>Continuer →</span></Link>}
-            {card.secondaryNext && <Link className="nextCard" href={`/bibliotheque/${card.secondaryNext.slug}`}><strong>{card.secondaryNext.label}</strong><span>Choisir cette branche →</span></Link>}
-          </div>
-        </section>
-      )}
-
-      <Link className="textLink" href="/tractions">← Retour au parcours Tractions</Link>
-    </article>
-  );
+  const card = cards[slug];
+  return <article className="section shell narrow learningCard">
+    <div className="eyebrow">{resource.kind} · {resource.hub}</div><h1>{resource.title}</h1><p className="lead">{card.intro}</p>
+    <div className="learningMeta"><div><span>Objectif</span><strong>{card.objective}</strong></div><div><span>Capacité</span><strong>{resource.capability}</strong></div><div><span>Matériel</span><strong>{resource.equipment.length ? resource.equipment.join(", ") : "aucun matériel obligatoire"}</strong></div></div>
+    <section className="articleSection"><div className="eyebrow">Test de départ</div><h2>Vérifie ton point de départ</h2><p>{card.test}</p></section>
+    <section className="articleSection"><div className="eyebrow">Technique</div><h2>Les repères à garder</h2><ol className="contentList numberedList">{card.technique.map((item) => <li key={item}>{item}</li>)}</ol></section>
+    <section className="articleSection sensationGrid"><div className="signalCard positiveSignal"><div className="eyebrow">Ce que tu dois ressentir</div><h2>Des signaux utiles</h2><ul>{card.feel.map((item) => <li key={item}>{item}</li>)}</ul></div><div className="signalCard cautionSignal"><div className="eyebrow">Ce que tu ne devrais pas ignorer</div><h2>Quand réduire la difficulté</h2><ul>{card.avoid.map((item) => <li key={item}>{item}</li>)}</ul><p>Une douleur vive ou persistante n'est pas un critère de progression. Arrête ou adapte l'exercice et demande un avis professionnel si nécessaire.</p></div></section>
+    <section className="articleSection"><div className="eyebrow">Critère de passage</div><h2>Quand continuer ?</h2><p>{card.advance}</p></section>
+    {(card.next || card.secondaryNext) && <section className="articleSection"><div className="eyebrow">Étape suivante</div><div className="nextGrid compactNextGrid">{card.next && <Link className="nextCard" href={`/bibliotheque/${card.next.slug}`}><strong>{card.next.label}</strong><span>Continuer →</span></Link>}{card.secondaryNext && <Link className="nextCard" href={`/bibliotheque/${card.secondaryNext.slug}`}><strong>{card.secondaryNext.label}</strong><span>Choisir cette branche →</span></Link>}</div></section>}
+    <Link className="textLink" href={resource.hub === "tractions" ? "/tractions" : "/bibliotheque"}>← Retour au parcours</Link>
+  </article>;
 }
 
 function FirstPullUpPage() {
-  const steps = [
-    ["1", "Teste ta suspension", "Accroche-toi à une barre avec une prise confortable. Ton premier objectif n'est pas de tirer, mais de pouvoir rester suspendu sans perdre immédiatement la prise ni paniquer dans les épaules."],
-    ["2", "Apprends à contrôler tes omoplates", "Depuis la suspension, entraîne-toi à abaisser légèrement les épaules et à initier le mouvement avec les omoplates, sans transformer l'exercice en demi-traction."],
-    ["3", "Construis ton tirage horizontal", "Le rowing incliné permet de renforcer le dos et les bras avec une difficulté ajustable. Plus ton corps est vertical, plus l'exercice est accessible."],
-    ["4", "Utilise l'assistance intelligemment", "Une bande ou une machine peut aider, mais l'assistance doit rester assez faible pour que tu apprennes encore à contrôler la trajectoire."],
-    ["5", "Travaille la descente", "Monte avec une aide puis redescends lentement. Les négatives servent à apprendre à produire et contrôler de la force sur toute l'amplitude."],
-    ["6", "Tente une répétition stricte", "Quand les étapes précédentes deviennent stables, teste une traction complète sans élan. Une répétition propre vaut mieux que plusieurs répétitions dégradées."],
-  ];
-
-  return (
-    <article className="section shell narrow learningCard">
-      <div className="eyebrow">Progression · partir de zéro</div>
-      <h1>Réussir sa première traction</h1>
-      <p className="lead">Tu n'as pas besoin d'être déjà fort pour commencer. Le but est d'identifier ce qui te manque aujourd'hui — prise, suspension, contrôle des épaules ou force de tirage — puis de construire ces capacités une par une.</p>
-
-      <div className="learningMeta">
-        <div><span>Objectif</span><strong>1 traction stricte</strong></div>
-        <div><span>Matériel</span><strong>Une barre</strong></div>
-        <div><span>Niveau</span><strong>Départ zéro</strong></div>
-      </div>
-
-      <section className="articleSection">
-        <h2>Avant de chercher à tirer</h2>
-        <p>Une traction est un mouvement complet : tu dois tenir ton poids, stabiliser les épaules, produire de la force avec le dos et les bras, puis conserver une trajectoire contrôlée. Si une de ces briques manque, ce n'est pas un échec : c'est simplement la prochaine chose à entraîner.</p>
-      </section>
-
-      <section className="articleSection">
-        <div className="sectionHeading"><div className="eyebrow">Test de départ</div><h2>Où en es-tu aujourd'hui ?</h2></div>
-        <div className="testGrid">
-          <div className="testCard"><strong>Je ne tiens presque pas à la barre</strong><p>Commence par la suspension et la prise.</p><Link className="textLink" href="/bibliotheque/suspension-barre">Voir la suspension →</Link></div>
-          <div className="testCard"><strong>Je tiens à la barre mais je ne monte pas</strong><p>Travaille contrôle scapulaire, rowing et assistance.</p><Link className="textLink" href="/bibliotheque/controle-scapulaire">Voir le contrôle scapulaire →</Link></div>
-          <div className="testCard"><strong>Je monte un peu puis je bloque</strong><p>Renforce le tirage sur toute l'amplitude et utilise les négatives.</p><Link className="textLink" href="/bibliotheque/traction-negative">Voir les négatives →</Link></div>
-        </div>
-      </section>
-
-      <section className="articleSection">
-        <div className="sectionHeading"><div className="eyebrow">Parcours</div><h2>La progression en 6 étapes</h2></div>
-        <ol className="progression detailedProgression">
-          {steps.map(([number, title, text]) => <li className="progressionStep" key={number}><div className="stepNumber">{number.padStart(2, "0")}</div><div><h3>{title}</h3><p>{text}</p></div></li>)}
-        </ol>
-      </section>
-
-      <section className="articleSection sensationGrid">
-        <div className="signalCard positiveSignal"><div className="eyebrow">Ce que tu dois ressentir</div><h2>Des repères utiles</h2><ul><li>Une prise ferme mais pas crispée au point de te fatiguer inutilement.</li><li>Le haut du dos qui participe au mouvement, pas uniquement les avant-bras.</li><li>Un mouvement contrôlé du départ jusqu'au retour en suspension.</li><li>Une difficulté musculaire progressive, sans douleur aiguë.</li></ul></div>
-        <div className="signalCard cautionSignal"><div className="eyebrow">Ce que tu ne devrais pas ignorer</div><h2>Quand ralentir</h2><ul><li>Une douleur vive ou inhabituelle à l'épaule, au coude ou au poignet.</li><li>Une perte complète de contrôle suivie d'une chute brutale en bas.</li><li>Une douleur qui augmente d'une séance à l'autre.</li><li>Le besoin permanent de balancer les jambes pour démarrer.</li></ul><p>Si une douleur nette apparaît, arrête ou modifie l'exercice. Une fiche d'entraînement ne remplace pas l'avis d'un professionnel de santé lorsqu'une douleur persiste.</p></div>
-      </section>
-
-      <section className="articleSection"><h2>Les erreurs fréquentes</h2><div className="mistakeList"><div><strong>Vouloir tester sa traction à chaque séance</strong><p>Tester n'est pas entraîner. Passe l'essentiel de ton temps sur des exercices que tu peux répéter proprement.</p></div><div><strong>Choisir une assistance trop forte</strong><p>Si l'élastique fait presque tout le travail, la progression devient difficile à mesurer.</p></div><div><strong>Négliger la descente</strong><p>Le retour contrôlé fait partie de la répétition et fournit un excellent travail de force.</p></div><div><strong>Ajouter du volume malgré une technique qui se dégrade</strong><p>Arrête la série quand tu n'arrives plus à conserver une répétition proche de la précédente.</p></div></div></section>
-
-      <section className="articleSection"><div className="eyebrow">Quand passer à l'étape suivante ?</div><h2>Utilise la qualité comme critère</h2><p>Ne cherche pas un chiffre magique identique pour tout le monde. Avance lorsque l'étape actuelle est reproductible, contrôlée et ne te demande plus un effort maximal à chaque répétition. L'objectif est de réduire progressivement l'aide nécessaire.</p></section>
-
-      <section className="articleSection equipmentCallout"><div><div className="eyebrow">Matériel</div><h2>Ce dont tu as réellement besoin</h2><p><strong>Indispensable :</strong> une barre suffisamment stable et adaptée à ton environnement.</p><p><strong>Facultatif :</strong> un élastique d'assistance. Il peut être utile, mais tu peux progresser avec suspension, rowing et négatives sans acheter plusieurs accessoires.</p></div><div className="manifesto"><span>Principe Calis</span><strong>N'achète pas une solution à un problème que tu peux déjà entraîner.</strong></div></section>
-
-      <section className="articleSection"><div className="eyebrow">Suite logique</div><h2>Continue ton parcours</h2><div className="nextGrid"><Link className="nextCard" href="/bibliotheque/traction-technique"><strong>Technique de traction</strong><span>Comprendre amplitude et trajectoire →</span></Link><Link className="nextCard" href="/bibliotheque/10-tractions"><strong>De 1 à 10 tractions</strong><span>Construire volume et régularité →</span></Link><Link className="nextCard" href="/tractions"><strong>Hub Tractions</strong><span>Voir tout le parcours →</span></Link></div></section>
-    </article>
-  );
+  const steps = [["1", "Teste ta suspension", "Accroche-toi à une barre avec une prise confortable."], ["2", "Contrôle tes omoplates", "Apprends à initier le mouvement sans tout demander aux bras."], ["3", "Construis ton tirage horizontal", "Le rowing permet d'ajuster facilement la difficulté."], ["4", "Utilise l'assistance", "Aide-toi juste assez pour pratiquer le mouvement complet."], ["5", "Travaille la descente", "Les négatives développent le contrôle sur toute l'amplitude."], ["6", "Tente une répétition stricte", "Une répétition propre vaut mieux que plusieurs répétitions dégradées."]];
+  return <article className="section shell narrow learningCard"><div className="eyebrow">Progression · partir de zéro</div><h1>Réussir sa première traction</h1><p className="lead">Identifie ce qui te manque aujourd'hui — prise, suspension, contrôle des épaules ou force de tirage — puis construis ces capacités une par une.</p><div className="learningMeta"><div><span>Objectif</span><strong>1 traction stricte</strong></div><div><span>Matériel</span><strong>Une barre</strong></div><div><span>Niveau</span><strong>Départ zéro</strong></div></div><section className="articleSection"><h2>La progression en 6 étapes</h2><ol className="progression detailedProgression">{steps.map(([number,title,text]) => <li className="progressionStep" key={number}><div className="stepNumber">{number.padStart(2,"0")}</div><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol></section><section className="articleSection"><div className="eyebrow">Suite logique</div><div className="nextGrid"><Link className="nextCard" href="/bibliotheque/traction-technique"><strong>Technique de traction</strong><span>Affiner le mouvement →</span></Link><Link className="nextCard" href="/bibliotheque/10-tractions"><strong>De 1 à 10 tractions</strong><span>Construire le volume →</span></Link></div></section></article>;
 }
 
 export default async function ResourcePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const resource = v1Resources.find((item) => item.slug === slug);
   if (!resource) notFound();
-
   if (slug === "premiere-traction") return <FirstPullUpPage />;
-  if (pullUpCards[slug]) return <LearningCardPage slug={slug} />;
-
-  return (
-    <article className="section shell narrow">
-      <div className="eyebrow">{resource.kind} · {resource.level}</div>
-      <h1>{resource.title}</h1>
-      <p className="lead">{resource.summary}</p>
-      <div className="infoPanel"><p><strong>Capacité :</strong> {resource.capability}</p><p><strong>Matériel :</strong> {resource.equipment.length ? resource.equipment.join(", ") : "aucun matériel obligatoire"}</p></div>
-      <section className="articleSection"><h2>Ce que cette fiche doit t'apprendre</h2><p>Cette page est une première structure fonctionnelle. Son contenu éditorial détaillé sera rédigé à partir du brief V1 correspondant : prérequis, test de départ, technique, sensations, erreurs, régressions, progressions, critères de passage, matériel et sources.</p></section>
-      <section className="articleSection"><h2>Principe Calis</h2><p>Le but n'est pas de réussir une répétition à tout prix, mais de comprendre ce qui manque aujourd'hui et quelle étape permet de progresser proprement.</p></section>
-      <Link className="textLink" href={resource.hub === "tractions" ? "/tractions" : "/bibliotheque"}>← Retour au parcours</Link>
-    </article>
-  );
+  if (cards[slug]) return <LearningCardPage slug={slug} />;
+  return <article className="section shell narrow"><div className="eyebrow">{resource.kind} · {resource.level}</div><h1>{resource.title}</h1><p className="lead">{resource.summary}</p><div className="infoPanel"><p><strong>Capacité :</strong> {resource.capability}</p><p><strong>Matériel :</strong> {resource.equipment.length ? resource.equipment.join(", ") : "aucun matériel obligatoire"}</p></div><section className="articleSection"><h2>Ce que cette fiche doit t'apprendre</h2><p>Cette ressource est encore en cours d'enrichissement. Elle rejoindra le même modèle pédagogique : test de départ, technique, sensations, erreurs, progression et critères de passage.</p></section><Link className="textLink" href="/bibliotheque">← Retour à la bibliothèque</Link></article>;
 }
