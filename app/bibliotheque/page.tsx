@@ -26,13 +26,13 @@ const journeys = [
     label: "Pousser",
     title: "Pompes et dips",
     description: "Construis d'abord une poussée contrôlée, puis apprends à transférer cette capacité vers les dips.",
-    href: "/bibliotheque/premiere-pompe",
+    href: "/pompes",
   },
   {
     label: "S'équilibrer",
     title: "Commencer le handstand",
     description: "Prépare les poignets, apprends à utiliser le mur puis construis progressivement tes premiers équilibres libres.",
-    href: "/bibliotheque/poignets-handstand",
+    href: "/handstand",
   },
 ] as const;
 
