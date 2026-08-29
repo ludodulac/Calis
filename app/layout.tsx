@@ -23,7 +23,6 @@ export const metadata: Metadata = {
     title: "Calis — Découvre ce dont ton corps est capable",
     description: "Une bibliothèque francophone pour apprendre et progresser en callisthénie.",
   },
-  alternates: { canonical: "/" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
