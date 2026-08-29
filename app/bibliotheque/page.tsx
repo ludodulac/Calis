@@ -6,6 +6,7 @@ import { v1Resources } from "@/lib/content/v1";
 export const metadata: Metadata = {
   title: "Bibliothèque",
   description: "Explore les ressources Calis par parcours, capacité et objectif.",
+  alternates: { canonical: "/bibliotheque/" },
 };
 
 const journeys = [
@@ -24,14 +25,14 @@ const journeys = [
   {
     label: "Pousser",
     title: "Pompes et dips",
-    description: "Les premières fiches sont déjà présentes ; le parcours complet sera enrichi progressivement sans changer les URLs.",
+    description: "Construis d'abord une poussée contrôlée, puis apprends à transférer cette capacité vers les dips.",
     href: "/bibliotheque/premiere-pompe",
   },
   {
     label: "S'équilibrer",
     title: "Commencer le handstand",
-    description: "Appuis, poignets, mur et premiers repères avant de chercher l'équilibre libre.",
-    href: "/bibliotheque/handstand-debutant",
+    description: "Prépare les poignets, apprends à utiliser le mur puis construis progressivement tes premiers équilibres libres.",
+    href: "/bibliotheque/poignets-handstand",
   },
 ] as const;
 
@@ -77,8 +78,8 @@ export default function LibraryPage() {
       <section className="section shell">
         <div className="sectionHeading">
           <div className="eyebrow">Parcours traction</div>
-          <h2>Un premier hub déjà relié de bout en bout</h2>
-          <p>Ces fiches forment le parcours le plus avancé de la V1 : elles ne sont pas indépendantes, chacune prépare une capacité suivante.</p>
+          <h2>Un premier hub relié de bout en bout</h2>
+          <p>Ces fiches forment un parcours complet : chacune développe une capacité précise et prépare la suivante.</p>
         </div>
         <div className="resourceGrid">
           {pullResources.map((resource) => <ResourceCard key={resource.slug} resource={resource} />)}
@@ -87,9 +88,9 @@ export default function LibraryPage() {
 
       <section className="section shell">
         <div className="sectionHeading">
-          <div className="eyebrow">À développer</div>
-          <h2>Les autres briques de la bibliothèque</h2>
-          <p>Pompes, dips, handstand et équipement sont déjà réservés dans l'architecture. Leur contenu détaillé arrive progressivement sans créer une masse de pages vides.</p>
+          <div className="eyebrow">Pousser et s'équilibrer</div>
+          <h2>Pompes, dips et handstand ont maintenant leur propre chemin</h2>
+          <p>Ces ressources utilisent le même langage pédagogique que les tractions : point de départ, technique, sensations, erreurs et critères de progression.</p>
         </div>
         <div className="resourceGrid">
           {otherResources.map((resource) => <ResourceCard key={resource.slug} resource={resource} />)}
