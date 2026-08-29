@@ -8,7 +8,7 @@ export type ResourceKind =
   | "program"
   | "equipment";
 
-export type Capability = "pousser" | "tirer" | "tenir" | "equilibre" | "mouvement" | "force";
+export type Capability = "pousser" | "tirer" | "tenir" | "equilibre" | "mouvement" | "force" | "jambes";
 
 export type Resource = {
   slug: string;
