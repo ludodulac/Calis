@@ -46,6 +46,8 @@ p { color: var(--muted); }
 .cardGrid, .resourceGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .resourceGrid { grid-template-columns: repeat(3, 1fr); }
 .plainCard, .resourceCard { padding: 24px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
+.plainCard { transition: transform .16s ease, border-color .16s ease; }
+.plainCard:hover { border-color: var(--accent); transform: translateY(-2px); }
 .resourceCard { min-height: 250px; display: flex; flex-direction: column; }
 .resourceCard .textLink { margin-top: auto; }
 .textLink { font-weight: 800; color: var(--accent); }
@@ -53,9 +55,11 @@ p { color: var(--muted); }
 
 .filterPreview { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
 .filterPreview span { padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--muted); font-size: .9rem; }
-.choiceList { display: grid; gap: 12px; margin-top: 36px; }
-.choice { padding: 22px 24px; display: flex; justify-content: space-between; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); font-weight: 750; }
+.choiceList { display: grid; gap: 12px; margin-top: 36px; width: 100%; }
+.choice { padding: 22px 24px; display: flex; justify-content: space-between; gap: 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); font-weight: 750; }
 .choice:hover { border-color: var(--accent); }
+.startChoice > span:first-child { display: grid; gap: 4px; }
+.startChoice small { color: var(--muted); font-size: .92rem; font-weight: 400; line-height: 1.45; }
 .progression { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
 .progressionStep { display: grid; grid-template-columns: 72px 1fr; gap: 16px; padding: 28px 0; border-bottom: 1px solid var(--line); }
 .stepNumber { color: var(--accent); font-weight: 900; }
