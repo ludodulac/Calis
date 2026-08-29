@@ -46,8 +46,6 @@ p { color: var(--muted); }
 .cardGrid, .resourceGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .resourceGrid { grid-template-columns: repeat(3, 1fr); }
 .plainCard, .resourceCard { padding: 24px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
-.plainCard { transition: transform .16s ease, border-color .16s ease; }
-.plainCard:hover { border-color: var(--accent); transform: translateY(-2px); }
 .resourceCard { min-height: 250px; display: flex; flex-direction: column; }
 .resourceCard .textLink { margin-top: auto; }
 .textLink { font-weight: 800; color: var(--accent); }
@@ -55,11 +53,9 @@ p { color: var(--muted); }
 
 .filterPreview { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
 .filterPreview span { padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--muted); font-size: .9rem; }
-.choiceList { display: grid; gap: 12px; margin-top: 36px; width: 100%; }
-.choice { padding: 22px 24px; display: flex; justify-content: space-between; gap: 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); font-weight: 750; }
+.choiceList { display: grid; gap: 12px; margin-top: 36px; }
+.choice { padding: 22px 24px; display: flex; justify-content: space-between; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); font-weight: 750; }
 .choice:hover { border-color: var(--accent); }
-.startChoice > span:first-child { display: grid; gap: 4px; }
-.startChoice small { color: var(--muted); font-size: .92rem; font-weight: 400; line-height: 1.45; }
 .progression { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
 .progressionStep { display: grid; grid-template-columns: 72px 1fr; gap: 16px; padding: 28px 0; border-bottom: 1px solid var(--line); }
 .stepNumber { color: var(--accent); font-weight: 900; }
@@ -91,6 +87,7 @@ p { color: var(--muted); }
 .equipmentCallout { display: grid; grid-template-columns: 1.2fr .8fr; gap: 22px; align-items: start; }
 .equipmentCallout .manifesto strong { font-size: 1.35rem; }
 .nextGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.compactNextGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .nextCard { min-height: 130px; padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); display: flex; flex-direction: column; justify-content: space-between; }
 .nextCard:hover { border-color: var(--accent); transform: translateY(-1px); }
 .nextCard span { color: var(--accent); font-weight: 700; font-size: .92rem; }
@@ -98,6 +95,14 @@ p { color: var(--muted); }
 .contentList li { counter-increment: learning-step; position: relative; padding: 18px 18px 18px 58px; border-top: 1px solid var(--line); color: var(--muted); }
 .contentList li:last-child { border-bottom: 1px solid var(--line); }
 .contentList li::before { content: counter(learning-step, decimal-leading-zero); position: absolute; left: 10px; top: 18px; color: var(--accent); font-weight: 900; font-size: .82rem; }
+
+.journeyGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.journeyCard { min-height: 250px; padding: 28px; border: 1px solid var(--line); border-radius: 24px; background: var(--surface); display: flex; flex-direction: column; transition: transform .16s ease, border-color .16s ease; }
+.journeyCard:hover { transform: translateY(-2px); border-color: var(--accent); }
+.journeyCard > span { color: var(--accent); text-transform: uppercase; letter-spacing: .1em; font-size: .72rem; font-weight: 800; }
+.journeyCard > strong { display: block; max-width: 420px; margin-top: 20px; font-size: clamp(1.5rem, 2.5vw, 2.1rem); line-height: 1.08; letter-spacing: -.025em; }
+.journeyCard p { max-width: 500px; }
+.journeyCard b { margin-top: auto; color: var(--accent); }
 
 @media (max-width: 860px) {
   .heroGrid, .resourceGrid, .cardGrid { grid-template-columns: 1fr 1fr; }
@@ -111,6 +116,6 @@ p { color: var(--muted); }
   .headerInner { align-items: flex-start; padding: 18px 0; flex-direction: column; }
   .mainNav { gap: 16px; flex-wrap: wrap; }
   .hero { padding-top: 60px; }
-  .resourceGrid, .cardGrid, .learningMeta, .mistakeList { grid-template-columns: 1fr; }
+  .resourceGrid, .cardGrid, .learningMeta, .mistakeList, .journeyGrid, .compactNextGrid { grid-template-columns: 1fr; }
   .footerInner { flex-direction: column; }
 }
