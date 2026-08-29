@@ -15,9 +15,10 @@ type LearningCard = {
   avoid: string[];
   advance: string;
   next?: { slug: string; label: string };
+  secondaryNext?: { slug: string; label: string };
 };
 
-const pullUpFoundationCards: Record<string, LearningCard> = {
+const pullUpCards: Record<string, LearningCard> = {
   "suspension-barre": {
     intro: "Avant de tirer ton corps vers la barre, apprends à y rester. La suspension construit la prise, l'habitude de supporter ton poids et les premiers repères autour des épaules.",
     objective: "Une suspension calme, stable et reproductible.",
@@ -93,22 +94,82 @@ const pullUpFoundationCards: Record<string, LearningCard> = {
     advance: "Teste une traction stricte lorsque tu peux répéter des descentes contrôlées et que l'assistance utilisée sur les tractions complètes a nettement diminué. Les négatives peuvent générer beaucoup de courbatures : augmente leur volume progressivement.",
     next: { slug: "premiere-traction", label: "Tenter ta première traction stricte" },
   },
+  "traction-technique": {
+    intro: "Une traction stricte n'est pas une pose figée : c'est un mouvement contrôlé entre une position basse stable et une position haute nette. L'objectif est de construire une répétition que tu peux reconnaître et reproduire.",
+    objective: "Une répétition complète, contrôlée et reproductible.",
+    test: "Filme-toi de profil ou de trois-quarts sur une répétition confortable. Vérifie si le départ, la montée et la descente se ressemblent d'une répétition à l'autre et si tu as besoin d'un balancement marqué pour passer le point difficile.",
+    technique: [
+      "Pars d'une suspension que tu peux contrôler plutôt que d'un balancement déjà lancé.",
+      "Initie le tirage en gardant le corps organisé ; les coudes se plient pendant que le haut du dos participe au mouvement.",
+      "Monte jusqu'à une position haute claire sans projeter brutalement la tête ou le menton vers la barre.",
+      "Redescends avec le même contrôle que pendant la montée et retrouve une position basse stable avant la répétition suivante.",
+    ],
+    feel: ["Le dos et les bras travaillent ensemble.", "Le tronc limite les oscillations inutiles.", "La dernière répétition ressemble encore à la première."],
+    avoid: ["Transformer chaque répétition en kipping involontaire.", "Réduire l'amplitude au fur et à mesure de la fatigue.", "Forcer une prise ou une trajectoire qui provoque une douleur articulaire."],
+    advance: "Quand tu possèdes une traction que tu peux reproduire sans devoir la réinventer à chaque tentative, commence à construire du volume. La technique peut encore évoluer, mais elle doit déjà être suffisamment stable pour servir de référence.",
+    next: { slug: "10-tractions", label: "Construire de 1 à 10 tractions" },
+  },
+  "10-tractions": {
+    intro: "Passer d'une traction à plusieurs ne consiste pas à tester son maximum tous les jours. Le socle se construit avec des répétitions de qualité, assez faciles pour être accumulées sans transformer chaque séance en épreuve.",
+    objective: "Augmenter le volume de tractions propres sans sacrifier la forme.",
+    test: "Fais une série confortable sans aller volontairement à l'échec. Si les dernières répétitions changent fortement de trajectoire ou d'amplitude, considère que ton volume de travail utile se situe avant cette dégradation.",
+    technique: [
+      "Garde une marge sur la majorité des séries au lieu de poursuivre systématiquement jusqu'à l'échec.",
+      "Accumule le volume avec plusieurs petites séries propres si une longue série détruit rapidement ta technique.",
+      "Conserve les exercices de base qui corrigent ton maillon faible : rowing, assistance ou négatives peuvent rester utiles après la première traction.",
+      "Augmente une variable à la fois : davantage de répétitions totales, davantage de séries ou une assistance moindre, plutôt que tout simultanément.",
+    ],
+    feel: ["Une fatigue musculaire progressive mais contrôlable.", "Des répétitions encore reconnaissables en fin de séance.", "Une récupération suffisante pour retrouver une bonne qualité lors de la séance suivante."],
+    avoid: ["Tester son maximum à chaque séance.", "Ajouter du volume alors que l'amplitude se raccourcit nettement.", "Ignorer une baisse durable de performance ou une douleur qui augmente."],
+    advance: "Quand dix tractions propres deviennent un repère réaliste et non un exploit exceptionnel, choisis une branche selon ton objectif : produire plus de hauteur et de vitesse, ou développer davantage de force avec du lest.",
+    next: { slug: "traction-explosive", label: "Développer la traction explosive" },
+    secondaryNext: { slug: "tractions-lestees", label: "Commencer les tractions lestées" },
+  },
+  "traction-explosive": {
+    intro: "La traction explosive cherche à produire beaucoup de force rapidement pour monter plus haut que sur une traction classique. Elle prépare notamment les objectifs où la hauteur de tirage devient déterminante.",
+    objective: "Monter plus haut sans perdre le contrôle du corps ni transformer l'exercice en balancement.",
+    test: "Sur une traction fraîche, observe jusqu'où monte naturellement ta poitrine lorsque tu tires vite. Si accélérer détruit complètement ta trajectoire, consolide d'abord ta force et ta technique stricte.",
+    technique: [
+      "Travaille lorsque tu es suffisamment frais pour produire de la vitesse ; l'explosivité chute vite avec la fatigue.",
+      "Cherche une accélération nette dès le début du tirage plutôt qu'un mouvement lent terminé par un coup de bassin.",
+      "Garde un nombre de répétitions assez faible pour que chaque tentative reste réellement rapide.",
+      "Conserve parallèlement des tractions strictes pour que la vitesse ne remplace pas la qualité du mouvement.",
+    ],
+    feel: ["Une accélération franche du corps vers la barre.", "Un tirage plus haut sans besoin d'un grand élan des jambes.", "Une forte intention de vitesse même si la hauteur progresse graduellement."],
+    avoid: ["Confondre explosivité et balancement.", "Multiplier les répétitions lorsque la vitesse s'effondre.", "Chercher une hauteur maximale avec une épaule ou un coude douloureux."],
+    advance: "Lorsque la hauteur de tirage augmente tout en gardant une trajectoire contrôlée, tu peux commencer à connecter cette capacité à des objectifs comme le muscle-up. Ce futur parcours aura ses propres prérequis et ne se résumera pas à tirer plus fort.",
+  },
+  "tractions-lestees": {
+    intro: "Le lest transforme la traction en travail de force plus facilement mesurable. Il n'est utile que lorsque ta traction au poids du corps est déjà suffisamment stable pour que le poids ajouté ne masque pas les défauts de base.",
+    objective: "Ajouter progressivement de la charge sans perdre la répétition de référence.",
+    test: "Avant d'ajouter du poids, vérifie que tes tractions au poids du corps restent propres sur plusieurs séries et que tu peux distinguer clairement une bonne répétition d'une répétition dégradée.",
+    technique: [
+      "Commence par une charge légère qui change peu ta mécanique habituelle.",
+      "Utilise un système de lest stable qui ne te force pas à modifier exagérément la position du bassin ou des jambes.",
+      "Garde une amplitude et une qualité comparables à tes tractions sans lest.",
+      "Augmente la charge progressivement et seulement lorsque la répétition actuelle reste contrôlée.",
+    ],
+    feel: ["Le mouvement est plus exigeant mais reste familier.", "La vitesse ralentit sans que la trajectoire s'effondre.", "Le dos, les bras et le tronc continuent à travailler comme un ensemble."],
+    avoid: ["Ajouter du poids pour compenser un manque de contrôle technique.", "Sauter brutalement de charge en charge.", "Laisser le lest se balancer fortement ou tirer sur une zone inconfortable."],
+    advance: "Le prochain niveau n'est pas une charge universelle. Utilise plutôt une progression régulière, une technique stable et un objectif clair : force maximale, streetlifting ou simple renforcement complémentaire.",
+  },
 };
 
 function LearningCardPage({ slug }: { slug: string }) {
   const resource = v1Resources.find((item) => item.slug === slug)!;
-  const card = pullUpFoundationCards[slug];
+  const card = pullUpCards[slug];
+  const equipment = resource.equipment.length ? resource.equipment.join(", ") : "aucun matériel obligatoire";
 
   return (
     <article className="section shell narrow learningCard">
-      <div className="eyebrow">{resource.kind} · parcours première traction</div>
+      <div className="eyebrow">{resource.kind} · parcours tractions</div>
       <h1>{resource.title}</h1>
       <p className="lead">{card.intro}</p>
 
       <div className="learningMeta">
         <div><span>Objectif</span><strong>{card.objective}</strong></div>
         <div><span>Capacité</span><strong>{resource.capability}</strong></div>
-        <div><span>Matériel</span><strong>{resource.equipment.join(", ")}</strong></div>
+        <div><span>Matériel</span><strong>{equipment}</strong></div>
       </div>
 
       <section className="articleSection">
@@ -145,13 +206,13 @@ function LearningCardPage({ slug }: { slug: string }) {
         <p>{card.advance}</p>
       </section>
 
-      {card.next && (
+      {(card.next || card.secondaryNext) && (
         <section className="articleSection">
           <div className="eyebrow">Étape suivante</div>
-          <Link className="nextCard" href={`/bibliotheque/${card.next.slug}`}>
-            <strong>{card.next.label}</strong>
-            <span>Continuer le parcours →</span>
-          </Link>
+          <div className="nextGrid compactNextGrid">
+            {card.next && <Link className="nextCard" href={`/bibliotheque/${card.next.slug}`}><strong>{card.next.label}</strong><span>Continuer →</span></Link>}
+            {card.secondaryNext && <Link className="nextCard" href={`/bibliotheque/${card.secondaryNext.slug}`}><strong>{card.secondaryNext.label}</strong><span>Choisir cette branche →</span></Link>}
+          </div>
         </section>
       )}
 
@@ -199,12 +260,7 @@ function FirstPullUpPage() {
       <section className="articleSection">
         <div className="sectionHeading"><div className="eyebrow">Parcours</div><h2>La progression en 6 étapes</h2></div>
         <ol className="progression detailedProgression">
-          {steps.map(([number, title, text]) => (
-            <li className="progressionStep" key={number}>
-              <div className="stepNumber">{number.padStart(2, "0")}</div>
-              <div><h3>{title}</h3><p>{text}</p></div>
-            </li>
-          ))}
+          {steps.map(([number, title, text]) => <li className="progressionStep" key={number}><div className="stepNumber">{number.padStart(2, "0")}</div><div><h3>{title}</h3><p>{text}</p></div></li>)}
         </ol>
       </section>
 
@@ -230,7 +286,7 @@ export default async function ResourcePage({ params }: { params: Promise<{ slug:
   if (!resource) notFound();
 
   if (slug === "premiere-traction") return <FirstPullUpPage />;
-  if (pullUpFoundationCards[slug]) return <LearningCardPage slug={slug} />;
+  if (pullUpCards[slug]) return <LearningCardPage slug={slug} />;
 
   return (
     <article className="section shell narrow">
