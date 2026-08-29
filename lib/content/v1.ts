@@ -1,0 +1,34 @@
+import type { ProgressionStep, Resource } from "./types";
+
+export const v1Resources: Resource[] = [
+  { slug: "par-ou-commencer-calisthenie", title: "Par où commencer en callisthénie ?", summary: "Un point d'entrée simple pour comprendre quoi travailler quand on part de zéro.", level: "zero", kind: "guide", capability: "mouvement", hub: "commencer", equipment: [], next: ["premiere-pompe", "premiere-traction"] },
+  { slug: "premiere-pompe", title: "Réussir sa première pompe", summary: "Évaluer son niveau, choisir une régression et progresser jusqu'à une pompe contrôlée.", level: "zero", kind: "progression", capability: "pousser", hub: "pompes", equipment: [], next: ["pompe-technique"] },
+  { slug: "premiere-traction", title: "Réussir sa première traction", summary: "Construire suspension, contrôle scapulaire et force de tirage avant la première répétition stricte.", level: "zero", kind: "progression", capability: "tirer", hub: "tractions", equipment: ["barre"], next: ["traction-technique", "10-tractions"] },
+  { slug: "traction-technique", title: "Traction : technique et repères", summary: "Comprendre le mouvement, les prises, l'amplitude et les sensations utiles.", level: "beginner", kind: "exercise", capability: "tirer", hub: "tractions", equipment: ["barre"], next: ["10-tractions"] },
+  { slug: "suspension-barre", title: "Apprendre à se suspendre à une barre", summary: "Construire une suspension confortable et contrôlée avant de tirer.", level: "zero", kind: "exercise", capability: "tirer", hub: "tractions", equipment: ["barre"], next: ["controle-scapulaire"] },
+  { slug: "controle-scapulaire", title: "Contrôle scapulaire en suspension", summary: "Apprendre à engager et déplacer les omoplates avant les tractions complètes.", level: "beginner", kind: "exercise", capability: "tirer", hub: "tractions", equipment: ["barre"], next: ["rowing-incline"] },
+  { slug: "rowing-incline", title: "Rowing incliné au poids du corps", summary: "Développer le tirage horizontal avec une difficulté ajustable.", level: "beginner", kind: "exercise", capability: "tirer", hub: "tractions", equipment: ["barre-basse-ou-anneaux"], next: ["traction-assistee"] },
+  { slug: "traction-assistee", title: "Traction assistée : comment bien l'utiliser", summary: "Utiliser assistance ou élastique sans masquer les faiblesses techniques.", level: "beginner", kind: "exercise", capability: "tirer", hub: "tractions", equipment: ["barre", "elastique-facultatif"], next: ["traction-negative"] },
+  { slug: "traction-negative", title: "Traction négative", summary: "Développer le contrôle excentrique pour se rapprocher de la traction stricte.", level: "beginner", kind: "exercise", capability: "tirer", hub: "tractions", equipment: ["barre"], next: ["premiere-traction"] },
+  { slug: "10-tractions", title: "Passer de 1 à 10 tractions", summary: "Organiser volume, fréquence et qualité pour construire un vrai socle de tirage.", level: "beginner", kind: "program", capability: "force", hub: "tractions", equipment: ["barre"], next: ["traction-explosive", "tractions-lestees"] },
+  { slug: "traction-explosive", title: "Développer la traction explosive", summary: "Transformer la force de tirage en hauteur et vitesse avant le muscle-up.", level: "intermediate", kind: "progression", capability: "tirer", hub: "tractions", equipment: ["barre"] },
+  { slug: "tractions-lestees", title: "Commencer les tractions lestées", summary: "Savoir quand ajouter du poids et comment progresser sans brûler les étapes.", level: "intermediate", kind: "guide", capability: "force", hub: "tractions", equipment: ["barre", "ceinture-de-lest-facultative"] },
+  { slug: "pompe-technique", title: "Pompe : technique et repères", summary: "Alignement, amplitude, gainage et position des mains pour une pompe contrôlée.", level: "beginner", kind: "exercise", capability: "pousser", hub: "pompes", equipment: [] },
+  { slug: "pompes-inclinees", title: "Pompes inclinées", summary: "Réduire progressivement la difficulté sans dénaturer le mouvement.", level: "zero", kind: "exercise", capability: "pousser", hub: "pompes", equipment: ["support"] },
+  { slug: "dips-debutant", title: "Premiers dips", summary: "Construire stabilité et force de poussée avant les dips complets.", level: "beginner", kind: "progression", capability: "pousser", hub: "dips", equipment: ["barres-paralleles"] },
+  { slug: "dips-technique", title: "Dips : technique et erreurs fréquentes", summary: "Comprendre amplitude, trajectoire et contrôle des épaules.", level: "beginner", kind: "exercise", capability: "pousser", hub: "dips", equipment: ["barres-paralleles"] },
+  { slug: "handstand-debutant", title: "Commencer le handstand", summary: "Construire appuis, ligne et sécurité avant de chercher l'équilibre libre.", level: "beginner", kind: "progression", capability: "equilibre", hub: "handstand", equipment: ["mur-facultatif"] },
+  { slug: "handstand-mur", title: "Handstand au mur", summary: "Utiliser le mur pour apprendre l'alignement sans dépendre de l'élan.", level: "beginner", kind: "exercise", capability: "equilibre", hub: "handstand", equipment: ["mur"] },
+  { slug: "poignets-handstand", title: "Préparer ses poignets au handstand", summary: "Mobilité, charge progressive et repères de tolérance avant les appuis prolongés.", level: "beginner", kind: "guide", capability: "mouvement", hub: "handstand", equipment: [] },
+  { slug: "parallettes-handstand", title: "Parallettes pour le handstand : utiles ou non ?", summary: "Comprendre quand les parallettes changent réellement le confort ou la progression.", level: "beginner", kind: "equipment", capability: "equilibre", hub: "handstand", equipment: ["parallettes-facultatives"] }
+];
+
+export const pullUpProgression: ProgressionStep[] = [
+  { id: "hang", label: "Suspension", resourceSlug: "suspension-barre", criterion: "Se suspendre confortablement et garder une prise stable." },
+  { id: "scapula", label: "Contrôle scapulaire", resourceSlug: "controle-scapulaire", criterion: "Déplacer les omoplates sans plier fortement les coudes." },
+  { id: "row", label: "Rowing incliné", resourceSlug: "rowing-incline", criterion: "Réaliser des répétitions propres avec un angle adapté." },
+  { id: "assist", label: "Traction assistée", resourceSlug: "traction-assistee", criterion: "Conserver une trajectoire et une amplitude cohérentes." },
+  { id: "negative", label: "Négatives", resourceSlug: "traction-negative", criterion: "Contrôler la descente sans chute rapide." },
+  { id: "first", label: "Première traction", resourceSlug: "premiere-traction", criterion: "Réaliser une répétition stricte et reproductible." },
+  { id: "ten", label: "10 tractions", resourceSlug: "10-tractions", criterion: "Construire un socle de volume avant les objectifs plus avancés." }
+];
