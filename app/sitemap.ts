@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { v1Resources } from "@/lib/content/v1";
 
+export const dynamic = "force-static";
+
 const siteUrl = "https://ludodulac.github.io/Calis";
 
 export default function sitemap(): MetadataRoute.Sitemap {
