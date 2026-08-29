@@ -90,6 +90,10 @@ p { color: var(--muted); }
 .nextCard { min-height: 130px; padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); display: flex; flex-direction: column; justify-content: space-between; }
 .nextCard:hover { border-color: var(--accent); transform: translateY(-1px); }
 .nextCard span { color: var(--accent); font-weight: 700; font-size: .92rem; }
+.contentList { margin: 0; padding: 0; list-style: none; counter-reset: learning-step; }
+.contentList li { counter-increment: learning-step; position: relative; padding: 18px 18px 18px 58px; border-top: 1px solid var(--line); color: var(--muted); }
+.contentList li:last-child { border-bottom: 1px solid var(--line); }
+.contentList li::before { content: counter(learning-step, decimal-leading-zero); position: absolute; left: 10px; top: 18px; color: var(--accent); font-weight: 900; font-size: .82rem; }
 
 @media (max-width: 860px) {
   .heroGrid, .resourceGrid, .cardGrid { grid-template-columns: 1fr 1fr; }
