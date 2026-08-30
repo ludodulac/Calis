@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { LearningIllustration } from "@/components/learning-illustration";
 
 export const metadata: Metadata = {
   title: "Traction négative : apprendre à contrôler la descente",
@@ -25,6 +26,14 @@ export default function NegativePullUpPage() {
         <div><span>Pour qui</span><strong>Première traction en construction</strong></div>
         <div><span>Matériel</span><strong>Barre + support stable</strong></div>
       </div>
+
+      <LearningIllustration
+        src="/illustrations/calis/tractions/traction-negative.svg"
+        alt="Trois positions d'une traction négative : départ menton au-dessus de la barre avec les pieds sur un support, descente contrôlée à mi-amplitude, puis arrivée bras tendus."
+        label="Trois positions de la descente"
+        caption="Le support sert à atteindre le haut sans saut maximal. Ensuite, retire l'aide des pieds et cherche une descente continue et contrôlée jusqu'aux bras tendus, sans balancement volontaire."
+        variant="sequence"
+      />
 
       <section className="articleSection">
         <div className="eyebrow">Réponse rapide</div>
