@@ -35,6 +35,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <div className="shell footerInner">
             <strong>Calis</strong>
             <span>Comprendre → essayer → ressentir → maîtriser → progresser.</span>
+            <small>Calis propose des informations générales sur l'activité physique et l'apprentissage des mouvements. Le site ne remplace pas un avis, un diagnostic ou une prise en charge par un professionnel de santé qualifié.</small>
           </div>
         </footer>
       </body>
