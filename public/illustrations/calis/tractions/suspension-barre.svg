@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Suspension calme à une barre</title>
+  <desc id="desc">Dessin pédagogique monochrome d'une personne suspendue à une barre, bras tendus, corps vertical et jambes calmes.</desc>
+  <g fill="none" stroke="#765d45" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M190 120H770" stroke-width="12"/>
+    <path d="M190 120v36M770 120v36" stroke-width="5" opacity=".42"/>
+
+    <path d="M386 137c-11 2-18 10-19 21 0 9 7 16 17 16 10 0 17-6 18-15 1-11-6-20-16-22Z" stroke-width="5"/>
+    <path d="M574 137c11 2 18 10 19 21 0 9-7 16-17 16-10 0-17-6-18-15-1-11 6-20 16-22Z" stroke-width="5"/>
+    <path d="M367 150c-7-7-13-14-18-22M402 151c5-8 9-15 13-23M558 151c-5-8-9-15-13-23M593 150c7-7 13-14 18-22" stroke-width="4" opacity=".8"/>
+
+    <path d="M389 172c12 34 27 68 47 101" stroke-width="8"/>
+    <path d="M571 172c-12 34-27 68-47 101" stroke-width="8"/>
+    <path d="M436 273c8 16 18 27 29 34M524 273c-8 16-18 27-29 34" stroke-width="7"/>
+
+    <ellipse cx="480" cy="328" rx="34" ry="40" stroke-width="5"/>
+    <path d="M453 354c-17 12-27 34-28 63-1 35 11 76 26 110M507 354c17 12 27 34 28 63 1 35-11 76-26 110" stroke-width="7"/>
+    <path d="M450 371c19 15 41 15 60 0" stroke-width="4" opacity=".65"/>
+    <path d="M443 425c24 9 50 9 74 0" stroke-width="4" opacity=".5"/>
+
+    <path d="M451 527c-3 29-7 56-10 81M509 527c3 29 7 56 10 81" stroke-width="8"/>
+    <path d="M441 608h-24M519 608h24" stroke-width="7"/>
+
+    <path d="M350 128c10-5 20-8 31-8M579 120c11 0 21 3 31 8" stroke-width="3" opacity=".42"/>
+    <path d="M480 368v154" stroke-width="2" stroke-dasharray="7 11" opacity=".18"/>
+  </g>
+</svg>
