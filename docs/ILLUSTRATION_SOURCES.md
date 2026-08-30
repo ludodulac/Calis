@@ -26,16 +26,16 @@ Avant toute intégration :
 
 ## Sources principales vérifiées
 
-### Arthur Nahl & Charles Nahl — *Instructions in Gymnastics* (1865)
+### Arthur Nahl & Charles Nahl — *Instructions in Gymnastics* (1863)
 
 - **Statut :** vérifié — domaine public / Public Domain Mark.
-- **Édition consultée :** San Francisco, A. Roman, 1865 ; une édition 1863 est aussi signalée dans la notice.
-- **Corpus :** ouvrage illustré de gymnastique, particulièrement intéressant pour les agrès et positions historiques.
-- **Source de référence :** Wikimedia Commons / Internet Archive, identifiant `b28054143`.
-- **Notice :** https://commons.wikimedia.org/wiki/File:Instructions_in_gymnastics_(IA_b28054143).pdf
-- **PDF source :** https://archive.org/download/b28054143/b28054143.pdf
-- **Licence indiquée par la source :** Creative Commons Public Domain Mark ; œuvre également indiquée comme domaine public aux États-Unis.
+- **Édition institutionnelle vérifiée :** San Francisco, A. Rosenfield, 1863.
+- **Corpus :** 53 pages de planches ; la Wellcome Collection expose 182 images numériques et décrit explicitement des exercices au sol, cheval, barres parallèles, barre horizontale et anneaux.
+- **Source de référence prioritaire :** Wellcome Collection.
+- **Notice :** https://wellcomecollection.org/works/r3ghqs7w
+- **Licence indiquée par la source :** Public Domain Mark ; la notice indique une réutilisation sans restriction de copyright.
 - **Usage Calis envisagé :** corpus principal pour suspension, barre horizontale, anneaux et barres parallèles après validation figure par figure.
+- **Note de provenance :** une numérisation d'une édition 1865 existe également dans les sources historiques du projet ; ne pas mélanger les numéros de page/planche entre éditions sans vérification.
 
 ### Ravenstein & Hulley — *A Handbook of Gymnastics and Athletics* (1867)
 
@@ -86,8 +86,7 @@ Avant toute intégration :
 - **Statut :** vérifié — domaine public.
 - **Objet :** feuille de 30 scènes montrant des exercices sportifs et gymniques, dont barre horizontale, anneaux et barres parallèles.
 - **Numéro d'objet :** `RP-P-OB-202.855`.
-- **Datation de la notice Rijksmuseum :** **1875–1903**.
-- **Remarque :** une estimation antérieure du projet indiquait 1865–1875 ; la notice institutionnelle actuellement consultée donne 1875–1903 et doit donc servir de référence.
+- **Datation :** plusieurs notices/versions proches ont circulé dans le projet ; conserver l'identifiant d'objet et la notice exacte avec chaque asset plutôt que déduire une date d'une autre version.
 - **Notice :** https://www.rijksmuseum.nl/nl/collectie/object/Gymnastiek%2B%282%29--bbe09fc51d47d15c47c6937907b2f950
 - **Identifiant durable :** https://id.rijksmuseum.nl/200574317
 - **Copyright indiqué par le Rijksmuseum :** `Publiek domein`.
@@ -103,8 +102,52 @@ Ordre de recherche recommandé :
 4. **traction-negative** — idéalement haut / milieu / extension, trois positions maximum ;
 5. **traction-assistee** — adaptation moderne probablement nécessaire, car l'usage d'un élastique contemporain risque de ne pas avoir d'équivalent historique pertinent.
 
-Pour chaque candidat retenu, ajouter ci-dessous une entrée avec : source exacte, page/planche, description, licence, justification pédagogique et statut (`à étudier`, `retenu`, `rejeté`, `transformé`, `intégré`).
+## Sélection figure par figure — état de travail
 
-## Sélection figure par figure
+### traction-suspension
 
-Aucune figure n'est encore marquée `retenue` dans ce registre. Cette absence est volontaire : le statut juridique du corpus ne suffit pas. La prochaine étape consiste à inspecter les planches et à retenir uniquement les figures anatomiquement et pédagogiquement compatibles avec le mouvement moderne visé.
+- **Corpus prioritaire :** Nahl, *Instructions in Gymnastics* (1863), barre horizontale.
+- **Statut :** `à étudier — corpus confirmé, figure exacte non verrouillée`.
+- **Pourquoi :** la notice institutionnelle confirme que l'ouvrage contient des figures de barre horizontale et que la numérisation est réutilisable. Il faut encore verrouiller une planche/page précise montrant une suspension simple, sans balancement ni transition acrobatique.
+- **Critères éliminatoires :** flexion volontaire des coudes, swing marqué, prise ambiguë, jambes engagées dans une figure, agrès instable.
+
+### traction-controle-scapulaire
+
+- **Corpus prioritaire :** aucun candidat historique validé à ce stade.
+- **Statut :** `à construire à partir d'une référence anatomiquement vérifiée`.
+- **Pourquoi :** une simple paire de figures de suspension ne prouve pas un mouvement scapulaire moderne correctement représenté. Le rendu final devra montrer deux positions, coudes tendus, avec déplacement crédible de la ceinture scapulaire sans transformer le geste en demi-traction.
+- **Décision :** ne pas forcer une source historique inadéquate uniquement pour respecter la direction artistique.
+
+### traction-rowing
+
+- **Corpus prioritaire :** Ravenstein & Hulley, puis Nahl.
+- **Statut :** `à étudier`.
+- **Critères :** barre basse stable, corps gainé en ligne lisible, pieds au sol, tirage horizontal identifiable. Rejeter les montées, leviers et figures acrobatiques qui ressemblent seulement visuellement à un rowing.
+
+### traction-negative
+
+- **Corpus prioritaire :** Nahl / Ravenstein & Hulley pour les positions de départ et d'arrivée ; composition Calis moderne probablement nécessaire pour la séquence.
+- **Statut :** `à étudier — séquence historique non présumée`.
+- **Format final visé :** trois positions maximum : menton au-dessus de la barre → milieu contrôlé → extension complète. La source historique peut nourrir les poses, mais la continuité pédagogique doit être vérifiée séparément.
+
+### traction-assistee
+
+- **Corpus historique :** aucun candidat attendu comme référence technique principale.
+- **Statut :** `référence moderne nécessaire`.
+- **Pourquoi :** l'élastique contemporain et son point d'appui doivent être représentés exactement. Une image historique décorative serait ici moins utile qu'un dessin Calis moderne juste.
+
+## Décisions de sélection
+
+À ce stade, **aucune figure exacte n'est encore marquée `retenue`**, même si les corpus Nahl et Ravenstein/Hulley sont juridiquement et thématiquement confirmés. C'est intentionnel : une notice de collection prouve le corpus et sa licence, pas la correction biomécanique d'une figure particulière.
+
+Le verrou suivant est donc la **page/planche exacte**. Pour qu'un candidat passe de `à étudier` à `retenu`, le registre devra contenir :
+
+1. source institutionnelle exacte ;
+2. édition et page/planche exactes ;
+3. description du geste visible ;
+4. licence de cette numérisation ;
+5. contrôle anatomique et mécanique ;
+6. rôle pédagogique Calis précis ;
+7. décision `retenu` ou `rejeté` et motif.
+
+Tant que ces sept points ne sont pas réunis, aucun asset historique ne doit être intégré dans une page de production.
