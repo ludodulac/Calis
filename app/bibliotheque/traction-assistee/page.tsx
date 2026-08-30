@@ -44,7 +44,8 @@ export default function AssistedPullUpPage() {
         <div className="eyebrow">Choisir l'assistance</div>
         <h2>Bande élastique, pieds ou autre aide : cherche surtout la bonne difficulté</h2>
         <p>Une bande élastique est pratique mais son assistance varie au cours du mouvement. Un appui léger des pieds sur un support bas peut aussi permettre de doser l'aide très progressivement. Dans les deux cas, le principe reste le même : utiliser juste assez d'aide pour conserver une répétition contrôlable.</p>
-        <p>Calis ne recommande pas encore une résistance de bande universelle : le poids du corps, le matériel, la longueur de la bande, son installation et ton niveau modifient fortement l'aide réellement obtenue.</p>
+        <p>Calis ne recommande pas une résistance de bande universelle : le poids du corps, le matériel, la longueur de la bande, son installation et ton niveau modifient fortement l'aide réellement obtenue.</p>
+        <p>Si tu veux acheter ou régler une bande, consulte le guide <Link className="textLink" href="/bibliotheque/quelle-bande-elastique-tractions">quelle bande élastique choisir pour les tractions</Link>. Il explique comment tester la difficulté réelle sans se fier uniquement aux couleurs ou aux kilogrammes annoncés.</p>
       </section>
 
       <section className="articleSection">
