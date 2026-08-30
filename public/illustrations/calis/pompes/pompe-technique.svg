@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Pompe contrôlée en deux positions</title>
+  <desc id="desc">Deux vues de côté montrent une position haute puis une position basse de pompe. La tête, le tronc, le bassin et les jambes restent organisés ensemble pendant que les bras se plient.</desc>
+
+  <g fill="none" stroke="#62584d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M70 560H555M645 560H1130" opacity=".28"/>
+
+    <g>
+      <ellipse cx="155" cy="345" rx="32" ry="28"/>
+      <path d="M185 354L255 372L405 394L490 438"/>
+      <path d="M255 372L265 545"/>
+      <path d="M405 394L490 438L510 520L535 560"/>
+      <path d="M235 375Q322 387 420 402" stroke-width="5" opacity=".52"/>
+      <path d="M247 545H283" stroke-width="10"/>
+      <path d="M510 520L535 560" stroke-width="10"/>
+    </g>
+
+    <g>
+      <ellipse cx="710" cy="443" rx="32" ry="28"/>
+      <path d="M740 451L815 466L965 477L1045 486"/>
+      <path d="M815 466L770 505L820 545"/>
+      <path d="M965 477L1045 486L1065 525L1090 560"/>
+      <path d="M795 469Q885 476 980 482" stroke-width="5" opacity=".52"/>
+      <path d="M802 545H838" stroke-width="10"/>
+      <path d="M1065 525L1090 560" stroke-width="10"/>
+    </g>
+  </g>
+
+  <g fill="none" stroke="#62584d" stroke-width="4" stroke-linecap="round" opacity=".38">
+    <path d="M595 350v105"/>
+    <path d="M582 440l13 18 13-18"/>
+  </g>
+</svg>

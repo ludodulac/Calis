@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { LearningIllustration } from "@/components/learning-illustration";
 
 export const metadata: Metadata = {
   title: "Comment faire une pompe : technique, amplitude et erreurs",
@@ -20,6 +21,14 @@ export default function PushUpTechniquePage() {
         <div><span>Capacité</span><strong>Pousser</strong></div>
         <div><span>Si trop difficile</span><strong>Incliner le mouvement</strong></div>
       </div>
+
+      <LearningIllustration
+        src="/illustrations/calis/pompes/pompe-technique.svg"
+        alt="Deux vues de côté d'une pompe : position haute bras tendus puis position plus basse bras fléchis, avec tête, poitrine, bassin et jambes qui restent organisés ensemble."
+        label="Garde le corps lié pendant la descente"
+        caption="Observe surtout la relation entre poitrine et bassin. La profondeur dessinée n'est pas une amplitude obligatoire : descends seulement aussi loin que tu peux garder une répétition contrôlée et tolérable."
+        variant="comparison"
+      />
 
       <section className="articleSection">
         <div className="eyebrow">Réponse rapide</div>
