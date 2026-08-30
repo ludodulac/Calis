@@ -19,8 +19,10 @@ const desires = [
 const situations = [
   ["Je n'arrive pas encore à faire une pompe", "/bibliotheque/premiere-pompe"],
   ["Je n'arrive pas encore à faire une traction", "/bibliotheque/premiere-traction"],
-  ["Je ne sais pas du tout quoi travailler", "/bibliotheque/par-ou-commencer-calisthenie"],
+  ["Je veux renforcer mes jambes", "/bibliotheque/squat-poids-du-corps"],
   ["Je manque de mobilité", "/bibliotheque/mobilite-debutant"],
+  ["J'aimerais apprendre à tenir sur les mains", "/bibliotheque/poignets-handstand"],
+  ["Je ne sais pas du tout quoi travailler", "/bibliotheque/par-ou-commencer-calisthenie"],
 ] as const;
 
 export default function StartPage() {
@@ -60,6 +62,19 @@ export default function StartPage() {
             <div><strong>Reconnaître les petits progrès</strong><p>Un support de pompe plus bas, une suspension plus calme ou un squat plus contrôlé comptent avant même la réussite finale.</p></div>
             <div><strong>Ne pas acheter pour se sentir prêt</strong><p>Une grande partie des bases se construit avec très peu de matériel. L'équipement arrive lorsqu'il débloque un besoin réel.</p></div>
           </div>
+        </div>
+      </section>
+
+      <section className="section shell narrow">
+        <div className="eyebrow">Ce qui compte au début</div>
+        <h2>Construire un corps capable, pas collectionner les exercices.</h2>
+        <div className="mistakeList">
+          <div><strong>Pousser et tirer</strong><p>Pompes, tirages et leurs régressions construisent les grandes familles de force du haut du corps.</p></div>
+          <div><strong>Utiliser ses jambes</strong><p>S'accroupir, se relever et contrôler son poids sur les jambes font partie des bases.</p></div>
+          <div><strong>Explorer ses amplitudes</strong><p>La mobilité se développe autour des mouvements visés et n'a pas à être parfaite avant de commencer.</p></div>
+          <div><strong>Choisir une difficulté répétable</strong><p>Une variante accessible est celle qui permet d'apprendre aujourd'hui.</p></div>
+          <div><strong>Observer les sensations</strong><p>Distinguer effort musculaire, fatigue, perte de contrôle et douleur inhabituelle aide à progresser avec de meilleurs repères.</p></div>
+          <div><strong>Progresser sans acheter inutilement</strong><p>Beaucoup de bases nécessitent très peu de matériel.</p></div>
         </div>
       </section>
     </>
