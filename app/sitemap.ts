@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const editorialRoutes = [
     "/bibliotheque/pourquoi-je-narrive-pas-a-faire-une-traction",
     "/bibliotheque/parallettes-handstand",
+    "/bibliotheque/quelle-bande-elastique-tractions",
   ];
 
   const resourceRoutes = v1Resources.map((resource) => `/bibliotheque/${resource.slug}`);
