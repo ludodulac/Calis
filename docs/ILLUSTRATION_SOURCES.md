@@ -151,3 +151,37 @@ Le verrou suivant est donc la **page/planche exacte**. Pour qu'un candidat passe
 7. décision `retenu` ou `rejeté` et motif.
 
 Tant que ces sept points ne sont pas réunis, aucun asset historique ne doit être intégré dans une page de production.
+
+## Mise à jour — première illustration intégrée
+
+Cette section **remplace le statut antérieur pour `traction-suspension`** sans supprimer l'historique de recherche ci-dessus.
+
+### Référence retenue pour la suspension
+
+- **Ouvrage :** *The Boy's Own Book of Indoor Games and Recreations: A Popular Encyclopædia for Boys*.
+- **Édition :** Philadelphia, J. B. Lippincott Company, 1890.
+- **Section :** chapitre I, Gymnastics → `The Horizontal Bar` → `Hanging on the Bar and the Walk`.
+- **Figure :** **Fig. 2**, page imprimée 22.
+- **Source institutionnelle :** Smithsonian Libraries, exemplaire `boysownbookofind00stab`.
+- **Notice Smithsonian :** https://library.si.edu/digital-library/book/boysownbookofind00stab
+- **Statut de la numérisation :** **CC0 / domaine public** selon Smithsonian Libraries.
+- **Source textuelle de contrôle :** Project Gutenberg eBook 49415, qui associe explicitement Fig. 2 à la suspension à la barre et décrit un corps stable, jambes droites et absence de balancement.
+- **Décision :** `retenu comme référence pédagogique → redessiné → intégré`.
+
+### Ce qui est repris — et ce qui ne l'est pas
+
+La figure est retenue pour son **idée mécanique simple** : une personne suspendue sous une barre, bras tendus et corps calme. Le dessin final Calis n'est pas une copie de la gravure : il s'agit d'un redessin vectoriel monochrome destiné à isoler une seule idée pédagogique et à rester lisible sur mobile.
+
+La consigne historique de prise donnée par l'ouvrage n'est **pas** reproduite comme recommandation moderne. La source sert ici à la posture générale de suspension, pas à valider chaque détail technique du texte de 1890.
+
+### Asset Calis
+
+- **Fichier :** `public/illustrations/calis/tractions/suspension-barre.svg`
+- **Format :** SVG texte, choisi pour permettre une intégration vérifiable avec le connecteur GitHub actuel, qui ne prend pas en charge l'écriture binaire PNG.
+- **Direction :** ligne fine sépia/graphite, fond transparent, pas de texte intégré, une seule idée visuelle.
+- **Contrôle :** deux bras, deux jambes, barre horizontale stable, corps vertical, coudes non fléchis volontairement, pas de swing représenté.
+- **Intégration :** `app/bibliotheque/premiere-traction/page.tsx` via `LearningIllustration` avec `src` et `alt`.
+- **Fallback :** conservé pour toutes les pages qui ne fournissent pas encore de `src`.
+- **Statut actuel :** `intégré — à revalider visuellement après build/deploy`.
+
+La cible finale PNG prévue dans l'arborescence historique reste valable si un pipeline binaire fiable est ajouté plus tard ; l'SVG actuel ne doit pas être supprimé tant qu'un remplacement validé ne l'enrichit pas ou ne le supersède explicitement.
