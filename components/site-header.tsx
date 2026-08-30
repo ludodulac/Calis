@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const nav = [
-  ["Commencer", "/commencer"],
-  ["Bibliothèque", "/bibliotheque"],
-  ["Tractions", "/tractions"],
+  ["Je débute", "/commencer"],
+  ["Choisir un objectif", "/#objectifs"],
+  ["Tout explorer", "/bibliotheque"],
 ] as const;
 
 export function SiteHeader() {
