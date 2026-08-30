@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Traction négative en trois positions</title>
+  <desc id="desc">Trois positions successives montrent une personne partir menton au-dessus de la barre avec l'aide d'un support, descendre sous contrôle, puis terminer bras tendus sans balancement.</desc>
+  <g fill="none" stroke="#62584d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M90 105H360M465 105H735M840 105H1110" stroke-width="14"/>
+
+    <g>
+      <path d="M175 105L205 168M275 105L245 168"/>
+      <path d="M205 168Q225 180 245 168"/>
+      <ellipse cx="225" cy="205" rx="30" ry="37"/>
+      <path d="M213 242Q201 270 205 337Q225 358 245 337Q249 270 237 242"/>
+      <path d="M205 337L195 455M245 337L255 455"/>
+      <path d="M195 455L185 490M255 455L265 490"/>
+      <rect x="135" y="505" width="180" height="70" rx="10" opacity=".38"/>
+      <path d="M185 490V505M265 490V505" opacity=".55"/>
+    </g>
+
+    <g>
+      <path d="M550 105L575 213M650 105L625 213"/>
+      <path d="M575 213Q600 225 625 213"/>
+      <ellipse cx="600" cy="258" rx="30" ry="37"/>
+      <path d="M588 295Q576 323 580 390Q600 411 620 390Q624 323 612 295"/>
+      <path d="M580 390L570 510M620 390L630 510"/>
+      <path d="M570 510L560 550M630 510L640 550"/>
+    </g>
+
+    <g>
+      <path d="M925 105L955 245M1025 105L995 245"/>
+      <path d="M955 245Q975 255 995 245"/>
+      <ellipse cx="975" cy="292" rx="30" ry="37"/>
+      <path d="M963 329Q951 357 955 424Q975 445 995 424Q999 357 987 329"/>
+      <path d="M955 424L945 545M995 424L1005 545"/>
+      <path d="M945 545L935 585M1005 545L1015 585"/>
+    </g>
+  </g>
+
+  <g fill="none" stroke="#62584d" stroke-width="5" stroke-linecap="round" opacity=".42">
+    <path d="M395 255v120"/>
+    <path d="M382 360l13 18 13-18"/>
+    <path d="M770 310v120"/>
+    <path d="M757 415l13 18 13-18"/>
+  </g>
+</svg>
