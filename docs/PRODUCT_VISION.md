@@ -26,6 +26,14 @@ Principes éditoriaux :
 - signaler clairement les limites et les sujets nécessitant un professionnel qualifié ;
 - citer les sources importantes et distinguer faits, expérience et opinion.
 
+## Simplicité de l'expérience
+
+La profondeur de Calis doit être dans le système, pas imposée au visiteur. Une personne qui ne connaît ni la callisthénie ni son vocabulaire doit pouvoir comprendre rapidement ce qu'elle peut faire sur le site.
+
+Test de conception : l'entrée principale doit rester compréhensible par un enfant d'environ 11 ans ou une personne âgée peu familière de ce type de site. Les premiers choix utilisent donc des formulations humaines et concrètes — « je débute », « je veux réussir une traction », « je n'arrive pas encore à faire une pompe » — avant d'exposer des notions techniques.
+
+Cela ne signifie pas appauvrir les ressources. Les détails, la biomécanique, les sources, le graphe de progression et les critères restent disponibles après que le visiteur a choisi ce qu'il veut faire.
+
 ## Modèle à long terme
 
 ### Bibliothèque
