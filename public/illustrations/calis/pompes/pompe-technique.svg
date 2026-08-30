@@ -3,31 +3,31 @@
   <desc id="desc">Deux vues de côté montrent une position haute puis une position basse de pompe. La tête, le tronc, le bassin et les jambes restent organisés ensemble pendant que les bras se plient.</desc>
 
   <g fill="none" stroke="#62584d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M80 560H550M650 560H1120" opacity=".28"/>
+    <path d="M70 560H555M645 560H1130" opacity=".28"/>
 
     <g>
-      <ellipse cx="165" cy="300" rx="34" ry="29"/>
-      <path d="M196 313L270 337L386 383L475 430"/>
-      <path d="M270 337L275 545"/>
-      <path d="M386 383L475 430L505 535L530 560"/>
-      <path d="M252 347Q330 376 405 404" stroke-width="5" opacity=".55"/>
-      <path d="M255 545H292" stroke-width="10"/>
-      <path d="M505 535L530 560" stroke-width="10"/>
+      <ellipse cx="155" cy="345" rx="32" ry="28"/>
+      <path d="M185 354L255 372L405 394L490 438"/>
+      <path d="M255 372L265 545"/>
+      <path d="M405 394L490 438L510 520L535 560"/>
+      <path d="M235 375Q322 387 420 402" stroke-width="5" opacity=".52"/>
+      <path d="M247 545H283" stroke-width="10"/>
+      <path d="M510 520L535 560" stroke-width="10"/>
     </g>
 
     <g>
-      <ellipse cx="725" cy="415" rx="34" ry="29"/>
-      <path d="M756 426L830 448L946 466L1035 478"/>
-      <path d="M830 448L790 505L835 545"/>
-      <path d="M946 466L1035 478L1060 535L1085 560"/>
-      <path d="M814 451Q890 464 966 470" stroke-width="5" opacity=".55"/>
-      <path d="M817 545H853" stroke-width="10"/>
-      <path d="M1060 535L1085 560" stroke-width="10"/>
+      <ellipse cx="710" cy="443" rx="32" ry="28"/>
+      <path d="M740 451L815 466L965 477L1045 486"/>
+      <path d="M815 466L770 505L820 545"/>
+      <path d="M965 477L1045 486L1065 525L1090 560"/>
+      <path d="M795 469Q885 476 980 482" stroke-width="5" opacity=".52"/>
+      <path d="M802 545H838" stroke-width="10"/>
+      <path d="M1065 525L1090 560" stroke-width="10"/>
     </g>
   </g>
 
   <g fill="none" stroke="#62584d" stroke-width="4" stroke-linecap="round" opacity=".38">
-    <path d="M585 330v120"/>
-    <path d="M572 435l13 18 13-18"/>
+    <path d="M595 350v105"/>
+    <path d="M582 440l13 18 13-18"/>
   </g>
 </svg>
