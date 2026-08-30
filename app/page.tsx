@@ -21,6 +21,13 @@ const pillars = [
   ["Débloquer la suite", "Chaque capacité acquise ouvre naturellement vers une nouvelle possibilité."],
 ];
 
+const foundations = [
+  ["Apprendre", "Fondamentaux, exercices, figures et mobilité."],
+  ["Progresser", "Des étapes claires plutôt qu'une liste d'exercices isolés."],
+  ["Comprendre", "Technique, sensations, biomécanique et principes d'entraînement."],
+  ["S'équiper", "Du matériel seulement lorsqu'il apporte une vraie utilité."],
+];
+
 export default function HomePage() {
   return (
     <>
@@ -39,6 +46,7 @@ export default function HomePage() {
             <span>Principe Calis</span>
             <strong>Ce qui paraît impossible devient une suite de petites capacités.</strong>
             <p>Tu n'as pas besoin d'être déjà sportif. Ton niveau actuel sert seulement à choisir la bonne première étape.</p>
+            <p><strong>La capacité avant l'apparence.</strong></p>
           </aside>
         </div>
       </section>
@@ -63,6 +71,17 @@ export default function HomePage() {
         </div>
         <div className="cardGrid">
           {pillars.map(([title, text]) => <article className="plainCard" key={title}><h3>{title}</h3><p>{text}</p></article>)}
+        </div>
+      </section>
+
+      <section className="section shell">
+        <div className="sectionHeading">
+          <div className="eyebrow">Un système, pas un blog</div>
+          <h2>Comprendre où tu es et ce qui vient ensuite.</h2>
+          <p>Le désir ouvre la porte ; les capacités donnent ensuite une structure durable à l'apprentissage.</p>
+        </div>
+        <div className="cardGrid">
+          {foundations.map(([title, text]) => <article className="plainCard" key={title}><h3>{title}</h3><p>{text}</p></article>)}
         </div>
       </section>
 
