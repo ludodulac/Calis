@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { LearningIllustration } from "@/components/learning-illustration";
 
 export const metadata: Metadata = {
   title: "Squat poids du corps : technique et progression débutant",
@@ -15,6 +16,14 @@ export default function BodyweightSquatPage() {
     <p className="lead">Le but n'est pas de forcer immédiatement le squat le plus profond possible. Construis d'abord une descente que tu contrôles, avec des pieds stables et une remontée où tu peux réellement pousser dans le sol.</p>
 
     <div className="learningMeta"><div><span>Objectif</span><strong>S'accroupir et se relever avec contrôle</strong></div><div><span>Capacité</span><strong>Jambes</strong></div><div><span>Matériel</span><strong>Aucun · support possible</strong></div></div>
+
+    <LearningIllustration
+      src="/illustrations/calis/jambes/squat-poids-du-corps.svg"
+      alt="Deux vues latérales d'un squat au poids du corps : position debout puis position accroupie modérée, avec le pied posé au sol et la hanche et le genou fléchis."
+      label="Plie hanches et genoux sans perdre tes appuis"
+      caption="Le dessin montre une amplitude modérée, pas une profondeur obligatoire. Garde le pied en contact avec le sol et laisse le genou avancer autant que nécessaire pour rester équilibré pendant que la hanche descend."
+      variant="comparison"
+    />
 
     <section className="articleSection"><div className="eyebrow">Réponse rapide</div><h2>Commence par l'amplitude que tu possèdes aujourd'hui.</h2><p>Place les pieds dans une position naturelle et stable, descends progressivement en laissant genoux et hanches participer au mouvement, puis remonte en poussant le sol. Arrête la descente avant que tu doives perdre franchement l'équilibre, décoller les pieds ou forcer une position douloureuse.</p><p>Si tu te sens aspiré vers l'arrière ou si tu n'arrives pas à remonter, utilise temporairement une chaise, un montant ou un autre support stable. Simplifier le mouvement permet de l'apprendre au lieu de répéter une lutte.</p></section>
 
