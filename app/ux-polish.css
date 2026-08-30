@@ -1,0 +1,68 @@
+.skipLink {
+  position: fixed;
+  left: 18px;
+  top: 12px;
+  z-index: 100;
+  transform: translateY(-160%);
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--text);
+  color: #fff;
+  font-weight: 800;
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
+:where(a, button, input, select):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 65%, #fff);
+  outline-offset: 3px;
+}
+
+#contenu-principal:focus {
+  outline: none;
+}
+
+#objectifs {
+  scroll-margin-top: 96px;
+}
+
+.startChoice {
+  align-items: center;
+  gap: 18px;
+}
+
+.startChoice > span:first-child {
+  min-width: 0;
+}
+
+.startChoice strong,
+.startChoice small {
+  display: block;
+}
+
+.startChoice small {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.startChoice > span[aria-hidden="true"] {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+@media (max-width: 600px) {
+  #objectifs {
+    scroll-margin-top: 150px;
+  }
+
+  .startChoice {
+    padding: 18px 20px;
+  }
+}
