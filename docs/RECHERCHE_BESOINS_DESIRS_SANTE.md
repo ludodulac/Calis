@@ -2,6 +2,8 @@
 
 Version de travail — 30 août 2026
 
+> **Rôle documentaire : synthèse canonique produit/santé.** `USER_NEEDS_HEALTH_RESEARCH.md` conserve le journal de recherche plus détaillé (signaux, méthode et sources de départ). En cas de chevauchement, ce document porte la synthèse produit à appliquer ; le journal détaillé reste utile comme provenance et ne doit pas être supprimé.
+
 ## Pourquoi ce document existe
 
 Calis ne doit pas inventer ce que les pratiquants veulent. La recherche publique (questions de débutants, communautés, recommandations de santé publique) sert à repérer les problèmes humains récurrents. Les témoignages de forums sont des signaux qualitatifs, jamais des preuves scientifiques.
