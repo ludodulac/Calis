@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { LearningIllustration } from "../../../components/learning-illustration";
 
 export const metadata: Metadata = {
   title: "Réussir sa première traction",
@@ -55,6 +56,13 @@ export default function FirstPullUpPage() {
         <div><span>Matériel</span><strong>Une barre stable</strong></div>
         <div><span>Niveau</span><strong>Départ zéro</strong></div>
       </div>
+
+      <LearningIllustration
+        label="Suspension calme"
+        caption="Première idée à observer : rester sous la barre avec les bras tendus et un corps calme. La suspension sert ici de point de départ, pas de test de bravoure."
+        src="/illustrations/calis/tractions/suspension-barre.svg"
+        alt="Personne suspendue à une barre, bras tendus, corps vertical et jambes calmes."
+      />
 
       <section className="articleSection">
         <div className="eyebrow">Auto-test</div>
