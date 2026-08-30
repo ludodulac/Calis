@@ -280,3 +280,38 @@ Une ressource n'est publiée que si elle apporte au moins un avantage clair : me
 5. Seulement ensuite initialiser l'application.
 
 Ce document complète `CAHIER_DES_CHARGES.md`, `PRODUCT_VISION.md`, `INFORMATION_ARCHITECTURE.md` et `ROADMAP.md`.
+
+## 16. Mise à jour produit — 30 août 2026
+
+Les sections précédentes sont conservées comme historique de conception. Le dépôt réel a depuis dépassé plusieurs étapes décrites en section 15 : l'application Next.js existe, la V1 est déployée gratuitement via GitHub Pages et l'introduction de Supabase ou Cloudflare n'est **pas** une priorité actuelle.
+
+### Architecture mentale prioritaire
+
+L'entrée dans Calis doit désormais suivre une couche supérieure fondée sur le désir humain, sans remplacer l'architecture technique et pédagogique existante :
+
+**DÉSIR → OBJECTIF → CAPACITÉ → PROGRESSION**
+
+Un débutant ne pense pas forcément « pousser », « tirer » ou « mobilité ». Il pense d'abord « je veux me sentir plus fort », « je veux réussir une traction », « je veux enfin faire de vraies pompes », « je veux tenir sur les mains », « je veux bouger plus librement » ou « je ne sais pas par où commencer ». Calis traduit ensuite cette envie en objectif concret, en capacité à développer puis en prochaine étape faisable.
+
+Cette couche est additive : la navigation par capacités, les hubs, les objets de connaissance, les filtres et le graphe de progression restent essentiels une fois l'utilisateur orienté.
+
+### Boucle d'expérience Calis
+
+**désirer → essayer → comprendre → ressentir → réussir → avoir envie d'aller plus loin**
+
+Une bonne page réduit la distance psychologique entre « ce n'est pas pour moi » et « je peux essayer quelque chose aujourd'hui ». Elle doit donc relier la promesse humaine aux éléments pédagogiques déjà définis : prérequis, auto-test, technique, sensations attendues, signaux de prudence, régressions/progressions, critère de passage, matériel réellement utile et prochaine capacité à débloquer.
+
+### Décisions d'infrastructure actuelles
+
+- conserver la V1 gratuite et statique sur GitHub Pages ;
+- ne pas introduire Supabase tant que comptes, journal ou progression sauvegardée ne créent pas une valeur démontrée ;
+- ne pas changer d'hébergement uniquement pour disposer de previews plus confortables ;
+- privilégier l'amélioration de l'expérience d'apprentissage, du contenu, du graphe et de la crédibilité documentaire avant l'infrastructure lourde.
+
+### Méthode documentaire scientifique
+
+Pour les affirmations sur l'entraînement, la force, la mobilité, la récupération ou les sujets sensibles, le workflow éditorial visé est :
+
+**question éditoriale → recherche scientifique → sources primaires → synthèse prudente → fiche Calis → références**.
+
+Les outils de recherche scientifique peuvent faciliter cette étape, mais ils ne remplacent ni la lecture critique des sources primaires ni la prudence sur les prescriptions universelles.
