@@ -393,3 +393,57 @@ Chaque composant doit être conçu pour accueillir plus tard :
 - contenus multilingues éventuels.
 
 On ne développe pas ces fonctionnalités maintenant, mais on évite de choisir une structure qui les rendrait difficiles à ajouter.
+
+---
+
+# 10. Couche d'entrée par désir — mise à jour du 30 août 2026
+
+La structure ci-dessus reste valable, mais l'expérience ne doit plus demander au débutant de comprendre immédiatement nos catégories internes. La couche d'entrée prioritaire est :
+
+**DÉSIR → OBJECTIF → CAPACITÉ → PROGRESSION**
+
+Elle s'ajoute aux hubs, filtres et capacités ; elle ne les remplace pas.
+
+## Accueil : ordre mental recommandé
+
+1. **Désir humain** — ce que la personne aimerait réussir, ressentir ou changer.
+2. **Objectif concret** — première traction, vraies pompes, handstand, mobilité utile, corps plus fort.
+3. **Capacité** — tirer, pousser, s'équilibrer, se mouvoir, jambes, force.
+4. **Progression** — test de départ, prochaine étape faisable, critère pour avancer.
+
+Exemples d'entrées à conserver :
+
+- Je veux me sentir plus fort.
+- Je veux réussir ma première traction.
+- Je veux enfin faire de vraies pompes.
+- Je veux tenir sur les mains.
+- Je veux bouger plus librement.
+- Je ne sais même pas par où commencer.
+
+Sous cette couche, la homepage doit continuer à exposer l'architecture durable de Calis : **Apprendre / Progresser / Comprendre / S'équiper**, ainsi que la navigation par capacités. Le désir est la porte d'entrée ; il n'est pas un remplacement de la structure produit.
+
+## `/commencer` : double lecture
+
+La page doit fonctionner à la fois par désir et par situation observable. Les situations techniques utiles restent visibles : ne pas réussir une pompe, ne pas réussir une traction, renforcer ses jambes, manquer de mobilité, vouloir apprendre le handstand, ne pas savoir quoi travailler.
+
+La section « Ce qui compte au début » doit rappeler six repères structurants : pousser et tirer, utiliser ses jambes, explorer ses amplitudes, choisir une difficulté répétable, observer les sensations et progresser sans acheter inutilement.
+
+## Fiche d'apprentissage : réduire la distance psychologique
+
+Avant même la technique, la fiche doit répondre implicitement à trois questions :
+
+- Pourquoi cette capacité vaut-elle la peine d'être apprise ?
+- Est-ce une étape adaptée à mon niveau actuel ?
+- Qu'est-ce que je pourrai débloquer ensuite ?
+
+Le modèle pédagogique existant reste ensuite central : prérequis/auto-test, progression et régressions, technique, « Ce que tu dois ressentir », signaux à ne pas ignorer, erreurs fréquentes, critère de passage, variantes, matériel réellement utile, sources et prochaine capacité.
+
+## Boucle émotionnelle et pédagogique
+
+**désirer → essayer → comprendre → ressentir → réussir → avoir envie d'aller plus loin**
+
+La réussite n'est pas uniquement la figure finale. Une suspension plus calme, une pompe sur un support plus bas, une descente de traction mieux contrôlée ou un handstand au mur moins intimidant doivent être rendus visibles comme des progrès réels.
+
+## Commerce et confiance
+
+La monétisation ne doit pas interrompre cette boucle. Le matériel apparaît seulement lorsqu'il résout un besoin identifié dans la progression. Une page peut recommander zéro produit. L'ordre reste : **utilité → progression → confiance → besoin identifié → recommandation éventuelle**.
