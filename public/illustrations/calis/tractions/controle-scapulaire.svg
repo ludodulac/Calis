@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Contrôle scapulaire en suspension</title>
+  <desc id="desc">Deux positions successives d'une suspension à la barre montrant le petit déplacement du corps produit par les épaules, bras tendus et corps calme.</desc>
+  <g fill="none" stroke="#4a4037" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M115 88H515M685 88H1085" stroke-width="14"/>
+    <g>
+      <path d="M265 88v18M365 88v18"/>
+      <path d="M265 106L292 244M365 106L338 244"/>
+      <path d="M292 244Q315 255 338 244"/>
+      <ellipse cx="315" cy="278" rx="35" ry="43"/>
+      <path d="M302 321Q286 348 289 414Q315 439 341 414Q344 348 328 321"/>
+      <path d="M289 414L277 562M341 414L353 562"/>
+      <path d="M277 562L267 610M353 562L363 610"/>
+      <path d="M288 246Q315 262 342 246" stroke-width="5"/>
+    </g>
+    <g>
+      <path d="M835 88v18M935 88v18"/>
+      <path d="M835 106L862 221M935 106L908 221"/>
+      <path d="M862 221Q885 235 908 221"/>
+      <ellipse cx="885" cy="270" rx="35" ry="43"/>
+      <path d="M872 313Q856 340 859 391Q885 416 911 391Q914 340 898 313"/>
+      <path d="M859 391L847 539M911 391L923 539"/>
+      <path d="M847 539L837 587M923 539L933 587"/>
+      <path d="M860 226Q885 242 910 226" stroke-width="5"/>
+      <path d="M850 246Q885 257 920 246" stroke-width="4"/>
+    </g>
+  </g>
+</svg>
