@@ -17,7 +17,7 @@ export type Resource = {
   level: ResourceLevel;
   kind: ResourceKind;
   capability: Capability;
-  hub: "commencer" | "tractions" | "pompes" | "dips" | "handstand";
+  hub: "commencer" | "tractions" | "pompes" | "dips" | "handstand" | "muscle-up";
   equipment: string[];
   next?: string[];
 };
