@@ -14,6 +14,13 @@ const desires = [
   ["Je ne sais même pas par où commencer", "Me situer sans jugement et découvrir une première action faisable maintenant.", "/commencer"],
 ] as const;
 
+const realities = [
+  ["Je me sens trop faible pour les exercices débutants", "Le niveau zéro n'est pas une pompe ou une traction complète. Calis cherche une régression réellement accessible."],
+  ["Je n'ai presque pas de matériel", "On commence avec ton corps et ce qui est réellement disponible. Le matériel n'arrive que lorsqu'il résout un besoin."],
+  ["J'ai peur de mal faire", "Technique, sensations, erreurs et critères de progression servent à comprendre ce que tu essaies au lieu de copier un mouvement."],
+  ["Je progresse lentement et ça me démotive", "Une hauteur de pompe plus basse, une suspension plus calme ou un meilleur contrôle comptent avant la réussite finale."],
+];
+
 const pillars = [
   ["Avoir envie", "Pars de ce que tu veux vraiment réussir ou ressentir, même si tu ne connais aucun nom d'exercice."],
   ["Savoir quoi faire", "Calis traduit ton objectif en une prochaine étape assez simple pour être essayée aujourd'hui."],
@@ -66,6 +73,18 @@ export default function HomePage() {
 
       <section className="section shell">
         <div className="sectionHeading">
+          <div className="eyebrow">Tu n'as pas besoin d'être déjà « au niveau »</div>
+          <h2>Les vrais débuts sont parfois en dessous des exercices appelés débutants.</h2>
+          <p>Calis doit aussi fonctionner pour la personne qui ne peut pas encore faire une pompe, n'a pas de barre, doute de sa technique ou se décourage parce que les progrès semblent invisibles.</p>
+        </div>
+        <div className="cardGrid">
+          {realities.map(([title, text]) => <article className="plainCard" key={title}><h3>{title}</h3><p>{text}</p></article>)}
+        </div>
+        <div className="actions"><Link className="button secondary" href="/commencer">Trouver une première étape adaptée</Link></div>
+      </section>
+
+      <section className="section shell">
+        <div className="sectionHeading">
           <div className="eyebrow">La boucle Calis</div>
           <h2>Transformer l'envie en progrès réel.</h2>
         </div>
@@ -94,6 +113,12 @@ export default function HomePage() {
           </div>
           <Link className="button primary" href="/tractions">Voir comment le chemin fonctionne</Link>
         </div>
+      </section>
+
+      <section className="section shell narrow">
+        <div className="eyebrow">Santé et bien-être</div>
+        <h2>Bouger peut faire partie d'une vie plus active. Calis reste un outil d'apprentissage.</h2>
+        <p>L'activité physique régulière est associée à de nombreux bénéfices de santé et de bien-être. Calis peut t'aider à apprendre, adapter et comprendre une pratique de renforcement au poids du corps, mais ne diagnostique pas une douleur, ne traite pas une maladie et ne remplace jamais un médecin, un kinésithérapeute ou un autre professionnel de santé qualifié.</p>
       </section>
     </>
   );
