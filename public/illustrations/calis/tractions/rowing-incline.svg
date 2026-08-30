@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Rowing incliné au poids du corps</title>
+  <desc id="desc">Deux silhouettes montrent le départ bras tendus puis le tirage de la poitrine vers une barre basse, avec le corps aligné et les pieds au sol.</desc>
+  <g fill="none" stroke="#62584d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M90 105H810"/>
+    <path d="M135 105V440M765 105V440" opacity=".35"/>
+    <path d="M55 440H845" opacity=".3"/>
+    <g>
+      <circle cx="275" cy="210" r="27"/>
+      <path d="M300 230L415 330L535 410"/>
+      <path d="M310 240L365 120M322 250L395 120"/>
+      <path d="M535 410L585 430M535 410L555 440"/>
+      <path d="M365 120H395" stroke-width="10"/>
+      <path d="M305 235L290 280" opacity=".55"/>
+    </g>
+    <g>
+      <circle cx="535" cy="185" r="27"/>
+      <path d="M510 205L585 285L690 390"/>
+      <path d="M515 215L465 165L430 120M525 220L495 170L470 120"/>
+      <path d="M690 390L735 425M690 390L710 438"/>
+      <path d="M430 120H470" stroke-width="10"/>
+      <path d="M514 210L495 252" opacity=".55"/>
+    </g>
+  </g>
+  <g fill="#62584d" opacity=".11">
+    <path d="M298 226L420 326L405 345L285 245Z"/>
+    <path d="M512 201L592 279L576 296L497 216Z"/>
+  </g>
+</svg>
