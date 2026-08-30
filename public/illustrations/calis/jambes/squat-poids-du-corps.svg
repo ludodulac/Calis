@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Squat au poids du corps en deux positions</title>
+  <desc id="desc">Deux vues de côté montrent une position debout puis une position accroupie contrôlée. Les pieds restent en contact avec le sol tandis que les hanches et les genoux se plient ensemble.</desc>
+
+  <g fill="none" stroke="#62584d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M90 585H520M680 585H1110" opacity=".28"/>
+
+    <g>
+      <ellipse cx="300" cy="125" rx="32" ry="38"/>
+      <path d="M300 163L300 330"/>
+      <path d="M300 205L245 290M300 205L355 290"/>
+      <path d="M300 330L265 460L250 565"/>
+      <path d="M300 330L335 460L350 565"/>
+      <path d="M240 565H280M340 565H380" stroke-width="11"/>
+    </g>
+
+    <g>
+      <ellipse cx="845" cy="235" rx="32" ry="38"/>
+      <path d="M845 273L810 405"/>
+      <path d="M835 315L755 350M835 315L910 355"/>
+      <path d="M810 405L735 455L750 565"/>
+      <path d="M810 405L900 455L935 565"/>
+      <path d="M730 565H780M915 565H965" stroke-width="11"/>
+      <path d="M748 455Q810 435 900 455" stroke-width="5" opacity=".48"/>
+    </g>
+  </g>
+
+  <g fill="none" stroke="#62584d" stroke-width="4" stroke-linecap="round" opacity=".4">
+    <path d="M600 245v160"/>
+    <path d="M587 390l13 18 13-18"/>
+  </g>
+</svg>
