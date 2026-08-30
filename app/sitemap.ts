@@ -7,8 +7,17 @@ const siteUrl = "https://ludodulac.github.io/Calis";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ["", "/commencer", "/bibliotheque", "/tractions", "/pompes", "/dips", "/handstand"];
-  return [
-    ...staticRoutes.map((route) => ({ url: `${siteUrl}${route}/`, changeFrequency: "weekly" as const, priority: route === "" ? 1 : 0.8 })),
-    ...v1Resources.map((resource) => ({ url: `${siteUrl}/bibliotheque/${resource.slug}/`, changeFrequency: "monthly" as const, priority: 0.7 })),
+  const editorialRoutes = [
+    "/bibliotheque/pourquoi-je-narrive-pas-a-faire-une-traction",
+    "/bibliotheque/parallettes-handstand",
   ];
+
+  const resourceRoutes = v1Resources.map((resource) => `/bibliotheque/${resource.slug}`);
+  const routes = Array.from(new Set([...staticRoutes, ...editorialRoutes, ...resourceRoutes]));
+
+  return routes.map((route) => ({
+    url: `${siteUrl}${route}/`,
+    changeFrequency: route === "" ? "weekly" as const : "monthly" as const,
+    priority: route === "" ? 1 : staticRoutes.includes(route) ? 0.8 : 0.7,
+  }));
 }
