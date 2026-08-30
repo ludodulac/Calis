@@ -11,21 +11,40 @@ export function LearningIllustration({ label, caption, variant = "movement", src
   const resolvedSrc = src ? `${basePath}${src}` : undefined;
 
   return (
-    <figure className={`learningIllustration ${variant}`}>
-      {resolvedSrc ? (
-        <div className="illustrationCanvas illustrationCanvasWithImage">
-          <img className="illustrationImage" src={resolvedSrc} alt={alt ?? ""} />
-        </div>
-      ) : (
-        <div className="illustrationCanvas" aria-hidden="true">
-          <span className="illustrationMark">CALIS · ÉTUDE DU MOUVEMENT</span>
-          <div className="illustrationGhost">
-            <i /><i /><i />
+    <>
+      <figure className={`learningIllustration ${variant}`}>
+        {resolvedSrc ? (
+          <div className="illustrationCanvas illustrationCanvasWithImage">
+            <img className="illustrationImage" src={resolvedSrc} alt={alt ?? ""} loading="lazy" />
           </div>
-          <strong>{label}</strong>
-        </div>
-      )}
-      <figcaption>{caption}</figcaption>
-    </figure>
+        ) : (
+          <div className="illustrationCanvas" aria-hidden="true">
+            <span className="illustrationMark">CALIS · ÉTUDE DU MOUVEMENT</span>
+            <div className="illustrationGhost">
+              <i /><i /><i />
+            </div>
+            <strong>{label}</strong>
+          </div>
+        )}
+        <figcaption>{caption}</figcaption>
+      </figure>
+      <style>{`
+        .illustrationCanvasWithImage {
+          align-items: center;
+          justify-content: center;
+          padding: 18px;
+        }
+        .illustrationCanvasWithImage::after {
+          display: none;
+        }
+        .illustrationImage {
+          display: block;
+          width: 100%;
+          height: auto;
+          max-height: 520px;
+          object-fit: contain;
+        }
+      `}</style>
+    </>
   );
 }
