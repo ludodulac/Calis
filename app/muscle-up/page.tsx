@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 const situations = [
   ["Je fais des tractions mais je ne monte pas assez haut", "Travaille la capacité à produire un tirage plus haut et plus rapide, pas seulement davantage de répétitions.", "/bibliotheque/traction-explosive"],
-  ["J'arrive près de la barre mais je ne passe pas au-dessus", "Le problème peut devenir celui de la transition : il faut apprendre à relier le tirage à l'appui.", "/bibliotheque/pourquoi-je-narrive-pas-a-faire-un-muscle-up"],
-  ["Un bras passe avant l'autre", "Ne transforme pas l'asymétrie en technique cible. Réduis la difficulté et reconstruis un passage que tu peux répéter des deux côtés.", "/bibliotheque/pourquoi-je-narrive-pas-a-faire-un-muscle-up"],
+  ["J'arrive près de la barre mais je ne passe pas au-dessus", "Isole la transition et apprends à relier le tirage à l'appui dans une situation plus facile à contrôler.", "/bibliotheque/transition-muscle-up"],
+  ["Un bras passe avant l'autre", "Ne transforme pas l'asymétrie en technique cible. Réduis la difficulté et reconstruis un passage que tu peux répéter des deux côtés.", "/bibliotheque/transition-muscle-up"],
   ["Je ne sais pas si j'ai les bases", "Tes tractions, ton tirage haut et ta capacité à pousser au-dessus d'une barre donnent de meilleurs indices qu'un nombre magique de répétitions.", "/bibliotheque/pourquoi-je-narrive-pas-a-faire-un-muscle-up"],
 ] as const;
 
@@ -29,7 +29,7 @@ export default function MuscleUpPage() {
 
       <section className="section shell"><div className="sectionHeading"><div className="eyebrow">Le chemin</div><h2>Trois problèmes à relier.</h2><p>Le muscle-up à la barre combine une phase de tirage, une transition et une phase d'appui/poussée. Les travailler séparément peut rendre le mouvement complet beaucoup plus lisible.</p></div><div className="cardGrid">
         <article className="plainCard"><h3>1. Monter assez haut</h3><p>Une traction classique peut être solide sans produire encore la hauteur utile à une transition.</p><Link className="textLink" href="/bibliotheque/traction-explosive">Développer le tirage explosif →</Link></article>
-        <article className="plainCard"><h3>2. Passer la barre</h3><p>Arriver haut ne suffit pas toujours : il faut apprendre le moment où le tirage devient passage vers l'appui.</p><Link className="textLink" href="/bibliotheque/pourquoi-je-narrive-pas-a-faire-un-muscle-up">Identifier le blocage →</Link></article>
+        <article className="plainCard"><h3>2. Passer la barre</h3><p>Arriver haut ne suffit pas toujours : il faut apprendre le moment où le tirage devient passage vers l'appui.</p><Link className="textLink" href="/bibliotheque/transition-muscle-up">Apprendre la transition →</Link></article>
         <article className="plainCard"><h3>3. Finir au-dessus</h3><p>L'appui au-dessus d'une barre demande une poussée spécifique. Les dips construisent une base, mais le contexte d'une barre droite mérite aussi son apprentissage.</p><Link className="textLink" href="/dips">Construire ma poussée →</Link></article>
       </div></section>
 
