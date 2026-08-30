@@ -185,3 +185,45 @@ La consigne historique de prise donnée par l'ouvrage n'est **pas** reproduite c
 - **Statut actuel :** `intégré — à revalider visuellement après build/deploy`.
 
 La cible finale PNG prévue dans l'arborescence historique reste valable si un pipeline binaire fiable est ajouté plus tard ; l'SVG actuel ne doit pas être supprimé tant qu'un remplacement validé ne l'enrichit pas ou ne le supersède explicitement.
+
+## Mise à jour — validation moderne du parcours traction (2026-08-31)
+
+Cette section **remplace les statuts de travail antérieurs** pour le rowing incliné, le contrôle scapulaire et la traction négative. Les paragraphes historiques sont conservés au-dessus afin de garder la trace du raisonnement.
+
+### Rowing incliné — asset conservé
+
+- **Asset :** `public/illustrations/calis/tractions/rowing-incline.svg`.
+- **Statut :** `validé comme schéma pédagogique simple — conservé`.
+- **Références modernes de contrôle :** ACE, descriptions de rowing inversé et de progressions de tirage ; guide Force Fitness du U.S. Marine Corps.
+- **Points verrouillés :** départ bras tendus, pieds au sol, corps organisé en ligne lisible, rapprochement de la poitrine vers le support, retour contrôlé.
+- **Limite :** le schéma n'a pas vocation à imposer un angle de corps, une largeur de prise ou un placement millimétré des coudes.
+- **Décision produit :** ne pas remplacer un visuel déjà suffisant par une image générée plus réaliste sans bénéfice pédagogique concret.
+
+### Contrôle scapulaire — asset conservé sous portée limitée
+
+- **Asset :** `public/illustrations/calis/tractions/controle-scapulaire.svg`.
+- **Statut :** `validé pour comparer deux états globaux — pas comme planche anatomique détaillée`.
+- **Référence technique principale :** [P]rehab, *Scapular Pull Up* — https://library.theprehabguys.com/vimeo-video/scapular-pull-up-2/ ; consulté le 2026-08-31.
+- **Références visuelles de contrôle :** démonstrations photographiques modernes consultées comme références internes uniquement, notamment une séquence BODi montrant deux positions avec les bras tendus. Elles ne sont ni copiées ni redistribuées par Calis.
+- **Points verrouillés :** coudes tendus, mouvement de faible amplitude, corps qui monte légèrement par action de la ceinture scapulaire, tronc calme, absence de balancement volontaire.
+- **Limite volontaire :** l'asset ne prétend pas représenter précisément la rotation, la rétraction ou la dépression de chaque scapula. Ces détails nécessiteraient une référence anatomique ou vidéo plus précise.
+- **Décision produit :** conserver le schéma actuel parce qu'il enseigne correctement la différence de hauteur globale sans surcharger la page d'une fausse précision anatomique.
+
+### Traction négative — nouvelle séquence intégrée
+
+- **Asset :** `public/illustrations/calis/tractions/traction-negative.svg`.
+- **Page :** `app/bibliotheque/traction-negative/page.tsx`.
+- **Statut :** `validé, intégré et déployé`.
+- **Références techniques :** ACE, *4 Moves to Help You Master the Pull-up* et *The ACE Do It Better Series: Chin-ups* ; consultées le 2026-08-31.
+- **Question visuelle :** montrer uniquement `haut assisté → descente contrôlée → bras tendus`.
+- **Points verrouillés :** support stable pour atteindre la position haute, coudes fléchis au départ, étape intermédiaire encore fléchie, extension finale, pas de swing représenté, pas de chrono universel dans l'image.
+- **Contrôle qualité :** le premier dessin a été rejeté pendant la revue interne car il ne montrait pas réellement le menton au-dessus de la barre et l'étape intermédiaire ressemblait déjà à des bras tendus. Le SVG a été corrigé avant fusion.
+- **Document détaillé :** `docs/VISUAL_VALIDATION_TRACTION_NEGATIVE.md`.
+- **CI/déploiement :** GitHub Pages run #131 vert sur le commit `e3134be6e5c64bfebac79eca7e377f1a97ac5370`.
+
+### Traction assistée — recherche verrouillée, visuel non encore produit
+
+- **Statut :** `référence moderne confirmée — visuel à produire seulement si son installation peut être montrée sans ambiguïté`.
+- **Référence technique principale :** ACE décrit une bande épaisse attachée à la barre et l'utilisation du pied/des pieds ou du genou/des genoux dans la boucle pour fournir une partie de l'assistance.
+- **Validation mécanique complémentaire :** les études de caractérisation des bandes élastiques confirment que la force dépend notamment de la raideur, de la longueur initiale et de l'allongement ; l'aide d'une bande ne doit donc pas être présentée comme un nombre fixe pendant toute la répétition.
+- **Décision actuelle :** ne pas dessiner encore l'installation de la bande. Le prochain asset devra montrer un montage précis et compatible avec les consignes du fabricant, ou privilégier un appui de pied sur support si celui-ci permet une pédagogie plus claire et plus sûre.
