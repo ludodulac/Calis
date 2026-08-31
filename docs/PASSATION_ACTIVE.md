@@ -1,6 +1,6 @@
 # Calis — PASSATION ACTIVE
 
-Dernière mise à jour : 31 août 2026, après déploiement et audit visuel du système de chemins.
+Dernière mise à jour : 31 août 2026, après déploiement du troisième chemin canonique et audit exhaustif de l'artefact Pages #147.
 
 Ce document est l'état opérationnel de reprise. Il complète les sources de vérité sans les remplacer. Toute nouvelle conversation doit commencer par `AI_START_HERE.md`, puis vérifier `main`, les PR/issues ouvertes et la CI avant d'agir.
 
@@ -10,84 +10,101 @@ Ce document est l'état opérationnel de reprise. Il complète les sources de v�
 
 - Calis reste une plateforme francophone de progression en callisthénie, pas un blog générique ni une boutique en premier.
 - Architecture mentale : **DÉSIR → OBJECTIF → CAPACITÉ → PROGRESSION**.
-- Traduction UI désormais réellement visible : **OBJECTIF → SITUATION ACTUELLE → CHEMIN → PROCHAINE ÉTAPE**.
+- Traduction UI désormais visible : **OBJECTIF → SITUATION ACTUELLE → CHEMIN → PROCHAINE ÉTAPE**.
 - Boucle pédagogique : **désirer → essayer → comprendre → ressentir → réussir → vouloir aller plus loin**.
 - Règle business : utilité et confiance avant monétisation ; une page peut conclure qu'aucun achat n'est nécessaire.
 - Règle humaine : ne jamais inventer auteur, expertise, expérience vécue, test, témoignage, communauté ou partenariat.
 - Règle d'évolution : préserver l'existant utile ; enrichir/réorganiser avant de supprimer.
 - Règle d'idéation : **idée ≠ décision ≠ priorité**.
 
-### Simplicité UX — cap actuel
+### Simplicité UX
 
 - Navigation principale : `Je débute / Choisir un objectif / Tout explorer`.
-- Accueil centré sur `Qu'est-ce que tu aimerais réussir avec ton corps ?`.
-- Le hero contient maintenant un exemple concret de la logique Calis : objectif première traction → situation actuelle → rowing incliné → traction assistée → parcours complet.
+- Accueil centré sur `Qu'est-ce que tu aimerais réussir avec ton corps ?` ; conserver ce H1.
+- Le hero contient un exemple concret de la logique Calis : objectif première traction → situation actuelle → rowing incliné → traction assistée → parcours complet.
 - `/commencer` reste l'entrée humaine quand l'utilisateur ne connaît pas encore le vocabulaire ou son objectif exact.
 - Les objectifs restent visibles tôt sur l'accueil ; ne pas les repousser derrière un onboarding lourd.
-- Aucune personnalisation simulée, aucun compte obligatoire, aucun streak, aucun état `locked/completed` sans données utilisateur réelles.
+- Aucune personnalisation simulée, aucun compte obligatoire, streak ou état `locked/completed` sans données utilisateur réelles.
 
-### Chemins de progression — système validé
+### Chemins de progression — trois formes canoniques
 
-Le pattern est documenté dans `docs/PROGRESSION_PATH_PATTERN.md` et la continuité détaillée dans `docs/HISTORIQUE_CONTINUITE_2026-08-31_SYSTEME_CHEMINS.md`.
+Le pattern est documenté dans `docs/PROGRESSION_PATH_PATTERN.md`. `components/progression-path.tsx` est uniquement un composant de rendu : les étapes, critères et relations restent canoniques dans `lib/content/v1.ts`.
 
-- `components/progression-path.tsx` est le composant partagé de rendu.
-- Les données et critères restent canoniques dans `lib/content/v1.ts` ; ne pas créer un graphe parallèle dans l'UI.
-- Traction : suspension → contrôle scapulaire → rowing incliné → traction assistée → négatives → première traction → plusieurs tractions ; ensuite seulement branches hauteur / force / muscle-up.
-- Pompe : pompes inclinées → première pompe → pompe stable ; dips comme branche facultative.
-- Le pattern a été validé sur un chemin long et un chemin court avant extraction du composant.
-- Sur mobile, le chemin reste horizontal et scannable plutôt que transformé en arbre illisible.
-- Les jalons correspondent à un désir humain clair (`Première traction`, `Première pompe`) et ne sont pas des niveaux de jeu inventés.
+1. **Traction** — chemin long : suspension → contrôle scapulaire → rowing incliné → traction assistée → négatives → première traction → plusieurs tractions ; ensuite branches facultatives hauteur / force / muscle-up.
+2. **Pompe** — chemin court : pompes inclinées → première pompe → pompe stable ; dips comme branche facultative.
+3. **Handstand** — chemin court : préparer les appuis → handstand au mur → premiers équilibres libres.
 
-PR/CI structurantes :
+Règles du pattern :
 
-- PR #9 : premier chemin traction ; run #135 vert.
-- PR #10 : chemin pompe ; run #137 vert.
-- PR #11 : composant partagé ; run #138 vert.
-- PR #12 : exemple concret dans le hero ; run #139 vert.
-- PR #13 : chemin traction visible dans la bibliothèque ; run #140 vert.
-- PR #14 : synchronisation documentaire du système de chemins.
-- PR #15 : correction de la bibliothèque après audit visuel réel ; run #142 vert.
+- ne jamais créer un second graphe codé en dur dans l'UI ;
+- un jalon correspond à un désir utilisateur clair, pas à un niveau de jeu ;
+- aucune durée, répétition ou note universelle inventée pour rendre l'interface plus ludique ;
+- une branche après un socle est un choix, pas une obligation ;
+- mobile : chemin horizontal scannable plutôt qu'arbre comprimé ;
+- `locked`, `completed`, pourcentages ou progression personnelle uniquement avec un vrai état utilisateur futur.
 
-### Bibliothèque — audit visuel réel effectué
+### Handstand — condition manquante désormais remplie
 
-Le premier déploiement du chemin traction dans `/bibliotheque` était techniquement correct mais encore noyé par le catalogue : environ 7 066 px avant le chemin sur desktop et 15 128 px sur mobile.
+Le premier audit avait correctement conclu que Handstand n'était pas prêt pour `ProgressionPath` : `handstand-debutant` englobait tout le parcours et aucune ressource distincte ne représentait les premières corrections libres.
 
-La PR #15 a corrigé ce problème observé sur l'artefact GitHub Pages :
+La condition a ensuite été remplie proprement :
+
+- nouvelle ressource canonique `premiers-equilibres-handstand` ;
+- relations `poignets-handstand → handstand-mur → premiers-equilibres-handstand` ;
+- `handstandProgression` ajouté au modèle ;
+- hub `/handstand` rendu avec le composant partagé ;
+- `parallettes-handstand` reste hors chemin car matériel facultatif ;
+- aucun nombre universel de secondes n'est utilisé comme examen.
+
+Fondement scientifique principal : McDonald M, Baker JS, Gu Y, Ugbolue UC, *Biomechanical analyses of the handstand: a systematic review*, Frontiers in Sports and Active Living, 2025, DOI 10.3389/fspor.2025.1694648. La revue synthétise 21 études biomécaniques chez des gymnastes ; elle soutient l'existence d'un problème distinct de contrôle du centre de pression et décrit fréquemment une stratégie dominante au niveau des poignets, avec stratégies mixtes lorsque nécessaire. Ne pas transformer ces résultats en technique universelle pour débutants.
+
+Document de décision : `docs/DECISION_CHEMIN_HANDSTAND_2026-08-31.md`.
+
+### Bibliothèque — graphe avant catalogue
+
+La bibliothèque a été corrigée après inspection visuelle réelle de l'artefact Pages :
 
 - chemin traction remonté juste après les entrées rapides ;
-- suppression des grilles éditoriales qui répétaient des fiches déjà présentes dans `LibraryBrowser` ;
-- aucune ressource supprimée ;
-- exploration libre limitée à un aperçu initial de 9 fiches, avec bouton pour afficher les 27 ;
-- dès qu'une recherche ou un filtre est utilisé, tous les résultats correspondants s'affichent ;
-- filtre `Muscle-up` ajouté au sélecteur de parcours.
+- grilles éditoriales redondantes supprimées, sans supprimer aucune ressource ;
+- exploration libre limitée à 9 fiches initialement, avec bouton pour afficher toutes les fiches ;
+- recherche/filtre affiche tous les résultats correspondants ;
+- filtre `Muscle-up` ajouté ;
+- un seul landmark `<main>` après correction structurelle.
 
-Après correction : page d'environ 4 786 px sur desktop et 8 059 px sur mobile ; chemin traction vers 2 478 px desktop et 3 596 px mobile. Aucun débordement horizontal global observé. Le rendu desktop/mobile de l'artefact #142 a été contrôlé visuellement.
+Mesures observées après correction : environ 4 786 px de hauteur desktop et 8 059 px mobile, contre environ 9 012 / 18 940 avant ; le chemin traction remonte vers 2 478 px desktop / 3 596 px mobile.
 
 ### Graphe de contenu
 
 - Modèle V1 dans `lib/content/types.ts` et `lib/content/v1.ts`.
-- Les relations `next` et les tableaux de progression doivent rester la source de vérité des chemins visibles.
 - Hubs actifs : commencer, tractions, pompes, dips, handstand, muscle-up.
-- Le cluster muscle-up existe déjà ; ne pas créer de pages minces uniquement pour remplir un arbre.
-- La bibliothèque doit fonctionner comme interface du graphe et comme recherche, pas comme répétition de plusieurs catalogues successifs.
+- Les relations `next` et tableaux de progression doivent rester la source de vérité.
+- Ne pas créer de pages minces pour remplir un arbre.
+- Muscle-up reste une branche avancée issue du socle traction ; ne jamais le présenter comme la suite immédiate d'une première traction.
 
 ### Visuels pédagogiques / vérité du mouvement
 
-- `docs/VISUAL_TRUTH_WORKFLOW.md` reste obligatoire pour les mouvements techniques.
-- Une IA générative ne doit jamais être l'autorité biomécanique d'une séquence.
+- `docs/VISUAL_TRUTH_WORKFLOW.md` est obligatoire pour les mouvements techniques.
 - Workflow : référence réelle validée → keyframes utiles → représentation Calis → comparaison finale.
-- `suspension-barre.svg` est issu d'une référence historique publique documentée.
-- Le rowing incliné existant a été validé comme schéma pédagogique moderne avec limites explicites ; voir `docs/VALIDATION_VISUELLE_ROWING_INCLINE.md`.
-- Le contrôle scapulaire reste un prochain candidat sérieux à revalider contre des références modernes : deux positions, coudes tendus, petit déplacement du corps, aucun élan, ne pas transformer le geste en demi-traction.
-- Les visuels doivent désormais servir une étape ou une décision du graphe ; ne pas poursuivre une série d'illustrations isolées juste pour remplir le site.
+- Une IA générative ne doit jamais être l'autorité biomécanique d'une séquence.
+- Suspension : référence historique publique documentée.
+- Rowing incliné : schéma conservé après validation moderne, limites explicites.
+- Traction négative : séquence validée, premier dessin rejeté puis corrigé avant fusion.
+- Pompe et squat : schémas validés ; premiers dessins rejetés lorsqu'ils créaient une lecture biomécanique ambiguë.
+- **Contrôle scapulaire : le SVG précédemment intégré a été retiré de la page.** Son intention était correcte mais sa géométrie pouvait être lue comme un raccourcissement/flexion des bras entre les deux états. Le texte reste. Réintégrer une image seulement après verrouillage de deux keyframes modernes comparables avec mains fixes, coudes visuellement tendus, faible déplacement et corps calme. Voir `docs/VALIDATION_VISUELLE_CONTROLE_SCAPULAIRE.md`.
+- Traction assistée : ne pas dessiner un montage d'élastique tant que l'installation exacte et sûre n'est pas représentable sans ambiguïté.
+- Aucun visuel technique Handstand ou Muscle-up ne doit être produit à partir d'une trajectoire inventée.
 
-### Accessibilité / qualité déjà renforcée
+### Accessibilité / structure / SEO technique
 
-- Skip link vers le contenu principal.
-- Focus clavier visible.
-- Compensation du header sticky pour l'ancre objectifs.
+- Skip link, focus clavier visible et compensation du header sticky en place.
 - 404 française spécifique à Calis.
-- Audit structurel déjà effectué : un H1 par page, pas de duplicate IDs détectés, pas de liens internes cassés dans l'artefact contrôlé, pas d'images sans alt détectées lors de l'audit précédent.
+- Les deux cas de `<main>` imbriqué détectés dans `/bibliotheque` puis `/muscle-up` ont été corrigés.
+- Artefact Pages #147 audité exhaustivement : **39 HTML, 472 liens internes, 0 problème détecté** sur les contrôles suivants : liens `/Calis/`, nombre de `<main>`, H1 des pages réelles, IDs dupliqués, images sans `alt`.
+- Nouvelle route Handstand présente dans l'artefact et automatiquement dans le sitemap.
+- Toutes les vraies pages contrôlées ont title, description et canonical ; les variantes 404 sont hors sitemap et `noindex`.
+- `robots.txt` et `sitemap.xml` sont cohérents avec le `basePath /Calis`.
+- Favicon/icon/OG visuel et manifest restent ouverts : ne pas inventer une identité de marque définitive sans décision réelle.
+- Données structurées uniquement lorsqu'elles décrivent quelque chose de vrai.
 
 ### Infrastructure actuelle
 
@@ -98,44 +115,54 @@ Après correction : page d'environ 4 786 px sur desktop et 8 059 px sur mobile ;
 - URL de test : `https://ludodulac.github.io/Calis/` ; ce n'est pas l'identité publique finale.
 - Supabase, Stripe et autres briques historiques/futures ne doivent pas être réintroduits tant qu'un besoin produit réel ne les justifie pas.
 
+### Derniers lots structurants
+
+- PR #9 : premier chemin traction ; run #135 vert.
+- PR #10 : chemin pompe ; run #137 vert.
+- PR #11 : composant partagé ; run #138 vert.
+- PR #12 : exemple concret dans le hero ; run #139 vert.
+- PR #13 : chemin traction visible dans la bibliothèque ; run #140 vert.
+- PR #15 : bibliothèque corrigée après audit visuel ; run #142 vert.
+- PR #16 : passation active rafraîchie ; run #143 vert.
+- PR #18 : décision Handstand initiale + retrait du visuel scapulaire ambigu ; run #144 vert.
+- PR #19 : landmark bibliothèque ; run #145 vert.
+- PR #20 : landmark muscle-up ; run #146 vert.
+- PR #21 : ressource + chemin Handstand canonique ; run #147 vert, artefact exact audité.
+
 ## PRIORITÉS ACTIVES
 
-### 1. Consolider les chemins existants avant d'étendre l'arbre
+### 1. Consolider les trois chemins avant d'en créer davantage
 
-- Continuer à vérifier le rendu réel de l'accueil, `/tractions`, `/pompes`, `/bibliotheque` et `/commencer` après les évolutions.
-- Corriger uniquement les problèmes observables : densité, mobile, clavier, hiérarchie, compréhension du prochain geste.
-- Ne pas ajouter de gamification lourde pour ressembler aux apps de skill tree concurrentes.
+- Vérifier leur lisibilité réelle, notamment sur mobile et au clavier.
+- Chercher les répétitions inutiles entre hub, chemin et grille de ressources.
+- Ne pas ajouter un chemin Dips ou Muscle-up par symétrie : seulement si le modèle canonique justifie des étapes distinctes utiles.
 
-### 2. Décider le prochain parcours à matérialiser à partir du contenu réel
+### 2. Reprendre le contrôle scapulaire avec une vraie référence visuelle
 
-- Ne pas créer automatiquement un chemin pour chaque hub.
-- Handstand est le candidat naturel mais exige davantage de validation technique/sécurité ; inspecter d'abord ses ressources et leurs relations.
-- Si le contenu handstand n'est pas assez fiable/dense pour un chemin canonique, densifier ou corriger le cluster avant toute visualisation.
-- Muscle-up doit rester une branche avancée issue d'un socle traction fiable ; éviter de le présenter comme une suite immédiate de la première traction.
+- Trouver deux keyframes modernes comparables montrant la suspension de départ et l'état actif.
+- Contrôler mains, coudes, tête/épaules, tronc et absence d'élan.
+- Redessiner sans prétendre représenter précisément la scapula sous la peau.
+- Comparer avant réintégration ; sinon conserver la page sans image.
 
-### 3. Sprint visuel utile au graphe
+### 3. Continuer l'audit produit sur artefact réel
 
-Ordre recommandé :
+- navigation clavier ;
+- tailles tactiles ;
+- contrastes ;
+- lecture des chemins horizontaux ;
+- comportement de l'aperçu bibliothèque ;
+- densité et hiérarchie des hubs.
 
-1. contrôle scapulaire ;
-2. traction négative ;
-3. traction assistée ;
-4. ensuite seulement les visuels d'autres clusters si une page/étape en bénéficie réellement.
+### 4. Identité visuelle / SEO social — futur point de décision humaine
 
-Pour chaque visuel : source exacte, droits, rôle pédagogique, limites, validation anatomique/mécanique, comparaison finale.
-
-### 4. Mobile / accessibilité / SEO technique
-
-- Continuer les audits sur artefact réellement compilé.
-- Vérifier navigation clavier, contraste, tailles tactiles, lisibilité des chemins horizontaux et comportement des boutons d'expansion.
-- Favicon/icon/OG et manifest seulement avec une identité visuelle réellement décidée ; ne pas inventer un logo définitif.
-- Données structurées uniquement lorsqu'elles décrivent quelque chose de vrai.
-- Domaine final plus tard ; ne pas coder l'identité autour de GitHub Pages.
+- favicon, icône et image OG demandent une direction visuelle cohérente ; ne pas inventer un logo définitif par simple opportunisme technique ;
+- domaine final plus tard ; ne pas coder l'identité autour de GitHub Pages ;
+- manifest seulement s'il sert réellement l'expérience.
 
 ## NE PAS FAIRE
 
 - Ne pas reconstruire Calis comme une app fitness générique à séances/streaks avant d'avoir validé le cœur pédagogique.
-- Ne pas copier les skill trees gamifiés concurrents : la différenciation Calis est de rendre le raisonnement pédagogique compréhensible.
+- Ne pas copier les skill trees gamifiés concurrents.
 - Ne pas afficher de progression utilisateur fictive, pourcentage, cadenas ou accomplissement sans état réel.
 - Ne pas créer de pages SEO minces pour donner l'impression que le graphe est plus grand.
 - Ne pas forcer une illustration lorsqu'aucune référence fiable ne permet de garantir le mouvement.
@@ -146,14 +173,16 @@ Pour chaque visuel : source exacte, droits, rôle pédagogique, limites, validat
 ## PROCHAINE REPRISE RECOMMANDÉE
 
 1. vérifier `main`, CI, PR/issues ouvertes ;
-2. inspecter le cluster handstand et ses relations pour déterminer s'il peut devenir le troisième chemin sans inventer d'étapes ;
-3. en parallèle, reprendre la validation visuelle du contrôle scapulaire car cette étape appartient déjà au chemin traction déployé ;
+2. inspecter le rendu et l'accessibilité des trois chemins existants avant d'étendre le pattern ;
+3. poursuivre la recherche de keyframes fiables pour le contrôle scapulaire ;
 4. choisir le plus petit lot cohérent qui améliore réellement une décision utilisateur ;
 5. branche → PR → squash merge → CI → inspection de l'artefact si UI/route modifiée ;
 6. mettre à jour cette passation si le cap produit change.
 
 ## POINTS DE VIGILANCE HISTORIQUES
 
-- Un commit documentaire direct sur `main` a déjà été fait par erreur durant le travail sur le pattern ; l'historique n'a pas été réécrit. Revenir systématiquement au flux branche → PR.
 - Un ancien `noop` accidentel sur `main` a été immédiatement annulé ; ne pas réécrire l'historique pour le masquer.
+- Un commit documentaire direct sur `main` a déjà été fait par erreur durant le travail sur le pattern ; les changements suivants doivent rester branche → PR.
+- Plusieurs écritures ont été interceptées sur de mauvaises branches avant PR ; toujours vérifier le ref de départ et le diff avant fusion.
+- Une tentative de compactage de `ILLUSTRATION_SOURCES.md` a été rejetée et restaurée sur sa branche sans toucher `main` ; conserver l'historique utile du registre.
 - Une première image générative regroupant plusieurs mouvements a été rejetée : elle n'est pas une référence produit et ne doit jamais être intégrée.
