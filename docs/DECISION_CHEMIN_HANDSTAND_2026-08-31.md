@@ -16,11 +16,11 @@ Cette retenue a permis de préserver le principe du pattern : le chemin visible 
 
 Une recherche ciblée sur le contrôle de l'équilibre en handstand a confirmé qu'il existe bien un problème pédagogique distinct après le travail au mur : apprendre à gérer de petits déséquilibres sans assistance, notamment via les changements de pression sous les mains et le contrôle du centre de pression.
 
-La revue systématique de MacDonald et al. (2025), fondée sur 21 études biomécaniques, rapporte que les gymnastes utilisent fréquemment une stratégie dominante au niveau des poignets pour contrôler l'équilibre ; lorsque cette stratégie ne suffit pas, des stratégies mixtes impliquant épaules, hanches et coudes peuvent apparaître. Ces données ne définissent pas une technique unique pour tous les débutants, mais elles soutiennent la séparation pédagogique entre `travail assisté au mur` et `premiers équilibres libres`.
+La revue systématique de McDonald et al. (2025), fondée sur 21 études biomécaniques, rapporte que les gymnastes utilisent fréquemment une stratégie dominante au niveau des poignets pour contrôler l'équilibre ; lorsque cette stratégie ne suffit pas, des stratégies mixtes impliquant épaules, hanches et coudes peuvent apparaître. Ces données ne définissent pas une technique unique pour tous les débutants, mais elles soutiennent la séparation pédagogique entre `travail assisté au mur` et `premiers équilibres libres`.
 
 Source principale :
 
-- MacDonald M, Baker JS, Gu Y, Ugbolue UC. *Biomechanical analyses of the handstand: a systematic review*. Frontiers in Sports and Active Living, 2025. DOI 10.3389/fspor.2025.1694648.
+- McDonald M, Baker JS, Gu Y, Ugbolue UC. *Biomechanical analyses of the handstand: a systematic review*. Frontiers in Sports and Active Living, 2025. DOI 10.3389/fspor.2025.1694648.
 
 ## Décision actuelle
 
