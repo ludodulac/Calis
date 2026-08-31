@@ -39,3 +39,9 @@ export const pullUpProgression: ProgressionStep[] = [
   { id: "first", label: "Première traction", resourceSlug: "premiere-traction", criterion: "Réaliser une répétition stricte et reproductible." },
   { id: "ten", label: "Plusieurs tractions", resourceSlug: "10-tractions", criterion: "Construire plusieurs répétitions fiables avant les objectifs plus avancés." }
 ];
+
+export const pushUpProgression: ProgressionStep[] = [
+  { id: "incline", label: "Pompes inclinées", resourceSlug: "pompes-inclinees", criterion: "Trouver une hauteur où la descente et la remontée restent contrôlées." },
+  { id: "first-pushup", label: "Première pompe", resourceSlug: "premiere-pompe", criterion: "Réaliser une répétition au sol contrôlée et reproductible." },
+  { id: "pushup-technique", label: "Pompe stable", resourceSlug: "pompe-technique", criterion: "Garder des repères comparables sur plusieurs répétitions avant de chercher plus difficile." }
+];
