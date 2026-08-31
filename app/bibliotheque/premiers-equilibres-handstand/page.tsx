@@ -79,7 +79,7 @@ export default function FirstFreeHandstandBalancePage() {
       <section className="articleSection">
         <div className="eyebrow">Source scientifique</div>
         <h2>Ce qui soutient cette étape</h2>
-        <p>MacDonald M, Baker JS, Gu Y, Ugbolue UC. <em>Biomechanical analyses of the handstand: a systematic review</em>. Frontiers in Sports and Active Living, 2025. La revue synthétise 21 études et décrit notamment le rôle du contrôle du centre de pression, l'importance fréquente de la stratégie du poignet et l'influence de la vision et de la position de la tête.</p>
+        <p>McDonald M, Baker JS, Gu Y, Ugbolue UC. <em>Biomechanical analyses of the handstand: a systematic review</em>. Frontiers in Sports and Active Living, 2025. La revue synthétise 21 études et décrit notamment le rôle du contrôle du centre de pression, l'importance fréquente de la stratégie du poignet et l'influence de la vision et de la position de la tête.</p>
         <a className="textLink" href="https://doi.org/10.3389/fspor.2025.1694648" target="_blank" rel="noreferrer">Consulter la publication scientifique →</a>
       </section>
 
