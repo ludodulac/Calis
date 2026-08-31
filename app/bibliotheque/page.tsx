@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ProgressionPath } from "@/components/progression-path";
 import { ResourceCard } from "@/components/resource-card";
 import { LibraryBrowser } from "@/components/library-browser";
-import { v1Resources } from "@/lib/content/v1";
+import { pullUpProgression, v1Resources } from "@/lib/content/v1";
 
 export const metadata: Metadata = {
   title: "Bibliothèque de callisthénie : progressions, exercices et guides",
@@ -28,7 +29,6 @@ const quickEntries = [
 
 export default function LibraryPage() {
   const zeroResources = v1Resources.filter((resource) => resource.level === "zero");
-  const pullResources = v1Resources.filter((resource) => resource.hub === "tractions");
   const otherResources = v1Resources.filter((resource) => resource.level !== "zero" && resource.hub !== "tractions");
 
   return <main>
@@ -40,7 +40,7 @@ export default function LibraryPage() {
 
     <section className="section shell"><div className="sectionHeading"><div className="eyebrow">Point de départ</div><h2>Ressources accessibles quand tu pars de zéro</h2><p>Pas besoin de connaître le vocabulaire de la callisthénie : pars de ce que tu peux ou ne peux pas encore faire.</p></div><div className="resourceGrid">{zeroResources.map((resource) => <ResourceCard key={resource.slug} resource={resource} />)}</div></section>
 
-    <section className="section shell"><div className="sectionHeading"><div className="eyebrow">Parcours traction</div><h2>Un parcours déjà relié de bout en bout</h2><p>Chaque fiche développe un maillon précis et prépare une étape suivante : la bibliothèque commence ainsi à fonctionner comme un graphe de progression.</p></div><div className="resourceGrid">{pullResources.map((resource) => <ResourceCard key={resource.slug} resource={resource} />)}</div></section>
+    <section className="section shell"><div className="sectionHeading wide"><div className="eyebrow">Un chemin visible</div><h2>La traction montre comment les fiches deviennent une progression.</h2><p>Au lieu de présenter seulement une série de contenus, Calis rend visible le chemin principal. Les questions de diagnostic, le matériel et les variantes restent disponibles dans la recherche sans être confondus avec les étapes du parcours.</p></div><ProgressionPath steps={pullUpProgression} milestoneId="first" ariaLabel="Chemin traction visible dans la bibliothèque" fork={{ label: "Après plusieurs tractions fiables", links: [{ href: "/bibliotheque/traction-explosive", label: "Gagner en hauteur →" }, { href: "/bibliotheque/tractions-lestees", label: "Gagner en force →" }, { href: "/muscle-up", label: "Préparer le muscle-up →" }] }} /><div className="actions"><Link className="button secondary" href="/tractions">Ouvrir le parcours traction complet</Link></div></section>
 
     <section className="section shell"><div className="sectionHeading"><div className="eyebrow">Pousser, jambes et équilibre</div><h2>Les capacités fondamentales forment progressivement le même système</h2><p>Pompes, dips, squat, mobilité et handstand utilisent le même langage pédagogique : point de départ, technique, sensations, erreurs, adaptations et critères de progression.</p></div><div className="resourceGrid">{otherResources.map((resource) => <ResourceCard key={resource.slug} resource={resource} />)}</div></section>
   </main>;
