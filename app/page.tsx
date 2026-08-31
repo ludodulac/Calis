@@ -6,12 +6,12 @@ import styles from "./home.module.css";
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 const goals = [
-  { title: "Faire ma première traction", text: "Je veux réussir à me hisser au-dessus d'une barre.", href: "/tractions", meta: `Débutant · ${pullUpProgression.length} étapes` },
-  { title: "Faire ma première pompe", text: "Même si le sol est encore trop difficile aujourd'hui.", href: "/pompes", meta: `Débutant · ${pushUpProgression.length} étapes` },
-  { title: "Tenir sur les mains", text: "Apprendre progressivement sans commencer par me jeter à l'envers.", href: "/handstand", meta: `Débutant · ${handstandProgression.length} étapes` },
-  { title: "Réussir un muscle-up", text: "Comprendre si je dois travailler le tirage, le passage ou la poussée.", href: "/muscle-up", meta: "Intermédiaire · diagnostic par maillon" },
-  { title: "Renforcer mes jambes", text: "Commencer simplement avec le squat au poids du corps.", href: "/bibliotheque/squat-poids-du-corps", meta: "Point de départ · sans matériel" },
-  { title: "Bouger plus facilement", text: "Travailler la mobilité qui me sert vraiment.", href: "/bibliotheque/mobilite-debutant", meta: "Point de départ · mobilité utile" },
+  { title: "Faire ma première traction", text: "Je veux réussir à me hisser au-dessus d'une barre.", href: "/tractions", meta: `Débutant · ${pullUpProgression.length} étapes`, cta: "Voir mon chemin →" },
+  { title: "Faire ma première pompe", text: "Même si le sol est encore trop difficile aujourd'hui.", href: "/pompes", meta: `Débutant · ${pushUpProgression.length} étapes`, cta: "Voir mon chemin →" },
+  { title: "Tenir sur les mains", text: "Apprendre progressivement sans commencer par me jeter à l'envers.", href: "/handstand", meta: `Débutant · ${handstandProgression.length} étapes`, cta: "Voir mon chemin →" },
+  { title: "Réussir un muscle-up", text: "Comprendre si je dois travailler le tirage, le passage ou la poussée.", href: "/muscle-up", meta: "Intermédiaire · diagnostic par maillon", cta: "Diagnostiquer mon blocage →" },
+  { title: "Renforcer mes jambes", text: "Commencer simplement avec le squat au poids du corps.", href: "/bibliotheque/squat-poids-du-corps", meta: "Point de départ · sans matériel", cta: "Commencer par le squat →" },
+  { title: "Bouger plus facilement", text: "Travailler la mobilité qui me sert vraiment.", href: "/bibliotheque/mobilite-debutant", meta: "Point de départ · mobilité utile", cta: "Explorer ma mobilité →" },
 ] as const;
 
 export default function HomePage() {
@@ -53,7 +53,7 @@ export default function HomePage() {
             {goals.map((goal) => (
               <Link className="journeyCard" href={goal.href} key={goal.title}>
                 <span>{goal.meta}</span>
-                <strong>{goal.title}</strong><p>{goal.text}</p><b>Voir mon chemin →</b>
+                <strong>{goal.title}</strong><p>{goal.text}</p><b>{goal.cta}</b>
               </Link>
             ))}
           </div>
