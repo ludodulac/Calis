@@ -1,5 +1,7 @@
 # Validation visuelle — contrôle scapulaire en suspension — 31 août 2026
 
+> **Statut canonique actuel.** Cette validation supersède explicitement tout statut plus ancien de `docs/ILLUSTRATION_SOURCES.md` qui décrirait `controle-scapulaire.svg` comme conservé ou validé. L'historique de recherche peut rester dans le registre, mais l'asset n'est pas validé pour production et n'est plus affiché sur la page.
+
 ## Objet
 
 Auditer le SVG déjà intégré `public/illustrations/calis/tractions/controle-scapulaire.svg` avant de le considérer comme une référence pédagogique fiable.
@@ -46,7 +48,7 @@ Le deuxième état ajoute aussi des traits autour des épaules sans convention g
 
 ## Décision
 
-**SVG non validé comme illustration technique. À retirer temporairement de la page jusqu'à reconstruction à partir d'une référence visuelle moderne explicitement validée.**
+**SVG non validé comme illustration technique. Retiré de la page jusqu'à reconstruction à partir d'une référence visuelle moderne explicitement validée.**
 
 Cette décision ne remet pas en cause le texte de la page : les repères `coudes tendus`, `épaules progressivement éloignées des oreilles`, `petit déplacement du corps`, `sans élan` sont cohérents avec les références retenues et restent volontairement qualitatifs.
 
