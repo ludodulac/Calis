@@ -26,12 +26,16 @@ export default function HomePage() {
               <Link className="button secondary" href="#objectifs">Je choisis un objectif</Link>
             </div>
           </div>
-          <aside className="manifesto">
-            <span>Comment ça marche ?</span>
-            <strong>1. Tu choisis ce que tu veux réussir.</strong>
-            <p>2. Tu trouves ton niveau actuel.</p>
-            <p>3. Tu essaies une étape adaptée.</p>
-            <p>4. Calis te montre la suite.</p>
+          <aside className="manifesto pathExamplePanel">
+            <span>Exemple de chemin</span>
+            <strong>Tu veux réussir ta première traction.</strong>
+            <div className="pathExample" aria-label="Exemple d'un chemin Calis vers une première traction">
+              <div className="pathExampleStep"><small>Objectif</small><b>Première traction</b></div>
+              <div className="pathExampleStep"><small>Aujourd'hui</small><b>Je tiens à la barre</b></div>
+              <Link className="pathExampleStep" href="/bibliotheque/rowing-incline"><small>Maintenant</small><b>Rowing incliné</b></Link>
+              <Link className="pathExampleStep" href="/bibliotheque/traction-assistee"><small>Ensuite</small><b>Traction assistée</b></Link>
+            </div>
+            <Link className="textLink" href="/tractions">Voir le chemin complet →</Link>
           </aside>
         </div>
       </section>
