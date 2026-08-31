@@ -68,7 +68,7 @@ La bibliothèque avait déjà des entrées par désir/problème et une recherche
 Cette grille a été remplacée par le vrai `ProgressionPath` traction. Les diagnostics, équipements et variantes restent disponibles dans `LibraryBrowser` sans être forcés dans le chemin principal.
 
 - PR #13, commit fusionné `18928d0ff1f5a7e56817a17ff33c50e2c8bcfa2e`.
-- Run #140 à vérifier avant clôture de cette continuité.
+- Run #140 vert : build et déploiement GitHub Pages validés.
 
 ## Ce que cela change pour la suite
 
