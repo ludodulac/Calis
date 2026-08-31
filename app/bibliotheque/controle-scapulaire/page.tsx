@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { LearningIllustration } from "@/components/learning-illustration";
 
 export const metadata: Metadata = {
   title: "Contrôle scapulaire en suspension",
@@ -20,14 +19,6 @@ export default function ScapularControlPage() {
         <div><span>Capacité</span><strong>Tirer</strong></div>
         <div><span>Matériel</span><strong>Une barre stable</strong></div>
       </div>
-
-      <LearningIllustration
-        src="/illustrations/calis/tractions/controle-scapulaire.svg"
-        alt="Deux suspensions à la barre : position relâchée contrôlée puis position active, avec les bras tendus dans les deux cas."
-        label="Deux positions, un petit mouvement"
-        caption="Compare surtout les épaules et la hauteur du corps. Les coudes restent tendus et les jambes ne créent pas d'élan."
-        variant="comparison"
-      />
 
       <section className="articleSection">
         <div className="eyebrow">Test de départ</div>
