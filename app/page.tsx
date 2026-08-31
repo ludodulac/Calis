@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { handstandProgression, pullUpProgression, pushUpProgression } from "@/lib/content/v1";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 const goals = [
-  ["Faire ma première traction", "Je veux réussir à me hisser au-dessus d'une barre.", "/tractions"],
-  ["Faire ma première pompe", "Même si le sol est encore trop difficile aujourd'hui.", "/pompes"],
-  ["Tenir sur les mains", "Apprendre progressivement sans commencer par me jeter à l'envers.", "/handstand"],
-  ["Réussir un muscle-up", "Comprendre si je dois travailler le tirage, le passage ou la poussée.", "/muscle-up"],
-  ["Renforcer mes jambes", "Commencer simplement avec le squat au poids du corps.", "/bibliotheque/squat-poids-du-corps"],
-  ["Bouger plus facilement", "Travailler la mobilité qui me sert vraiment.", "/bibliotheque/mobilite-debutant"],
+  { title: "Faire ma première traction", text: "Je veux réussir à me hisser au-dessus d'une barre.", href: "/tractions", meta: `Débutant · ${pullUpProgression.length} étapes` },
+  { title: "Faire ma première pompe", text: "Même si le sol est encore trop difficile aujourd'hui.", href: "/pompes", meta: `Débutant · ${pushUpProgression.length} étapes` },
+  { title: "Tenir sur les mains", text: "Apprendre progressivement sans commencer par me jeter à l'envers.", href: "/handstand", meta: `Débutant · ${handstandProgression.length} étapes` },
+  { title: "Réussir un muscle-up", text: "Comprendre si je dois travailler le tirage, le passage ou la poussée.", href: "/muscle-up", meta: "Intermédiaire · diagnostic par maillon" },
+  { title: "Renforcer mes jambes", text: "Commencer simplement avec le squat au poids du corps.", href: "/bibliotheque/squat-poids-du-corps", meta: "Point de départ · sans matériel" },
+  { title: "Bouger plus facilement", text: "Travailler la mobilité qui me sert vraiment.", href: "/bibliotheque/mobilite-debutant", meta: "Point de départ · mobilité utile" },
 ] as const;
 
 export default function HomePage() {
@@ -49,9 +50,10 @@ export default function HomePage() {
             <p>Tu n'as pas besoin de connaître le vocabulaire de la callisthénie. Clique simplement sur ce que tu aimerais apprendre.</p>
           </div>
           <div className="journeyGrid">
-            {goals.map(([title, text, href]) => (
-              <Link className="journeyCard" href={href} key={title}>
-                <strong>{title}</strong><p>{text}</p><b>Voir mon chemin →</b>
+            {goals.map((goal) => (
+              <Link className="journeyCard" href={goal.href} key={goal.title}>
+                <span>{goal.meta}</span>
+                <strong>{goal.title}</strong><p>{goal.text}</p><b>Voir mon chemin →</b>
               </Link>
             ))}
           </div>
