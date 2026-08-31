@@ -34,6 +34,7 @@ export function LearningIllustration({ label, caption, variant = "movement", src
           justify-content: center;
           padding: 18px;
         }
+        .illustrationCanvasWithImage::before,
         .illustrationCanvasWithImage::after {
           display: none;
         }
