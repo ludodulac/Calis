@@ -1,8 +1,8 @@
 # Calis — PASSATION ACTIVE
 
-Dernière mise à jour : 30 août 2026, fin de session.
+Dernière mise à jour : 31 août 2026, après déploiement et audit visuel du système de chemins.
 
-Ce document est l'état opérationnel de reprise. Il complète les sources de vérité sans les remplacer. Toute nouvelle conversation doit commencer par `AI_START_HERE.md`, puis vérifier `main` et la CI avant d'agir.
+Ce document est l'état opérationnel de reprise. Il complète les sources de vérité sans les remplacer. Toute nouvelle conversation doit commencer par `AI_START_HERE.md`, puis vérifier `main`, les PR/issues ouvertes et la CI avant d'agir.
 
 ## FAIT ET VÉRIFIÉ
 
@@ -10,237 +10,150 @@ Ce document est l'état opérationnel de reprise. Il complète les sources de v�
 
 - Calis reste une plateforme francophone de progression en callisthénie, pas un blog générique ni une boutique en premier.
 - Architecture mentale : **DÉSIR → OBJECTIF → CAPACITÉ → PROGRESSION**.
+- Traduction UI désormais réellement visible : **OBJECTIF → SITUATION ACTUELLE → CHEMIN → PROCHAINE ÉTAPE**.
 - Boucle pédagogique : **désirer → essayer → comprendre → ressentir → réussir → vouloir aller plus loin**.
 - Règle business : utilité et confiance avant monétisation ; une page peut conclure qu'aucun achat n'est nécessaire.
 - Règle humaine : ne jamais inventer auteur, expertise, expérience vécue, test, témoignage, communauté ou partenariat.
 - Règle d'évolution : préserver l'existant utile ; enrichir/réorganiser avant de supprimer.
 - Règle d'idéation : **idée ≠ décision ≠ priorité**.
 
-### Simplicité UX — décision prioritaire
+### Simplicité UX — cap actuel
 
-Le fondateur a signalé qu'il ne comprenait pas assez facilement ce qu'il pouvait faire sur le site. La profondeur était correcte mais trop visible dans l'interface.
+- Navigation principale : `Je débute / Choisir un objectif / Tout explorer`.
+- Accueil centré sur `Qu'est-ce que tu aimerais réussir avec ton corps ?`.
+- Le hero contient maintenant un exemple concret de la logique Calis : objectif première traction → situation actuelle → rowing incliné → traction assistée → parcours complet.
+- `/commencer` reste l'entrée humaine quand l'utilisateur ne connaît pas encore le vocabulaire ou son objectif exact.
+- Les objectifs restent visibles tôt sur l'accueil ; ne pas les repousser derrière un onboarding lourd.
+- Aucune personnalisation simulée, aucun compte obligatoire, aucun streak, aucun état `locked/completed` sans données utilisateur réelles.
 
-Décision durable : **le système peut être complexe, l'entrée doit être évidente**. Test : un enfant d'environ 11 ans ou une personne âgée peu familière de la callisthénie doit comprendre comment commencer.
+### Chemins de progression — système validé
 
-Implémenté :
-- navigation principale `Je débute / Choisir un objectif / Tout explorer` dans `components/site-header.tsx` ;
-- accueil recentré sur « Qu'est-ce que tu aimerais réussir avec ton corps ? » avec choix traction, pompe, handstand, muscle-up, jambes, mobilité ;
-- CTA évident « Je ne sais pas par où commencer » ;
-- `/commencer` simplifié autour de situations humaines observables ;
-- vocabulaire technique interne (`hub`, `cluster`, `capability`, etc.) non requis pour entrer dans le produit.
+Le pattern est documenté dans `docs/PROGRESSION_PATH_PATTERN.md` et la continuité détaillée dans `docs/HISTORIQUE_CONTINUITE_2026-08-31_SYSTEME_CHEMINS.md`.
 
-Cette décision est indexée dans `README.md`, `PRODUCT_VISION.md`, `INFORMATION_ARCHITECTURE.md`, `ROADMAP.md`, `AI_START_HERE.md` et l'historique de continuité.
+- `components/progression-path.tsx` est le composant partagé de rendu.
+- Les données et critères restent canoniques dans `lib/content/v1.ts` ; ne pas créer un graphe parallèle dans l'UI.
+- Traction : suspension → contrôle scapulaire → rowing incliné → traction assistée → négatives → première traction → plusieurs tractions ; ensuite seulement branches hauteur / force / muscle-up.
+- Pompe : pompes inclinées → première pompe → pompe stable ; dips comme branche facultative.
+- Le pattern a été validé sur un chemin long et un chemin court avant extraction du composant.
+- Sur mobile, le chemin reste horizontal et scannable plutôt que transformé en arbre illisible.
+- Les jalons correspondent à un désir humain clair (`Première traction`, `Première pompe`) et ne sont pas des niveaux de jeu inventés.
 
-### Contenu / graphe
+PR/CI structurantes :
 
-Le modèle V1 est dans `lib/content/types.ts` et `lib/content/v1.ts`.
+- PR #9 : premier chemin traction ; run #135 vert.
+- PR #10 : chemin pompe ; run #137 vert.
+- PR #11 : composant partagé ; run #138 vert.
+- PR #12 : exemple concret dans le hero ; run #139 vert.
+- PR #13 : chemin traction visible dans la bibliothèque ; run #140 vert.
+- PR #14 : synchronisation documentaire du système de chemins.
+- PR #15 : correction de la bibliothèque après audit visuel réel ; run #142 vert.
 
-Hubs V1 actuels :
-- `commencer` ;
-- `tractions` ;
-- `pompes` ;
-- `dips` ;
-- `handstand` ;
-- `muscle-up`.
+### Bibliothèque — audit visuel réel effectué
 
-Le champ `next` matérialise déjà une première version du graphe. Ne pas créer une progression parallèle pour les futurs tests/outils.
+Le premier déploiement du chemin traction dans `/bibliotheque` était techniquement correct mais encore noyé par le catalogue : environ 7 066 px avant le chemin sur desktop et 15 128 px sur mobile.
 
-Ressources et clusters déjà substantiels : Tractions, Pompes, Dips, Handstand ; niveau zéro/jambes/mobilité renforcés.
+La PR #15 a corrigé ce problème observé sur l'artefact GitHub Pages :
 
-### Muscle-up — dernier cluster ajouté
+- chemin traction remonté juste après les entrées rapides ;
+- suppression des grilles éditoriales qui répétaient des fiches déjà présentes dans `LibraryBrowser` ;
+- aucune ressource supprimée ;
+- exploration libre limitée à un aperçu initial de 9 fiches, avec bouton pour afficher les 27 ;
+- dès qu'une recherche ou un filtre est utilisé, tous les résultats correspondants s'affichent ;
+- filtre `Muscle-up` ajouté au sélecteur de parcours.
 
-Présent :
-- hub `/muscle-up` ;
-- `/bibliotheque/pourquoi-je-narrive-pas-a-faire-un-muscle-up` ;
-- `/bibliotheque/traction-explosive` ;
-- `/bibliotheque/tractions-lestees` ;
-- `/bibliotheque/transition-muscle-up` ;
-- liens vers fondations de traction et dips ;
-- `docs/CLUSTER_MUSCLE_UP_STRATEGY.md` ;
-- sitemap et modèle de contenu mis à jour.
+Après correction : page d'environ 4 786 px sur desktop et 8 059 px sur mobile ; chemin traction vers 2 478 px desktop et 3 596 px mobile. Aucun débordement horizontal global observé. Le rendu desktop/mobile de l'artefact #142 a été contrôlé visuellement.
 
-Parcours actuel :
-`tractions fiables → tirage haut/explosif → transition → poussée/appui → muscle-up`.
+### Graphe de contenu
 
-Décision scientifique : ne pas annoncer de nombre universel de tractions garantissant le muscle-up et ne pas reprendre des délais fixes de coaching comme vérités générales.
+- Modèle V1 dans `lib/content/types.ts` et `lib/content/v1.ts`.
+- Les relations `next` et les tableaux de progression doivent rester la source de vérité des chemins visibles.
+- Hubs actifs : commencer, tractions, pompes, dips, handstand, muscle-up.
+- Le cluster muscle-up existe déjà ; ne pas créer de pages minces uniquement pour remplir un arbre.
+- La bibliothèque doit fonctionner comme interface du graphe et comme recherche, pas comme répétition de plusieurs catalogues successifs.
 
-Sources spécifiques vérifiées pour la ressource transition :
-- Liu et al., étude biomécanique du kipping bar muscle-up, DOI `10.3233/ATDE240589` : petit échantillon de 8 hommes gymnastes universitaires élites ; utile pour confirmer la complexité/coordination et analyser des phases, pas pour définir une technique universelle ;
-- Walker et al., comparaison EMG ring/bar muscle-up, DOI `10.70252/FJQL7859`, PMID `38288256` : 10 hommes actifs ; confirme le muscle-up comme mouvement combinant tirage et poussée et compare le recrutement musculaire, mais ne fournit pas une progression universelle.
+### Visuels pédagogiques / vérité du mouvement
 
-### Vérité visuelle
+- `docs/VISUAL_TRUTH_WORKFLOW.md` reste obligatoire pour les mouvements techniques.
+- Une IA générative ne doit jamais être l'autorité biomécanique d'une séquence.
+- Workflow : référence réelle validée → keyframes utiles → représentation Calis → comparaison finale.
+- `suspension-barre.svg` est issu d'une référence historique publique documentée.
+- Le rowing incliné existant a été validé comme schéma pédagogique moderne avec limites explicites ; voir `docs/VALIDATION_VISUELLE_ROWING_INCLINE.md`.
+- Le contrôle scapulaire reste un prochain candidat sérieux à revalider contre des références modernes : deux positions, coudes tendus, petit déplacement du corps, aucun élan, ne pas transformer le geste en demi-traction.
+- Les visuels doivent désormais servir une étape ou une décision du graphe ; ne pas poursuivre une série d'illustrations isolées juste pour remplir le site.
 
-Échec utile conservé : une séquence photoréaliste IA d'entrée en handstand paraissait crédible mais représentait un mouvement faux.
+### Accessibilité / qualité déjà renforcée
 
-Règle canonique : **une image pédagogique est une affirmation technique**.
+- Skip link vers le contenu principal.
+- Focus clavier visible.
+- Compensation du header sticky pour l'ancre objectifs.
+- 404 française spécifique à Calis.
+- Audit structurel déjà effectué : un H1 par page, pas de duplicate IDs détectés, pas de liens internes cassés dans l'artefact contrôlé, pas d'images sans alt détectées lors de l'audit précédent.
 
-Pour un mouvement complexe :
-`référence réelle validée → images clés → représentation Calis → comparaison finale à la référence`.
+### Infrastructure actuelle
 
-Ne jamais utiliser une génération photoréaliste comme seule autorité pour une trajectoire, un bon/mauvais geste ou une installation de sécurité.
+- Next.js 16 / React 19 / TypeScript.
+- Export statique.
+- Déploiement V1 via GitHub Actions + GitHub Pages.
+- `basePath` actuel : `/Calis`.
+- URL de test : `https://ludodulac.github.io/Calis/` ; ce n'est pas l'identité publique finale.
+- Supabase, Stripe et autres briques historiques/futures ne doivent pas être réintroduits tant qu'un besoin produit réel ne les justifie pas.
 
-Documents : `ILLUSTRATION_SYSTEM.md`, `ILLUSTRATION_SOURCES.md`, `VISUAL_TRUTH_WORKFLOW.md`.
+## PRIORITÉS ACTIVES
 
-Premiers visuels existants : suspension à la barre, contrôle scapulaire, rowing incliné. Le prochain lot produit doit rendre l'identité visuelle beaucoup plus visible, en priorité sur les pages pédagogiques majeures.
+### 1. Consolider les chemins existants avant d'étendre l'arbre
 
-### Santé / bien-être
+- Continuer à vérifier le rendu réel de l'accueil, `/tractions`, `/pompes`, `/bibliotheque` et `/commencer` après les évolutions.
+- Corriger uniquement les problèmes observables : densité, mobile, clavier, hiérarchie, compréhension du prochain geste.
+- Ne pas ajouter de gamification lourde pour ressembler aux apps de skill tree concurrentes.
 
-La synthèse produit canonique est `docs/RECHERCHE_BESOINS_DESIRS_SANTE.md`.
-`docs/USER_NEEDS_HEALTH_RESEARCH.md` reste le journal de recherche détaillé/provenance.
+### 2. Décider le prochain parcours à matérialiser à partir du contenu réel
 
-Règle : les communautés et forums détectent des problèmes humains, pas des preuves scientifiques.
+- Ne pas créer automatiquement un chemin pour chaque hub.
+- Handstand est le candidat naturel mais exige davantage de validation technique/sécurité ; inspecter d'abord ses ressources et leurs relations.
+- Si le contenu handstand n'est pas assez fiable/dense pour un chemin canonique, densifier ou corriger le cluster avant toute visualisation.
+- Muscle-up doit rester une branche avancée issue d'un socle traction fiable ; éviter de le présenter comme une suite immédiate de la première traction.
 
-Calis peut parler des bénéfices généraux de l'activité physique correctement sourcés mais :
-- ne diagnostique pas douleur, blessure, maladie ou limitation ;
-- ne promet pas de traitement ;
-- ne remplace pas un professionnel de santé ;
-- distingue effort attendu / difficulté / douleur inhabituelle sans identifier la cause ;
-- renforce la prudence et les sources sur les pages santé/douleur/récupération.
+### 3. Sprint visuel utile au graphe
 
-Le footer global contient déjà la limite médicale permanente.
+Ordre recommandé :
 
-### Infrastructure réelle
+1. contrôle scapulaire ;
+2. traction négative ;
+3. traction assistée ;
+4. ensuite seulement les visuels d'autres clusters si une page/étape en bénéficie réellement.
 
-- Next.js 16 / React 19 / TypeScript ;
-- contenu versionné dans GitHub ;
-- export statique ;
-- GitHub Actions ;
-- GitHub Pages avec `basePath` `/Calis` ;
-- URL de test : `https://ludodulac.github.io/Calis/` ;
-- cette URL n'est pas le domaine final ;
-- futur domaine `.fr` seulement lorsque cela ajoute une valeur claire ;
-- Supabase/Stripe/Cloudflare non nécessaires à la V1 actuelle.
+Pour chaque visuel : source exacte, droits, rôle pédagogique, limites, validation anatomique/mécanique, comparaison finale.
 
-`README.md` et `TECHNICAL_ARCHITECTURE.md` ont été corrigés pour ne plus présenter Cloudflare comme déploiement courant. Les mentions de Cloudflare dans le cahier des charges/master plan sont des hypothèses historiques/cibles ; pour l'état technique actuel, le code + `TECHNICAL_ARCHITECTURE.md` + CI priment.
+### 4. Mobile / accessibilité / SEO technique
 
-### CI — incident corrigé
+- Continuer les audits sur artefact réellement compilé.
+- Vérifier navigation clavier, contraste, tailles tactiles, lisibilité des chemins horizontaux et comportement des boutons d'expansion.
+- Favicon/icon/OG et manifest seulement avec une identité visuelle réellement décidée ; ne pas inventer un logo définitif.
+- Données structurées uniquement lorsqu'elles décrivent quelque chose de vrai.
+- Domaine final plus tard ; ne pas coder l'identité autour de GitHub Pages.
 
-Un échec de CI a été détecté pendant la passation sur le commit `f9d444fc...` : `Resource.hub` n'acceptait pas `"muscle-up"` alors que le contenu l'utilisait.
+## NE PAS FAIRE
 
-Correction : `lib/content/types.ts` inclut désormais `"muscle-up"` dans l'union de `hub` (`eddb14e7...`).
+- Ne pas reconstruire Calis comme une app fitness générique à séances/streaks avant d'avoir validé le cœur pédagogique.
+- Ne pas copier les skill trees gamifiés concurrents : la différenciation Calis est de rendre le raisonnement pédagogique compréhensible.
+- Ne pas afficher de progression utilisateur fictive, pourcentage, cadenas ou accomplissement sans état réel.
+- Ne pas créer de pages SEO minces pour donner l'impression que le graphe est plus grand.
+- Ne pas forcer une illustration lorsqu'aucune référence fiable ne permet de garantir le mouvement.
+- Ne pas simuler communauté, avis, experts, partenaires ou validations.
+- Ne pas relancer une architecture backend lourde sans besoin concret.
+- Ne pas construire prématurément une carte de parks ou une marketplace.
 
-Le dernier run de `main` doit impérativement être revérifié après le dernier commit de cette passation ; ne pas supposer qu'il est vert seulement parce que l'erreur de type a été corrigée.
+## PROCHAINE REPRISE RECOMMANDÉE
 
-## DOCUMENTATION / INDEXATION MISE À JOUR PENDANT LA PASSATION
+1. vérifier `main`, CI, PR/issues ouvertes ;
+2. inspecter le cluster handstand et ses relations pour déterminer s'il peut devenir le troisième chemin sans inventer d'étapes ;
+3. en parallèle, reprendre la validation visuelle du contrôle scapulaire car cette étape appartient déjà au chemin traction déployé ;
+4. choisir le plus petit lot cohérent qui améliore réellement une décision utilisateur ;
+5. branche → PR → squash merge → CI → inspection de l'artefact si UI/route modifiée ;
+6. mettre à jour cette passation si le cap produit change.
 
-- `AI_START_HERE.md` ajouté sur `main` comme point d'entrée obligatoire ;
-- `README.md` : reprise IA, déploiement GitHub Pages actuel, simplicité UX ;
-- `PRODUCT_VISION.md` : simplicité radicale comme principe produit ;
-- `INFORMATION_ARCHITECTURE.md` : distinction navigation visible simple / architecture profonde ;
-- `CONTENT_MODEL.md` : état V1 réel, hubs actuels, `next`, provenance visuelle ;
-- `TECHNICAL_ARCHITECTURE.md` : réalité GitHub Pages, CI, future migration de domaine ;
-- `ROADMAP.md` : état V1, priorités immédiates, UX et images ;
-- `RECHERCHE_BESOINS_DESIRS_SANTE.md` : désigné comme synthèse canonique ;
-- `HISTORIQUE_CONTINUITE_2026-08-30_FIN_SESSION.md` : évolution complète de cette phase ;
-- PR #1 `docs: add AI project entrypoint and handoff protocol` fermée sans merge car son contenu a été intégré proprement sur le `main` plus récent.
+## POINTS DE VIGILANCE HISTORIQUES
 
-## EN COURS
-
-- La V1 est fonctionnellement déjà conséquente, mais son identité visuelle reste trop faible par rapport à l'ambition.
-- La simplification de l'accueil/navigation vient d'être implémentée et doit être inspectée sur le site publié, surtout sur mobile.
-- Le cluster Muscle-up est ouvert mais n'est pas terminé : la transition et le diagnostic existent ; la poussée spécifique au-dessus d'une barre droite peut encore être enrichie si elle apporte une vraie valeur.
-- Les pages n'ont pas toutes le même niveau de densité, sources, dates et illustrations.
-
-## OUVERT
-
-### Priorité produit prochaine
-
-1. Vérifier visuellement le site publié : accueil, `/commencer`, navigation principale, bibliothèque et muscle-up ; corriger uniquement les problèmes réels de lisibilité/navigation.
-2. Commencer le vrai sprint d'images pédagogiques fiables : première traction, pompe, squat, handstand, puis muscle-up ; suivre strictement le workflow de vérité visuelle.
-3. Continuer la densification par clusters sans pages fines ; privilégier les besoins les plus fréquents et les maillons manquants du graphe.
-4. Faire ensuite un balayage transversal mobile/accessibilité/maillage/SEO technique.
-
-### Contenu / produit futur
-
-- front lever, planche, back lever, human flag, L-sit ;
-- tests de niveau et visualisation du graphe en réutilisant le modèle existant ;
-- guides équipement/affiliation uniquement lorsque contextuels ;
-- commentaires/admin plus tard, si la boucle de mise à jour justifie une donnée dynamique ;
-- branche PRATIQUER : étudier services existants de parcs, données/licences/partenariats avant toute base propre ;
-- contributions de vraies personnes et vidéos du fondateur possibles plus tard avec attribution/qualification correcte.
-
-### Technique / SEO
-
-- favicon/icon/OG image ;
-- 404 dédiée ;
-- manifest si utile ;
-- audit headings/alt/clavier/contrastes/mobile ;
-- données structurées seulement lorsqu'elles correspondent réellement au contenu ;
-- Search Console et domaine final plus tard ;
-- lors du domaine final : mettre à jour `metadataBase`, canonicals, sitemap, robots, Open Graph et migration/redirects.
-
-### Branches
-
-Branches encore présentes :
-- `docs/ai-start-here` ;
-- `docs/ai-start-here-2` ;
-- `tmp-pdf-storage` ;
-- `tmp-pdf-storage-copy` ;
-- `tmp-pdf-storage-copy2` ;
-- `main`.
-
-Les deux branches `docs/ai-start-here*` ne sont plus une source de vérité ; `AI_START_HERE.md` est désormais sur `main`. Les branches `tmp-pdf-storage*` sont du rangement temporaire historique. Elles peuvent être nettoyées plus tard si un outil de suppression de branche est disponible, mais ne constituent pas un blocage produit.
-
-Issues ouvertes au moment du contrôle : aucune.
-PR ouverte au moment du contrôle : aucune (PR #1 fermée pendant la passation).
-
-## DÉCISIONS À PRÉSERVER
-
-- **Utile → honnête → humain.**
-- Capacité avant apparence.
-- SEO comme acquisition importante, mais people-first et sans usine à pages.
-- Le visiteur part de son désir/situation, pas de notre taxonomie.
-- Micro-progrès visibles avant le résultat final.
-- Complexité derrière l'interface.
-- Pas de faux expert/personnalité/communauté/test.
-- Pas de vente forcée ; zéro produit peut être la bonne recommandation.
-- Pas de dépendance TikTok/Reels pour faire fonctionner l'acquisition.
-- Minimum de travail humain récurrent : automatiser ce qui peut l'être sans sacrifier qualité/fiabilité.
-- Idées spontanées du fondateur = signaux à évaluer.
-- Préserver l'existant utile.
-- Visuel complexe = vraie référence avant stylisation.
-- Santé = information générale, jamais diagnostic/traitement.
-
-## LIMITATIONS / INCERTITUDES
-
-- La littérature scientifique spécifique à plusieurs skills de callisthénie, notamment muscle-up, reste limitée et porte souvent sur de petits échantillons : garder une formulation prudente.
-- Les signaux Reddit/forums sont qualitatifs et non représentatifs statistiquement.
-- Les premières illustrations Calis ne suffisent pas encore à créer une identité visuelle riche à l'échelle du site.
-- Le site est actuellement sur une URL GitHub Pages de test, donc les décisions SEO de domaine final restent à faire.
-- `CAHIER_DES_CHARGES.md` et certaines sections historiques de `MASTER_PLAN.md` mentionnent Cloudflare comme cible ; cela ne décrit pas l'hébergement actuel. La règle de priorité documentaire dans `AI_START_HERE.md` évite l'ambiguïté sans effacer l'historique utile.
-- `USER_NEEDS_HEALTH_RESEARCH.md` et `RECHERCHE_BESOINS_DESIRS_SANTE.md` se chevauchent volontairement désormais avec rôles distincts : journal détaillé vs synthèse canonique.
-
-## PROCHAINE ÉTAPE RECOMMANDÉE
-
-**Après vérification d'une CI finale verte : inspecter le site publié et lancer un sprint visuel/pédagogique, pas une nouvelle refonte d'architecture.**
-
-Le meilleur prochain lot est :
-- contrôle réel accueil/commencer/mobile ;
-- 2 à 4 illustrations pédagogiques fiables sur les pages prioritaires ;
-- correction du maillage/UX observé pendant ce contrôle ;
-- puis reprise de la densification du graphe.
-
-## À NE PAS REFAIRE
-
-- Ne pas repartir de zéro.
-- Ne pas transformer Calis en blog chronologique.
-- Ne pas remettre une taxonomie complexe au premier écran.
-- Ne pas supprimer du contenu utile sous prétexte de simplification.
-- Ne pas créer des centaines de pages SEO faibles.
-- Ne pas introduire Supabase/Stripe/Cloudflare par anticipation.
-- Ne pas simuler une personne, expertise ou communauté.
-- Ne pas utiliser l'IA générative comme autorité biomécanique d'une séquence complexe.
-- Ne pas afficher des seuils/timelines de coaching comme normes scientifiques universelles.
-- Ne pas bâtir une carte de parcs sans étudier les bases/services/licences existants.
-
-## CONTRÔLE DE PASSATION
-
-Avant de déclarer cette passation terminée, vérifier à nouveau :
-- `main` pointe sur le dernier commit de passation ;
-- `AI_START_HERE.md` existe sur `main` ;
-- aucune PR/issue pertinente ouverte n'est oubliée ;
-- sitemap inclut les hubs/routes actuels et `v1Resources` alimente les routes éditoriales ;
-- `Resource.hub` accepte `muscle-up` ;
-- les deux DOI de la page transition muscle-up sont valides et les limites sont explicites ;
-- la dernière CI GitHub Pages de `main` est **completed / success** ;
-- si le site est publié par ce run, l'URL de test répond ensuite sur `https://ludodulac.github.io/Calis/`.
+- Un commit documentaire direct sur `main` a déjà été fait par erreur durant le travail sur le pattern ; l'historique n'a pas été réécrit. Revenir systématiquement au flux branche → PR.
+- Un ancien `noop` accidentel sur `main` a été immédiatement annulé ; ne pas réécrire l'historique pour le masquer.
+- Une première image générative regroupant plusieurs mouvements a été rejetée : elle n'est pas une référence produit et ne doit jamais être intégrée.
