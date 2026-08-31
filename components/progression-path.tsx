@@ -20,7 +20,7 @@ type ProgressionPathProps = {
 export function ProgressionPath({ steps, ariaLabel, milestoneId, className = "", fork }: ProgressionPathProps) {
   return (
     <>
-      <div className={`progressionPath${className ? ` ${className}` : ""}`} aria-label={ariaLabel}>
+      <div className={`progressionPath${className ? ` ${className}` : ""}`} role="group" aria-label={ariaLabel}>
         {steps.map((step, index) => {
           const body = (
             <>
