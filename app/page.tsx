@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import styles from "./home.module.css";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
@@ -26,14 +27,14 @@ export default function HomePage() {
               <Link className="button secondary" href="#objectifs">Je choisis un objectif</Link>
             </div>
           </div>
-          <aside className="manifesto pathExamplePanel">
+          <aside className={`manifesto ${styles.panel}`}>
             <span>Exemple de chemin</span>
             <strong>Tu veux réussir ta première traction.</strong>
-            <div className="pathExample" aria-label="Exemple d'un chemin Calis vers une première traction">
-              <div className="pathExampleStep"><small>Objectif</small><b>Première traction</b></div>
-              <div className="pathExampleStep"><small>Aujourd'hui</small><b>Je tiens à la barre</b></div>
-              <Link className="pathExampleStep" href="/bibliotheque/rowing-incline"><small>Maintenant</small><b>Rowing incliné</b></Link>
-              <Link className="pathExampleStep" href="/bibliotheque/traction-assistee"><small>Ensuite</small><b>Traction assistée</b></Link>
+            <div className={styles.path} aria-label="Exemple d'un chemin Calis vers une première traction">
+              <div className={styles.step}><small>Objectif</small><b>Première traction</b></div>
+              <div className={styles.step}><small>Aujourd'hui</small><b>Je tiens à la barre</b></div>
+              <Link className={styles.step} href="/bibliotheque/rowing-incline"><small>Maintenant</small><b>Rowing incliné</b></Link>
+              <Link className={styles.step} href="/bibliotheque/traction-assistee"><small>Ensuite</small><b>Traction assistée</b></Link>
             </div>
             <Link className="textLink" href="/tractions">Voir le chemin complet →</Link>
           </aside>
