@@ -1,47 +1,43 @@
 # Décision — chemin Handstand — 31 août 2026
 
-## Question
+## Question initiale
 
-Le cluster handstand est-il prêt à devenir le troisième `ProgressionPath` Calis après traction et pompe ?
+Le cluster handstand était-il prêt à devenir le troisième `ProgressionPath` Calis après traction et pompe ?
 
-## État observé
+## Décision initiale
 
-Le hub `/handstand` présente déjà une séquence éditoriale utile :
+**Non, pas dans son état initial.**
 
-`préparer → inverser → contrôler → équilibrer`
+Le hub `/handstand` présentait déjà une séquence éditoriale utile, mais le modèle canonique ne possédait pas de ressource distincte pour la phase `équilibrer / premières corrections libres`. `handstand-debutant` décrivait tout le parcours et `parallettes-handstand` est un équipement facultatif. Créer un chemin à ce moment-là aurait donc fabriqué une étape ou détourné une ressource existante.
 
-Mais le modèle canonique `lib/content/v1.ts` ne porte pas encore cette séquence comme une progression de ressources distinctes :
+Cette retenue a permis de préserver le principe du pattern : le chemin visible doit révéler le modèle réel, pas inventer un skill tree pour remplir l'interface.
 
-- `poignets-handstand` : préparation des appuis ;
-- `handstand-mur` : travail assisté au mur ;
-- `handstand-debutant` : ressource de progression globale qui englobe déjà appuis, inversion, sortie, mur et premières corrections ;
-- `parallettes-handstand` : équipement facultatif, pas une étape obligatoire.
+## Réévaluation — condition désormais remplie
 
-Il manque donc au moins une ressource canonique distincte pour représenter honnêtement la phase `équilibrer / premières corrections libres` sans réutiliser une page globale comme si elle était une étape précise.
+Une recherche ciblée sur le contrôle de l'équilibre en handstand a confirmé qu'il existe bien un problème pédagogique distinct après le travail au mur : apprendre à gérer de petits déséquilibres sans assistance, notamment via les changements de pression sous les mains et le contrôle du centre de pression.
 
-## Décision
+La revue systématique de McDonald et al. (2025), fondée sur 21 études biomécaniques, rapporte que les gymnastes utilisent fréquemment une stratégie dominante au niveau des poignets pour contrôler l'équilibre ; lorsque cette stratégie ne suffit pas, des stratégies mixtes impliquant épaules, hanches et coudes peuvent apparaître. Ces données ne définissent pas une technique unique pour tous les débutants, mais elles soutiennent la séparation pédagogique entre `travail assisté au mur` et `premiers équilibres libres`.
 
-**Ne pas créer de `handstandProgression` pour l'instant.**
+Source principale :
 
-Créer maintenant un chemin visuel obligerait soit à :
+- McDonald M, Baker JS, Gu Y, Ugbolue UC. *Biomechanical analyses of the handstand: a systematic review*. Frontiers in Sports and Active Living, 2025. DOI 10.3389/fspor.2025.1694648.
 
-1. faire passer `handstand-debutant` pour une étape finale alors qu'elle décrit tout le parcours ;
-2. inventer une étape sans page dédiée ;
-3. transformer `parallettes-handstand` en passage obligé alors que le matériel est explicitement facultatif.
+## Décision actuelle
 
-Ces trois options contredisent le principe du pattern : le chemin visible doit révéler le modèle réel, pas fabriquer un graphe pour remplir l'interface.
+**Créer le troisième `ProgressionPath` est maintenant justifié**, parce que la condition qui manquait a été remplie par une vraie ressource dédiée :
 
-## Travail préalable nécessaire
+`poignets-handstand → handstand-mur → premiers-equilibres-handstand`
 
-Avant de reconsidérer le chemin handstand :
+Le nouveau nœud `premiers-equilibres-handstand` ne fixe aucun nombre universel de secondes. Il vise seulement à rendre explicite le passage entre une position assistée et de courts instants sans aide où l'utilisateur peut commencer à sentir un déséquilibre, tenter une petite correction et sortir volontairement.
 
-1. clarifier les relations `next` des ressources handstand ;
-2. décider si une ressource dédiée aux premières corrections / premiers équilibres libres apporte une vraie valeur pédagogique ;
-3. vérifier cette ressource contre les sources biomécaniques déjà utilisées par `handstand-debutant` et les règles de sécurité du projet ;
-4. seulement ensuite ajouter une progression canonique et la rendre avec `ProgressionPath`.
+## Ce qui reste hors du chemin principal
 
-## Conséquence produit
+- `handstand-debutant` reste la ressource d'orientation globale ;
+- `parallettes-handstand` reste un choix matériel facultatif ;
+- aucune durée universelle n'est utilisée comme examen ;
+- aucun statut `débloqué`, `terminé` ou pourcentage n'est simulé ;
+- aucun visuel technique de handstand n'est produit sans référence biomécanique suffisamment contrainte.
 
-Le hub handstand actuel reste préférable à un faux skill tree : il part des problèmes humains (`poignets`, `peur de tomber`, `mur`) et présente une direction générale sans prétendre que le modèle est plus précis qu'il ne l'est.
+## Règle à préserver
 
-Le prochain lot utile peut donc revenir à une étape déjà exposée dans un chemin canonique : **le contrôle scapulaire de la traction**, dont le visuel existant doit encore être revalidé avec une référence moderne.
+Cette évolution ne contredit pas la décision initiale : elle montre au contraire le fonctionnement attendu de Calis. **On ne dessine pas d'abord un chemin pour ensuite chercher du contenu qui le justifie. On crée le maillon pédagogique réel, on le valide, puis le chemin peut enfin l'afficher.**

@@ -24,9 +24,10 @@ export const v1Resources: Resource[] = [
   { slug: "pompes-inclinees", title: "Pompes inclinées : régler la difficulté", summary: "Utiliser la hauteur d'un support stable pour construire une vraie poussée et progresser graduellement vers le sol.", level: "zero", kind: "exercise", capability: "pousser", hub: "pompes", equipment: ["support"] },
   { slug: "dips-debutant", title: "Premiers dips", summary: "Construire stabilité et force de poussée avant les dips complets.", level: "beginner", kind: "progression", capability: "pousser", hub: "dips", equipment: ["barres-paralleles"] },
   { slug: "dips-technique", title: "Dips : technique et erreurs fréquentes", summary: "Comprendre amplitude, trajectoire et contrôle des épaules.", level: "beginner", kind: "exercise", capability: "pousser", hub: "dips", equipment: ["barres-paralleles"] },
-  { slug: "handstand-debutant", title: "Commencer le handstand", summary: "Construire appuis, ligne et sécurité avant de chercher l'équilibre libre.", level: "beginner", kind: "progression", capability: "equilibre", hub: "handstand", equipment: ["mur-facultatif"] },
-  { slug: "handstand-mur", title: "Handstand au mur", summary: "Utiliser le mur pour apprendre l'alignement sans dépendre de l'élan.", level: "beginner", kind: "exercise", capability: "equilibre", hub: "handstand", equipment: ["mur"] },
-  { slug: "poignets-handstand", title: "Préparer ses poignets au handstand", summary: "Mobilité, charge progressive et repères de tolérance avant les appuis prolongés.", level: "beginner", kind: "guide", capability: "mouvement", hub: "handstand", equipment: [] },
+  { slug: "handstand-debutant", title: "Commencer le handstand", summary: "Construire appuis, ligne et sécurité avant de chercher l'équilibre libre.", level: "beginner", kind: "progression", capability: "equilibre", hub: "handstand", equipment: ["mur-facultatif"], next: ["poignets-handstand", "handstand-mur"] },
+  { slug: "handstand-mur", title: "Handstand au mur", summary: "Utiliser le mur pour apprendre l'alignement sans dépendre de l'élan.", level: "beginner", kind: "exercise", capability: "equilibre", hub: "handstand", equipment: ["mur"], next: ["premiers-equilibres-handstand"] },
+  { slug: "poignets-handstand", title: "Préparer ses poignets au handstand", summary: "Mobilité, charge progressive et repères de tolérance avant les appuis prolongés.", level: "beginner", kind: "guide", capability: "mouvement", hub: "handstand", equipment: [], next: ["handstand-mur"] },
+  { slug: "premiers-equilibres-handstand", title: "Premiers équilibres libres en handstand", summary: "Réduire progressivement l'aide du mur et apprendre à utiliser la pression des mains pour corriger de petits déséquilibres.", level: "beginner", kind: "progression", capability: "equilibre", hub: "handstand", equipment: ["mur-facultatif"] },
   { slug: "parallettes-handstand", title: "Parallettes pour le handstand : utiles ou non ?", summary: "Comprendre quand les parallettes changent réellement le confort ou la progression.", level: "beginner", kind: "equipment", capability: "equilibre", hub: "handstand", equipment: ["parallettes-facultatives"] }
 ];
 
@@ -44,4 +45,10 @@ export const pushUpProgression: ProgressionStep[] = [
   { id: "incline", label: "Pompes inclinées", resourceSlug: "pompes-inclinees", criterion: "Trouver une hauteur où la descente et la remontée restent contrôlées." },
   { id: "first-pushup", label: "Première pompe", resourceSlug: "premiere-pompe", criterion: "Réaliser une répétition au sol contrôlée et reproductible." },
   { id: "pushup-technique", label: "Pompe stable", resourceSlug: "pompe-technique", criterion: "Garder des repères comparables sur plusieurs répétitions avant de chercher plus difficile." }
+];
+
+export const handstandProgression: ProgressionStep[] = [
+  { id: "wrists", label: "Préparer les appuis", resourceSlug: "poignets-handstand", criterion: "Tolérer progressivement la charge sur les mains sans douleur vive ni réaction inhabituelle." },
+  { id: "wall", label: "Handstand au mur", resourceSlug: "handstand-mur", criterion: "Entrer, rester calme, réduire le contact avec le mur et sortir volontairement." },
+  { id: "free-balance", label: "Premiers équilibres", resourceSlug: "premiers-equilibres-handstand", criterion: "Créer de courts instants sans aide où les mains commencent à corriger de petits déséquilibres." }
 ];
