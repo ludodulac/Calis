@@ -17,7 +17,7 @@ const situations = [
 
 export default function MuscleUpPage() {
   return (
-    <main>
+    <>
       <section className="hero"><div className="shell heroGrid"><div>
         <div className="eyebrow">Figure · tirer → passer → pousser</div>
         <h1>Tu veux réussir ton premier muscle-up ? Trouve d'abord l'endroit précis où le mouvement se casse.</h1>
@@ -34,6 +34,6 @@ export default function MuscleUpPage() {
       </div></section>
 
       <section className="section sectionSoft"><div className="shell split"><div><div className="eyebrow">Sécurité et progression</div><h2>Ne laisse pas la figure te pousser à ignorer un signal inhabituel.</h2><p>Fatigue, difficulté technique et effort musculaire ne sont pas la même chose qu'une douleur vive, inhabituelle ou persistante. Calis fournit des informations générales d'entraînement et ne remplace pas un avis médical ou l'évaluation d'un professionnel de santé.</p></div><Link className="button secondary" href="/tractions">Revenir aux fondations de tirage</Link></div></section>
-    </main>
+    </>
   );
 }
