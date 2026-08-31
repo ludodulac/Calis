@@ -9,6 +9,8 @@ type CapabilityFilter = "all" | Capability;
 type HubFilter = "all" | Resource["hub"];
 type EquipmentFilter = "all" | "none" | "with";
 
+const INITIAL_PREVIEW_COUNT = 9;
+
 const levels: { value: LevelFilter; label: string }[] = [
   { value: "all", label: "Tous les niveaux" },
   { value: "zero", label: "Je pars de zéro" },
@@ -35,6 +37,7 @@ const hubs: { value: HubFilter; label: string }[] = [
   { value: "pompes", label: "Pompes" },
   { value: "dips", label: "Dips" },
   { value: "handstand", label: "Handstand" },
+  { value: "muscle-up", label: "Muscle-up" },
 ];
 
 const equipmentOptions: { value: EquipmentFilter; label: string }[] = [
@@ -53,6 +56,7 @@ export function LibraryBrowser({ resources }: { resources: Resource[] }) {
   const [capability, setCapability] = useState<CapabilityFilter>("all");
   const [hub, setHub] = useState<HubFilter>("all");
   const [equipment, setEquipment] = useState<EquipmentFilter>("all");
+  const [expanded, setExpanded] = useState(false);
 
   const filtered = useMemo(() => {
     const needle = normalize(query.trim());
@@ -68,7 +72,9 @@ export function LibraryBrowser({ resources }: { resources: Resource[] }) {
   }, [resources, query, level, capability, hub, equipment]);
 
   const hasFilters = Boolean(query) || level !== "all" || capability !== "all" || hub !== "all" || equipment !== "all";
-  const reset = () => { setQuery(""); setLevel("all"); setCapability("all"); setHub("all"); setEquipment("all"); };
+  const showAllResults = expanded || hasFilters || filtered.length <= INITIAL_PREVIEW_COUNT;
+  const visibleResources = showAllResults ? filtered : filtered.slice(0, INITIAL_PREVIEW_COUNT);
+  const reset = () => { setQuery(""); setLevel("all"); setCapability("all"); setHub("all"); setEquipment("all"); setExpanded(false); };
 
   return (
     <div className="libraryBrowser">
@@ -98,7 +104,10 @@ export function LibraryBrowser({ resources }: { resources: Resource[] }) {
         <span><strong>{filtered.length}</strong> {filtered.length > 1 ? "ressources trouvées" : "ressource trouvée"} sur {resources.length}</span>
         {hasFilters && <button type="button" onClick={reset}>Réinitialiser tous les filtres</button>}
       </div>
-      {filtered.length ? <div className="resourceGrid">{filtered.map((resource) => <ResourceCard key={resource.slug} resource={resource} />)}</div> : <div className="emptyState"><strong>Aucune fiche ne correspond encore.</strong><p>Essaie un terme plus large ou enlève un filtre. La bibliothèque continuera à s'enrichir.</p><button type="button" onClick={reset}>Afficher toute la bibliothèque</button></div>}
+      {visibleResources.length ? <>
+        <div className="resourceGrid">{visibleResources.map((resource) => <ResourceCard key={resource.slug} resource={resource} />)}</div>
+        {!showAllResults && <div className="actions"><button className="button secondary" type="button" onClick={() => setExpanded(true)}>Afficher les {filtered.length} fiches</button></div>}
+      </> : <div className="emptyState"><strong>Aucune fiche ne correspond encore.</strong><p>Essaie un terme plus large ou enlève un filtre. La bibliothèque continuera à s'enrichir.</p><button type="button" onClick={reset}>Afficher toute la bibliothèque</button></div>}
     </div>
   );
 }
