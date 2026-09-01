@@ -26,6 +26,18 @@ Principes éditoriaux :
 - signaler clairement les limites et les sujets nécessitant un professionnel qualifié ;
 - citer les sources importantes et distinguer faits, expérience et opinion.
 
+## Boucle produit centrale
+
+Calis ne doit pas seulement savoir répondre à « où est-ce que je bloque ? ». Le fonctionnement central visé est :
+
+**diagnostic → programme → séance → mesure → décision → prochaine étape**.
+
+La phrase produit à protéger est : **« Calis sait où j'en suis et sait quelle est ma prochaine étape. »**
+
+Le graphe de progression décrit les chemins possibles. La couche d'entraînement ajoute le temps : aujourd'hui, cette semaine, ce cycle et depuis la dernière progression. Une progression n'est donc pas un programme : un programme doit dire quoi faire maintenant, avec quel volume, quel repos, quel critère de réussite et quelle adaptation si le résultat réel diffère du scénario prévu.
+
+La récompense n'est pas une monnaie, un badge ou une streak artificielle. La récompense est une capacité réelle devenue plus solide ou nouvellement acquise.
+
 ## Simplicité de l'expérience
 
 La profondeur de Calis doit être dans le système, pas imposée au visiteur. Une personne qui ne connaît ni la callisthénie ni son vocabulaire doit pouvoir comprendre rapidement ce qu'elle peut faire sur le site.
@@ -69,8 +81,11 @@ Fiches structurées d'exercices, figures, capacités, méthodes et connaissances
 ### Graphe de progression
 Chaque capacité peut avoir des prérequis, régressions, progressions et étapes suivantes.
 
+### Entraînement
+Programmes, séances, prescriptions, critères d'adaptation et historique de résultats transforment le graphe en moteur de pratique. La première V1 peut rester locale au navigateur ; les comptes et la synchronisation viennent seulement lorsqu'ils apportent une vraie valeur.
+
 ### Outils
-Tests de niveau, calculateurs, générateurs et suivi de progression pourront être ajoutés progressivement.
+Tests de niveau, calculateurs et diagnostics doivent alimenter la même boucle d'entraînement, pas créer des systèmes parallèles.
 
 ### Équipement
 Guides et comparatifs indépendants, affiliation pertinente et boutique spécialisée. Un guide peut explicitement conclure qu'aucun achat n'est nécessaire.
