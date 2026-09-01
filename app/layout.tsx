@@ -3,6 +3,7 @@ import Link from "next/link";
 import "./globals.css";
 import "./ux-polish.css";
 import "./modal-disclosure.css";
+import "./sport-visual-system.css";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
