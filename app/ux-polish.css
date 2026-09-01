@@ -19,7 +19,7 @@
 }
 
 #contenu-principal:focus { outline: none; }
-#objectifs { scroll-margin-top: 96px; }
+#objectifs { scroll-margin-top: 18px; }
 
 .startChoice { align-items: center; gap: 18px; }
 .startChoice > span:first-child { min-width: 0; }
@@ -27,14 +27,121 @@
 .startChoice small { margin-top:5px;color:var(--muted);font-size:.9rem;font-weight:400;line-height:1.45; }
 .startChoice > span[aria-hidden="true"] { flex:0 0 auto;color:var(--accent);font-size:1.15rem;font-weight:900; }
 
-@media (max-width: 600px) {
-  #objectifs { scroll-margin-top: 18px; }
-  .startChoice { padding: 18px 20px; }
+.mobileStart,
+.mobileAppNav {
+  display: none;
+}
 
-  /* The home page provides its own compact app chrome. Keep the global
-     navigation available everywhere else without showing two nav systems. */
-  body:has(#objectifs) > .siteHeader,
-  body:has(#objectifs) > .siteFooter {
+@media (max-width: 600px) {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    overscroll-behavior: none;
+  }
+
+  .appFrame {
+    width: 100%;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .siteHeader {
+    position: relative;
+    flex: 0 0 auto;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    backdrop-filter: none;
+  }
+
+  .headerInner {
+    min-height: 56px;
+    padding: 0;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .desktopNav {
     display: none;
+  }
+
+  .mobileStart {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    font-size: .85rem;
+    font-weight: 850;
+  }
+
+  .appContent {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .appContent::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobileAppNav {
+    flex: 0 0 auto;
+    min-height: 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    padding: 6px 8px max(6px, env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line);
+    background: color-mix(in srgb, var(--surface) 96%, transparent);
+    backdrop-filter: blur(14px);
+  }
+
+  .mobileAppNav a {
+    min-height: 56px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: var(--muted);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobileAppNav a:active {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  .mobileAppNav span {
+    height: 19px;
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .mobileAppNav b {
+    font-size: .7rem;
+    line-height: 1;
+  }
+
+  .siteFooter {
+    display: none;
+  }
+
+  .startChoice {
+    padding: 18px 20px;
   }
 }

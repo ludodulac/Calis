@@ -11,13 +11,14 @@ export function SiteHeader() {
     <header className="siteHeader">
       <div className="shell headerInner">
         <Link href="/" className="brand" aria-label="Calis - Accueil">CALIS</Link>
-        <nav aria-label="Navigation principale">
+        <nav className="desktopNav" aria-label="Navigation principale">
           <ul className="mainNav">
             {nav.map(([label, href]) => (
               <li key={href}><Link href={href}>{label}</Link></li>
             ))}
           </ul>
         </nav>
+        <Link className="mobileStart" href="/commencer">Je débute</Link>
       </div>
     </header>
   );

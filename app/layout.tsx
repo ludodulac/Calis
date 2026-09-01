@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "./globals.css";
 import "./ux-polish.css";
 import { SiteHeader } from "@/components/site-header";
@@ -31,15 +32,22 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="fr">
       <body>
         <a className="skipLink" href="#contenu-principal">Aller au contenu principal</a>
-        <SiteHeader />
-        <main id="contenu-principal" tabIndex={-1}>{children}</main>
-        <footer className="siteFooter">
-          <div className="shell footerInner">
-            <strong>Calis</strong>
-            <span>Comprendre → essayer → ressentir → maîtriser → progresser.</span>
-            <small>Calis propose des informations générales sur l'activité physique et l'apprentissage des mouvements. Le site ne remplace pas un avis, un diagnostic ou une prise en charge par un professionnel de santé qualifié.</small>
-          </div>
-        </footer>
+        <div className="appFrame">
+          <SiteHeader />
+          <main id="contenu-principal" className="appContent" tabIndex={-1}>{children}</main>
+          <nav className="mobileAppNav" aria-label="Navigation principale mobile">
+            <Link href="/"><span aria-hidden="true">●</span><b>Accueil</b></Link>
+            <Link href="/commencer"><span aria-hidden="true">↑</span><b>Parcours</b></Link>
+            <Link href="/bibliotheque"><span aria-hidden="true">▦</span><b>Bibliothèque</b></Link>
+          </nav>
+          <footer className="siteFooter">
+            <div className="shell footerInner">
+              <strong>Calis</strong>
+              <span>Comprendre → essayer → ressentir → maîtriser → progresser.</span>
+              <small>Calis propose des informations générales sur l'activité physique et l'apprentissage des mouvements. Le site ne remplace pas un avis, un diagnostic ou une prise en charge par un professionnel de santé qualifié.</small>
+            </div>
+          </footer>
+        </div>
       </body>
     </html>
   );
