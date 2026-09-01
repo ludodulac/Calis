@@ -38,6 +38,12 @@ Le graphe de progression décrit les chemins possibles. La couche d'entraînemen
 
 La récompense n'est pas une monnaie, un badge ou une streak artificielle. La récompense est une capacité réelle devenue plus solide ou nouvellement acquise.
 
+### Automatisation honnête
+
+Une étape peut exister dans le graphe sans être automatisable. Calis ne doit déclencher automatiquement une progression que lorsque **la prochaine étape est documentée et que le critère nécessaire est réellement observable dans les données stockées**.
+
+Si un réglage déterminant n'est pas mémorisé — par exemple hauteur d'un support, angle d'un rowing, charge précise ou assistance réglée — le moteur ne doit pas faire semblant de connaître ce réglage. Dans ce cas, il peut valider une base, expliquer la limite et laisser la progression manuelle ou la future instrumentation prendre le relais.
+
 ## Frontière de la première V1 stable
 
 La V1 n'a pas besoin de couvrir toute la callisthénie. Elle doit couvrir une petite promesse de manière cohérente et fiable : permettre à un débutant de choisir un objectif, trouver son point de départ, faire ses séances Fondations, enregistrer ses résultats et comprendre sa prochaine étape.
