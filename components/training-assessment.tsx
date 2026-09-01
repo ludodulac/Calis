@@ -57,8 +57,8 @@ export function TrainingAssessmentFlow({ onComplete }: { onComplete: (assessment
         <section className={styles.assessmentQuestion}>
           <h1>À la barre ?</h1>
           <div className={styles.assessmentChoices}>
-            <button type="button" onClick={() => choosePull("hang")}>Je tiens peu</button>
-            <button type="button" onClick={() => choosePull("scapula")}>Je tiens 15–30 s</button>
+            <button type="button" onClick={() => choosePull("hang")}>Je tiens la barre</button>
+            <button type="button" onClick={() => choosePull("scapula")}>Je contrôle mes épaules bras tendus</button>
             <button type="button" onClick={() => choosePull("row")}>Je fais du rowing</button>
             <button type="button" onClick={() => choosePull("pullup")}>Je fais une traction</button>
           </div>
