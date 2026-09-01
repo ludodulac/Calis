@@ -111,7 +111,12 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
     const log: SessionLog = {
       sessionId: session.id,
       completedAt: new Date().toISOString(),
-      exercises: session.exercises.map((exercise) => ({ prescriptionSlug: exercise.resourceSlug, values: values[exercise.resourceSlug].map(Number), completed: true })),
+      exercises: session.exercises.map((exercise) => ({
+        prescriptionSlug: exercise.resourceSlug,
+        prescription: { sets: exercise.sets, min: exercise.min, max: exercise.max, unit: exercise.unit },
+        values: values[exercise.resourceSlug].map(Number),
+        completed: true,
+      })),
     };
     const nextLogs = [...logs, log];
     const nextWeekCount = completedThisWeek + 1;

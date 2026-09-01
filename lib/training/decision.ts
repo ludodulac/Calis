@@ -1,4 +1,4 @@
-import type { SessionLog, TrainingPrescription } from "./types";
+import type { ExerciseLog, SessionLog, TrainingPrescription } from "./types";
 
 export type TrainingDecision = {
   state: "start" | "continue" | "ease" | "progress" | "review";
@@ -6,12 +6,24 @@ export type TrainingDecision = {
   detail: string;
 };
 
-function matchingResults(logs: SessionLog[], slug: string) {
+function samePrescription(exercise: ExerciseLog, prescription: TrainingPrescription) {
+  const snapshot = exercise.prescription;
+  if (!snapshot) return false;
+  return snapshot.sets === prescription.sets
+    && snapshot.min === prescription.min
+    && snapshot.max === prescription.max
+    && snapshot.unit === prescription.unit;
+}
+
+function matchingExercises(logs: SessionLog[], prescription: TrainingPrescription, requireSnapshot: boolean) {
   return logs
     .flatMap((log) => log.exercises)
-    .filter((exercise) => exercise.prescriptionSlug === slug && exercise.completed)
-    .map((exercise) => exercise.values)
-    .filter((values) => values.length > 0);
+    .filter((exercise) => exercise.prescriptionSlug === prescription.resourceSlug && exercise.completed)
+    .filter((exercise) => requireSnapshot ? samePrescription(exercise, prescription) : !exercise.prescription || samePrescription(exercise, prescription));
+}
+
+function resultsFrom(exercises: ExerciseLog[]) {
+  return exercises.map((exercise) => exercise.values).filter((values) => values.length > 0);
 }
 
 function reaches(values: number[], prescription: TrainingPrescription, target: number) {
@@ -33,19 +45,21 @@ function looksStalled(results: number[][], prescription: TrainingPrescription) {
 }
 
 export function getTrainingDecision(logs: SessionLog[], prescription: TrainingPrescription): TrainingDecision {
-  const results = matchingResults(logs, prescription.resourceSlug);
-  const latest = results.at(-1);
+  const compatibleResults = resultsFrom(matchingExercises(logs, prescription, false));
+  const comparableResults = resultsFrom(matchingExercises(logs, prescription, true));
+  const latest = compatibleResults.at(-1);
 
   if (!latest) {
     return { state: "start", label: "À découvrir", detail: "Fais la variante prévue et note simplement tes résultats." };
   }
 
-  const previous = results.at(-2);
-  if (previous && reaches(previous, prescription, prescription.max) && reaches(latest, prescription, prescription.max)) {
+  const comparableLatest = comparableResults.at(-1);
+  const comparablePrevious = comparableResults.at(-2);
+  if (comparableLatest && comparablePrevious && reaches(comparablePrevious, prescription, prescription.max) && reaches(comparableLatest, prescription, prescription.max)) {
     return {
       state: "progress",
       label: "Prêt à progresser",
-      detail: "La borne haute a été atteinte sur deux passages. Si la technique reste propre, augmente légèrement la difficulté.",
+      detail: "La borne haute a été atteinte sur deux passages avec la même prescription. Si la technique reste propre, augmente légèrement la difficulté.",
     };
   }
 
@@ -57,11 +71,11 @@ export function getTrainingDecision(logs: SessionLog[], prescription: TrainingPr
     };
   }
 
-  if (looksStalled(results, prescription)) {
+  if (looksStalled(comparableResults, prescription)) {
     return {
       state: "review",
       label: "À revoir",
-      detail: "Les quatre derniers passages restent proches sans amélioration nette des nombres. Ne rajoute pas automatiquement du volume : vérifie d'abord si la variante est bien réglée et si les répétitions restent propres.",
+      detail: "Les quatre derniers passages avec la même prescription restent proches sans amélioration nette des nombres. Ne rajoute pas automatiquement du volume : vérifie d'abord si la variante est bien réglée et si les répétitions restent propres.",
     };
   }
 
