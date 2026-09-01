@@ -9,7 +9,7 @@ import { adaptFoundationProgram } from "@/lib/training/adapt";
 import { getTrainingDecision, type TrainingDecision } from "@/lib/training/decision";
 import { applyProgressions, getProgressionChange, hasDocumentedProgression } from "@/lib/training/progress";
 import { getTrainingRecalibration } from "@/lib/training/recalibrate";
-import type { SessionLog, TrainingAssessment, TrainingGoal, TrainingProgram } from "@/lib/training/types";
+import type { ExerciseLog, SessionLog, TrainingAssessment, TrainingGoal, TrainingProgram } from "@/lib/training/types";
 import styles from "@/app/aujourdhui/today.module.css";
 
 const LOGS_STORAGE_KEY = "calis.training.v2.logs";
@@ -45,6 +45,27 @@ function isTrainingAssessment(value: unknown): value is TrainingAssessment {
     && typeof candidate.completedAt === "string";
 }
 
+function isExerciseLog(value: unknown): value is ExerciseLog {
+  if (!value || typeof value !== "object") return false;
+  const candidate = value as Partial<ExerciseLog>;
+  return typeof candidate.prescriptionSlug === "string"
+    && Array.isArray(candidate.values)
+    && candidate.values.every((item) => typeof item === "number" && Number.isFinite(item))
+    && typeof candidate.completed === "boolean";
+}
+
+function isSessionLogs(value: unknown): value is SessionLog[] {
+  if (!Array.isArray(value)) return false;
+  return value.every((item) => {
+    if (!item || typeof item !== "object") return false;
+    const candidate = item as Partial<SessionLog>;
+    return typeof candidate.sessionId === "string"
+      && typeof candidate.completedAt === "string"
+      && Array.isArray(candidate.exercises)
+      && candidate.exercises.every(isExerciseLog);
+  });
+}
+
 function readStoredJson<T>(key: string, validate: (value: unknown) => value is T): T | null {
   const raw = window.localStorage.getItem(key);
   if (!raw) return null;
@@ -78,7 +99,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const storedLogs = readStoredJson<SessionLog[]>(LOGS_STORAGE_KEY, Array.isArray);
+    const storedLogs = readStoredJson<SessionLog[]>(LOGS_STORAGE_KEY, isSessionLogs);
     const storedAssessment = readStoredJson<TrainingAssessment>(ASSESSMENT_STORAGE_KEY, isTrainingAssessment);
     const storedGoal = window.localStorage.getItem(GOAL_STORAGE_KEY);
     const requestedGoal = goalFromUrl(new URLSearchParams(window.location.search).get("goal"));
