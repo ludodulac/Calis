@@ -141,24 +141,26 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
 
   if (weekComplete && !summary) {
     return (
-      <div className={styles.weekDoneScreen}>
-        <header className={styles.weekDoneHeader}>
+      <div className={styles.assessmentScreen}>
+        <div className={styles.assessmentTop}>
           <span>Cette semaine</span>
-          <strong>{completedThisWeek}/{activeProgram.frequencyPerWeek}</strong>
-        </header>
-        <div className={styles.weekDoneMain}>
-          <h1>Aujourd'hui : repos</h1>
-          <p>Les séances prévues sont faites.</p>
+          <div className={styles.weekCount} aria-label={`${completedThisWeek} séances terminées sur ${activeProgram.frequencyPerWeek}`}>
+            {completedThisWeek}/{activeProgram.frequencyPerWeek}
+          </div>
         </div>
-        <div className={styles.weekDoneActions}>
+        <section className={styles.assessmentQuestion}>
+          <h1>Aujourd'hui : repos</h1>
+          <div className={styles.detailPanel}><p>Les séances prévues sont faites.</p></div>
+        </section>
+        <footer className={styles.sessionFooter}>
           <InfoDialog label="Pourquoi du repos ?" title="Cette semaine" icon="info">
             <div className={styles.detailPanel}>
               <p>Le programme actuel prévoit {activeProgram.frequencyPerWeek} séances par semaine. Calis ne rajoute pas automatiquement du volume une fois ce plan terminé.</p>
               <button className={styles.resetButton} type="button" onClick={resetAssessment}>Refaire mon point de départ</button>
             </div>
           </InfoDialog>
-          <Link className={styles.libraryButton} href="/bibliotheque">Bibliothèque</Link>
-        </div>
+          <Link className="button primary" href="/bibliotheque">Bibliothèque</Link>
+        </footer>
       </div>
     );
   }
