@@ -89,6 +89,31 @@
   font-weight: 750;
 }
 
+.exerciseActions {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.decisionBadge {
+  max-width: 110px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: .66rem !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.start { opacity: .68; }
+.continue { border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+.ease { border-style: dashed; }
+.progress { background: var(--accent-soft); color: var(--accent) !important; border-color: transparent; }
+
 .setInputs {
   margin-top: 12px;
   display: grid;
@@ -143,6 +168,11 @@
   font: inherit;
   font-weight: 900;
   cursor: pointer;
+}
+
+.finishButton:disabled {
+  cursor: default;
+  opacity: .48;
 }
 
 .detailPanel {
@@ -204,6 +234,12 @@
     font-size: .98rem;
   }
 
+  .decisionBadge {
+    max-width: 92px;
+    padding: 5px 7px;
+    font-size: .6rem !important;
+  }
+
   .setInputs {
     margin-top: 7px;
     gap: 6px;
@@ -243,6 +279,11 @@
 
   .exerciseRow {
     padding: 8px 10px;
+  }
+
+  .decisionBadge {
+    max-width: 82px;
+    font-size: .56rem !important;
   }
 
   .setInputs {
