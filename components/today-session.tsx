@@ -8,6 +8,7 @@ import { TrainingHistory } from "@/components/training-history";
 import { adaptFoundationProgram } from "@/lib/training/adapt";
 import { getTrainingDecision, type TrainingDecision } from "@/lib/training/decision";
 import { applyProgressions, getProgressionChange } from "@/lib/training/progress";
+import { getTrainingRecalibration } from "@/lib/training/recalibrate";
 import type { SessionLog, TrainingAssessment, TrainingGoal, TrainingProgram } from "@/lib/training/types";
 import styles from "@/app/aujourdhui/today.module.css";
 
@@ -92,6 +93,11 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
   function saveAssessment(nextAssessment: TrainingAssessment) {
     setAssessment(nextAssessment);
     window.localStorage.setItem(ASSESSMENT_STORAGE_KEY, JSON.stringify(nextAssessment));
+  }
+
+  function applyRecalibration(nextAssessment: TrainingAssessment) {
+    saveAssessment({ ...nextAssessment, completedAt: new Date().toISOString() });
+    setSummary(null);
   }
 
   function resetAssessment() {
@@ -179,6 +185,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
       <div className={styles.exerciseList}>
         {session.exercises.map((exercise) => {
           const decision = getTrainingDecision(logs, exercise);
+          const recalibration = decision.state === "review" ? getTrainingRecalibration(assessment, exercise) : null;
           return (
             <article className={styles.exerciseRow} key={exercise.resourceSlug}>
               <div className={styles.exerciseTopline}>
@@ -191,6 +198,12 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
                       <p>{exercise.effortCue}</p>
                       <p><strong>Repos :</strong> {exercise.restSeconds} s</p>
                       <p><strong>Ensuite :</strong> {exercise.progressionCue}</p>
+                      {recalibration && (
+                        <>
+                          <p><strong>Recalibrage proposé :</strong> {recalibration.detail}</p>
+                          <button className={styles.resetButton} type="button" onClick={() => applyRecalibration(recalibration.assessment)}>{recalibration.label}</button>
+                        </>
+                      )}
                       <Link href={`/bibliotheque/${exercise.resourceSlug}`}>Voir le mouvement →</Link>
                     </div>
                   </InfoDialog>
