@@ -45,12 +45,25 @@ et comprendre à chaque étape ce qu’elle doit faire maintenant.
 
 Le test n’est pas seulement « est-ce que le code fonctionne ? », mais « est-ce que la personne sait quoi faire sans aide ? ». Pendant l’audit, toute réaction plausible du type « pourquoi ? », « je clique où ? », « combien ? », « c’est quoi ? » ou « maintenant quoi ? » est un signal à traiter.
 
+## Règle de vérité des progressions
+
+Une progression automatique exige **deux conditions simultanées** :
+
+1. la prochaine étape est documentée ;
+2. le critère qui la déclenche est observable dans les données réellement stockées par Calis.
+
+La V1 ne mémorise pas la hauteur d’un support de pompe inclinée ni l’angle d’un rowing. Elle ne doit donc pas utiliser ces réglages invisibles pour déclencher automatiquement `pompes inclinées → pompes au sol` ou `rowing incliné → traction assistée`.
+
+Les progressions automatiques conservées dans la V1 sont celles dont le critère est suffisamment représenté par la prescription stockée : `suspension → contrôle scapulaire` et `contrôle scapulaire → rowing incliné`.
+
+Quand une borne haute est reproductible sans progression automatique fiable, l’état peut devenir **Base validée** au lieu de promettre une étape suivante fictive.
+
 ## Checklist de stabilisation V1
 
 1. **Parcours utilisateur réel** — tester le scénario complet, les retours, fermetures/réouvertures, changement d’objectif, repos, historique, progression et recalibrage.
-2. **Résilience locale** — vérifier ancien ou mauvais `localStorage`, données manquantes, rechargements et comportement sans compte.
+2. **Résilience locale** — vérifier ancien ou mauvais `localStorage`, données manquantes, rechargements et comportement sans compte. Une clé corrompue ne doit pas bloquer les autres données valides.
 3. **Vérité pédagogique** — auditer transversalement toutes les prescriptions Fondations : séries, répétitions/durée, repos, fréquence, critères de passage, régressions, consignes d’arrêt et cohérence article ↔ moteur. Il ne faut pas chercher un chiffre universel parfait, mais supprimer toute contradiction interne.
-4. **Décisions honnêtes** — ne jamais afficher `Prêt à progresser` si aucune prochaine étape documentée n’existe. Une borne haute reproductible peut valider une base sans inventer une difficulté suivante.
+4. **Décisions honnêtes** — ne jamais afficher `Prêt à progresser` si aucune prochaine étape documentée et observable n’existe. Une borne haute reproductible peut valider une base sans inventer une difficulté suivante.
 5. **Production** — vérifier GitHub Pages, `basePath`, routes, liens, images, métadonnées/canonicals, erreurs console majeures et affichage mobile réel.
 6. **Légal/commercial minimal** — avant traceurs ou affiliation : préparer mentions nécessaires, confidentialité selon les outils réellement utilisés et disclosure claire des liens commerciaux. Ne pas construire une usine à consentement sans traceurs qui la justifient.
 7. **Mesure produit minimale** — choisir une mesure légère avant l’alimentation intensive du site, sans imposer un backend lourd.
@@ -101,7 +114,7 @@ Le commerce soutient la mission ; il ne doit pas décider du graphe pédagogique
 - Architecture : `désir → objectif → capacité → progression`.
 - Écrans de décision mobiles fixes ; secondaire en modale.
 - Pas de streak, badge artificiel, faux progrès ou preuve sociale simulée.
-- Progressions automatiques explicables et limitées aux transitions documentées.
+- Progressions automatiques explicables, documentées et observables.
 - Plateau = même prescription ; recalibrage = action explicite ; historique conservé.
 - Stockage local-first tant que compte/sync n’apporte pas une vraie valeur.
 - Sessions Fondations compactes : poussée, tirage, squat + une fondation tronc/chaîne postérieure selon la séance.
@@ -113,7 +126,7 @@ Le commerce soutient la mission ; il ne doit pas décider du graphe pédagogique
 - Ne pas élargir la V1 pour « compléter » toute la callisthénie.
 - Ne pas remettre tout le texte à l’écran.
 - Ne pas ajouter de gamification artificielle.
-- Ne pas automatiser des progressions non documentées.
+- Ne pas automatiser des progressions non documentées ou basées sur un réglage non stocké.
 - Ne pas transformer des critères qualitatifs en chiffres arbitraires.
 - Ne pas effacer l’historique local lors d’un recalibrage simple.
 - Ne pas introduire une infrastructure lourde sans besoin réel.
