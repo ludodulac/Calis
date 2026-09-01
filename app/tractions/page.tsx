@@ -11,23 +11,43 @@ export const metadata: Metadata = {
 };
 
 const situations = [
-  ["Je ne sais pas ce qui me bloque", "Prise, épaules, force de tirage, descente ou technique : commence par identifier le maillon qui limite vraiment ta traction.", "/bibliotheque/pourquoi-je-narrive-pas-a-faire-une-traction", "Diagnostiquer mon blocage"],
-  ["Je n'arrive pas encore à me suspendre confortablement", "Commence par apprivoiser la barre, la prise et une suspension calme.", "/bibliotheque/suspension-barre", "Apprendre à se suspendre"],
-  ["Je tiens à la barre, mais je n'arrive pas à monter", "Construis progressivement le tirage au lieu de multiplier les tentatives maximales.", "/bibliotheque/rowing-incline", "Construire ma force de tirage"],
-  ["Je suis presque capable de faire ma première traction", "Utilise assistance et descentes contrôlées pour pratiquer les parties du mouvement qui te manquent encore.", "/bibliotheque/traction-assistee", "Préparer ma première traction"],
-  ["Je fais déjà une ou plusieurs tractions", "Stabilise ta technique puis transforme une répétition isolée en capacité reproductible.", "/bibliotheque/traction-technique", "Améliorer mes tractions"],
+  ["Je ne sais pas", "/bibliotheque/pourquoi-je-narrive-pas-a-faire-une-traction"],
+  ["Je tiens mal à la barre", "/bibliotheque/suspension-barre"],
+  ["Je ne monte pas", "/bibliotheque/rowing-incline"],
+  ["J'y suis presque", "/bibliotheque/traction-assistee"],
+  ["J'en fais déjà", "/bibliotheque/traction-technique"],
 ] as const;
 
 export default function PullUpsPage() {
-  return <>
-    <section className="hero shell"><div className="heroGrid"><div><div className="eyebrow">Tractions · progression débutant</div><h1>Apprendre les tractions : trouve ce qui te bloque et travaille la bonne étape.</h1><p className="lead">Tu n'as pas besoin de savoir faire une traction pour commencer. Pars de ton problème actuel : Calis t'aide à identifier ce qui manque, puis à choisir une difficulté que tu peux réellement travailler.</p><div className="actions"><Link className="button primary" href="/bibliotheque/pourquoi-je-narrive-pas-a-faire-une-traction">Pourquoi je n'y arrive pas ?</Link><Link className="button secondary" href="/bibliotheque/premiere-traction">Construire ma première traction</Link></div></div><div className="manifesto"><span>Réponse rapide</span><strong>Si tu n'arrives pas à faire une traction, ne répète pas seulement des échecs.</strong><p>Identifie d'abord ce qui limite le mouvement : suspension et prise, contrôle des épaules, force de tirage ou contrôle de la descente. Travaille ensuite ce maillon à une difficulté adaptée.</p></div></div></section>
+  return <div className="decisionPage">
+    <section className="decisionIntro shell narrow">
+      <div className="eyebrow">Traction</div>
+      <h1>Où ça bloque ?</h1>
+    </section>
 
-    <section className="section sectionSoft"><div className="shell"><div className="sectionHeading wide"><div className="eyebrow">Où en es-tu aujourd'hui ?</div><h2>Choisis la phrase qui te ressemble le plus.</h2><p>Pas besoin de connaître le nom des exercices ni ton niveau. Ton problème actuel suffit pour entrer dans le parcours.</p></div><div className="cardGrid">{situations.map(([title,text,href,label]) => <Link className="plainCard" href={href} key={title}><h3>{title}</h3><p>{text}</p><span className="textLink">{label} →</span></Link>)}</div></div></section>
+    <section className="decisionChoices shell narrow" aria-label="Choisir ma situation pour les tractions">
+      <div className="decisionGrid decisionGridFive">
+        {situations.map(([title, href]) => <Link className="decisionTile" href={href} key={title}><strong>{title}</strong><span aria-hidden="true">→</span></Link>)}
+      </div>
+    </section>
 
-    <section className="section shell"><div className="sectionHeading wide"><div className="eyebrow">Ton chemin</div><h2>Vois le parcours avant de choisir ta prochaine étape.</h2><p>Ce chemin n'est pas une série d'examens obligatoires. Il rend visible la logique de progression : pars du maillon que tu peux travailler aujourd'hui, puis avance quand le critère de l'étape devient fiable.</p></div><ProgressionPath steps={pullUpProgression} milestoneId="first" ariaLabel="Chemin de la suspension à plusieurs tractions fiables" fork={{ label: "Après plusieurs tractions fiables", links: [{ href: "/bibliotheque/traction-explosive", label: "Gagner en hauteur →" }, { href: "/bibliotheque/tractions-lestees", label: "Gagner en force →" }, { href: "/muscle-up", label: "Préparer le muscle-up →" }] }} /></section>
+    <section className="progressiveSections shell narrow" aria-label="En savoir plus sur le parcours traction">
+      <details>
+        <summary>Voir tout le parcours</summary>
+        <div className="progressivePanel">
+          <ProgressionPath steps={pullUpProgression} milestoneId="first" ariaLabel="Chemin de la suspension à plusieurs tractions fiables" fork={{ label: "Après plusieurs tractions fiables", links: [{ href: "/bibliotheque/traction-explosive", label: "Gagner en hauteur →" }, { href: "/bibliotheque/tractions-lestees", label: "Gagner en force →" }, { href: "/muscle-up", label: "Préparer le muscle-up →" }] }} />
+        </div>
+      </details>
 
-    <section className="section sectionSoft"><div className="shell"><div className="sectionHeading wide"><div className="eyebrow">Questions fréquentes</div><h2>Une question doit t'aider à choisir quoi faire ensuite.</h2></div><div className="cardGrid"><article className="plainCard"><h3>Pourquoi je n'arrive pas à faire une traction ?</h3><p>Deux personnes à zéro traction peuvent être bloquées à des endroits différents. Vérifie d'abord la prise, la suspension, le contrôle des épaules, le tirage et la descente.</p><Link className="textLink" href="/bibliotheque/pourquoi-je-narrive-pas-a-faire-une-traction">Trouver ce qui me bloque →</Link></article><article className="plainCard"><h3>Les tractions négatives sont-elles utiles ?</h3><p>Elles travaillent la descente quand la montée complète n'est pas encore disponible. Leur intérêt dépend de ton niveau de contrôle et de ta fatigue.</p><Link className="textLink" href="/bibliotheque/traction-negative">Apprendre la traction négative →</Link></article><article className="plainCard"><h3>Faut-il une bande élastique ?</h3><p>Non. Elle peut rendre le mouvement complet accessible, mais rowing, aide des pieds et négatives offrent aussi des moyens de régler la difficulté.</p><Link className="textLink" href="/bibliotheque/traction-assistee">Choisir une assistance utile →</Link></article><article className="plainCard"><h3>Combien de tractions faut-il savoir faire ?</h3><p>Il n'existe pas un nombre universel définissant un bon niveau. Après la première répétition, la suite dépend de ton objectif : volume, force, hauteur ou figure.</p><Link className="textLink" href="/bibliotheque/10-tractions">Construire plusieurs tractions →</Link></article></div></div></section>
-
-    <section className="section shell"><div className="sectionHeading wide"><div className="eyebrow">Après le socle</div><h2>La traction devient ensuite un carrefour.</h2><p>Quand ton tirage est solide, tu peux chercher davantage de hauteur, construire plus de force ou préparer des figures plus complexes.</p></div><div className="choiceList"><Link className="choice" href="/bibliotheque/traction-explosive"><span>Développer une traction explosive</span><span>→</span></Link><Link className="choice" href="/bibliotheque/tractions-lestees"><span>Commencer les tractions lestées</span><span>→</span></Link><Link className="choice" href="/bibliotheque"><span>Explorer les autres capacités</span><span>→</span></Link></div></section>
-  </>;
+      <details>
+        <summary>Questions fréquentes</summary>
+        <div className="progressivePanel compactLinks">
+          <Link href="/bibliotheque/pourquoi-je-narrive-pas-a-faire-une-traction">Pourquoi je n'y arrive pas ? <span aria-hidden="true">→</span></Link>
+          <Link href="/bibliotheque/traction-negative">Tractions négatives <span aria-hidden="true">→</span></Link>
+          <Link href="/bibliotheque/traction-assistee">Bande élastique ou assistance <span aria-hidden="true">→</span></Link>
+          <Link href="/bibliotheque/10-tractions">Après la première traction <span aria-hidden="true">→</span></Link>
+        </div>
+      </details>
+    </section>
+  </div>;
 }
