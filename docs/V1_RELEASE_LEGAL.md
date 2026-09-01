@@ -1,6 +1,6 @@
 # Calis — V1 legal / commercial release gate
 
-Dernière mise à jour : 1 septembre 2026.
+Dernière mise à jour : 2 septembre 2026.
 
 Ce document évite deux erreurs opposées : lancer des traceurs ou de l'affiliation sans information adaptée, ou construire une usine juridique disproportionnée alors que la V1 reste locale et sans publicité.
 
@@ -14,6 +14,22 @@ Ce document évite deux erreurs opposées : lancer des traceurs ou de l'affiliat
 - pas de liens d'affiliation actifs dans le moteur d'entraînement.
 
 La page publique `/confidentialite` doit rester alignée avec cet état réel.
+
+## Hébergement GitHub Pages
+
+L'hébergeur technique de la V1 est **GitHub Pages**, service de GitHub.
+
+GitHub indique actuellement que :
+
+- lors de la visite d'un site GitHub Pages, l'adresse IP du visiteur est journalisée et conservée à des fins de sécurité ;
+- GitHub, Inc. publie l'adresse suivante : **88 Colin P. Kelly Jr. St., San Francisco, CA 94107, United States**.
+
+Sources officielles à revérifier avant toute publication juridique définitive :
+
+- https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages
+- https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement
+
+Ce traitement technique de l'hébergeur est distinct du stockage d'entraînement Calis : la V1 ne transmet pas les résultats de séance vers une base Calis et n'ajoute pas d'analytics tiers.
 
 ## Pourquoi il n'y a pas de bannière de consentement dans la V1 actuelle
 
@@ -30,10 +46,9 @@ Ne pas inventer ces données dans le dépôt. Avant la release publique considé
 - adresse ou siège lorsque requis ;
 - moyen de contact public ;
 - informations d'immatriculation / identification lorsqu'elles s'appliquent ;
-- responsable de publication si pertinent ;
-- identification correcte de l'hébergeur et informations requises.
+- responsable de publication si pertinent.
 
-Tant que ces informations ne sont pas fournies, le projet peut préparer la structure mais ne doit pas fabriquer de fausses mentions.
+L'identification technique de l'hébergeur GitHub Pages est désormais documentée séparément ci-dessus. Tant que les informations propres à l'éditeur ne sont pas fournies, le projet peut préparer la structure mais ne doit pas fabriquer de fausses mentions.
 
 ## Affiliation : gate avant activation
 
@@ -70,8 +85,10 @@ Pour le tag V1 stable :
 
 - [x] information de confidentialité alignée avec la V1 locale ;
 - [x] absence actuelle d'analytics/ads tiers vérifiée dans le code ;
+- [x] hébergeur technique GitHub Pages identifié et traitement IP documenté ;
 - [ ] informations réelles de l'éditeur disponibles pour finaliser les mentions légales ;
 - [ ] moyen de contact public décidé ;
+- [ ] test réel sur téléphone validé ;
 - [ ] si affiliation activée avant ou au lancement : disclosure et conditions partenaires vérifiées ;
 - [ ] si analytics activé avant ou au lancement : revue confidentialité/traceurs réalisée avant activation.
 
