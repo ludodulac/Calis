@@ -44,7 +44,11 @@ function looksStalled(results: number[][], prescription: TrainingPrescription) {
   return latest <= Math.max(...scores.slice(0, -1)) && latest <= scores[0];
 }
 
-export function getTrainingDecision(logs: SessionLog[], prescription: TrainingPrescription): TrainingDecision {
+export function getTrainingDecision(
+  logs: SessionLog[],
+  prescription: TrainingPrescription,
+  hasDocumentedProgression = true,
+): TrainingDecision {
   const compatibleResults = resultsFrom(matchingExercises(logs, prescription, false));
   const comparableResults = resultsFrom(matchingExercises(logs, prescription, true));
   const latest = compatibleResults.at(-1);
@@ -56,10 +60,18 @@ export function getTrainingDecision(logs: SessionLog[], prescription: TrainingPr
   const comparableLatest = comparableResults.at(-1);
   const comparablePrevious = comparableResults.at(-2);
   if (comparableLatest && comparablePrevious && reaches(comparablePrevious, prescription, prescription.max) && reaches(comparableLatest, prescription, prescription.max)) {
+    if (hasDocumentedProgression) {
+      return {
+        state: "progress",
+        label: "Prêt à progresser",
+        detail: "La borne haute a été atteinte sur deux passages avec la même prescription. Si la technique reste propre, la prochaine étape documentée peut être utilisée.",
+      };
+    }
+
     return {
-      state: "progress",
-      label: "Prêt à progresser",
-      detail: "La borne haute a été atteinte sur deux passages avec la même prescription. Si la technique reste propre, augmente légèrement la difficulté.",
+      state: "continue",
+      label: "Base validée",
+      detail: "La borne haute a été reproduite sur deux passages avec la même prescription. Cette base est disponible ; Calis n'invente pas une difficulté suivante tant qu'une progression fiable n'est pas documentée.",
     };
   }
 
