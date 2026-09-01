@@ -1,0 +1,255 @@
+.infoIconBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.libraryTitleRow,
+.decisionTitleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.infoIconButton {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+  display: inline-grid;
+  place-items: center;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
+}
+
+.infoIconButton span {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.infoDialog {
+  width: min(680px, calc(100vw - 28px));
+  max-width: 680px;
+  max-height: min(760px, calc(100dvh - 28px));
+  padding: 0;
+  border: 0;
+  border-radius: 24px;
+  background: transparent;
+  overflow: visible;
+}
+
+.infoDialog::backdrop {
+  background: rgba(9, 15, 27, .56);
+  backdrop-filter: blur(4px);
+}
+
+.infoDialogCard {
+  max-height: min(760px, calc(100dvh - 28px));
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, .28);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.infoDialogHeader {
+  flex: 0 0 auto;
+  min-height: 62px;
+  padding: 12px 12px 12px 18px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.infoDialogHeader h2 {
+  margin: 0;
+  font-size: 1.18rem;
+  line-height: 1.1;
+}
+
+.infoDialogClose {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.infoDialogBody {
+  min-height: 0;
+  padding: 16px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modalGrid {
+  padding: 0;
+}
+
+@media (max-width: 600px) {
+  .libraryScreen,
+  .decisionPage {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 14px 14px 12px;
+  }
+
+  .libraryIntro,
+  .decisionIntro {
+    width: 100%;
+    flex: 0 0 auto;
+    margin: 0 0 12px;
+  }
+
+  .libraryTitleRow,
+  .decisionTitleRow {
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .libraryTitleRow > div:first-child,
+  .decisionTitleRow > div:first-child {
+    min-width: 0;
+  }
+
+  .libraryIntro h1,
+  .decisionIntro h1 {
+    font-size: clamp(1.85rem, 8.6vw, 2.35rem);
+    line-height: .98;
+  }
+
+  .infoIconBar {
+    flex: 0 0 auto;
+    gap: 6px;
+  }
+
+  .infoIconButton {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+    border-radius: 12px;
+  }
+
+  .libraryQuickGrid,
+  .decisionChoices {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .libraryQuickGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .libraryQuickTile {
+    min-height: 0;
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .decisionChoices {
+    width: 100%;
+    padding: 0;
+  }
+
+  .decisionGrid {
+    height: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .decisionTile,
+  .decisionGridFive .decisionTile:last-child {
+    min-height: 0;
+    padding: 12px;
+  }
+
+  .decisionGridFive .decisionTile:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .infoDialog {
+    width: calc(100vw - 20px);
+    max-height: calc(100dvh - 20px);
+    margin: auto;
+    border-radius: 20px;
+  }
+
+  .infoDialogCard {
+    max-height: calc(100dvh - 20px);
+    border-radius: 20px;
+  }
+
+  .infoDialogHeader {
+    min-height: 56px;
+    padding: 9px 9px 9px 15px;
+  }
+
+  .infoDialogBody {
+    padding: 12px;
+  }
+
+  .libraryJourneyGrid.modalGrid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-height: 700px) and (max-width: 600px) {
+  .libraryScreen,
+  .decisionPage {
+    padding-top: 10px;
+  }
+
+  .libraryIntro,
+  .decisionIntro {
+    margin-bottom: 8px;
+  }
+
+  .libraryIntro h1,
+  .decisionIntro h1 {
+    font-size: 1.75rem;
+  }
+
+  .infoIconButton {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+    border-radius: 11px;
+  }
+
+  .libraryQuickGrid,
+  .decisionGrid {
+    gap: 6px;
+  }
+
+  .libraryQuickTile,
+  .decisionTile,
+  .decisionGridFive .decisionTile:last-child {
+    padding: 10px;
+  }
+}
