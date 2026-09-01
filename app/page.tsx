@@ -16,73 +16,49 @@ const goals = [
 export default function HomePage() {
   return (
     <>
-      <section className="hero">
-        <div className="shell heroGrid">
-          <div>
-            <div className="eyebrow">Callisthénie · du tout premier exercice aux figures</div>
-            <h1>Qu'est-ce que tu aimerais réussir avec ton corps ?</h1>
-            <p className="lead">Choisis un objectif. Calis te montre par où commencer, quoi essayer maintenant et comment savoir quand tu peux passer à l'étape suivante.</p>
-            <div className="actions">
-              <Link className="button primary" href="/commencer">Je débute</Link>
-              <Link className="button secondary" href="#objectifs">Choisir un objectif</Link>
-            </div>
-          </div>
-          <aside className={`manifesto ${styles.panel}`}>
-            <span>Exemple de chemin</span>
-            <strong>Tu veux réussir ta première traction.</strong>
-            <div className={styles.path} aria-label="Exemple d'un chemin Calis vers une première traction">
-              <div className={styles.step}><small>Objectif</small><b>Première traction</b></div>
-              <div className={styles.step}><small>Aujourd'hui</small><b>Je tiens à la barre</b></div>
-              <Link className={styles.step} href="/bibliotheque/rowing-incline"><small>Maintenant</small><b>Rowing incliné</b></Link>
-              <Link className={styles.step} href="/bibliotheque/traction-assistee"><small>Ensuite</small><b>Traction assistée</b></Link>
-            </div>
-            <Link className="textLink" href="/tractions">Voir le chemin complet →</Link>
-          </aside>
-        </div>
-      </section>
+      <main className={styles.mobileHome}>
+        <header className={styles.homeTopbar}>
+          <strong>CALIS</strong>
+          <Link href="/commencer">Je débute</Link>
+        </header>
 
-      <section className="section sectionSoft" id="objectifs">
-        <div className="shell">
-          <div className="sectionHeading">
-            <h2>Je veux…</h2>
-            <p>Choisis simplement.</p>
+        <section className={styles.goalPicker} id="objectifs" aria-labelledby="goal-title">
+          <div className={styles.goalHeading}>
+            <span>Mon objectif</span>
+            <h1 id="goal-title">Qu'est-ce que tu veux réussir ?</h1>
           </div>
-          <div className="journeyGrid">
+
+          <div className={styles.goalGrid}>
             {goals.map((goal) => {
               const hasImage = "image" in goal;
               return (
-                <Link className={`journeyCard${hasImage ? " journeyCardWithImage" : " journeyCardTextOnly"}`} href={goal.href} key={goal.title} aria-label={`Choisir : ${goal.title}`}>
-                  {hasImage && <img className="journeyCardImage" src={goal.image} alt={goal.alt} />}
+                <Link
+                  className={`${styles.goalCard} ${hasImage ? styles.goalCardImage : styles.goalCardPlain}`}
+                  href={goal.href}
+                  key={goal.title}
+                  aria-label={`Choisir ${goal.title}`}
+                >
+                  {hasImage && <img src={goal.image} alt={goal.alt} />}
                   <strong>{goal.title}</strong>
                 </Link>
               );
             })}
           </div>
+        </section>
+
+        <nav className={styles.mobileNav} aria-label="Navigation principale">
+          <Link className={styles.navActive} href="/" aria-current="page"><span aria-hidden="true">●</span><b>Accueil</b></Link>
+          <Link href="/commencer"><span aria-hidden="true">↑</span><b>Parcours</b></Link>
+          <Link href="/bibliotheque"><span aria-hidden="true">▦</span><b>Bibliothèque</b></Link>
+        </nav>
+      </main>
+
+      <section className={styles.supportingContent} aria-label="Informations complémentaires">
+        <div className="shell narrow">
+          <h2>Tu pars de zéro ?</h2>
+          <p>Calis peut te proposer une première étape adaptée, même si tu ne réussis pas encore une pompe ou une traction.</p>
+          <Link className="button primary" href="/commencer">Commencer</Link>
         </div>
-      </section>
-
-      <section className="section shell narrow">
-        <div className="eyebrow">Tu pars vraiment de zéro ?</div>
-        <h2>C'est prévu.</h2>
-        <p>Ne pas réussir une pompe ou une traction n'est pas un problème. Une bonne première étape doit être assez facile pour que tu puisses réellement l'essayer et apprendre quelque chose.</p>
-        <div className="actions"><Link className="button primary" href="/commencer">Trouver mon premier exercice</Link></div>
-      </section>
-
-      <section className="section sectionSoft">
-        <div className="shell split">
-          <div>
-            <div className="eyebrow">Tu sais déjà ce que tu cherches ?</div>
-            <h2>La bibliothèque rassemble toutes les fiches.</h2>
-            <p>Exercices, technique, progressions et matériel. Elle sert à explorer ; si tu débutes, les parcours ci-dessus sont plus simples.</p>
-          </div>
-          <Link className="button secondary" href="/bibliotheque">Explorer la bibliothèque</Link>
-        </div>
-      </section>
-
-      <section className="section shell narrow">
-        <div className="eyebrow">Santé et sécurité</div>
-        <h2>Calis t'aide à apprendre, pas à poser un diagnostic.</h2>
-        <p>Les informations du site concernent l'apprentissage et l'entraînement général. Une douleur vive, inhabituelle ou persistante mérite d'être prise au sérieux ; Calis ne remplace pas un professionnel de santé qualifié.</p>
       </section>
     </>
   );
