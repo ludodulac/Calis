@@ -3,11 +3,14 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { InfoDialog } from "@/components/info-dialog";
+import { TrainingAssessmentFlow } from "@/components/training-assessment";
+import { adaptFoundationProgram } from "@/lib/training/adapt";
 import { getTrainingDecision } from "@/lib/training/decision";
-import type { SessionLog, TrainingProgram } from "@/lib/training/types";
+import type { SessionLog, TrainingAssessment, TrainingProgram } from "@/lib/training/types";
 import styles from "@/app/aujourdhui/today.module.css";
 
-const STORAGE_KEY = "calis.training.v1.logs";
+const LOGS_STORAGE_KEY = "calis.training.v2.logs";
+const ASSESSMENT_STORAGE_KEY = "calis.training.v2.assessment";
 
 type ValuesState = Record<string, string[]>;
 
@@ -22,12 +25,15 @@ function emptyValues(program: TrainingProgram, sessionIndex: number): ValuesStat
 
 export function TodaySession({ program }: { program: TrainingProgram }) {
   const [logs, setLogs] = useState<SessionLog[]>([]);
+  const [assessment, setAssessment] = useState<TrainingAssessment | null>(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     try {
-      const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (stored) setLogs(JSON.parse(stored) as SessionLog[]);
+      const storedLogs = window.localStorage.getItem(LOGS_STORAGE_KEY);
+      const storedAssessment = window.localStorage.getItem(ASSESSMENT_STORAGE_KEY);
+      if (storedLogs) setLogs(JSON.parse(storedLogs) as SessionLog[]);
+      if (storedAssessment) setAssessment(JSON.parse(storedAssessment) as TrainingAssessment);
     } catch {
       // A broken local cache should never block the session.
     } finally {
@@ -35,13 +41,18 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
     }
   }, []);
 
-  const sessionIndex = logs.length % program.sessions.length;
-  const session = program.sessions[sessionIndex];
+  const activeProgram = useMemo(
+    () => assessment ? adaptFoundationProgram(program, assessment) : program,
+    [assessment, program],
+  );
+
+  const sessionIndex = logs.length % activeProgram.sessions.length;
+  const session = activeProgram.sessions[sessionIndex];
   const [values, setValues] = useState<ValuesState>(() => emptyValues(program, 0));
 
   useEffect(() => {
-    setValues(emptyValues(program, sessionIndex));
-  }, [program, sessionIndex]);
+    setValues(emptyValues(activeProgram, sessionIndex));
+  }, [activeProgram, sessionIndex]);
 
   const completedThisWeek = useMemo(() => {
     const now = new Date();
@@ -56,6 +67,18 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
     values[exercise.resourceSlug]?.length === exercise.sets
     && values[exercise.resourceSlug].every((value) => Number(value) > 0),
   );
+
+  function saveAssessment(nextAssessment: TrainingAssessment) {
+    setAssessment(nextAssessment);
+    window.localStorage.setItem(ASSESSMENT_STORAGE_KEY, JSON.stringify(nextAssessment));
+  }
+
+  function resetAssessment() {
+    setAssessment(null);
+    setLogs([]);
+    window.localStorage.removeItem(ASSESSMENT_STORAGE_KEY);
+    window.localStorage.removeItem(LOGS_STORAGE_KEY);
+  }
 
   function updateValue(slug: string, setIndex: number, value: string) {
     setValues((current) => ({
@@ -79,10 +102,11 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
 
     const nextLogs = [...logs, log];
     setLogs(nextLogs);
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(nextLogs));
+    window.localStorage.setItem(LOGS_STORAGE_KEY, JSON.stringify(nextLogs));
   }
 
   if (!ready) return <div className={styles.loading}>Préparation…</div>;
+  if (!assessment) return <TrainingAssessmentFlow onComplete={saveAssessment} />;
 
   return (
     <div className={styles.sessionScreen}>
@@ -92,7 +116,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
           <h1>{session.label}</h1>
         </div>
         <div className={styles.weekCount} aria-label={`${completedThisWeek} séances terminées cette semaine`}>
-          {completedThisWeek}/{program.frequencyPerWeek}
+          {completedThisWeek}/{activeProgram.frequencyPerWeek}
         </div>
       </header>
 
@@ -142,11 +166,11 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
       </div>
 
       <footer className={styles.sessionFooter}>
-        <InfoDialog label="Comment cette séance progresse" title="Règle de progression" icon="help">
+        <InfoDialog label="Réglages de la séance" title="Ta progression" icon="help">
           <div className={styles.detailPanel}>
-            <p>{program.adaptationRule}</p>
+            <p>{activeProgram.adaptationRule}</p>
             <p>Les décisions visibles utilisent uniquement les résultats saisis. Elles ne remplacent pas ton jugement sur la technique, la douleur ou la fatigue.</p>
-            <p>{program.scopeNote}</p>
+            <button className={styles.resetButton} type="button" onClick={resetAssessment}>Refaire mon point de départ</button>
           </div>
         </InfoDialog>
         <button className={styles.finishButton} type="button" onClick={finishSession} disabled={!complete}>

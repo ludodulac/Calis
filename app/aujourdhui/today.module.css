@@ -1,4 +1,5 @@
-.sessionScreen {
+.sessionScreen,
+.assessmentScreen {
   width: min(100%, 560px);
   min-height: 100%;
   margin: 0 auto;
@@ -12,6 +13,84 @@
   padding: 32px 18px;
   text-align: center;
   color: var(--muted);
+}
+
+.assessmentTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.assessmentTop > span {
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.assessmentDots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.assessmentDots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--line);
+}
+
+.assessmentDots .dotActive {
+  background: var(--accent);
+}
+
+.assessmentQuestion {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.assessmentQuestion h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 9vw, 3.1rem);
+  line-height: .98;
+}
+
+.assessmentChoices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.assessmentChoices button {
+  min-height: 110px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 900;
+  line-height: 1.1;
+  cursor: pointer;
+}
+
+.assessmentBack {
+  align-self: flex-start;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 .sessionHeader {
@@ -189,8 +268,21 @@
   font-weight: 850;
 }
 
+.resetButton {
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-weight: 850;
+  cursor: pointer;
+}
+
 @media (max-width: 600px) {
-  .sessionScreen {
+  .sessionScreen,
+  .assessmentScreen {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
@@ -198,6 +290,25 @@
     padding: 14px 14px 12px;
     gap: 10px;
     overflow: hidden;
+  }
+
+  .assessmentQuestion {
+    gap: 16px;
+  }
+
+  .assessmentQuestion h1 {
+    font-size: clamp(2rem, 10vw, 2.7rem);
+  }
+
+  .assessmentChoices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .assessmentChoices button {
+    min-height: 98px;
+    padding: 13px;
+    border-radius: 16px;
   }
 
   .sessionHeader {
@@ -217,7 +328,7 @@
   .exerciseList {
     flex: 1 1 auto;
     min-height: 0;
-    grid-template-rows: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
     gap: 7px;
   }
 
@@ -261,9 +372,19 @@
 }
 
 @media (max-height: 700px) and (max-width: 600px) {
-  .sessionScreen {
+  .sessionScreen,
+  .assessmentScreen {
     padding-top: 9px;
     gap: 7px;
+  }
+
+  .assessmentQuestion h1 {
+    font-size: 1.9rem;
+  }
+
+  .assessmentChoices button {
+    min-height: 78px;
+    padding: 10px;
   }
 
   .sessionHeader h1 {
