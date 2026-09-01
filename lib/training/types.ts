@@ -40,3 +40,14 @@ export type SessionLog = {
   completedAt: string;
   exercises: ExerciseLog[];
 };
+
+export type PushStartingPoint = "incline" | "floor";
+export type PullStartingPoint = "hang" | "scapula" | "row" | "pullup";
+export type LegsStartingPoint = "short" | "regular";
+
+export type TrainingAssessment = {
+  push: PushStartingPoint;
+  pull: PullStartingPoint;
+  legs: LegsStartingPoint;
+  completedAt: string;
+};
