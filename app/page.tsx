@@ -6,9 +6,9 @@ export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 const goals = [
   { title: "Traction", image: "/goals/traction.webp", alt: "Personne réalisant une traction sur une barre", href: "/tractions" },
-  { title: "Pompes", href: "/pompes" },
-  { title: "Équilibre", href: "/handstand" },
-  { title: "Muscle-up", href: "/muscle-up" },
+  { title: "Pompes", image: "/goals/pompes.webp", alt: "Personne réalisant une pompe au sol", href: "/pompes" },
+  { title: "Équilibre", image: "/goals/handstand.webp", alt: "Personne en équilibre sur les mains", href: "/handstand" },
+  { title: "Muscle-up", image: "/goals/muscle-up.webp", alt: "Personne au-dessus d'une barre après un muscle-up", href: "/muscle-up" },
   { title: "Jambes", href: "/bibliotheque/squat-poids-du-corps" },
   { title: "Mobilité", href: "/bibliotheque/mobilite-debutant" },
 ] as const;
@@ -25,7 +25,7 @@ export default function HomePage() {
         <section className={styles.goalPicker} id="objectifs" aria-labelledby="goal-title">
           <div className={styles.goalHeading}>
             <span>Mon objectif</span>
-            <h1 id="goal-title">Qu'est-ce que tu veux réussir ?</h1>
+            <h1 id="goal-title">Qu'est-ce que tu aimerais réussir avec ton corps ?</h1>
           </div>
 
           <div className={styles.goalGrid}>
