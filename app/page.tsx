@@ -4,11 +4,13 @@ import styles from "./home.module.css";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const goals = [
-  { title: "Traction", image: "/goals/traction.webp", alt: "Personne réalisant une traction sur une barre", href: "/tractions" },
-  { title: "Pompes", image: "/goals/pompes.webp", alt: "Personne réalisant une pompe au sol", href: "/pompes" },
-  { title: "Équilibre", image: "/goals/handstand.webp", alt: "Personne en équilibre sur les mains", href: "/handstand" },
-  { title: "Muscle-up", image: "/goals/muscle-up.webp", alt: "Personne au-dessus d'une barre après un muscle-up", href: "/muscle-up" },
+  { title: "Traction", image: `${basePath}/goals/traction.webp`, alt: "Personne réalisant une traction sur une barre", href: "/tractions" },
+  { title: "Pompes", image: `${basePath}/goals/pompes.webp`, alt: "Personne réalisant une pompe au sol", href: "/pompes" },
+  { title: "Équilibre", image: `${basePath}/goals/handstand.webp`, alt: "Personne en équilibre sur les mains", href: "/handstand" },
+  { title: "Muscle-up", image: `${basePath}/goals/muscle-up.webp`, alt: "Personne au-dessus d'une barre après un muscle-up", href: "/muscle-up" },
   { title: "Jambes", href: "/bibliotheque/squat-poids-du-corps" },
   { title: "Mobilité", href: "/bibliotheque/mobilite-debutant" },
 ] as const;
