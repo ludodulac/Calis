@@ -16,12 +16,7 @@ const goals = [
 export default function HomePage() {
   return (
     <>
-      <main className={styles.mobileHome}>
-        <header className={styles.homeTopbar}>
-          <strong>CALIS</strong>
-          <Link href="/commencer">Je débute</Link>
-        </header>
-
+      <div className={styles.mobileHome}>
         <section className={styles.goalPicker} id="objectifs" aria-labelledby="goal-title">
           <div className={styles.goalHeading}>
             <span>Mon objectif</span>
@@ -45,13 +40,7 @@ export default function HomePage() {
             })}
           </div>
         </section>
-
-        <nav className={styles.mobileNav} aria-label="Navigation principale">
-          <Link className={styles.navActive} href="/" aria-current="page"><span aria-hidden="true">●</span><b>Accueil</b></Link>
-          <Link href="/commencer"><span aria-hidden="true">↑</span><b>Parcours</b></Link>
-          <Link href="/bibliotheque"><span aria-hidden="true">▦</span><b>Bibliothèque</b></Link>
-        </nav>
-      </main>
+      </div>
 
       <section className={styles.supportingContent} aria-label="Informations complémentaires">
         <div className="shell narrow">
