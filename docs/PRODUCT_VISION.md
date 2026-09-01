@@ -46,6 +46,7 @@ Calis doit reprendre l'efficacité ergonomique des meilleures interfaces mobiles
 
 - un écran de décision = une intention principale ;
 - sur un écran de décision, le titre pose la question et les choix portent la réponse ; toute explication non nécessaire à cette décision vient après le choix ou derrière une ouverture volontaire ;
+- les informations secondaires ne doivent pas allonger l'écran de décision : sur mobile, une petite commande dédiée peut les ouvrir dans une couche temporaire au-dessus de l'écran ; si ce contenu est long, c'est cette couche qui défile, pas l'écran principal ;
 - le visuel porte d'abord le sens, le texte court le confirme ;
 - une action = une idée, jamais un paragraphe transformé en bouton ;
 - grandes cibles tactiles et navigation primaire courte, utilisables au pouce ;
