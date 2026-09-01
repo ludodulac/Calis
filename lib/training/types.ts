@@ -44,6 +44,7 @@ export type SessionLog = {
 export type PushStartingPoint = "incline" | "floor";
 export type PullStartingPoint = "hang" | "scapula" | "row" | "pullup";
 export type LegsStartingPoint = "short" | "regular";
+export type TrainingGoal = "general" | "pullup" | "pushup" | "legs";
 
 export type TrainingAssessment = {
   push: PushStartingPoint;
