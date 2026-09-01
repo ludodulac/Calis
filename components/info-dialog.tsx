@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useRef } from "react";
+import { useId, useRef } from "react";
 
 type InfoDialogProps = {
   label: string;
@@ -19,6 +19,7 @@ const icons = {
 
 export function InfoDialog({ label, title, icon, children }: InfoDialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
 
   return (
     <>
@@ -35,14 +36,14 @@ export function InfoDialog({ label, title, icon, children }: InfoDialogProps) {
       <dialog
         className="infoDialog"
         ref={dialogRef}
-        aria-labelledby={`${title.replace(/\s+/g, "-").toLowerCase()}-title`}
+        aria-labelledby={titleId}
         onClick={(event) => {
           if (event.target === event.currentTarget) event.currentTarget.close();
         }}
       >
         <div className="infoDialogCard">
           <header className="infoDialogHeader">
-            <h2 id={`${title.replace(/\s+/g, "-").toLowerCase()}-title`}>{title}</h2>
+            <h2 id={titleId}>{title}</h2>
             <button className="infoDialogClose" type="button" aria-label="Fermer" onClick={() => dialogRef.current?.close()}>×</button>
           </header>
           <div className="infoDialogBody">{children}</div>
