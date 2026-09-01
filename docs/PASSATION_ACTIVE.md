@@ -4,7 +4,7 @@ Dernière mise à jour : **1 septembre 2026**.
 
 ## Source de reprise prioritaire
 
-La passation opérationnelle complète reste consolidée dans **`INTEL.md` à la racine du dépôt**.
+La passation produit complète reste consolidée dans **`INTEL.md` à la racine du dépôt**. Pour l’**état opérationnel récent** des PR et du moteur d’entraînement, le présent fichier prévaut sur les sections historiques de `INTEL.md` qui n’ont pas encore été reconsolidées.
 
 Instruction recommandée dans une nouvelle conversation :
 
