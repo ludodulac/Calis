@@ -9,6 +9,8 @@
   gap: 18px;
 }
 
+.sessionScreen { position: relative; }
+
 .loading {
   padding: 32px 18px;
   text-align: center;
@@ -43,9 +45,7 @@
   background: var(--line);
 }
 
-.assessmentDots .dotActive {
-  background: var(--accent);
-}
+.assessmentDots .dotActive { background: var(--accent); }
 
 .assessmentQuestion {
   flex: 1 1 auto;
@@ -147,14 +147,9 @@
   gap: 12px;
 }
 
-.exerciseTopline > div:first-child {
-  min-width: 0;
-}
-
+.exerciseTopline > div:first-child { min-width: 0; }
 .exerciseTopline strong,
-.exerciseTopline span {
-  display: block;
-}
+.exerciseTopline span { display: block; }
 
 .exerciseTopline strong {
   font-size: 1.05rem;
@@ -254,19 +249,9 @@
   opacity: .48;
 }
 
-.detailPanel {
-  display: grid;
-  gap: 12px;
-}
-
-.detailPanel p {
-  margin: 0;
-  line-height: 1.45;
-}
-
-.detailPanel a {
-  font-weight: 850;
-}
+.detailPanel { display: grid; gap: 12px; }
+.detailPanel p { margin: 0; line-height: 1.45; }
+.detailPanel a { font-weight: 850; }
 
 .resetButton {
   min-height: 46px;
@@ -278,6 +263,73 @@
   font: inherit;
   font-weight: 850;
   cursor: pointer;
+}
+
+.summaryLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  padding: 16px;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+}
+
+.summaryCard {
+  width: min(100%, 430px);
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: 0 18px 60px rgba(0,0,0,.2);
+  display: grid;
+  gap: 14px;
+}
+
+.summaryHeading span {
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.summaryHeading h2 {
+  margin: 4px 0 0;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.summaryList { display: grid; gap: 8px; }
+
+.summaryRow {
+  min-height: 58px;
+  padding: 10px 11px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.summaryRow strong,
+.summaryRow span { display: block; }
+
+.summaryRow > div > span {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 750;
+}
+
+.summaryNext {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  font-size: .88rem;
 }
 
 @media (max-width: 600px) {
@@ -292,38 +344,14 @@
     overflow: hidden;
   }
 
-  .assessmentQuestion {
-    gap: 16px;
-  }
+  .assessmentQuestion { gap: 16px; }
+  .assessmentQuestion h1 { font-size: clamp(2rem, 10vw, 2.7rem); }
+  .assessmentChoices { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .assessmentChoices button { min-height: 98px; padding: 13px; border-radius: 16px; }
 
-  .assessmentQuestion h1 {
-    font-size: clamp(2rem, 10vw, 2.7rem);
-  }
-
-  .assessmentChoices {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-  }
-
-  .assessmentChoices button {
-    min-height: 98px;
-    padding: 13px;
-    border-radius: 16px;
-  }
-
-  .sessionHeader {
-    flex: 0 0 auto;
-  }
-
-  .sessionHeader h1 {
-    font-size: clamp(1.85rem, 8.6vw, 2.25rem);
-  }
-
-  .weekCount {
-    min-width: 42px;
-    min-height: 42px;
-    border-radius: 14px;
-  }
+  .sessionHeader { flex: 0 0 auto; }
+  .sessionHeader h1 { font-size: clamp(1.85rem, 8.6vw, 2.25rem); }
+  .weekCount { min-width: 42px; min-height: 42px; border-radius: 14px; }
 
   .exerciseList {
     flex: 1 1 auto;
@@ -341,81 +369,31 @@
     justify-content: space-between;
   }
 
-  .exerciseTopline strong {
-    font-size: .98rem;
-  }
+  .exerciseTopline strong { font-size: .98rem; }
+  .decisionBadge { max-width: 92px; padding: 5px 7px; font-size: .6rem !important; }
+  .setInputs { margin-top: 7px; gap: 6px; }
+  .setInputs label { min-height: 38px; padding: 4px 7px; border-radius: 11px; }
+  .sessionFooter { flex: 0 0 auto; }
+  .finishButton { min-height: 48px; }
 
-  .decisionBadge {
-    max-width: 92px;
-    padding: 5px 7px;
-    font-size: .6rem !important;
-  }
-
-  .setInputs {
-    margin-top: 7px;
-    gap: 6px;
-  }
-
-  .setInputs label {
-    min-height: 38px;
-    padding: 4px 7px;
-    border-radius: 11px;
-  }
-
-  .sessionFooter {
-    flex: 0 0 auto;
-  }
-
-  .finishButton {
-    min-height: 48px;
-  }
+  .summaryLayer { padding: 10px; }
+  .summaryCard { padding: 14px; border-radius: 19px; gap: 10px; }
+  .summaryHeading h2 { font-size: 1.55rem; }
+  .summaryRow { min-height: 52px; padding: 8px 9px; border-radius: 13px; }
 }
 
 @media (max-height: 700px) and (max-width: 600px) {
   .sessionScreen,
-  .assessmentScreen {
-    padding-top: 9px;
-    gap: 7px;
-  }
-
-  .assessmentQuestion h1 {
-    font-size: 1.9rem;
-  }
-
-  .assessmentChoices button {
-    min-height: 78px;
-    padding: 10px;
-  }
-
-  .sessionHeader h1 {
-    font-size: 1.7rem;
-  }
-
-  .weekCount {
-    min-width: 36px;
-    min-height: 36px;
-    border-radius: 12px;
-    font-size: .85rem;
-  }
-
-  .exerciseRow {
-    padding: 8px 10px;
-  }
-
-  .decisionBadge {
-    max-width: 82px;
-    font-size: .56rem !important;
-  }
-
-  .setInputs {
-    margin-top: 5px;
-  }
-
-  .setInputs label {
-    min-height: 34px;
-  }
-
-  .finishButton {
-    min-height: 44px;
-  }
+  .assessmentScreen { padding-top: 9px; gap: 7px; }
+  .assessmentQuestion h1 { font-size: 1.9rem; }
+  .assessmentChoices button { min-height: 78px; padding: 10px; }
+  .sessionHeader h1 { font-size: 1.7rem; }
+  .weekCount { min-width: 36px; min-height: 36px; border-radius: 12px; font-size: .85rem; }
+  .exerciseRow { padding: 8px 10px; }
+  .decisionBadge { max-width: 82px; font-size: .56rem !important; }
+  .setInputs { margin-top: 5px; }
+  .setInputs label { min-height: 34px; }
+  .finishButton { min-height: 44px; }
+  .summaryCard { gap: 8px; }
+  .summaryRow { min-height: 46px; }
 }
