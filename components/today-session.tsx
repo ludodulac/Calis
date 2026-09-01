@@ -7,9 +7,9 @@ import { TrainingAssessmentFlow } from "@/components/training-assessment";
 import { TrainingHistory } from "@/components/training-history";
 import { adaptFoundationProgram } from "@/lib/training/adapt";
 import { getTrainingDecision, type TrainingDecision } from "@/lib/training/decision";
-import { applyProgressions, getProgressionChange } from "@/lib/training/progress";
+import { applyProgressions, getProgressionChange, hasDocumentedProgression } from "@/lib/training/progress";
 import { getTrainingRecalibration } from "@/lib/training/recalibrate";
-import type { SessionLog, TrainingAssessment, TrainingGoal, TrainingProgram } from "@/lib/training/types";
+import type { ExerciseLog, SessionLog, TrainingAssessment, TrainingGoal, TrainingProgram } from "@/lib/training/types";
 import styles from "@/app/aujourdhui/today.module.css";
 
 const LOGS_STORAGE_KEY = "calis.training.v2.logs";
@@ -36,6 +36,47 @@ function isTrainingGoal(value: string | null): value is TrainingGoal {
   return value === "general" || value === "pullup" || value === "pushup" || value === "legs";
 }
 
+function isTrainingAssessment(value: unknown): value is TrainingAssessment {
+  if (!value || typeof value !== "object") return false;
+  const candidate = value as Partial<TrainingAssessment>;
+  return (candidate.push === "incline" || candidate.push === "floor")
+    && (candidate.pull === "hang" || candidate.pull === "scapula" || candidate.pull === "row" || candidate.pull === "pullup")
+    && (candidate.legs === "short" || candidate.legs === "regular")
+    && typeof candidate.completedAt === "string";
+}
+
+function isExerciseLog(value: unknown): value is ExerciseLog {
+  if (!value || typeof value !== "object") return false;
+  const candidate = value as Partial<ExerciseLog>;
+  return typeof candidate.prescriptionSlug === "string"
+    && Array.isArray(candidate.values)
+    && candidate.values.every((item) => typeof item === "number" && Number.isFinite(item))
+    && typeof candidate.completed === "boolean";
+}
+
+function isSessionLogs(value: unknown): value is SessionLog[] {
+  if (!Array.isArray(value)) return false;
+  return value.every((item) => {
+    if (!item || typeof item !== "object") return false;
+    const candidate = item as Partial<SessionLog>;
+    return typeof candidate.sessionId === "string"
+      && typeof candidate.completedAt === "string"
+      && Array.isArray(candidate.exercises)
+      && candidate.exercises.every(isExerciseLog);
+  });
+}
+
+function readStoredJson<T>(key: string, validate: (value: unknown) => value is T): T | null {
+  const raw = window.localStorage.getItem(key);
+  if (!raw) return null;
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    return validate(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
 function goalFromUrl(value: string | null): TrainingGoal | null {
   if (value === "traction") return "pullup";
   if (value === "pompes") return "pushup";
@@ -58,21 +99,17 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    try {
-      const storedLogs = window.localStorage.getItem(LOGS_STORAGE_KEY);
-      const storedAssessment = window.localStorage.getItem(ASSESSMENT_STORAGE_KEY);
-      const storedGoal = window.localStorage.getItem(GOAL_STORAGE_KEY);
-      const requestedGoal = goalFromUrl(new URLSearchParams(window.location.search).get("goal"));
-      const nextGoal = requestedGoal ?? (isTrainingGoal(storedGoal) ? storedGoal : "general");
-      if (storedLogs) setLogs(JSON.parse(storedLogs) as SessionLog[]);
-      if (storedAssessment) setAssessment(JSON.parse(storedAssessment) as TrainingAssessment);
-      setGoal(nextGoal);
-      if (requestedGoal) window.localStorage.setItem(GOAL_STORAGE_KEY, requestedGoal);
-    } catch {
-      // A broken local cache should never block the session.
-    } finally {
-      setReady(true);
-    }
+    const storedLogs = readStoredJson<SessionLog[]>(LOGS_STORAGE_KEY, isSessionLogs);
+    const storedAssessment = readStoredJson<TrainingAssessment>(ASSESSMENT_STORAGE_KEY, isTrainingAssessment);
+    const storedGoal = window.localStorage.getItem(GOAL_STORAGE_KEY);
+    const requestedGoal = goalFromUrl(new URLSearchParams(window.location.search).get("goal"));
+    const nextGoal = requestedGoal ?? (isTrainingGoal(storedGoal) ? storedGoal : "general");
+
+    if (storedLogs) setLogs(storedLogs);
+    if (storedAssessment) setAssessment(storedAssessment);
+    setGoal(nextGoal);
+    if (requestedGoal) window.localStorage.setItem(GOAL_STORAGE_KEY, requestedGoal);
+    setReady(true);
   }, []);
 
   const assessedProgram = useMemo(() => assessment ? adaptFoundationProgram(program, assessment, goal) : program, [assessment, goal, program]);
@@ -133,7 +170,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
       return {
         label: exercise.label,
         values: values[exercise.resourceSlug].join(" / ") + (exercise.unit === "seconds" ? " s" : ""),
-        decision: getTrainingDecision(nextLogs, exercise),
+        decision: getTrainingDecision(nextLogs, exercise, hasDocumentedProgression(exercise)),
         nextLabel: progression?.to.label,
       };
     });
@@ -184,7 +221,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
 
       <div className={styles.exerciseList}>
         {session.exercises.map((exercise) => {
-          const decision = getTrainingDecision(logs, exercise);
+          const decision = getTrainingDecision(logs, exercise, hasDocumentedProgression(exercise));
           const recalibration = decision.state === "review" ? getTrainingRecalibration(assessment, exercise) : null;
           return (
             <article className={styles.exerciseRow} key={exercise.resourceSlug}>

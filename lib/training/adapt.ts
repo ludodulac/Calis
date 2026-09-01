@@ -11,7 +11,7 @@ function pushPrescription(assessment: TrainingAssessment): TrainingPrescription 
       unit: "reps",
       restSeconds: 120,
       effortCue: "Arrête la série avant que le tronc ou les épaules ne perdent clairement leur position.",
-      progressionCue: "Quand 2 × 8 reste propre sur deux séances, augmente progressivement les répétitions ou la difficulté.",
+      progressionCue: "Quand 2 × 8 reste propre sur deux séances, considère cette base comme validée. Cette V1 ne change pas automatiquement le volume ou la difficulté au-delà de ce repère.",
     };
   }
 
@@ -23,8 +23,8 @@ function pushPrescription(assessment: TrainingAssessment): TrainingPrescription 
     max: 12,
     unit: "reps",
     restSeconds: 120,
-    effortCue: "Choisis une hauteur qui laisse la dernière répétition contrôlée.",
-    progressionCue: "Quand 2 × 12 est propre sur deux séances, baisse légèrement le support.",
+    effortCue: "Choisis une hauteur qui laisse la dernière répétition contrôlée et garde ce réglage comparable d'une séance à l'autre.",
+    progressionCue: "Quand 2 × 12 est propre sur deux séances avec le même support, considère cette base comme validée. Calis n'abaisse pas automatiquement le support tant qu'il ne mémorise pas ce réglage.",
   };
 }
 
@@ -39,7 +39,7 @@ function pullPrescription(assessment: TrainingAssessment): TrainingPrescription 
       unit: "reps",
       restSeconds: 150,
       effortCue: "Garde des répétitions propres et évite de transformer chaque série en test maximal.",
-      progressionCue: "Quand 3 × 3 devient reproductible, construis progressivement plus de volume.",
+      progressionCue: "Quand 3 × 3 devient reproductible, considère cette base comme validée. Cette V1 ne construit pas encore automatiquement le volume au-delà de ce repère.",
     };
   }
 
@@ -52,8 +52,8 @@ function pullPrescription(assessment: TrainingAssessment): TrainingPrescription 
       max: 12,
       unit: "reps",
       restSeconds: 120,
-      effortCue: "Termine la série avant que l'amplitude se raccourcisse nettement.",
-      progressionCue: "Quand 2 × 12 est propre sur deux séances, rends l'angle légèrement plus difficile.",
+      effortCue: "Termine la série avant que l'amplitude se raccourcisse nettement et garde un angle comparable d'une séance à l'autre.",
+      progressionCue: "Quand 2 × 12 est propre sur deux séances au même angle, considère cette base comme validée. Calis ne rend pas automatiquement l'angle plus difficile tant qu'il ne mémorise pas ce réglage.",
     };
   }
 
@@ -67,7 +67,7 @@ function pullPrescription(assessment: TrainingAssessment): TrainingPrescription 
       unit: "reps",
       restSeconds: 90,
       effortCue: "Le mouvement vient des omoplates, sans transformer l'exercice en petite traction.",
-      progressionCue: "Quand 2 × 10 est propre et calme, introduis davantage de rowing.",
+      progressionCue: "Quand 2 × 10 est propre et calme sur deux passages comparables, passe au rowing incliné.",
     };
   }
 
@@ -80,7 +80,7 @@ function pullPrescription(assessment: TrainingAssessment): TrainingPrescription 
     unit: "seconds",
     restSeconds: 90,
     effortCue: "Arrête avant que la prise ou les épaules ne se désorganisent.",
-    progressionCue: "Quand 2 × 30 s est confortable et reproductible, passe au contrôle scapulaire.",
+    progressionCue: "Quand 2 × 30 s est confortable et reproductible sur deux passages comparables, passe au contrôle scapulaire.",
   };
 }
 
@@ -93,8 +93,8 @@ function legsPrescription(assessment: TrainingAssessment): TrainingPrescription 
     max: assessment.legs === "short" ? 8 : 12,
     unit: "reps",
     restSeconds: 90,
-    effortCue: "Utilise une amplitude que tu contrôles sans forcer une position douloureuse.",
-    progressionCue: "Quand la borne haute est stable sur deux séances, augmente progressivement l'amplitude ou la difficulté.",
+    effortCue: "Utilise une amplitude que tu contrôles sans forcer une position douloureuse et garde-la comparable d'une séance à l'autre.",
+    progressionCue: "Quand la borne haute est stable sur deux séances avec la même amplitude, considère cette base comme validée. Cette V1 n'augmente pas automatiquement l'amplitude ou la difficulté.",
   };
 }
 

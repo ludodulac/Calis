@@ -19,8 +19,8 @@ export const beginnerFoundationProgram: TrainingProgram = {
           max: 12,
           unit: "reps",
           restSeconds: 120,
-          effortCue: "Garde quelques répétitions possibles en réserve : les répétitions doivent rester propres.",
-          progressionCue: "Quand 2 × 12 est propre sur deux séances, rends l'angle légèrement plus difficile.",
+          effortCue: "Garde quelques répétitions possibles en réserve et un angle comparable d'une séance à l'autre.",
+          progressionCue: "Quand 2 × 12 est propre sur deux séances au même angle, considère cette base comme validée. Cette V1 ne change pas automatiquement l'angle.",
         },
         {
           resourceSlug: "pompes-inclinees",
@@ -30,8 +30,8 @@ export const beginnerFoundationProgram: TrainingProgram = {
           max: 12,
           unit: "reps",
           restSeconds: 120,
-          effortCue: "Choisis une hauteur qui laisse la dernière répétition contrôlée.",
-          progressionCue: "Quand 2 × 12 est propre sur deux séances, baisse légèrement le support.",
+          effortCue: "Choisis une hauteur qui laisse la dernière répétition contrôlée et garde ce support comparable d'une séance à l'autre.",
+          progressionCue: "Quand 2 × 12 est propre sur deux séances avec le même support, considère cette base comme validée. Cette V1 n'abaisse pas automatiquement le support.",
         },
         {
           resourceSlug: "squat-poids-du-corps",
@@ -41,8 +41,8 @@ export const beginnerFoundationProgram: TrainingProgram = {
           max: 12,
           unit: "reps",
           restSeconds: 90,
-          effortCue: "Utilise une amplitude que tu contrôles sans forcer une position douloureuse.",
-          progressionCue: "Quand 2 × 12 est facile et stable, augmente progressivement l'amplitude ou la difficulté.",
+          effortCue: "Utilise une amplitude que tu contrôles sans forcer une position douloureuse et garde-la comparable d'une séance à l'autre.",
+          progressionCue: "Quand 2 × 12 est stable sur deux séances avec la même amplitude, considère cette base comme validée. Cette V1 n'augmente pas automatiquement l'amplitude.",
         },
         {
           resourceSlug: "gainage-debutant",
@@ -70,8 +70,8 @@ export const beginnerFoundationProgram: TrainingProgram = {
           max: 12,
           unit: "reps",
           restSeconds: 120,
-          effortCue: "Reste sur une hauteur où le tronc et les épaules gardent la même organisation.",
-          progressionCue: "Quand 2 × 12 est propre sur deux séances, baisse légèrement le support.",
+          effortCue: "Reste sur une hauteur où le tronc et les épaules gardent la même organisation et garde ce support comparable d'une séance à l'autre.",
+          progressionCue: "Quand 2 × 12 est propre sur deux séances avec le même support, considère cette base comme validée. Cette V1 n'abaisse pas automatiquement le support.",
         },
         {
           resourceSlug: "rowing-incline",
@@ -81,8 +81,8 @@ export const beginnerFoundationProgram: TrainingProgram = {
           max: 12,
           unit: "reps",
           restSeconds: 120,
-          effortCue: "Termine la série avant que l'amplitude se raccourcisse nettement.",
-          progressionCue: "Quand 2 × 12 est propre sur deux séances, rends l'angle légèrement plus difficile.",
+          effortCue: "Termine la série avant que l'amplitude se raccourcisse nettement et garde un angle comparable d'une séance à l'autre.",
+          progressionCue: "Quand 2 × 12 est propre sur deux séances au même angle, considère cette base comme validée. Cette V1 ne change pas automatiquement l'angle.",
         },
         {
           resourceSlug: "squat-poids-du-corps",
@@ -93,7 +93,7 @@ export const beginnerFoundationProgram: TrainingProgram = {
           unit: "reps",
           restSeconds: 90,
           effortCue: "Répète la même amplitude avec contrôle plutôt que de chercher plus bas à tout prix.",
-          progressionCue: "Quand 2 × 12 est stable, augmente progressivement l'amplitude ou la difficulté.",
+          progressionCue: "Quand 2 × 12 est stable sur deux séances avec la même amplitude, considère cette base comme validée. Cette V1 n'augmente pas automatiquement l'amplitude.",
         },
         {
           resourceSlug: "pont-fessier-debutant",
@@ -109,6 +109,6 @@ export const beginnerFoundationProgram: TrainingProgram = {
       ],
     },
   ],
-  adaptationRule: "Ne change qu'une variable à la fois. Si la qualité baisse franchement, garde ou facilite la variante. Si la borne haute est reproductible sur deux séances, augmente la difficulté seulement lorsqu'une progression documentée existe.",
+  adaptationRule: "Ne change qu'une variable à la fois. Si la qualité baisse franchement, garde ou facilite la variante. Si la borne haute est reproductible sur deux séances, augmente la difficulté seulement lorsqu'une progression documentée et observable existe.",
   scopeNote: "Cette V1 couvre maintenant poussée, tirage, squat, stabilité du tronc et une première base de chaîne postérieure. Elle reste volontairement compacte et ne prétend pas encore couvrir toutes les capacités de la callisthénie ni remplacer un programme individualisé.",
 };
