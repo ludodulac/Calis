@@ -9,8 +9,8 @@ import { getTrainingDecision } from "@/lib/training/decision";
 import type { SessionLog, TrainingAssessment, TrainingProgram } from "@/lib/training/types";
 import styles from "@/app/aujourdhui/today.module.css";
 
-const LOGS_STORAGE_KEY = "calis.training.v1.logs";
-const ASSESSMENT_STORAGE_KEY = "calis.training.v1.assessment";
+const LOGS_STORAGE_KEY = "calis.training.v2.logs";
+const ASSESSMENT_STORAGE_KEY = "calis.training.v2.assessment";
 
 type ValuesState = Record<string, string[]>;
 
