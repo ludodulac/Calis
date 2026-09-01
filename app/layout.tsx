@@ -38,7 +38,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <main id="contenu-principal" className="appContent" tabIndex={-1}>{children}</main>
           <nav className="mobileAppNav" aria-label="Navigation principale mobile">
             <Link href="/"><span aria-hidden="true">●</span><b>Accueil</b></Link>
-            <Link href="/commencer"><span aria-hidden="true">↑</span><b>Parcours</b></Link>
+            <Link href="/aujourdhui"><span aria-hidden="true">▶</span><b>Aujourd'hui</b></Link>
             <Link href="/bibliotheque"><span aria-hidden="true">▦</span><b>Bibliothèque</b></Link>
           </nav>
           <footer className="siteFooter">
