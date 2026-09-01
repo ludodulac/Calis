@@ -34,6 +34,12 @@ Test de conception : l'entrée principale doit rester compréhensible par un enf
 
 Cela ne signifie pas appauvrir les ressources. Les détails, la biomécanique, les sources, le graphe de progression et les critères restent disponibles après que le visiteur a choisi ce qu'il veut faire.
 
+### Cadre de conception
+
+Calis combine quatre disciplines complémentaires : **Content Design + Progressive Disclosure + UX Writing + faible charge cognitive**.
+
+Concrètement : partir du besoin réel de la personne, montrer d'abord uniquement ce qui lui permet d'agir maintenant, écrire avec ses mots plutôt qu'avec le vocabulaire interne du produit, puis révéler les explications et options secondaires seulement lorsqu'elles deviennent utiles. La simplicité ne vient donc pas d'une suppression arbitraire de contenu, mais de son placement au bon niveau du parcours.
+
 ### Principes d'interface
 
 Calis doit reprendre l'efficacité ergonomique des meilleures interfaces mobiles sans reprendre leurs mécanismes de manipulation :
