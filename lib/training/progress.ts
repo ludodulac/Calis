@@ -1,4 +1,4 @@
-import type { SessionLog, TrainingPrescription } from "./types";
+import type { ExerciseLog, SessionLog, TrainingPrescription } from "./types";
 
 export type ProgressionChange = {
   fromSlug: string;
@@ -53,10 +53,20 @@ const progressions: Record<string, TrainingPrescription> = {
   },
 };
 
-function completedResults(logs: SessionLog[], slug: string) {
+function samePrescription(exercise: ExerciseLog, prescription: TrainingPrescription) {
+  const snapshot = exercise.prescription;
+  if (!snapshot) return false;
+  return snapshot.sets === prescription.sets
+    && snapshot.min === prescription.min
+    && snapshot.max === prescription.max
+    && snapshot.unit === prescription.unit;
+}
+
+function completedResults(logs: SessionLog[], prescription: TrainingPrescription) {
   return logs
     .flatMap((log) => log.exercises)
-    .filter((exercise) => exercise.completed && exercise.prescriptionSlug === slug)
+    .filter((exercise) => exercise.completed && exercise.prescriptionSlug === prescription.resourceSlug)
+    .filter((exercise) => samePrescription(exercise, prescription))
     .map((exercise) => exercise.values);
 }
 
@@ -72,7 +82,7 @@ export function getProgressionChange(
   const next = progressions[prescription.resourceSlug];
   if (!next) return null;
 
-  const results = completedResults(logs, prescription.resourceSlug);
+  const results = completedResults(logs, prescription);
   const latest = results.at(-1);
   const previous = results.at(-2);
 
@@ -82,7 +92,7 @@ export function getProgressionChange(
   return {
     fromSlug: prescription.resourceSlug,
     to: next,
-    reason: `La borne haute de ${prescription.label} a été atteinte sur deux passages.`,
+    reason: `La borne haute de ${prescription.label} a été atteinte sur deux passages avec la même prescription.`,
   };
 }
 
