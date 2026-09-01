@@ -36,13 +36,17 @@ function isTrainingGoal(value: string | null): value is TrainingGoal {
   return value === "general" || value === "pullup" || value === "pushup" || value === "legs";
 }
 
+function isValidDate(value: unknown): value is string {
+  return typeof value === "string" && Number.isFinite(Date.parse(value));
+}
+
 function isTrainingAssessment(value: unknown): value is TrainingAssessment {
   if (!value || typeof value !== "object") return false;
   const candidate = value as Partial<TrainingAssessment>;
   return (candidate.push === "incline" || candidate.push === "floor")
     && (candidate.pull === "hang" || candidate.pull === "scapula" || candidate.pull === "row" || candidate.pull === "pullup")
     && (candidate.legs === "short" || candidate.legs === "regular")
-    && typeof candidate.completedAt === "string";
+    && isValidDate(candidate.completedAt);
 }
 
 function isExerciseLog(value: unknown): value is ExerciseLog {
@@ -60,7 +64,7 @@ function isSessionLogs(value: unknown): value is SessionLog[] {
     if (!item || typeof item !== "object") return false;
     const candidate = item as Partial<SessionLog>;
     return typeof candidate.sessionId === "string"
-      && typeof candidate.completedAt === "string"
+      && isValidDate(candidate.completedAt)
       && Array.isArray(candidate.exercises)
       && candidate.exercises.every(isExerciseLog);
   });
@@ -113,7 +117,12 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
   }, []);
 
   const assessedProgram = useMemo(() => assessment ? adaptFoundationProgram(program, assessment, goal) : program, [assessment, goal, program]);
-  const activeProgram = useMemo(() => applyProgressions(assessedProgram, logs) as TrainingProgram, [assessedProgram, logs]);
+  const decisionLogs = useMemo(() => {
+    if (!assessment) return [];
+    const assessedAt = Date.parse(assessment.completedAt);
+    return logs.filter((log) => Date.parse(log.completedAt) >= assessedAt);
+  }, [assessment, logs]);
+  const activeProgram = useMemo(() => applyProgressions(assessedProgram, decisionLogs) as TrainingProgram, [assessedProgram, decisionLogs]);
   const sessionIndex = logs.length % activeProgram.sessions.length;
   const session = activeProgram.sessions[sessionIndex];
   const [values, setValues] = useState<ValuesState>(() => emptyValues(program, 0));
@@ -160,15 +169,16 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
       })),
     };
     const nextLogs = [...logs, log];
+    const nextDecisionLogs = [...decisionLogs, log];
     const nextWeekCount = completedThisWeek + 1;
-    const nextProgram = applyProgressions(assessedProgram, nextLogs) as TrainingProgram;
+    const nextProgram = applyProgressions(assessedProgram, nextDecisionLogs) as TrainingProgram;
     const nextSession = nextProgram.sessions[nextLogs.length % nextProgram.sessions.length];
     const items = session.exercises.map((exercise) => {
-      const progression = getProgressionChange(nextLogs, exercise);
+      const progression = getProgressionChange(nextDecisionLogs, exercise);
       return {
         label: exercise.label,
         values: values[exercise.resourceSlug].join(" / ") + (exercise.unit === "seconds" ? " s" : ""),
-        decision: getTrainingDecision(nextLogs, exercise, hasDocumentedProgression(exercise)),
+        decision: getTrainingDecision(nextDecisionLogs, exercise, hasDocumentedProgression(exercise)),
         nextLabel: progression?.to.label,
       };
     });
@@ -219,7 +229,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
 
       <div className={styles.exerciseList}>
         {session.exercises.map((exercise) => {
-          const decision = getTrainingDecision(logs, exercise, hasDocumentedProgression(exercise));
+          const decision = getTrainingDecision(decisionLogs, exercise, hasDocumentedProgression(exercise));
           const recalibration = decision.state === "review" ? getTrainingRecalibration(assessment, exercise) : null;
           return (
             <article className={styles.exerciseRow} key={exercise.resourceSlug}>
@@ -259,7 +269,8 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
           <div className={styles.detailPanel}>
             <p>{session.goal}</p>
             <p>{activeProgram.adaptationRule}</p>
-            <p>Les décisions visibles utilisent uniquement les résultats saisis. Elles ne remplacent pas ton jugement sur la technique, la douleur ou la fatigue.</p>
+            <p>Les décisions visibles utilisent uniquement les résultats saisis depuis ton point de départ actuel. Ton historique plus ancien reste visible dans Ma progression.</p>
+            <p>Elles ne remplacent pas ton jugement sur la technique, la douleur ou la fatigue.</p>
             <button className={styles.resetButton} type="button" onClick={retakeAssessment}>Refaire mon point de départ</button>
           </div>
         </InfoDialog>
