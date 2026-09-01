@@ -4,17 +4,15 @@ Dernière mise à jour : **1 septembre 2026**.
 
 ## Source de reprise prioritaire
 
-La passation opérationnelle complète est désormais consolidée dans **`INTEL.md` à la racine du dépôt**.
+La passation produit complète reste consolidée dans **`INTEL.md` à la racine du dépôt**. Pour l’**état opérationnel récent** des PR et du moteur d’entraînement, le présent fichier prévaut sur les sections historiques de `INTEL.md` qui n’ont pas encore été reconsolidées.
 
 Instruction recommandée dans une nouvelle conversation :
 
 > **Consulte `INTEL.md`, puis vérifie l’état réel de `main`, des PR ouvertes et de la CI, et continue le projet sans repartir de zéro.**
 
-`INTEL.md` contient : vision produit, règles UX mobile, boucle d’entraînement, état du moteur de décision/progression, choix visuels/couleurs, historique récent des PR, limitations, prochaines étapes, choses à ne pas refaire et rythme de travail attendu.
+Toujours vérifier GitHub avant d’agir : ce fichier décrit l’état au moment de cette mise à jour, mais `main`, les PR et la CI restent la vérité opérationnelle.
 
-Ce fichier reste volontairement court pour éviter qu’une ancienne passation détaillée concurrence `INTEL.md`.
-
-## État opérationnel au moment de cette mise à jour
+## État opérationnel actuel
 
 ### Fusionné récemment
 
@@ -25,32 +23,45 @@ Ce fichier reste volontairement court pour éviter qu’une ancienne passation d
 - #42 : fréquence hebdomadaire réelle et repos après les séances prévues.
 - #43 : progression automatique conservatrice vers les étapes documentées.
 - #44 : fenêtre `Ma progression` avec historique et vrais résultats.
+- #46 : détection prudente de stagnation avec état `À revoir`.
+- #48 : langage visuel sportif global propre, recréé depuis `main` ; #47 a été fermé sans fusion car sa branche était devenue bruyante.
+- #49 : l’objectif principal (`traction`, `pompes`, `jambes`, fondations) influence désormais la priorité des exercices sans retirer les autres fondations.
+- #50 : les logs mémorisent la prescription réellement effectuée ; plateau et progression automatique ne comparent plus que des passages comparables.
+- #51 : `À revoir` peut proposer un recalibrage volontaire vers une régression documentée, sans effacer l’historique ni modifier automatiquement le volume.
 
-### Ouvert
+### PR ouvertes
 
-- **#46** — détection prudente de stagnation / état `À revoir` ; branche propre `feat/training-plateau-v2`.
-- **#47** — langage visuel sportif simple ; branche `feat/sport-visual-system-v1`.
-
-Toujours vérifier GitHub : ces états peuvent avoir changé après la rédaction de ce document.
+Aucune PR de développement ne doit être supposée ouverte à partir de ce document. **Toujours vérifier GitHub** avant de commencer un nouveau lot.
 
 ## Décisions actuelles à préserver
 
 - Calis doit répondre à « qu’est-ce que je fais maintenant ? ».
 - Boucle centrale : `diagnostic → programme → séance → mesure → décision → prochaine étape`.
+- Architecture produit : `désir → objectif → capacité → progression`.
 - Interface mobile fixe pour les écrans de décision ; informations secondaires en modale, pas en accordéon qui allonge la page.
 - Pas de streak, badge artificiel, faux progrès ou preuve sociale simulée.
-- Les progressions automatiques restent explicables et conservatrices.
+- Les progressions automatiques restent explicables, conservatrices et limitées aux transitions documentées.
+- Les décisions de plateau doivent comparer la **même prescription**, pas seulement le même slug d’exercice.
+- Un recalibrage n’est appliqué qu’après action explicite de l’utilisateur et ne supprime pas son historique.
 - Le stockage reste local-first tant qu’un compte/sync n’apporte pas une vraie valeur.
 - Direction visuelle : base neutre + couleurs d’orientation par famille, géométrie commune, bordures plus franches et tactilité légère ; reprendre la cohérence UX d’un bon jeu mobile, pas son habillage ni sa gamification.
-- Avancer par lots cohérents ; éviter les contrôles complets après chaque micro-changement. Contrôle lourd aux points de stabilisation / PR / fusion.
+- Avancer par lots cohérents ; contrôle lourd aux points de stabilisation / PR / fusion.
+
+## Limites connues du moteur
+
+- Le programme reste volontairement compact : poussée, tirage et jambes comme fondations principales.
+- L’objectif principal agit aujourd’hui surtout sur la priorité de la séance, pas encore sur une spécialisation complète de volume ou de fréquence.
+- Handstand et muscle-up ont des parcours éditoriaux mais pas encore assez de prescriptions chiffrées et validées pour être injectés honnêtement dans `Aujourd’hui`.
+- La traction négative est volontairement documentée sans « chrono magique » ; ne pas inventer un seuil numérique uniquement pour automatiser la progression.
+- Les capacités comme poussée verticale, chaîne postérieure, tronc, mobilité structurée, équilibre et explosivité restent à couvrir progressivement quand le contenu et les prescriptions sont assez précis.
 
 ## Prochaine étape
 
-1. Lire `INTEL.md`.
-2. Vérifier l’état réel de #46 et #47 + CI.
-3. Stabiliser/fusionner les lots propres.
-4. Continuer le moteur d’entraînement : objectif principal, stagnation/recalibrage, puis couverture progressive des capacités manquantes.
-5. Maintenir `INTEL.md` à jour à chaque nouvelle passation majeure.
+1. Lire `INTEL.md` et vérifier `main`, les PR ouvertes et la CI.
+2. Considérer les blocs objectif principal, stagnation, comparabilité des prescriptions et recalibrage comme déjà intégrés.
+3. Continuer la **couverture progressive des capacités manquantes**, mais seulement lorsque les ressources permettent une prescription exécutable et une règle de progression honnête.
+4. Prioriser d’abord les écarts où le contenu canonique existe déjà et peut être transformé sans inventer de seuils arbitraires.
+5. Plus tard : cycles / réévaluation périodique, puis compte/sync uniquement si cela apporte une vraie valeur.
 
 ## À ne pas refaire
 
@@ -59,5 +70,7 @@ Toujours vérifier GitHub : ces états peuvent avoir changé après la rédactio
 - Ne pas ajouter de gamification artificielle.
 - Ne pas copier visuellement Clash Royale.
 - Ne pas automatiser des progressions non documentées.
+- Ne pas transformer des critères qualitatifs en chiffres arbitraires pour « compléter » le moteur.
+- Ne pas effacer l’historique local lors d’un recalibrage simple.
 - Ne pas réintroduire une infrastructure lourde sans besoin réel.
-- Ne pas laisser un ancien document de passation contredire `INTEL.md` : mettre `INTEL.md` à jour.
+- Ne pas supprimer des contenus ou chemins utiles pour introduire une nouvelle idée.
