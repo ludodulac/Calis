@@ -14,6 +14,8 @@ Hubs actuellement acceptés par le contrat TypeScript : `commencer`, `tractions`
 
 `next` constitue une première matérialisation simple du graphe. Ne pas créer une deuxième progression parallèle pour les futurs tests/outils : enrichir ce modèle ou le faire évoluer vers les objets conceptuels ci-dessous.
 
+La première couche d'entraînement concrète vit dans `lib/training/types.ts` et `lib/training/v1.ts`. Elle réutilise les `resourceSlug` existants au lieu de recopier une deuxième bibliothèque d'exercices.
+
 ## Entités conceptuelles
 
 ### Capability
@@ -100,7 +102,23 @@ Un Product peut avoir plusieurs SupplierOffer.
 
 ### Program
 
-Parcours planifié avec objectif, niveau, durée, séances/étapes et critères d'adaptation.
+Parcours planifié avec objectif, public, fréquence, séances et critères d'adaptation. Un programme ne remplace pas le graphe : il choisit quoi entraîner maintenant dans ce graphe.
+
+### TrainingSessionTemplate
+
+Une séance réutilisable d'un programme. Elle ordonne plusieurs prescriptions et porte une intention courte.
+
+### TrainingPrescription
+
+Prescription liée à une ressource/exercice canonique : séries, plage de répétitions ou durée, récupération, repère d'effort et règle de progression. La prescription doit référencer un `resourceSlug` existant lorsque possible.
+
+### SessionLog
+
+Trace factuelle d'une séance réellement effectuée : date, modèle de séance, résultats par exercice et état de complétion. La V1 stocke cette trace localement dans le navigateur afin de tester la boucle produit avant d'introduire des comptes.
+
+### AdaptationDecision
+
+Décision produite à partir du programme, des critères du graphe et des résultats récents : conserver, faciliter, augmenter légèrement la difficulté, tester l'étape suivante ou demander davantage d'information. Une décision doit rester explicable à l'utilisateur.
 
 ### Expert
 
@@ -118,9 +136,26 @@ Resource N---N Exercise/Skill/Capability
 Resource N---N Source
 Equipment 1---N Product
 Product 1---N SupplierOffer
-Program N---N Exercise
+Program 1---N TrainingSessionTemplate
+TrainingSessionTemplate 1---N TrainingPrescription
+TrainingPrescription N---1 Resource/Exercise
+Program 1---N SessionLog
+SessionLog 1---N ExerciseLog
+SessionLog + Requirements + ProgressionEdge -> AdaptationDecision
 Expert N---N Resource
 ```
+
+## Boucle d'entraînement
+
+Le moteur produit doit pouvoir relier :
+
+```text
+assessment -> current_step -> program -> today's_session -> session_log -> adaptation_decision -> next_step
+```
+
+La donnée « aujourd'hui » n'est pas un nouveau contenu éditorial. C'est une vue calculée à partir de l'état de la personne, du programme et de l'historique.
+
+Les règles importantes doivent rester inspectables. Éviter une personnalisation opaque qui produit une séance sans pouvoir expliquer pourquoi elle a changé.
 
 ## Statuts éditoriaux
 
@@ -182,9 +217,13 @@ Lorsque les comptes deviennent utiles :
 - UserAssessment ;
 - UserProgress ;
 - ProgramEnrollment ;
+- SessionLog synchronisé ;
+- AdaptationDecision ;
 - SavedResource.
 
 Les données privées utilisateur doivent être séparées des données éditoriales publiques et protégées par des politiques RLS appropriées.
+
+Le prototype local doit permettre de tester les objets et les décisions avant de figer un schéma serveur.
 
 ## Principe Supabase
 
