@@ -36,9 +36,35 @@ a.step:focus-visible b {
   color: var(--accent);
 }
 
+:global(.journeyCardTextOnly) {
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  background: var(--surface);
+}
+
+:global(.journeyCardTextOnly)::after {
+  display: none;
+}
+
+:global(.journeyCardTextOnly) > strong {
+  padding: 28px;
+  color: var(--text);
+  text-align: center;
+  text-shadow: none;
+}
+
+:global(.journeyCardWithImage)::after {
+  display: block;
+}
+
 @media (max-width: 600px) {
   .step {
     grid-template-columns: 1fr;
     gap: 2px;
+  }
+
+  :global(.journeyCardTextOnly) {
+    min-height: 128px;
   }
 }
