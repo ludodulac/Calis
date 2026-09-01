@@ -5,7 +5,7 @@ import Link from "next/link";
 import { InfoDialog } from "@/components/info-dialog";
 import { TrainingAssessmentFlow } from "@/components/training-assessment";
 import { adaptFoundationProgram } from "@/lib/training/adapt";
-import { getTrainingDecision } from "@/lib/training/decision";
+import { getTrainingDecision, type TrainingDecision } from "@/lib/training/decision";
 import type { SessionLog, TrainingAssessment, TrainingProgram } from "@/lib/training/types";
 import styles from "@/app/aujourdhui/today.module.css";
 
@@ -13,6 +13,16 @@ const LOGS_STORAGE_KEY = "calis.training.v2.logs";
 const ASSESSMENT_STORAGE_KEY = "calis.training.v2.assessment";
 
 type ValuesState = Record<string, string[]>;
+type SummaryItem = {
+  label: string;
+  values: string;
+  decision: TrainingDecision;
+};
+type SessionSummary = {
+  sessionLabel: string;
+  nextSessionLabel: string;
+  items: SummaryItem[];
+};
 
 function emptyValues(program: TrainingProgram, sessionIndex: number): ValuesState {
   return Object.fromEntries(
@@ -26,6 +36,7 @@ function emptyValues(program: TrainingProgram, sessionIndex: number): ValuesStat
 export function TodaySession({ program }: { program: TrainingProgram }) {
   const [logs, setLogs] = useState<SessionLog[]>([]);
   const [assessment, setAssessment] = useState<TrainingAssessment | null>(null);
+  const [summary, setSummary] = useState<SessionSummary | null>(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -76,6 +87,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
   function resetAssessment() {
     setAssessment(null);
     setLogs([]);
+    setSummary(null);
     window.localStorage.removeItem(ASSESSMENT_STORAGE_KEY);
     window.localStorage.removeItem(LOGS_STORAGE_KEY);
   }
@@ -101,6 +113,14 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
     };
 
     const nextLogs = [...logs, log];
+    const nextSession = activeProgram.sessions[nextLogs.length % activeProgram.sessions.length];
+    const items = session.exercises.map((exercise) => ({
+      label: exercise.label,
+      values: values[exercise.resourceSlug].join(" / ") + (exercise.unit === "seconds" ? " s" : ""),
+      decision: getTrainingDecision(nextLogs, exercise),
+    }));
+
+    setSummary({ sessionLabel: session.label, nextSessionLabel: nextSession.label, items });
     setLogs(nextLogs);
     window.localStorage.setItem(LOGS_STORAGE_KEY, JSON.stringify(nextLogs));
   }
@@ -177,6 +197,30 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
           {complete ? "Terminer" : "Remplis les séries"}
         </button>
       </footer>
+
+      {summary && (
+        <section className={styles.summaryLayer} role="dialog" aria-modal="true" aria-labelledby="session-summary-title">
+          <div className={styles.summaryCard}>
+            <div className={styles.summaryHeading}>
+              <span>{summary.sessionLabel}</span>
+              <h2 id="session-summary-title">Séance terminée</h2>
+            </div>
+            <div className={styles.summaryList}>
+              {summary.items.map((item) => (
+                <div className={styles.summaryRow} key={item.label}>
+                  <div>
+                    <strong>{item.label}</strong>
+                    <span>{item.values}</span>
+                  </div>
+                  <span className={`${styles.decisionBadge} ${styles[item.decision.state]}`}>{item.decision.label}</span>
+                </div>
+              ))}
+            </div>
+            <div className={styles.summaryNext}>Prochaine : <strong>{summary.nextSessionLabel}</strong></div>
+            <button className={styles.finishButton} type="button" onClick={() => setSummary(null)}>Voir la suite</button>
+          </div>
+        </section>
+      )}
     </div>
   );
 }
