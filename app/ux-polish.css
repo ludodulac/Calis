@@ -11,58 +11,30 @@
   font-weight: 800;
 }
 
-.skipLink:focus {
-  transform: translateY(0);
-}
+.skipLink:focus { transform: translateY(0); }
 
 :where(a, button, input, select):focus-visible {
   outline: 3px solid color-mix(in srgb, var(--accent) 65%, #fff);
   outline-offset: 3px;
 }
 
-#contenu-principal:focus {
-  outline: none;
-}
+#contenu-principal:focus { outline: none; }
+#objectifs { scroll-margin-top: 96px; }
 
-#objectifs {
-  scroll-margin-top: 96px;
-}
-
-.startChoice {
-  align-items: center;
-  gap: 18px;
-}
-
-.startChoice > span:first-child {
-  min-width: 0;
-}
-
-.startChoice strong,
-.startChoice small {
-  display: block;
-}
-
-.startChoice small {
-  margin-top: 5px;
-  color: var(--muted);
-  font-size: 0.9rem;
-  font-weight: 400;
-  line-height: 1.45;
-}
-
-.startChoice > span[aria-hidden="true"] {
-  flex: 0 0 auto;
-  color: var(--accent);
-  font-size: 1.15rem;
-  font-weight: 900;
-}
+.startChoice { align-items: center; gap: 18px; }
+.startChoice > span:first-child { min-width: 0; }
+.startChoice strong,.startChoice small { display: block; }
+.startChoice small { margin-top:5px;color:var(--muted);font-size:.9rem;font-weight:400;line-height:1.45; }
+.startChoice > span[aria-hidden="true"] { flex:0 0 auto;color:var(--accent);font-size:1.15rem;font-weight:900; }
 
 @media (max-width: 600px) {
-  #objectifs {
-    scroll-margin-top: 150px;
-  }
+  #objectifs { scroll-margin-top: 18px; }
+  .startChoice { padding: 18px 20px; }
 
-  .startChoice {
-    padding: 18px 20px;
+  /* The home page provides its own compact app chrome. Keep the global
+     navigation available everywhere else without showing two nav systems. */
+  body:has(#objectifs) > .siteHeader,
+  body:has(#objectifs) > .siteFooter {
+    display: none;
   }
 }
