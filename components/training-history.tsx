@@ -9,6 +9,10 @@ function readableSlug(slug: string) {
   return slug.replaceAll("-", " ").replace(/^./, (letter) => letter.toUpperCase());
 }
 
+function resultValues(values: number[], unit?: "reps" | "seconds") {
+  return `${values.join("/")}${unit === "seconds" ? " s" : ""}`;
+}
+
 export function TrainingHistory({ logs, program }: { logs: SessionLog[]; program: TrainingProgram }) {
   const recent = logs.slice(-6).reverse();
   const currentExercises = Array.from(
@@ -45,7 +49,7 @@ export function TrainingHistory({ logs, program }: { logs: SessionLog[]; program
                   <div>
                     <strong>{label} · {formatDate(log.completedAt)}</strong>
                     <span>
-                      {log.exercises.map((exercise) => `${currentLabels.get(exercise.prescriptionSlug) ?? readableSlug(exercise.prescriptionSlug)} ${exercise.values.join("/")}`).join(" · ")}
+                      {log.exercises.map((exercise) => `${currentLabels.get(exercise.prescriptionSlug) ?? readableSlug(exercise.prescriptionSlug)} ${resultValues(exercise.values, exercise.prescription?.unit)}`).join(" · ")}
                     </span>
                   </div>
                 </div>
