@@ -5,11 +5,16 @@ function formatDate(value: string) {
   return new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "short" }).format(new Date(value));
 }
 
+function readableSlug(slug: string) {
+  return slug.replaceAll("-", " ").replace(/^./, (letter) => letter.toUpperCase());
+}
+
 export function TrainingHistory({ logs, program }: { logs: SessionLog[]; program: TrainingProgram }) {
   const recent = logs.slice(-6).reverse();
   const currentExercises = Array.from(
     new Map(program.sessions.flatMap((session) => session.exercises).map((exercise) => [exercise.resourceSlug, exercise])).values(),
   );
+  const currentLabels = new Map(currentExercises.map((exercise) => [exercise.resourceSlug, exercise.label]));
 
   return (
     <div className={styles.detailPanel}>
@@ -38,10 +43,11 @@ export function TrainingHistory({ logs, program }: { logs: SessionLog[]; program
               return (
                 <div className={styles.summaryRow} key={`${log.completedAt}-${log.sessionId}`}>
                   <div>
-                    <strong>{label}</strong>
-                    <span>{formatDate(log.completedAt)}</span>
+                    <strong>{label} · {formatDate(log.completedAt)}</strong>
+                    <span>
+                      {log.exercises.map((exercise) => `${currentLabels.get(exercise.prescriptionSlug) ?? readableSlug(exercise.prescriptionSlug)} ${exercise.values.join("/")}`).join(" · ")}
+                    </span>
                   </div>
-                  <span>{log.exercises.filter((exercise) => exercise.completed).length} exercices</span>
                 </div>
               );
             })}
