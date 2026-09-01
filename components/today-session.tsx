@@ -7,7 +7,7 @@ import { TrainingAssessmentFlow } from "@/components/training-assessment";
 import { TrainingHistory } from "@/components/training-history";
 import { adaptFoundationProgram } from "@/lib/training/adapt";
 import { getTrainingDecision, type TrainingDecision } from "@/lib/training/decision";
-import { applyProgressions, getProgressionChange } from "@/lib/training/progress";
+import { applyProgressions, getProgressionChange, hasDocumentedProgression } from "@/lib/training/progress";
 import { getTrainingRecalibration } from "@/lib/training/recalibrate";
 import type { SessionLog, TrainingAssessment, TrainingGoal, TrainingProgram } from "@/lib/training/types";
 import styles from "@/app/aujourdhui/today.module.css";
@@ -133,7 +133,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
       return {
         label: exercise.label,
         values: values[exercise.resourceSlug].join(" / ") + (exercise.unit === "seconds" ? " s" : ""),
-        decision: getTrainingDecision(nextLogs, exercise),
+        decision: getTrainingDecision(nextLogs, exercise, hasDocumentedProgression(exercise)),
         nextLabel: progression?.to.label,
       };
     });
@@ -184,7 +184,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
 
       <div className={styles.exerciseList}>
         {session.exercises.map((exercise) => {
-          const decision = getTrainingDecision(logs, exercise);
+          const decision = getTrainingDecision(logs, exercise, hasDocumentedProgression(exercise));
           const recalibration = decision.state === "review" ? getTrainingRecalibration(assessment, exercise) : null;
           return (
             <article className={styles.exerciseRow} key={exercise.resourceSlug}>
