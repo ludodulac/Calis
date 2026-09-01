@@ -18,8 +18,8 @@ export function SiteHeader() {
             ))}
           </ul>
         </nav>
-        <div className="mobileHeaderActions">
-          <Link className="mobilePrivacy" href="/confidentialite">Vie privée</Link>
+        <div style={{ display: "flex", gap: 8 }}>
+          <Link className="mobileStart" href="/confidentialite">Vie privée</Link>
           <Link className="mobileStart" href="/commencer">Je débute</Link>
         </div>
       </div>
