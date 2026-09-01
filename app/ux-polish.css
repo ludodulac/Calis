@@ -13,7 +13,7 @@
 
 .skipLink:focus { transform: translateY(0); }
 
-:where(a, button, input, select):focus-visible {
+:where(a, button, input, select, summary):focus-visible {
   outline: 3px solid color-mix(in srgb, var(--accent) 65%, #fff);
   outline-offset: 3px;
 }
@@ -32,6 +32,25 @@
 .startTile { min-height: 132px; padding: 20px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); display:flex; flex-direction:column; justify-content:space-between; gap:12px; }
 .startTile strong { font-size:1.12rem; line-height:1.15; }
 .startTile span { align-self:flex-end; color:var(--accent); font-weight:900; }
+
+.libraryScreen { padding-top: 48px; padding-bottom: 64px; }
+.libraryIntro { max-width: 760px; margin-bottom: 24px; }
+.libraryIntro h1 { margin: 0; }
+.libraryQuickGrid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.libraryQuickTile { min-height:130px; padding:18px; border:1px solid var(--line); border-radius:20px; background:var(--surface); display:flex; flex-direction:column; justify-content:space-between; gap:14px; }
+.libraryQuickTile strong { font-size:1.05rem; line-height:1.15; }
+.libraryQuickTile span { align-self:flex-end; color:var(--accent); font-weight:900; }
+.libraryMore { display:grid; gap:10px; margin-top:20px; }
+.libraryDisclosure { border:1px solid var(--line); border-radius:18px; background:var(--surface); overflow:hidden; }
+.libraryDisclosure summary { cursor:pointer; min-height:56px; padding:16px 18px; display:flex; align-items:center; justify-content:space-between; font-weight:850; list-style:none; }
+.libraryDisclosure summary::-webkit-details-marker { display:none; }
+.libraryDisclosure summary::after { content:"+"; color:var(--accent); font-size:1.25rem; }
+.libraryDisclosure[open] summary::after { content:"−"; }
+.libraryDisclosureBody { padding:4px 18px 20px; }
+.libraryJourneyGrid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; padding:4px 18px 20px; }
+.libraryJourneyCard { min-height:108px; padding:16px; border:1px solid var(--line); border-radius:16px; background:var(--bg); display:flex; flex-direction:column; gap:8px; }
+.libraryJourneyCard small { color:var(--muted); line-height:1.35; }
+.libraryJourneyCard span { margin-top:auto; align-self:flex-end; color:var(--accent); font-weight:900; }
 
 @media (max-width: 600px) {
   html, body { height: 100%; overflow: hidden; }
@@ -61,6 +80,19 @@
   .startChoiceGrid { height:100%; grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:repeat(3,minmax(0,1fr)); gap:9px; }
   .startTile { min-height:0; padding:14px; border-radius:18px; }
   .startTile strong { font-size:clamp(.96rem,4.3vw,1.12rem); }
+
+  .libraryScreen { width:100%; min-height:100%; padding:18px 16px 16px; }
+  .libraryIntro { margin-bottom:14px; }
+  .libraryIntro .eyebrow { margin-bottom:4px; }
+  .libraryIntro h1 { font-size:clamp(2rem,10vw,2.55rem); line-height:1; }
+  .libraryQuickGrid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
+  .libraryQuickTile { min-height:104px; padding:13px; border-radius:17px; }
+  .libraryQuickTile strong { font-size:clamp(.92rem,4.1vw,1.02rem); }
+  .libraryMore { margin-top:12px; gap:8px; }
+  .libraryDisclosure { border-radius:16px; }
+  .libraryDisclosure summary { min-height:50px; padding:13px 15px; }
+  .libraryJourneyGrid { grid-template-columns:1fr; padding:4px 12px 14px; }
+  .libraryDisclosureBody { padding:4px 12px 16px; }
 }
 
 @media (max-height: 700px) and (max-width: 600px) {
@@ -69,4 +101,11 @@
   .startIntro h1 { font-size:1.9rem; }
   .startChoiceGrid { gap:7px; }
   .startTile { padding:11px; border-radius:16px; }
+
+  .libraryScreen { padding-top:12px; }
+  .libraryIntro { margin-bottom:10px; }
+  .libraryIntro h1 { font-size:1.9rem; }
+  .libraryQuickGrid { gap:7px; }
+  .libraryQuickTile { min-height:88px; padding:11px; }
+  .libraryDisclosure summary { min-height:46px; padding-block:11px; }
 }
