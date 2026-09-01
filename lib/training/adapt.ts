@@ -98,11 +98,36 @@ function legsPrescription(assessment: TrainingAssessment): TrainingPrescription 
   };
 }
 
+const corePrescription: TrainingPrescription = {
+  resourceSlug: "gainage-debutant",
+  label: "Gainage",
+  sets: 2,
+  min: 15,
+  max: 30,
+  unit: "seconds",
+  restSeconds: 60,
+  effortCue: "Garde une position que tu peux encore contrôler en respirant ; arrête avant de survivre au chrono.",
+  progressionCue: "Quand 2 × 30 s reste calme sur deux séances, considère cette base comme disponible plutôt que d'allonger automatiquement le chrono.",
+};
+
+const posteriorChainPrescription: TrainingPrescription = {
+  resourceSlug: "pont-fessier-debutant",
+  label: "Pont fessier",
+  sets: 2,
+  min: 8,
+  max: 12,
+  unit: "reps",
+  restSeconds: 90,
+  effortCue: "Monte et redescends avec la même amplitude sans chercher de hauteur en cambrant le bas du dos.",
+  progressionCue: "Quand 2 × 12 reste contrôlé sur deux séances, garde cette base ; Calis n'invente pas encore de variante suivante.",
+};
+
 function orderedExercises(goal: TrainingGoal, sessionIndex: number, pull: TrainingPrescription, push: TrainingPrescription, legs: TrainingPrescription) {
-  if (goal === "pullup") return [pull, push, legs];
-  if (goal === "pushup") return [push, pull, legs];
-  if (goal === "legs") return sessionIndex === 0 ? [legs, pull, push] : [legs, push, pull];
-  return sessionIndex === 0 ? [pull, push, legs] : [push, pull, legs];
+  const foundation = sessionIndex === 0 ? corePrescription : posteriorChainPrescription;
+  if (goal === "pullup") return [pull, push, legs, foundation];
+  if (goal === "pushup") return [push, pull, legs, foundation];
+  if (goal === "legs") return sessionIndex === 0 ? [legs, pull, push, foundation] : [legs, posteriorChainPrescription, push, pull];
+  return sessionIndex === 0 ? [pull, push, legs, corePrescription] : [push, pull, legs, posteriorChainPrescription];
 }
 
 function goalLabel(goal: TrainingGoal) {
@@ -129,6 +154,6 @@ export function adaptFoundationProgram(base: TrainingProgram, assessment: Traini
       goal: goal === "general" ? session.goal : `Priorité ${focus}, puis maintien des autres fondations.`,
       exercises: orderedExercises(goal, sessionIndex, pull, push, legs),
     })),
-    scopeNote: "Cette version adapte seulement les capacités déjà assez documentées pour produire une prescription exécutable. L'objectif principal change la priorité de la séance, pas la présence des autres fondations. Elle sera élargie à mesure que jambes, tronc, poussée verticale et mobilité auront des progressions suffisamment précises.",
+    scopeNote: "Cette version couvre poussée, tirage, squat, stabilité du tronc et une première base de chaîne postérieure avec des prescriptions explicites. L'objectif principal change la priorité de la séance, pas la présence des autres fondations. Poussée verticale, mobilité structurée, équilibre et autres capacités seront ajoutés seulement avec des progressions assez précises.",
   };
 }
