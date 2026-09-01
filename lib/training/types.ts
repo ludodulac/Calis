@@ -1,0 +1,42 @@
+export type TrainingUnit = "reps" | "seconds";
+
+export type TrainingPrescription = {
+  resourceSlug: string;
+  label: string;
+  sets: number;
+  min: number;
+  max: number;
+  unit: TrainingUnit;
+  restSeconds: number;
+  effortCue: string;
+  progressionCue: string;
+};
+
+export type TrainingSessionTemplate = {
+  id: string;
+  label: string;
+  goal: string;
+  exercises: TrainingPrescription[];
+};
+
+export type TrainingProgram = {
+  id: string;
+  label: string;
+  audience: string;
+  frequencyPerWeek: number;
+  sessions: TrainingSessionTemplate[];
+  adaptationRule: string;
+  scopeNote: string;
+};
+
+export type ExerciseLog = {
+  prescriptionSlug: string;
+  values: number[];
+  completed: boolean;
+};
+
+export type SessionLog = {
+  sessionId: string;
+  completedAt: string;
+  exercises: ExerciseLog[];
+};
