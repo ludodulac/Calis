@@ -30,6 +30,7 @@ export default function PullUpsPage() {
         <div className="infoIconBar" aria-label="Informations secondaires">
           <InfoDialog label="Parcours traction" title="Parcours traction" icon="path">
             <ProgressionPath steps={pullUpProgression} milestoneId="first" ariaLabel="Chemin de la suspension à plusieurs tractions fiables" fork={{ label: "Après plusieurs tractions fiables", links: [{ href: "/bibliotheque/traction-explosive", label: "Gagner en hauteur →" }, { href: "/bibliotheque/tractions-lestees", label: "Gagner en force →" }, { href: "/muscle-up", label: "Préparer le muscle-up →" }] }} />
+            <Link className="button primary" href="/aujourdhui?goal=traction">M'entraîner pour la traction</Link>
           </InfoDialog>
           <InfoDialog label="Questions fréquentes" title="Questions fréquentes" icon="help">
             <div className="compactLinks">

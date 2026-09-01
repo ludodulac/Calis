@@ -1,4 +1,4 @@
-import type { TrainingAssessment, TrainingPrescription, TrainingProgram } from "./types";
+import type { TrainingAssessment, TrainingGoal, TrainingPrescription, TrainingProgram } from "./types";
 
 function pushPrescription(assessment: TrainingAssessment): TrainingPrescription {
   if (assessment.push === "floor") {
@@ -98,19 +98,37 @@ function legsPrescription(assessment: TrainingAssessment): TrainingPrescription 
   };
 }
 
-export function adaptFoundationProgram(base: TrainingProgram, assessment: TrainingAssessment): TrainingProgram {
+function orderedExercises(goal: TrainingGoal, sessionIndex: number, pull: TrainingPrescription, push: TrainingPrescription, legs: TrainingPrescription) {
+  if (goal === "pullup") return [pull, push, legs];
+  if (goal === "pushup") return [push, pull, legs];
+  if (goal === "legs") return sessionIndex === 0 ? [legs, pull, push] : [legs, push, pull];
+  return sessionIndex === 0 ? [pull, push, legs] : [push, pull, legs];
+}
+
+function goalLabel(goal: TrainingGoal) {
+  if (goal === "pullup") return "traction";
+  if (goal === "pushup") return "pompes";
+  if (goal === "legs") return "jambes";
+  return "fondations générales";
+}
+
+export function adaptFoundationProgram(base: TrainingProgram, assessment: TrainingAssessment, goal: TrainingGoal = "general"): TrainingProgram {
   const push = pushPrescription(assessment);
   const pull = pullPrescription(assessment);
   const legs = legsPrescription(assessment);
+  const focus = goalLabel(goal);
 
   return {
     ...base,
-    id: `${base.id}-adapte`,
-    audience: "Débutant, avec point de départ choisi à partir de capacités simples.",
+    id: `${base.id}-adapte-${goal}`,
+    audience: goal === "general"
+      ? "Débutant, avec point de départ choisi à partir de capacités simples."
+      : `Débutant avec priorité ${focus}, sans supprimer le travail des autres capacités déjà couvertes.`,
     sessions: base.sessions.map((session, sessionIndex) => ({
       ...session,
-      exercises: sessionIndex === 0 ? [pull, push, legs] : [push, pull, legs],
+      goal: goal === "general" ? session.goal : `Priorité ${focus}, puis maintien des autres fondations.`,
+      exercises: orderedExercises(goal, sessionIndex, pull, push, legs),
     })),
-    scopeNote: "Cette version adapte seulement les capacités déjà assez documentées pour produire une prescription exécutable. Elle sera élargie à mesure que jambes, tronc, poussée verticale et mobilité auront des progressions suffisamment précises.",
+    scopeNote: "Cette version adapte seulement les capacités déjà assez documentées pour produire une prescription exécutable. L'objectif principal change la priorité de la séance, pas la présence des autres fondations. Elle sera élargie à mesure que jambes, tronc, poussée verticale et mobilité auront des progressions suffisamment précises.",
   };
 }
