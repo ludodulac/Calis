@@ -52,6 +52,8 @@ Exemples :
 
 Champs : source, destination, type, ordre, critères, commentaire éditorial.
 
+Une relation éditoriale dans le graphe ne suffit pas à autoriser une progression automatique. Le moteur ne peut appliquer automatiquement une transition que si son critère est **documenté et observable dans les données réellement stockées**. Par exemple, tant que Calis ne mémorise pas la hauteur d'un support de pompe inclinée ou l'angle d'un rowing, ces réglages ne doivent pas servir à déduire automatiquement une progression.
+
 ### Requirement
 
 Critère conseillé ou obligatoire avant une étape.
@@ -112,6 +114,8 @@ Une séance réutilisable d'un programme. Elle ordonne plusieurs prescriptions e
 
 Prescription liée à une ressource/exercice canonique : séries, plage de répétitions ou durée, récupération, repère d'effort et règle de progression. La prescription doit référencer un `resourceSlug` existant lorsque possible.
 
+Une prescription sert aussi de base de comparaison. Si une variable importante de difficulté n'est pas stockée — hauteur de support, angle, assistance précise, charge, amplitude réglée — le moteur ne doit pas considérer silencieusement deux exécutions comme strictement identiques pour déclencher une transition dépendante de cette variable.
+
 ### SessionLog
 
 Trace factuelle d'une séance réellement effectuée : date, modèle de séance, résultats par exercice et état de complétion. La V1 stocke cette trace localement dans le navigateur afin de tester la boucle produit avant d'introduire des comptes.
@@ -119,6 +123,8 @@ Trace factuelle d'une séance réellement effectuée : date, modèle de séance,
 ### AdaptationDecision
 
 Décision produite à partir du programme, des critères du graphe et des résultats récents : conserver, faciliter, augmenter légèrement la difficulté, tester l'étape suivante ou demander davantage d'information. Une décision doit rester explicable à l'utilisateur.
+
+La borne haute peut valider une base sans forcément autoriser une progression automatique. `Prêt à progresser` doit être réservé aux cas où la prochaine étape est documentée et où les données nécessaires à la décision sont réellement observées par Calis.
 
 ### Expert
 
