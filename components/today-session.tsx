@@ -36,6 +36,26 @@ function isTrainingGoal(value: string | null): value is TrainingGoal {
   return value === "general" || value === "pullup" || value === "pushup" || value === "legs";
 }
 
+function isTrainingAssessment(value: unknown): value is TrainingAssessment {
+  if (!value || typeof value !== "object") return false;
+  const candidate = value as Partial<TrainingAssessment>;
+  return (candidate.push === "incline" || candidate.push === "floor")
+    && (candidate.pull === "hang" || candidate.pull === "scapula" || candidate.pull === "row" || candidate.pull === "pullup")
+    && (candidate.legs === "short" || candidate.legs === "regular")
+    && typeof candidate.completedAt === "string";
+}
+
+function readStoredJson<T>(key: string, validate: (value: unknown) => value is T): T | null {
+  const raw = window.localStorage.getItem(key);
+  if (!raw) return null;
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    return validate(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
 function goalFromUrl(value: string | null): TrainingGoal | null {
   if (value === "traction") return "pullup";
   if (value === "pompes") return "pushup";
@@ -58,21 +78,17 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    try {
-      const storedLogs = window.localStorage.getItem(LOGS_STORAGE_KEY);
-      const storedAssessment = window.localStorage.getItem(ASSESSMENT_STORAGE_KEY);
-      const storedGoal = window.localStorage.getItem(GOAL_STORAGE_KEY);
-      const requestedGoal = goalFromUrl(new URLSearchParams(window.location.search).get("goal"));
-      const nextGoal = requestedGoal ?? (isTrainingGoal(storedGoal) ? storedGoal : "general");
-      if (storedLogs) setLogs(JSON.parse(storedLogs) as SessionLog[]);
-      if (storedAssessment) setAssessment(JSON.parse(storedAssessment) as TrainingAssessment);
-      setGoal(nextGoal);
-      if (requestedGoal) window.localStorage.setItem(GOAL_STORAGE_KEY, requestedGoal);
-    } catch {
-      // A broken local cache should never block the session.
-    } finally {
-      setReady(true);
-    }
+    const storedLogs = readStoredJson<SessionLog[]>(LOGS_STORAGE_KEY, Array.isArray);
+    const storedAssessment = readStoredJson<TrainingAssessment>(ASSESSMENT_STORAGE_KEY, isTrainingAssessment);
+    const storedGoal = window.localStorage.getItem(GOAL_STORAGE_KEY);
+    const requestedGoal = goalFromUrl(new URLSearchParams(window.location.search).get("goal"));
+    const nextGoal = requestedGoal ?? (isTrainingGoal(storedGoal) ? storedGoal : "general");
+
+    if (storedLogs) setLogs(storedLogs);
+    if (storedAssessment) setAssessment(storedAssessment);
+    setGoal(nextGoal);
+    if (requestedGoal) window.localStorage.setItem(GOAL_STORAGE_KEY, requestedGoal);
+    setReady(true);
   }, []);
 
   const assessedProgram = useMemo(() => assessment ? adaptFoundationProgram(program, assessment, goal) : program, [assessment, goal, program]);
