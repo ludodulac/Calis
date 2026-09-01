@@ -33,6 +33,14 @@ function emptyValues(program: TrainingProgram, sessionIndex: number): ValuesStat
   );
 }
 
+function startOfCurrentWeek() {
+  const monday = new Date();
+  const day = monday.getDay() || 7;
+  monday.setDate(monday.getDate() - day + 1);
+  monday.setHours(0, 0, 0, 0);
+  return monday;
+}
+
 export function TodaySession({ program }: { program: TrainingProgram }) {
   const [logs, setLogs] = useState<SessionLog[]>([]);
   const [assessment, setAssessment] = useState<TrainingAssessment | null>(null);
@@ -66,13 +74,11 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
   }, [activeProgram, sessionIndex]);
 
   const completedThisWeek = useMemo(() => {
-    const now = new Date();
-    const monday = new Date(now);
-    const day = monday.getDay() || 7;
-    monday.setDate(monday.getDate() - day + 1);
-    monday.setHours(0, 0, 0, 0);
+    const monday = startOfCurrentWeek();
     return logs.filter((log) => new Date(log.completedAt) >= monday).length;
   }, [logs]);
+
+  const weekComplete = completedThisWeek >= activeProgram.frequencyPerWeek;
 
   const complete = session.exercises.every((exercise) =>
     values[exercise.resourceSlug]?.length === exercise.sets
@@ -100,7 +106,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
   }
 
   function finishSession() {
-    if (!complete) return;
+    if (!complete || weekComplete) return;
 
     const log: SessionLog = {
       sessionId: session.id,
@@ -113,6 +119,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
     };
 
     const nextLogs = [...logs, log];
+    const nextWeekCount = completedThisWeek + 1;
     const nextSession = activeProgram.sessions[nextLogs.length % activeProgram.sessions.length];
     const items = session.exercises.map((exercise) => ({
       label: exercise.label,
@@ -120,13 +127,43 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
       decision: getTrainingDecision(nextLogs, exercise),
     }));
 
-    setSummary({ sessionLabel: session.label, nextSessionLabel: nextSession.label, items });
+    setSummary({
+      sessionLabel: session.label,
+      nextSessionLabel: nextWeekCount >= activeProgram.frequencyPerWeek ? "Repos" : nextSession.label,
+      items,
+    });
     setLogs(nextLogs);
     window.localStorage.setItem(LOGS_STORAGE_KEY, JSON.stringify(nextLogs));
   }
 
   if (!ready) return <div className={styles.loading}>Préparation…</div>;
   if (!assessment) return <TrainingAssessmentFlow onComplete={saveAssessment} />;
+
+  if (weekComplete && !summary) {
+    return (
+      <div className={styles.assessmentScreen}>
+        <div className={styles.assessmentTop}>
+          <span>Cette semaine</span>
+          <div className={styles.weekCount} aria-label={`${completedThisWeek} séances terminées sur ${activeProgram.frequencyPerWeek}`}>
+            {completedThisWeek}/{activeProgram.frequencyPerWeek}
+          </div>
+        </div>
+        <section className={styles.assessmentQuestion}>
+          <h1>Aujourd'hui : repos</h1>
+          <div className={styles.detailPanel}><p>Les séances prévues sont faites.</p></div>
+        </section>
+        <footer className={styles.sessionFooter}>
+          <InfoDialog label="Pourquoi du repos ?" title="Cette semaine" icon="info">
+            <div className={styles.detailPanel}>
+              <p>Le programme actuel prévoit {activeProgram.frequencyPerWeek} séances par semaine. Calis ne rajoute pas automatiquement du volume une fois ce plan terminé.</p>
+              <button className={styles.resetButton} type="button" onClick={resetAssessment}>Refaire mon point de départ</button>
+            </div>
+          </InfoDialog>
+          <Link className="button primary" href="/bibliotheque">Bibliothèque</Link>
+        </footer>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.sessionScreen}>
