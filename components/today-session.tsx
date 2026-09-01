@@ -8,11 +8,12 @@ import { TrainingHistory } from "@/components/training-history";
 import { adaptFoundationProgram } from "@/lib/training/adapt";
 import { getTrainingDecision, type TrainingDecision } from "@/lib/training/decision";
 import { applyProgressions, getProgressionChange } from "@/lib/training/progress";
-import type { SessionLog, TrainingAssessment, TrainingProgram } from "@/lib/training/types";
+import type { SessionLog, TrainingAssessment, TrainingGoal, TrainingProgram } from "@/lib/training/types";
 import styles from "@/app/aujourdhui/today.module.css";
 
 const LOGS_STORAGE_KEY = "calis.training.v2.logs";
 const ASSESSMENT_STORAGE_KEY = "calis.training.v2.assessment";
+const GOAL_STORAGE_KEY = "calis.training.v2.goal";
 
 type ValuesState = Record<string, string[]>;
 type SummaryItem = { label: string; values: string; decision: TrainingDecision; nextLabel?: string };
@@ -30,9 +31,28 @@ function startOfCurrentWeek() {
   return monday;
 }
 
+function isTrainingGoal(value: string | null): value is TrainingGoal {
+  return value === "general" || value === "pullup" || value === "pushup" || value === "legs";
+}
+
+function goalFromUrl(value: string | null): TrainingGoal | null {
+  if (value === "traction") return "pullup";
+  if (value === "pompes") return "pushup";
+  if (value === "jambes") return "legs";
+  return null;
+}
+
+function goalLabel(goal: TrainingGoal) {
+  if (goal === "pullup") return "Traction";
+  if (goal === "pushup") return "Pompes";
+  if (goal === "legs") return "Jambes";
+  return "Fondations";
+}
+
 export function TodaySession({ program }: { program: TrainingProgram }) {
   const [logs, setLogs] = useState<SessionLog[]>([]);
   const [assessment, setAssessment] = useState<TrainingAssessment | null>(null);
+  const [goal, setGoal] = useState<TrainingGoal>("general");
   const [summary, setSummary] = useState<SessionSummary | null>(null);
   const [ready, setReady] = useState(false);
 
@@ -40,8 +60,13 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
     try {
       const storedLogs = window.localStorage.getItem(LOGS_STORAGE_KEY);
       const storedAssessment = window.localStorage.getItem(ASSESSMENT_STORAGE_KEY);
+      const storedGoal = window.localStorage.getItem(GOAL_STORAGE_KEY);
+      const requestedGoal = goalFromUrl(new URLSearchParams(window.location.search).get("goal"));
+      const nextGoal = requestedGoal ?? (isTrainingGoal(storedGoal) ? storedGoal : "general");
       if (storedLogs) setLogs(JSON.parse(storedLogs) as SessionLog[]);
       if (storedAssessment) setAssessment(JSON.parse(storedAssessment) as TrainingAssessment);
+      setGoal(nextGoal);
+      if (requestedGoal) window.localStorage.setItem(GOAL_STORAGE_KEY, requestedGoal);
     } catch {
       // A broken local cache should never block the session.
     } finally {
@@ -49,7 +74,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
     }
   }, []);
 
-  const assessedProgram = useMemo(() => assessment ? adaptFoundationProgram(program, assessment) : program, [assessment, program]);
+  const assessedProgram = useMemo(() => assessment ? adaptFoundationProgram(program, assessment, goal) : program, [assessment, goal, program]);
   const activeProgram = useMemo(() => applyProgressions(assessedProgram, logs) as TrainingProgram, [assessedProgram, logs]);
   const sessionIndex = logs.length % activeProgram.sessions.length;
   const session = activeProgram.sessions[sessionIndex];
@@ -113,7 +138,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
     return (
       <div className={styles.assessmentScreen}>
         <div className={styles.assessmentTop}>
-          <span>Cette semaine</span>
+          <span>Cette semaine · {goalLabel(goal)}</span>
           <div className={styles.exerciseActions}>
             <InfoDialog label="Voir ma progression" title="Ma progression" icon="info"><TrainingHistory logs={logs} program={activeProgram} /></InfoDialog>
             <div className={styles.weekCount} aria-label={`${completedThisWeek} séances terminées sur ${activeProgram.frequencyPerWeek}`}>{completedThisWeek}/{activeProgram.frequencyPerWeek}</div>
@@ -139,7 +164,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
   return (
     <div className={styles.sessionScreen}>
       <header className={styles.sessionHeader}>
-        <div><span>Aujourd'hui</span><h1>{session.label}</h1></div>
+        <div><span>Objectif · {goalLabel(goal)}</span><h1>{session.label}</h1></div>
         <div className={styles.exerciseActions}>
           <InfoDialog label="Voir ma progression" title="Ma progression" icon="info"><TrainingHistory logs={logs} program={activeProgram} /></InfoDialog>
           <div className={styles.weekCount} aria-label={`${completedThisWeek} séances terminées cette semaine`}>{completedThisWeek}/{activeProgram.frequencyPerWeek}</div>
@@ -179,6 +204,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
       <footer className={styles.sessionFooter}>
         <InfoDialog label="Réglages de la séance" title="Ta progression" icon="help">
           <div className={styles.detailPanel}>
+            <p>{session.goal}</p>
             <p>{activeProgram.adaptationRule}</p>
             <p>Les décisions visibles utilisent uniquement les résultats saisis. Elles ne remplacent pas ton jugement sur la technique, la douleur ou la fatigue.</p>
             <button className={styles.resetButton} type="button" onClick={resetAssessment}>Refaire mon point de départ</button>
