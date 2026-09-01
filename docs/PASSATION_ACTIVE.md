@@ -1,95 +1,74 @@
 # Calis — PASSATION ACTIVE
 
-Dernière mise à jour : 31 août 2026, passation finale après veille visuelle/éditoriale et inspection des photos candidates.
+Dernière mise à jour : **1 septembre 2026**.
 
-Ce document est l'état opérationnel de reprise. Commencer impérativement par `AI_START_HERE.md`, puis vérifier l'état réel de `main`, les PR/issues et la dernière CI. Historique détaillé de la session : `docs/HISTORIQUE_CONTINUITE_2026-08-31_VISUEL_ET_CHEMINS.md`.
+## Source de reprise prioritaire
 
-## FAIT ET VÉRIFIÉ
+La passation opérationnelle complète est désormais consolidée dans **`INTEL.md` à la racine du dépôt**.
 
-### Cap produit
-- Calis = écosystème francophone de progression en callisthénie, pas blog/boutique/app fitness générique.
-- Architecture : **DÉSIR → OBJECTIF → CAPACITÉ → PROGRESSION** ; UI : **OBJECTIF → SITUATION ACTUELLE → CHEMIN → PROCHAINE ÉTAPE**.
-- Conserver le H1 `Qu'est-ce que tu aimerais réussir avec ton corps ?`.
-- Pas de personnalisation simulée, compte obligatoire, streak, cadenas ou progression sans vraies données.
-- Utilité et honnêteté avant commerce ; ne jamais inventer auteur, coach, témoignage, communauté, partenariat ou validation.
+Instruction recommandée dans une nouvelle conversation :
 
-### Trois chemins canoniques
-Source : `lib/content/v1.ts`; rendu : `components/progression-path.tsx`; contrat : `docs/PROGRESSION_PATH_PATTERN.md`.
-1. Traction : suspension → contrôle scapulaire → rowing incliné → traction assistée → négatives → première traction → plusieurs tractions ; branches facultatives ensuite.
-2. Pompe : pompes inclinées → première pompe → pompe stable ; dips facultatifs ensuite.
-3. Handstand : préparer les appuis → handstand au mur → premiers équilibres libres.
-Ne pas créer Dips/Muscle-up par symétrie.
+> **Consulte `INTEL.md`, puis vérifie l’état réel de `main`, des PR ouvertes et de la CI, et continue le projet sans repartir de zéro.**
 
-### Accueil / bibliothèque
-- Hero désir-first + exemple concret de chemin traction.
-- Cartes `Je veux…` : nombres d'étapes dérivés des modèles pour traction/pompe/handstand ; muscle-up = diagnostic ; jambes/mobilité = point de départ.
-- `Voir mon chemin` seulement quand un chemin canonique existe ; CTA spécifiques ailleurs.
-- Bibliothèque : entrées rapides → chemin traction → exploration libre ; 9 fiches initiales puis expansion, filtres/recherche exhaustifs.
-- `ResourceCard` affiche des labels français.
+`INTEL.md` contient :
 
-### Structure / accessibilité / audits
-- `<main>` imbriqués corrigés sur bibliothèque et muscle-up.
-- `ProgressionPath` est un groupe accessible ; focus clavier global visible.
-- Overlay générique `bonne position / à corriger` neutralisé sur les vraies illustrations pour ne pas qualifier à tort deux phases valides.
-- Audit exact après refinements : 39 HTML, 427 liens internes, 0 problème détecté sur liens/landmarks/H1/IDs/alt ; toutes les vraies pages atteignables depuis l'accueil.
-- Contrastes principaux contrôlés et suffisants.
+- la vision produit ;
+- les règles UX mobile ;
+- la boucle d’entraînement ;
+- l’état du moteur de décision et de progression ;
+- les choix visuels et couleurs ;
+- l’historique récent des PR ;
+- les limitations ;
+- les prochaines étapes ;
+- les choses à ne pas refaire ;
+- le rythme de travail attendu.
 
-### Vérité visuelle
-- `docs/VISUAL_TRUTH_WORKFLOW.md` obligatoire pour toute image technique.
-- Suspension, rowing incliné, traction négative, pompe et squat ont des visuels documentés/validés dans leurs limites.
-- **Contrôle scapulaire : aucun visuel technique validé sur la page.** L'ancien SVG a été retiré. Décision canonique : `docs/VALIDATION_VISUELLE_CONTROLE_SCAPULAIRE.md`; reconstruire seulement depuis deux keyframes modernes comparables.
-- Traction assistée : pas de montage d'élastique ambigu.
-- Aucun visuel technique Handstand/Muscle-up inventé par IA.
+Ce fichier reste volontairement court pour éviter qu’une ancienne passation détaillée concurrence `INTEL.md`.
 
-### Veille visuelle / éditoriale
-Documents : `docs/VEILLE_VISUELLE_EDITORIALE_2026-08-31.md`, `docs/PHOTO_SOURCES_HOMEPAGE.md`, `docs/HISTORIQUE_CONTINUITE_2026-08-31_VISUEL_ET_CHEMINS.md`.
+## État opérationnel au moment de cette mise à jour
 
-Décision durable : **photo humaine forte pour donner envie → chemin/métadonnées réelles pour décider → illustration validée pour apprendre**. Reprendre les mécanismes efficaces observés, pas copier une marque.
+### Fusionné récemment
 
-Photos inspectées : exploitables pour prototype aspirationnel = Pexels 4803675 traction, 4803733 pompe, 8038575 handstand, 4803687 muscle-up. Rejetées = 4803862 jambes (pistol squat trop avancé), 4426394 mobilité (`KEEP GOING` trop dominant). **Les fichiers binaires ne sont pas dans le dépôt.** Voir issue #31.
+- #38 : première boucle `Aujourd’hui` et programme Fondations.
+- #39 : décisions basées sur les résultats et blocage des séances vides.
+- #40 : diagnostic court et choix du point de départ.
+- #41 : résumé de séance.
+- #42 : fréquence hebdomadaire réelle et repos après les séances prévues.
+- #43 : progression automatique conservatrice vers les étapes documentées.
+- #44 : fenêtre `Ma progression` avec historique et vrais résultats.
 
-### Infrastructure / CI connue
-- Next.js 16 / React 19 / TypeScript, export statique, GitHub Actions + GitHub Pages, basePath `/Calis`.
-- URL de test : `https://ludodulac.github.io/Calis/`, pas identité publique finale.
-- Avant cette passation : `main` = `c30e1443544f8781a63c44e50b320f8ba27a90ec`, run Pages #155 = **success**.
-- Aucun PR ouvert et aucune issue ouverte avant création de l'issue de reprise #31.
+### Ouvert
 
-## EN COURS
-- Issue #31 : intégration future des photos d'objectifs après remplacement des deux candidats rejetés, stockage local, crops, alt, build et audit d'artefact.
-- Branche `feat/home-goal-photography` créée mais identique à `main` au moment de la passation ; repartir de `main` si elle est toujours vide.
+- **#46** — détection prudente de stagnation / état `À revoir` ; branche propre `feat/training-plateau-v2`.
+- **#47** — langage visuel sportif simple ; branche `feat/sport-visual-system-v1`. Cette branche contient aussi la création de `INTEL.md` et la mise à jour des fichiers de passation.
 
-## OUVERT
-1. Re-sourcer un squat bilatéral simple et une photo de mobilité sans texte/marque dominante ; inspecter les fichiers réels.
-2. Stocker localement les six photos retenues avec auteur/source/licence/date ; jamais de hotlink Pexels.
-3. Refaire les cartes `Je veux…` en préservant métadonnées/CTA vrais ; tester crops desktop/mobile.
-4. Reprendre le contrôle scapulaire seulement avec keyframes modernes fiables.
-5. Continuer audits d'artefact : clavier, tactile, chemins horizontaux, densité hubs.
-6. Favicon/OG/identité restent ouverts ; aucune identité définitive décidée.
+Toujours vérifier GitHub : ces états peuvent avoir changé après la rédaction de ce document.
 
-## DÉCISIONS
-- Photo aspirationnelle = destination, jamais biomécanique ni preuve sociale.
-- Cohérence de série secondaire à la clarté de chaque objectif.
-- Personnes de banque d'images jamais présentées comme athlètes/utilisateurs/ambassadeurs Calis.
-- Skill tree seul non différenciant ; valeur Calis = désir + diagnostic + chemin explicite + critère.
+## Décisions actuelles à préserver
 
-## LIMITATIONS / CONTRADICTIONS
-- `docs/PHOTO_SOURCES_HOMEPAGE.md` a été corrigé : jambes 4803862 et mobilité 4426394 ne sont plus sélectionnées.
-- `docs/ILLUSTRATION_SOURCES.md` conserve des couches historiques. Pour le contrôle scapulaire, tout ancien statut de conservation est **supersédé** par `docs/VALIDATION_VISUELLE_CONTROLE_SCAPULAIRE.md` et l'état réel de la page sans image. Conserver l'historique mais ne pas réintégrer l'ancien SVG.
-- Les photos reçues dans le chat ne sont pas persistées dans le repo ; #31 l'explicite.
+- Calis doit répondre à « qu’est-ce que je fais maintenant ? ».
+- Boucle centrale : `diagnostic → programme → séance → mesure → décision → prochaine étape`.
+- Interface mobile fixe pour les écrans de décision ; informations secondaires en modale, pas en accordéon qui allonge la page.
+- Pas de streak, badge artificiel, faux progrès ou preuve sociale simulée.
+- Les progressions automatiques restent explicables et conservatrices.
+- Le stockage reste local-first tant qu’un compte/sync n’apporte pas une vraie valeur.
+- Direction visuelle : base neutre + couleurs d’orientation par famille, géométrie commune, bordures plus franches et tactilité légère ; reprendre la cohérence UX d’un bon jeu mobile, pas son habillage ni sa gamification.
+- Avancer par lots cohérents ; éviter les contrôles complets après chaque micro-changement. Contrôle lourd aux points de stabilisation / PR / fusion.
 
-## PROCHAINE ÉTAPE
-1. Lire `AI_START_HERE.md` et cette passation.
-2. Re-vérifier `main`, CI, PR et #31.
-3. Prendre #31 : re-sourcing des deux photos → stockage local des six retenues → prototype cartes → build → artefact exact → correction.
-4. Branche → PR → squash merge → CI verte → inspection artefact.
+## Prochaine étape
 
-## À NE PAS REFAIRE
-- Ne pas reconstruire Calis comme app fitness générique/copie concurrente.
-- Ne pas remplacer le H1 désir-first par une promesse générique.
-- Ne pas ajouter de chemin pour remplir l'interface.
-- Ne pas utiliser IA générative comme autorité biomécanique.
-- Ne pas réintégrer l'ancien SVG scapulaire.
-- Ne pas utiliser les deux photos rejetées.
-- Ne pas hotlinker les banques d'images.
-- Ne pas inventer preuve sociale/expertise/validation.
-- Ne pas réintroduire backend/commerce lourd sans besoin réel.
+1. Lire `INTEL.md`.
+2. Vérifier l’état réel de #46 et #47 + CI.
+3. Stabiliser/fusionner les lots propres.
+4. Continuer le moteur d’entraînement : objectif principal, stagnation/recalibrage, puis couverture progressive des capacités manquantes.
+5. Maintenir `INTEL.md` à jour à chaque nouvelle passation majeure.
+
+## À ne pas refaire
+
+- Ne pas repartir d’une architecture générique.
+- Ne pas remettre tout le texte à l’écran.
+- Ne pas ajouter de gamification artificielle.
+- Ne pas copier visuellement Clash Royale.
+- Ne pas automatiser des progressions non documentées.
+- Ne pas réintroduire une infrastructure lourde sans besoin réel.
+- Ne pas laisser un ancien document de passation contredire `INTEL.md` : mettre `INTEL.md` à jour.
