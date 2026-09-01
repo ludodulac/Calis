@@ -49,7 +49,8 @@ export default function PrivacyPage() {
             <h2>Le stockage local dépend de ton navigateur.</h2>
           </div>
           <p>Effacer les données du site dans ton navigateur peut supprimer l'historique local de Calis. Refaire simplement ton point de départ dans l'application, en revanche, conserve les séances déjà enregistrées.</p>
-          <p>L'hébergement du site est assuré par GitHub Pages. Comme tout hébergeur web, GitHub peut traiter des informations techniques liées à la fourniture et à la sécurité de son service selon ses propres conditions et politiques.</p>
+          <p>L'hébergement du site est assuré par GitHub Pages. GitHub indique que, lorsqu'un site GitHub Pages est visité, l'adresse IP du visiteur est journalisée et conservée à des fins de sécurité. Ce traitement relève de GitHub et de ses propres politiques ; Calis n'ajoute pas, dans la V1 actuelle, d'analytics ou de pixel publicitaire supplémentaire.</p>
+          <p>Tu peux consulter la <a className="textLink" href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">documentation GitHub Pages</a> et la <a className="textLink" href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">déclaration de confidentialité GitHub</a> pour les informations publiées par l'hébergeur.</p>
           <div className="actions"><Link className="button primary" href="/aujourdhui">Retour à Aujourd'hui</Link><Link className="button secondary" href="/">Accueil</Link></div>
         </div>
       </section>
