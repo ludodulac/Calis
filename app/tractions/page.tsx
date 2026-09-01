@@ -27,8 +27,8 @@ export default function PullUpsPage() {
           <div className="eyebrow">Traction</div>
           <h1>Où ça bloque ?</h1>
         </div>
-        <div className="infoIconBar" aria-label="Informations sur la progression traction">
-          <InfoDialog label="Voir tout le parcours" title="Parcours traction" icon="path">
+        <div className="infoIconBar" aria-label="Informations secondaires">
+          <InfoDialog label="Parcours traction" title="Parcours traction" icon="path">
             <ProgressionPath steps={pullUpProgression} milestoneId="first" ariaLabel="Chemin de la suspension à plusieurs tractions fiables" fork={{ label: "Après plusieurs tractions fiables", links: [{ href: "/bibliotheque/traction-explosive", label: "Gagner en hauteur →" }, { href: "/bibliotheque/tractions-lestees", label: "Gagner en force →" }, { href: "/muscle-up", label: "Préparer le muscle-up →" }] }} />
           </InfoDialog>
           <InfoDialog label="Questions fréquentes" title="Questions fréquentes" icon="help">
