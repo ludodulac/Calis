@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { InfoDialog } from "@/components/info-dialog";
 import { TrainingAssessmentFlow } from "@/components/training-assessment";
+import { TrainingHistory } from "@/components/training-history";
 import { adaptFoundationProgram } from "@/lib/training/adapt";
 import { getTrainingDecision, type TrainingDecision } from "@/lib/training/decision";
 import { applyProgressions, getProgressionChange } from "@/lib/training/progress";
@@ -14,25 +15,11 @@ const LOGS_STORAGE_KEY = "calis.training.v2.logs";
 const ASSESSMENT_STORAGE_KEY = "calis.training.v2.assessment";
 
 type ValuesState = Record<string, string[]>;
-type SummaryItem = {
-  label: string;
-  values: string;
-  decision: TrainingDecision;
-  nextLabel?: string;
-};
-type SessionSummary = {
-  sessionLabel: string;
-  nextSessionLabel: string;
-  items: SummaryItem[];
-};
+type SummaryItem = { label: string; values: string; decision: TrainingDecision; nextLabel?: string };
+type SessionSummary = { sessionLabel: string; nextSessionLabel: string; items: SummaryItem[] };
 
 function emptyValues(program: TrainingProgram, sessionIndex: number): ValuesState {
-  return Object.fromEntries(
-    program.sessions[sessionIndex].exercises.map((exercise) => [
-      exercise.resourceSlug,
-      Array.from({ length: exercise.sets }, () => ""),
-    ]),
-  );
+  return Object.fromEntries(program.sessions[sessionIndex].exercises.map((exercise) => [exercise.resourceSlug, Array.from({ length: exercise.sets }, () => "")]));
 }
 
 function startOfCurrentWeek() {
@@ -62,34 +49,20 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
     }
   }, []);
 
-  const assessedProgram = useMemo(
-    () => assessment ? adaptFoundationProgram(program, assessment) : program,
-    [assessment, program],
-  );
-  const activeProgram = useMemo(
-    () => applyProgressions(assessedProgram, logs) as TrainingProgram,
-    [assessedProgram, logs],
-  );
-
+  const assessedProgram = useMemo(() => assessment ? adaptFoundationProgram(program, assessment) : program, [assessment, program]);
+  const activeProgram = useMemo(() => applyProgressions(assessedProgram, logs) as TrainingProgram, [assessedProgram, logs]);
   const sessionIndex = logs.length % activeProgram.sessions.length;
   const session = activeProgram.sessions[sessionIndex];
   const [values, setValues] = useState<ValuesState>(() => emptyValues(program, 0));
 
-  useEffect(() => {
-    setValues(emptyValues(activeProgram, sessionIndex));
-  }, [activeProgram, sessionIndex]);
+  useEffect(() => { setValues(emptyValues(activeProgram, sessionIndex)); }, [activeProgram, sessionIndex]);
 
   const completedThisWeek = useMemo(() => {
     const monday = startOfCurrentWeek();
     return logs.filter((log) => new Date(log.completedAt) >= monday).length;
   }, [logs]);
-
   const weekComplete = completedThisWeek >= activeProgram.frequencyPerWeek;
-
-  const complete = session.exercises.every((exercise) =>
-    values[exercise.resourceSlug]?.length === exercise.sets
-    && values[exercise.resourceSlug].every((value) => Number(value) > 0),
-  );
+  const complete = session.exercises.every((exercise) => values[exercise.resourceSlug]?.length === exercise.sets && values[exercise.resourceSlug].every((value) => Number(value) > 0));
 
   function saveAssessment(nextAssessment: TrainingAssessment) {
     setAssessment(nextAssessment);
@@ -105,25 +78,16 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
   }
 
   function updateValue(slug: string, setIndex: number, value: string) {
-    setValues((current) => ({
-      ...current,
-      [slug]: current[slug].map((item, index) => (index === setIndex ? value : item)),
-    }));
+    setValues((current) => ({ ...current, [slug]: current[slug].map((item, index) => index === setIndex ? value : item) }));
   }
 
   function finishSession() {
     if (!complete || weekComplete) return;
-
     const log: SessionLog = {
       sessionId: session.id,
       completedAt: new Date().toISOString(),
-      exercises: session.exercises.map((exercise) => ({
-        prescriptionSlug: exercise.resourceSlug,
-        values: values[exercise.resourceSlug].map(Number),
-        completed: true,
-      })),
+      exercises: session.exercises.map((exercise) => ({ prescriptionSlug: exercise.resourceSlug, values: values[exercise.resourceSlug].map(Number), completed: true })),
     };
-
     const nextLogs = [...logs, log];
     const nextWeekCount = completedThisWeek + 1;
     const nextProgram = applyProgressions(assessedProgram, nextLogs) as TrainingProgram;
@@ -137,12 +101,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
         nextLabel: progression?.to.label,
       };
     });
-
-    setSummary({
-      sessionLabel: session.label,
-      nextSessionLabel: nextWeekCount >= activeProgram.frequencyPerWeek ? "Repos" : nextSession.label,
-      items,
-    });
+    setSummary({ sessionLabel: session.label, nextSessionLabel: nextWeekCount >= activeProgram.frequencyPerWeek ? "Repos" : nextSession.label, items });
     setLogs(nextLogs);
     window.localStorage.setItem(LOGS_STORAGE_KEY, JSON.stringify(nextLogs));
   }
@@ -155,8 +114,9 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
       <div className={styles.assessmentScreen}>
         <div className={styles.assessmentTop}>
           <span>Cette semaine</span>
-          <div className={styles.weekCount} aria-label={`${completedThisWeek} séances terminées sur ${activeProgram.frequencyPerWeek}`}>
-            {completedThisWeek}/{activeProgram.frequencyPerWeek}
+          <div className={styles.exerciseActions}>
+            <InfoDialog label="Voir ma progression" title="Ma progression" icon="info"><TrainingHistory logs={logs} program={activeProgram} /></InfoDialog>
+            <div className={styles.weekCount} aria-label={`${completedThisWeek} séances terminées sur ${activeProgram.frequencyPerWeek}`}>{completedThisWeek}/{activeProgram.frequencyPerWeek}</div>
           </div>
         </div>
         <section className={styles.assessmentQuestion}>
@@ -179,12 +139,10 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
   return (
     <div className={styles.sessionScreen}>
       <header className={styles.sessionHeader}>
-        <div>
-          <span>Aujourd'hui</span>
-          <h1>{session.label}</h1>
-        </div>
-        <div className={styles.weekCount} aria-label={`${completedThisWeek} séances terminées cette semaine`}>
-          {completedThisWeek}/{activeProgram.frequencyPerWeek}
+        <div><span>Aujourd'hui</span><h1>{session.label}</h1></div>
+        <div className={styles.exerciseActions}>
+          <InfoDialog label="Voir ma progression" title="Ma progression" icon="info"><TrainingHistory logs={logs} program={activeProgram} /></InfoDialog>
+          <div className={styles.weekCount} aria-label={`${completedThisWeek} séances terminées cette semaine`}>{completedThisWeek}/{activeProgram.frequencyPerWeek}</div>
         </div>
       </header>
 
@@ -194,10 +152,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
           return (
             <article className={styles.exerciseRow} key={exercise.resourceSlug}>
               <div className={styles.exerciseTopline}>
-                <div>
-                  <strong>{exercise.label}</strong>
-                  <span>{exercise.sets} × {exercise.min}–{exercise.max}{exercise.unit === "seconds" ? " s" : ""}</span>
-                </div>
+                <div><strong>{exercise.label}</strong><span>{exercise.sets} × {exercise.min}–{exercise.max}{exercise.unit === "seconds" ? " s" : ""}</span></div>
                 <div className={styles.exerciseActions}>
                   <span className={`${styles.decisionBadge} ${styles[decision.state]}`}>{decision.label}</span>
                   <InfoDialog label={`Détails pour ${exercise.label}`} title={exercise.label} icon="info">
@@ -211,21 +166,9 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
                   </InfoDialog>
                 </div>
               </div>
-
               <div className={styles.setInputs} aria-label={`Résultats pour ${exercise.label}`}>
                 {Array.from({ length: exercise.sets }, (_, setIndex) => (
-                  <label key={setIndex}>
-                    <span>S{setIndex + 1}</span>
-                    <input
-                      inputMode="numeric"
-                      min="0"
-                      pattern="[0-9]*"
-                      type="number"
-                      value={values[exercise.resourceSlug][setIndex]}
-                      onChange={(event) => updateValue(exercise.resourceSlug, setIndex, event.target.value)}
-                      aria-label={`${exercise.label}, série ${setIndex + 1}`}
-                    />
-                  </label>
+                  <label key={setIndex}><span>S{setIndex + 1}</span><input inputMode="numeric" min="0" pattern="[0-9]*" type="number" value={values[exercise.resourceSlug][setIndex]} onChange={(event) => updateValue(exercise.resourceSlug, setIndex, event.target.value)} aria-label={`${exercise.label}, série ${setIndex + 1}`} /></label>
                 ))}
               </div>
             </article>
@@ -241,25 +184,17 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
             <button className={styles.resetButton} type="button" onClick={resetAssessment}>Refaire mon point de départ</button>
           </div>
         </InfoDialog>
-        <button className={styles.finishButton} type="button" onClick={finishSession} disabled={!complete}>
-          {complete ? "Terminer" : "Remplis les séries"}
-        </button>
+        <button className={styles.finishButton} type="button" onClick={finishSession} disabled={!complete}>{complete ? "Terminer" : "Remplis les séries"}</button>
       </footer>
 
       {summary && (
         <section className={styles.summaryLayer} role="dialog" aria-modal="true" aria-labelledby="session-summary-title">
           <div className={styles.summaryCard}>
-            <div className={styles.summaryHeading}>
-              <span>{summary.sessionLabel}</span>
-              <h2 id="session-summary-title">Séance terminée</h2>
-            </div>
+            <div className={styles.summaryHeading}><span>{summary.sessionLabel}</span><h2 id="session-summary-title">Séance terminée</h2></div>
             <div className={styles.summaryList}>
               {summary.items.map((item) => (
                 <div className={styles.summaryRow} key={item.label}>
-                  <div>
-                    <strong>{item.label}</strong>
-                    <span>{item.nextLabel ? `Validé → ${item.nextLabel}` : item.values}</span>
-                  </div>
+                  <div><strong>{item.label}</strong><span>{item.nextLabel ? `Validé → ${item.nextLabel}` : item.values}</span></div>
                   <span className={`${styles.decisionBadge} ${styles[item.decision.state]}`}>{item.decision.label}</span>
                 </div>
               ))}
