@@ -137,12 +137,10 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
     setSummary(null);
   }
 
-  function resetAssessment() {
+  function retakeAssessment() {
     setAssessment(null);
-    setLogs([]);
     setSummary(null);
     window.localStorage.removeItem(ASSESSMENT_STORAGE_KEY);
-    window.localStorage.removeItem(LOGS_STORAGE_KEY);
   }
 
   function updateValue(slug: string, setIndex: number, value: string) {
@@ -200,7 +198,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
           <InfoDialog label="Pourquoi du repos ?" title="Cette semaine" icon="info">
             <div className={styles.detailPanel}>
               <p>Le programme actuel prévoit {activeProgram.frequencyPerWeek} séances par semaine. Calis ne rajoute pas automatiquement du volume une fois ce plan terminé.</p>
-              <button className={styles.resetButton} type="button" onClick={resetAssessment}>Refaire mon point de départ</button>
+              <button className={styles.resetButton} type="button" onClick={retakeAssessment}>Refaire mon point de départ</button>
             </div>
           </InfoDialog>
           <Link className="button primary" href="/bibliotheque">Bibliothèque</Link>
@@ -262,7 +260,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
             <p>{session.goal}</p>
             <p>{activeProgram.adaptationRule}</p>
             <p>Les décisions visibles utilisent uniquement les résultats saisis. Elles ne remplacent pas ton jugement sur la technique, la douleur ou la fatigue.</p>
-            <button className={styles.resetButton} type="button" onClick={resetAssessment}>Refaire mon point de départ</button>
+            <button className={styles.resetButton} type="button" onClick={retakeAssessment}>Refaire mon point de départ</button>
           </div>
         </InfoDialog>
         <button className={styles.finishButton} type="button" onClick={finishSession} disabled={!complete}>{complete ? "Terminer" : "Remplis les séries"}</button>
