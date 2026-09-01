@@ -18,7 +18,10 @@ export function SiteHeader() {
             ))}
           </ul>
         </nav>
-        <Link className="mobileStart" href="/commencer">Je débute</Link>
+        <div className="mobileHeaderActions">
+          <Link className="mobilePrivacy" href="/confidentialite">Vie privée</Link>
+          <Link className="mobileStart" href="/commencer">Je débute</Link>
+        </div>
       </div>
     </header>
   );
