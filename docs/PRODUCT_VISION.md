@@ -43,6 +43,8 @@ Calis doit reprendre l'efficacité ergonomique des meilleures interfaces mobiles
 - une action = une idée, jamais un paragraphe transformé en bouton ;
 - grandes cibles tactiles et navigation primaire courte, utilisables au pouce ;
 - l'action principale apparaît tôt dans le viewport ;
+- sur téléphone, le cadre de l'application reste fixe : en-tête et navigation ne défilent pas avec le document ; seul le contenu central défile lorsqu'il dépasse l'espace disponible ;
+- une page courte doit tenir dans ce cadre sans donner l'impression de faire défiler un site ; un article long peut défiler à l'intérieur de la zone de contenu ;
 - la complexité est révélée après le choix plutôt qu'empilée avant ;
 - l'état et la progression sont montrés visuellement lorsqu'un long texte n'est pas nécessaire ;
 - simplifier la présentation ne signifie pas supprimer les capacités du produit : les fonctions secondaires restent accessibles à leur niveau logique.
