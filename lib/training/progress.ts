@@ -53,6 +53,10 @@ const progressions: Record<string, TrainingPrescription> = {
   },
 };
 
+export function hasDocumentedProgression(prescription: TrainingPrescription) {
+  return Boolean(progressions[prescription.resourceSlug]);
+}
+
 function samePrescription(exercise: ExerciseLog, prescription: TrainingPrescription) {
   const snapshot = exercise.prescription;
   if (!snapshot) return false;
