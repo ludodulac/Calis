@@ -12,6 +12,8 @@ export type TrainingPrescription = {
   progressionCue: string;
 };
 
+export type PrescriptionSnapshot = Pick<TrainingPrescription, "sets" | "min" | "max" | "unit">;
+
 export type TrainingSessionTemplate = {
   id: string;
   label: string;
@@ -31,6 +33,7 @@ export type TrainingProgram = {
 
 export type ExerciseLog = {
   prescriptionSlug: string;
+  prescription?: PrescriptionSnapshot;
   values: number[];
   completed: boolean;
 };
