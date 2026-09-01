@@ -109,29 +109,8 @@ export function adaptFoundationProgram(base: TrainingProgram, assessment: Traini
     audience: "Débutant, avec point de départ choisi à partir de capacités simples.",
     sessions: base.sessions.map((session, sessionIndex) => ({
       ...session,
-      exercises: sessionIndex === 0
-        ? [pull, push, legs, {
-            resourceSlug: "mobilite-debutant",
-            label: "Mobilité",
-            sets: 2,
-            min: 30,
-            max: 45,
-            unit: "seconds",
-            restSeconds: 30,
-            effortCue: "Reste dans une amplitude confortable et contrôlée.",
-            progressionCue: "Cherche surtout une meilleure aisance, pas une amplitude forcée.",
-          }]
-        : [push, pull, legs, {
-            resourceSlug: "poignets-handstand",
-            label: "Appuis poignets",
-            sets: 2,
-            min: 20,
-            max: 30,
-            unit: "seconds",
-            restSeconds: 30,
-            effortCue: "Charge progressivement les mains sans chercher une sensation agressive.",
-            progressionCue: "Augmente le temps seulement si les appuis restent confortables.",
-          }],
+      exercises: sessionIndex === 0 ? [pull, push, legs] : [push, pull, legs],
     })),
+    scopeNote: "Cette version adapte seulement les capacités déjà assez documentées pour produire une prescription exécutable. Elle sera élargie à mesure que jambes, tronc, poussée verticale et mobilité auront des progressions suffisamment précises.",
   };
 }
