@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { handstandProgression, pullUpProgression, pushUpProgression } from "@/lib/content/v1";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 const goals = [
-  { title: "Traction", image: "/goals/traction.jpg", alt: "Personne réalisant une traction sur une barre", href: "/tractions" },
-  { title: "Pompes", image: "/goals/pompes.jpg", alt: "Personne réalisant une pompe au sol", href: "/pompes" },
-  { title: "Équilibre", image: "/goals/handstand.jpg", alt: "Personne en équilibre sur les mains", href: "/handstand" },
-  { title: "Muscle-up", image: "/goals/muscle-up.jpg", alt: "Personne au-dessus d'une barre pendant un muscle-up", href: "/muscle-up" },
-  { title: "Jambes", image: "/goals/jambes.jpg", alt: "Personne travaillant l'équilibre et les jambes", href: "/bibliotheque/squat-poids-du-corps" },
-  { title: "Mobilité", image: "/goals/mobilite.jpg", alt: "Personne étirant sa jambe dans un parc", href: "/bibliotheque/mobilite-debutant" },
+  { title: "Traction", image: "/goals/traction.webp", alt: "Personne réalisant une traction sur une barre", href: "/tractions" },
+  { title: "Pompes", href: "/pompes" },
+  { title: "Équilibre", href: "/handstand" },
+  { title: "Muscle-up", href: "/muscle-up" },
+  { title: "Jambes", href: "/bibliotheque/squat-poids-du-corps" },
+  { title: "Mobilité", href: "/bibliotheque/mobilite-debutant" },
 ] as const;
 
 export default function HomePage() {
@@ -46,15 +45,18 @@ export default function HomePage() {
         <div className="shell">
           <div className="sectionHeading">
             <h2>Je veux…</h2>
-            <p>Choisis simplement une image.</p>
+            <p>Choisis simplement.</p>
           </div>
           <div className="journeyGrid">
-            {goals.map((goal) => (
-              <Link className="journeyCard" href={goal.href} key={goal.title} aria-label={`Choisir : ${goal.title}`}>
-                <img className="journeyCardImage" src={goal.image} alt={goal.alt} />
-                <strong>{goal.title}</strong>
-              </Link>
-            ))}
+            {goals.map((goal) => {
+              const hasImage = "image" in goal;
+              return (
+                <Link className={`journeyCard${hasImage ? " journeyCardWithImage" : " journeyCardTextOnly"}`} href={goal.href} key={goal.title} aria-label={`Choisir : ${goal.title}`}>
+                  {hasImage && <img className="journeyCardImage" src={goal.image} alt={goal.alt} />}
+                  <strong>{goal.title}</strong>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
