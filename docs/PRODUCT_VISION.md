@@ -30,9 +30,24 @@ Principes éditoriaux :
 
 La profondeur de Calis doit être dans le système, pas imposée au visiteur. Une personne qui ne connaît ni la callisthénie ni son vocabulaire doit pouvoir comprendre rapidement ce qu'elle peut faire sur le site.
 
-Test de conception : l'entrée principale doit rester compréhensible par un enfant d'environ 11 ans ou une personne âgée peu familière de ce type de site. Les premiers choix utilisent donc des formulations humaines et concrètes — « je débute », « je veux réussir une traction », « je n'arrive pas encore à faire une pompe » — avant d'exposer des notions techniques.
+Test de conception : l'entrée principale doit rester compréhensible par un enfant d'environ 11 ans, une personne âgée peu familière de ce type de site ou une personne ayant des difficultés motrices ou cognitives. Les premiers choix utilisent donc des formulations humaines et concrètes — « je débute », « traction », « pompes », « équilibre » — avant d'exposer des notions techniques.
 
 Cela ne signifie pas appauvrir les ressources. Les détails, la biomécanique, les sources, le graphe de progression et les critères restent disponibles après que le visiteur a choisi ce qu'il veut faire.
+
+### Principes d'interface
+
+Calis doit reprendre l'efficacité ergonomique des meilleures interfaces mobiles sans reprendre leurs mécanismes de manipulation :
+
+- un écran de décision = une intention principale ;
+- le visuel porte d'abord le sens, le texte court le confirme ;
+- une action = une idée, jamais un paragraphe transformé en bouton ;
+- grandes cibles tactiles et navigation primaire courte, utilisables au pouce ;
+- l'action principale apparaît tôt dans le viewport ;
+- la complexité est révélée après le choix plutôt qu'empilée avant ;
+- l'état et la progression sont montrés visuellement lorsqu'un long texte n'est pas nécessaire ;
+- simplifier la présentation ne signifie pas supprimer les capacités du produit : les fonctions secondaires restent accessibles à leur niveau logique.
+
+Les jeux mobiles peuvent servir de référence pour la hiérarchie visuelle, la réactivité et la navigation compacte. Calis reste cependant un outil honnête : pas de monnaie artificielle, streak, urgence fabriquée, badge parasite, fausse progression ou récompense fictive.
 
 ## Modèle à long terme
 

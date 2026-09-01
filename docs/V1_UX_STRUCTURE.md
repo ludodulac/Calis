@@ -10,29 +10,34 @@ Ce document définit les quatre écrans structurants de la première version : A
 
 Faire comprendre immédiatement que Calis n'est ni une simple boutique ni un blog fitness, mais un guide pour découvrir et développer les capacités de son corps.
 
+## Priorité mobile
+
+Sur téléphone, le premier viewport doit permettre de comprendre la question principale et de commencer à choisir sans devoir lire une landing page. La priorité est : **objectif visible → choix visuel → action**. L'entrée « Je débute » doit rester immédiatement accessible.
+
+Les contenus durables — bibliothèque, méthode, confiance, sécurité, architecture par capacités — ne sont pas supprimés pour gagner de la place : ils sont placés plus bas ou dans leur destination logique afin de ne pas concurrencer la décision principale.
+
 ## Hero
 
-**Titre de travail :**
+Le hero ne doit pas devenir une introduction longue. Le H1 désir-first est prioritaire ; toute explication secondaire doit rester brève et disparaître avant les choix si elle empêche l'action principale de tenir dans un écran de téléphone.
 
-> Découvre ce dont ton corps est capable.
+### Portes d'entrée
 
-**Sous-titre :**
+- **Je débute**
+- **Je choisis un objectif**
 
-> Apprends les mouvements, comprends ton corps et progresse étape par étape grâce à la callisthénie.
+Ces choix doivent orienter vers un parcours ou une ressource réelle, pas vers une création de compte obligatoire.
 
-### Trois portes d'entrée
+## Choix d'objectif
 
-- **Je pars de zéro**
-- **Je pratique déjà**
-- **J'ai un objectif**
+Les objectifs sont présentés comme de grandes cartes tactiles. Une photographie ou un visuel porte le sens lorsque l'asset est fiable ; un intitulé très court le confirme. Éviter d'empiler niveau, description, métadonnées et CTA sur la même carte lorsque le clic sur la carte suffit.
 
-Ces choix doivent orienter vers la bibliothèque filtrée ou un parcours, pas vers une création de compte obligatoire.
+Les objectifs V1 peuvent inclure traction, pompes, équilibre/handstand, muscle-up, jambes et mobilité, à condition que chacun pointe vers une destination réellement existante et honnête.
 
 ## Sections suivantes
 
 ### Commencer simplement
 
-Présenter 4 cartes : première pompe, première traction, premiers dips, bases du handstand.
+Présenter des entrées adaptées aux personnes qui partent de zéro.
 
 ### Explorer par capacité
 
@@ -48,7 +53,7 @@ Bloc éditorial expliquant la philosophie : une grande partie de la callisthéni
 
 ### Bibliothèque
 
-CTA principal vers l'ensemble des ressources.
+Accès vers l'ensemble des ressources sans concurrencer le choix d'objectif principal.
 
 ### Confiance
 
@@ -123,7 +128,7 @@ Chaque carte doit montrer au minimum :
 - matériel requis éventuel ;
 - date de mise à jour si importante.
 
-Les cartes ne doivent pas devenir des publicités.
+Les cartes ne doivent pas devenir des publicités. Sur petit écran, ne pas afficher toutes les métadonnées simultanément si elles nuisent au choix : garder d'abord ce qui permet d'identifier la ressource.
 
 ## URL et indexation
 
@@ -217,7 +222,7 @@ Petit critère permettant de savoir si cette fiche est le bon niveau.
 
 ### Technique
 
-Explication progressive, idéalement illustrable plus tard par schémas ou médias originaux.
+Explication progressive, idéalement illustrée lorsque le visuel peut être validé.
 
 ### Ce que tu dois ressentir
 
@@ -245,11 +250,7 @@ Critères observables, sourcés ou clairement présentés comme repères pratiqu
 
 ## Bloc progression
 
-Afficher :
-
-**Étape précédente ← Vous êtes ici → Étape suivante**
-
-Même sans compte, cela donne la sensation d'un chemin.
+Afficher clairement la situation et la prochaine étape. La progression doit pouvoir être comprise visuellement sans imposer une longue explication.
 
 ## Bloc équipement
 
@@ -279,17 +280,9 @@ Liens calculés à terme depuis le graphe de connaissances, mais éditorialement
 
 # 5. Navigation globale V1
 
-## Header
+Sur grand écran, le header peut exposer davantage de structure. Sur mobile, la navigation primaire doit rester courte et stable : **3 à 4 destinations maximum au premier niveau**. Pour la V1, `Accueil / Parcours / Bibliothèque` constitue une base suffisante ; les fonctions secondaires restent accessibles depuis ces espaces.
 
-- Logo / nom
-- Apprendre
-- Progresser
-- Comprendre
-- S'équiper
-- Bibliothèque
-- Recherche
-
-« Pratiquer » peut être préparé mais non affiché tant que l'annuaire n'existe pas.
+Éviter d'afficher simultanément un header de navigation complet et une barre basse qui font la même chose. La navigation basse doit avoir de grandes zones tactiles, un état actif évident et des libellés courts.
 
 ## Footer
 
@@ -300,6 +293,8 @@ Liens calculés à terme depuis le graphe de connaissances, mais éditorialement
 - Transparence commerciale
 - Contact
 - Mentions légales / confidentialité
+
+Le footer ne doit pas être forcé dans le premier écran d'une interface de décision mobile.
 
 ---
 
@@ -343,7 +338,7 @@ Les URLs françaises doivent être stables et simples. Les accents sont évités
 
 ## Ton
 
-Calme, précis, encourageant, non infantilisant.
+Calme, précis, encourageant, non infantilisant. Une interface très simple ne doit jamais traiter l'utilisateur comme un enfant.
 
 ## Univers visuel
 
@@ -351,16 +346,32 @@ Calme, précis, encourageant, non infantilisant.
 - capable de parler naturellement aux femmes et aux hommes ;
 - éviter le cliché « hardcore gym » ;
 - éviter aussi la féminisation artificielle ;
-- privilégier corps en mouvement, contrôle, gestes et progression.
+- privilégier corps en mouvement, contrôle, gestes et progression ;
+- reprendre des interfaces de jeu mobile leur hiérarchie, leur lisibilité et leur réactivité, jamais leur habillage de marque ni leurs mécaniques de rétention.
+
+## Règles d'interaction mobile
+
+- concevoir d'abord les écrans de décision autour d'un viewport de référence proche de **390 × 844 px**, puis adapter aux autres tailles ;
+- une intention principale dominante par écran de décision ;
+- une action = une idée ; aucun paragraphe déguisé en bouton ;
+- cartes importantes entièrement tactiles et grandes cibles d'au moins 44–48 px ;
+- image ou pictogramme avant explication lorsque cela rend le choix immédiatement compréhensible ;
+- intitulés courts et langage humain avant vocabulaire technique ;
+- feedback immédiat au toucher, au clavier et au focus ;
+- détails, métadonnées et explications révélés progressivement après le choix ;
+- montrer la situation actuelle, le chemin et la prochaine étape plutôt que les raconter longuement ;
+- simplifier par hiérarchie et déplacement du secondaire, pas par suppression silencieuse de fonctionnalités.
 
 ## Accessibilité
 
 - contraste suffisant ;
 - navigation clavier ;
 - composants lisibles sans couleur seule ;
-- tailles tactiles adaptées ;
+- tailles tactiles adaptées et espaces entre cibles ;
 - textes alternatifs utiles ;
-- respect de `prefers-reduced-motion` pour les futures animations.
+- structure compatible avec lecteurs d'écran ;
+- respect de `prefers-reduced-motion` pour les futures animations ;
+- tester les décisions essentielles avec une personne très jeune, une personne âgée peu technophile ou une personne ayant des difficultés motrices/cognitives comme cas limites de clarté, sans infantiliser le ton.
 
 ---
 
@@ -372,9 +383,11 @@ Calme, précis, encourageant, non infantilisant.
 - vidéos obligatoires ;
 - tracking invasif ;
 - gamification excessive ;
-- application mobile.
+- application mobile native.
 
-La valeur de la V1 doit exister avec les contenus et la structure seuls.
+La V1 reste un produit web, mais son interface doit être **mobile-first**. « Pas d'application mobile » signifie qu'aucune app native n'est requise, pas que l'expérience web sur téléphone est secondaire.
+
+Pas de monnaies artificielles, streaks, badges d'urgence, fausse rareté, récompenses fictives ou progression simulée pour provoquer le retour. La sensation de progression doit venir de capacités et d'étapes réelles.
 
 ---
 
@@ -420,7 +433,7 @@ Exemples d'entrées à conserver :
 - Je veux bouger plus librement.
 - Je ne sais même pas par où commencer.
 
-Sous cette couche, la homepage doit continuer à exposer l'architecture durable de Calis : **Apprendre / Progresser / Comprendre / S'équiper**, ainsi que la navigation par capacités. Le désir est la porte d'entrée ; il n'est pas un remplacement de la structure produit.
+Sous cette couche, la homepage doit continuer à donner accès à l'architecture durable de Calis : **Apprendre / Progresser / Comprendre / S'équiper**, ainsi qu'à la navigation par capacités. Elle n'a pas besoin de tout afficher simultanément dans le premier viewport : le désir est la porte d'entrée ; il n'est pas un remplacement de la structure produit.
 
 ## `/commencer` : double lecture
 
