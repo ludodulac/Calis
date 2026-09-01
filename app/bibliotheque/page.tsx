@@ -36,8 +36,8 @@ export default function LibraryPage() {
             <div className="eyebrow">Bibliothèque</div>
             <h1 id="library-title">Qu'est-ce que tu cherches ?</h1>
           </div>
-          <div className="infoIconBar" aria-label="Options de la bibliothèque">
-            <InfoDialog label="Voir les parcours" title="Parcours" icon="path">
+          <div className="infoIconBar" aria-label="Informations secondaires">
+            <InfoDialog label="Parcours" title="Parcours" icon="path">
               <div className="libraryJourneyGrid modalGrid">
                 {journeys.map((journey) => (
                   <Link className="libraryJourneyCard" href={journey.href} key={journey.title}>
@@ -47,7 +47,7 @@ export default function LibraryPage() {
               </div>
             </InfoDialog>
 
-            <InfoDialog label="Voir un exemple de progression" title="Exemple de progression" icon="info">
+            <InfoDialog label="Exemple de progression" title="Exemple de progression" icon="info">
               <ProgressionPath
                 steps={pullUpProgression}
                 milestoneId="first"
