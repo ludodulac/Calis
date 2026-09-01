@@ -2,17 +2,26 @@
 
 Point d’entrée obligatoire de tout agent IA reprenant Calis. Ce fichier indexe les sources de vérité et impose la continuité ; il ne remplace pas les documents produit existants.
 
+## 0. Passation opérationnelle la plus récente
+
+Lire **`INTEL.md` en premier**. Il concentre le contexte produit, UX, technique, visuel et opérationnel le plus récent, notamment la boucle d’entraînement `diagnostic → programme → séance → mesure → décision → prochaine étape`, les règles de simplicité mobile, la direction visuelle sportive et les PR récentes.
+
+Instruction courte recommandée :
+
+> Consulte `INTEL.md`, puis vérifie l’état réel de `main`, des PR ouvertes et de la CI, et continue le projet sans repartir de zéro.
+
 ## 1. Démarrage obligatoire
 
 Avant toute modification :
-1. vérifier l’état réel de `main`, les changements récents et les issues/PR pertinentes ;
-2. lire `README.md` ;
-3. lire `docs/CAHIER_DES_CHARGES.md`, `docs/MASTER_PLAN.md` et `docs/PRODUCT_VISION.md` ;
-4. lire `docs/HISTORIQUE_FONDATEUR_2026-08-30.md` puis les historiques de continuité plus récents ;
-5. lire `docs/PASSATION_ACTIVE.md` lorsqu’il existe : il décrit l’état de reprise opérationnel le plus récent ;
-6. selon la tâche, consulter les documents spécialisés : modèle de contenu, architecture de l’information, SEO/clusters, briefs, illustrations, cycle éditorial, recherche scientifique, roadmap ;
-7. inspecter l’application réelle (`app/`, `components/`, `lib/`) avant de proposer une nouvelle structure ;
-8. vérifier la dernière CI de `main` avant de considérer l’état comme sain.
+1. lire `INTEL.md` ;
+2. vérifier l’état réel de `main`, les changements récents et les issues/PR pertinentes ;
+3. lire `README.md` ;
+4. lire `docs/CAHIER_DES_CHARGES.md`, `docs/MASTER_PLAN.md` et `docs/PRODUCT_VISION.md` ;
+5. lire `docs/HISTORIQUE_FONDATEUR_2026-08-30.md` puis les historiques de continuité plus récents ;
+6. lire `docs/PASSATION_ACTIVE.md` lorsqu’il existe ;
+7. selon la tâche, consulter les documents spécialisés : modèle de contenu, architecture de l’information, SEO/clusters, briefs, illustrations, cycle éditorial, recherche scientifique, roadmap ;
+8. inspecter l’application réelle (`app/`, `components/`, `lib/`) avant de proposer une nouvelle structure ;
+9. vérifier la dernière CI de `main` avant de considérer l’état comme sain.
 
 ## 2. Principes produit à préserver
 
@@ -39,12 +48,13 @@ Calis est un écosystème francophone de progression en callisthénie, pas un bl
 
 ## 4. Carte documentaire
 
+- **Passation opérationnelle consolidée : `INTEL.md`.**
 - Direction générale : `README.md`.
 - Référence structurante : `docs/CAHIER_DES_CHARGES.md`.
 - Trajectoire : `docs/MASTER_PLAN.md`, `docs/ROADMAP.md`, `docs/PRODUCT_VISION.md`.
 - Raisonnement fondateur : `docs/HISTORIQUE_FONDATEUR_2026-08-30.md`.
 - Continuité récente : historiques `docs/HISTORIQUE_CONTINUITE_*.md`.
-- État opérationnel de reprise : `docs/PASSATION_ACTIVE.md`.
+- État opérationnel complémentaire : `docs/PASSATION_ACTIVE.md`.
 - Contenu : `docs/CONTENT_MODEL.md`, `docs/CONTENT_BRIEFS_V1.md`, `docs/ADMIN_AND_CONTENT_LIFECYCLE.md`.
 - SEO / parcours : `docs/SEO_UX_STRATEGY.md`, documents `SEO_CLUSTER_*` et `CLUSTER_*_STRATEGY.md`.
 - Illustrations : `docs/ILLUSTRATION_SYSTEM.md`, `docs/ILLUSTRATION_SOURCES.md`, `docs/VISUAL_TRUTH_WORKFLOW.md`.
@@ -54,7 +64,7 @@ Calis est un écosystème francophone de progression en callisthénie, pas un bl
 
 ### Règle de priorité documentaire
 
-Le cahier des charges conserve aussi des hypothèses historiques/cibles. Pour **l’état technique courant**, `docs/TECHNICAL_ARCHITECTURE.md`, le code et la CI réelle priment. Exemple : GitHub Pages est le déploiement V1 actuel même si Cloudflare apparaît encore comme cible possible dans des documents historiques.
+Le cahier des charges conserve aussi des hypothèses historiques/cibles. Pour **l’état technique courant**, le code, la CI réelle et `INTEL.md` pour la continuité opérationnelle priment sur un document historique devenu obsolète. Les décisions durables doivent néanmoins être répercutées dans leurs documents canoniques.
 
 ## 5. Méthode d’exécution
 
@@ -62,9 +72,11 @@ Inspection → intention utilisateur → recherche de l’existant → solution 
 
 Ne pas transformer une tâche ciblée en refonte générale. Réserver les questions utilisateur aux décisions réellement subjectives ou inaccessibles.
 
+**Rythme actuel souhaité :** avancer par lots cohérents et éviter de refaire un contrôle complet après chaque micro-transformation. Faire les contrôles lourds surtout aux points de stabilisation, PR et fusion.
+
 ## 6. Indexation et mémoire
 
-Calis conserve deux niveaux de mémoire : sources structurantes durables + historique de continuité. Une décision récente ne doit pas effacer silencieusement une intention fondatrice encore pertinente.
+Calis conserve deux niveaux de mémoire : sources structurantes durables + historique/état de continuité. Une décision récente ne doit pas effacer silencieusement une intention fondatrice encore pertinente.
 
 Classer les informations :
 - règle produit durable → cahier des charges/document canonique ;
@@ -72,7 +84,7 @@ Classer les informations :
 - comportement logiciel → code + validation/test ;
 - tâche restante → roadmap/issue/passation active ;
 - raisonnement historique → historique de continuité ;
-- état de reprise → `docs/PASSATION_ACTIVE.md`.
+- état de reprise consolidé → `INTEL.md`.
 
 Éviter plusieurs documents prétendant être simultanément la même source de vérité. Si deux documents de recherche se chevauchent, les réconcilier additivement plutôt que supprimer des signaux/sources utiles.
 
@@ -98,11 +110,11 @@ Créditer les vraies personnes quand elles contribuent ; ne jamais simuler auteu
 4. vérifier sitemap/maillage/modèle de contenu si de nouvelles ressources ou routes ont été ajoutées ;
 5. vérifier que les sources scientifiques et attributions nécessaires sont conservées ;
 6. rechercher contradictions et documentation obsolète ;
-7. mettre à jour l’historique de continuité seulement pour ce qui mérite une mémoire historique ;
-8. mettre à jour `docs/PASSATION_ACTIVE.md` avec : FAIT ET VÉRIFIÉ / EN COURS / OUVERT / DÉCISIONS / LIMITATIONS / PROCHAINE ÉTAPE / À NE PAS REFAIRE ;
-9. vérifier que la dernière CI de `main` est verte ; si elle ne l’est pas, corriger ou déclarer explicitement le blocage ;
+7. mettre à jour `INTEL.md` avec l’état opérationnel consolidé ;
+8. mettre à jour l’historique de continuité seulement pour ce qui mérite une mémoire historique ;
+9. vérifier la dernière CI de `main` ; si elle ne l’est pas, corriger ou déclarer explicitement le blocage ;
 10. relire comme si le prochain agent ignorait toute conversation antérieure.
 
 ## 9. Instruction courte pour une nouvelle conversation
 
-> Lis `AI_START_HERE.md`, vérifie l'état réel de `main` et reprends le projet.
+> **Consulte `INTEL.md`, puis vérifie l’état réel de `main`, des PR ouvertes et de la CI, et continue le projet sans repartir de zéro.**
