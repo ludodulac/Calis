@@ -45,6 +45,7 @@ Concrètement : partir du besoin réel de la personne, montrer d'abord uniquemen
 Calis doit reprendre l'efficacité ergonomique des meilleures interfaces mobiles sans reprendre leurs mécanismes de manipulation :
 
 - un écran de décision = une intention principale ;
+- sur un écran de décision, le titre pose la question et les choix portent la réponse ; toute explication non nécessaire à cette décision vient après le choix ou derrière une ouverture volontaire ;
 - le visuel porte d'abord le sens, le texte court le confirme ;
 - une action = une idée, jamais un paragraphe transformé en bouton ;
 - grandes cibles tactiles et navigation primaire courte, utilisables au pouce ;
