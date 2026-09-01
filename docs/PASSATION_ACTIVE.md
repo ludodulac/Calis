@@ -4,121 +4,178 @@ Dernière mise à jour : **1 septembre 2026**.
 
 ## Source de reprise prioritaire
 
-La passation produit complète vit dans **`INTEL.md` à la racine du dépôt**. Le présent fichier résume la phase de travail active. Toujours vérifier GitHub avant d’agir : `main`, les PR et la CI restent la vérité opérationnelle.
+La passation produit complète vit dans **`INTEL.md` à la racine du dépôt**. Ce fichier résume seulement la phase de travail active. Toujours vérifier GitHub avant d’agir : `main`, les PR ouvertes, la CI et les déploiements Pages restent la vérité opérationnelle.
 
-Instruction recommandée dans une nouvelle conversation :
+Instruction recommandée :
 
-> **Consulte `INTEL.md`, puis vérifie l’état réel de `main`, des PR ouvertes et de la CI. Calis est en phase V1 Release Readiness : stabilise le parcours existant avant toute nouvelle capacité.**
+> **Consulte `INTEL.md`, puis vérifie `main`, les PR ouvertes, la CI et le dernier déploiement Pages. Calis est en V1 Release Readiness : ne rajoute aucune capacité tant qu’un blocage du parcours existant n’est pas démontré.**
 
 ## État opérationnel actuel
 
-Dernier `main` vérifié avant ce lot : `84fe8631494b44fb84de0f2ae7755ea5cc8160c2`, fusion de #55.
+Dernier `main` vérifié avant ce lot documentaire : **`65624637d85b4e60061ea1802ba84c8d92b24a1d`**, fusion de **#59**.
 
-Fusionné récemment :
+Le déploiement GitHub Pages de #59 a été vérifié vert : install, typecheck, build statique, artefact Pages et déploiement final ont réussi.
 
-- #38–#44 : boucle `Aujourd’hui`, résultats, diagnostic court, résumé, fréquence réelle, progression conservatrice et historique.
-- #46 : détection prudente de stagnation avec état `À revoir`.
-- #48 : langage visuel sportif global propre ; #47 fermé sans fusion.
-- #49 : l’objectif principal (`traction`, `pompes`, `jambes`, fondations) influence la priorité sans retirer les autres fondations.
-- #50 : plateau et progression ne comparent que des prescriptions réellement comparables.
-- #51 : recalibrage volontaire vers une régression documentée, sans effacer l’historique.
-- #52 : passation opérationnelle rafraîchie.
-- #53 : Fondations élargies avec stabilité du tronc (`gainage`, 2 × 15–30 s) et première base de chaîne postérieure (`pont fessier`, 2 × 8–12), sans allonger les séances au-delà de quatre mouvements.
-- #54 : passage officiel en V1 Release Readiness, gel du périmètre, progression documentée + observable, résilience du stockage local.
-- #55 : diagnostic tirage rendu plus fidèle à la capacité réellement déclarée et unités de durée visibles dans l’historique.
+PR récentes :
+
+- #46 : stagnation prudente avec `À revoir` ;
+- #48 : langage visuel sportif propre ; #47 fermé sans fusion ;
+- #49 : objectif principal dans le programme sans suppression des autres fondations ;
+- #50 : comparabilité exacte des prescriptions ;
+- #51 : recalibrage volontaire et documenté ;
+- #52 : passation opérationnelle rafraîchie ;
+- #53 : gainage + pont fessier dans Fondations ;
+- #54 : passage officiel en **V1 Release Readiness**, gel du périmètre, décisions `Base validée`, suppression des progressions basées sur des réglages non observés, stockage local durci ;
+- #55 : diagnostic tirage plus fidèle + unités de durée dans l’historique ;
+- #56 : refaire le diagnostic ne supprime plus les séances ;
+- #57 : l’historique complet reste visible, mais seules les séances postérieures au point de départ actuel alimentent les décisions et progressions ;
+- #58 : page publique `/confidentialite`, lien footer, sitemap et gate légal/commercial documenté ;
+- #59 : correction mobile critique : la grille `Aujourd’hui` réserve bien quatre lignes pour les quatre exercices Fondations.
 
 Ne jamais déduire les PR ouvertes de ce document : vérifier GitHub.
 
 ## Phase active : V1 Release Readiness
 
-Calis n’est plus dans une phase où la priorité est d’élargir la carte des capacités. La V1 doit maintenant prouver que la petite partie de la callisthénie qu’elle promet fonctionne impeccablement de bout en bout.
+Calis n’a plus besoin d’élargir la callisthénie avant de sortir. La V1 doit prouver que le parcours déjà promis fonctionne impeccablement.
 
-**Règle de gel V1 : une nouvelle idée ou capacité n’a plus le droit de retarder la release sauf si son absence empêche réellement un débutant d’utiliser correctement le parcours existant.**
+**Règle de gel : une nouvelle idée ou capacité ne doit pas retarder la V1 sauf si son absence empêche réellement un débutant d’utiliser correctement le parcours existant.**
 
-Donc, avant la release : pas de L-sit, pistol squat, front lever, HSPU, gros moteur mobilité, périodisation avancée, Supabase ou compte utilisateur.
+Avant le tag V1 : pas de L-sit, pistol squat, front lever, HSPU, gros moteur mobilité, périodisation avancée, Supabase, compte utilisateur ou synchronisation.
 
-### Définition de sortie
-
-La V1 peut être déclarée stable quand une personne qui ne connaît pas Calis peut, sans explication du fondateur :
+### Parcours de sortie
 
 `Accueil → objectif → orientation → Aujourd’hui → diagnostic → séance A → résultats → résumé → retour ultérieur → séance B → résultats → repos → historique → décision/progression ou recalibrage`
 
-et comprendre à chaque étape ce qu’elle doit faire maintenant.
+Le test n’est pas seulement « le code compile ». Une personne sans contexte doit comprendre quoi faire maintenant, combien, pourquoi et ce qui vient ensuite.
 
-Le test n’est pas seulement « est-ce que le code fonctionne ? », mais « est-ce que la personne sait quoi faire sans aide ? ». Pendant l’audit, toute réaction plausible du type « pourquoi ? », « je clique où ? », « combien ? », « c’est quoi ? » ou « maintenant quoi ? » est un signal à traiter.
+## Vérité des progressions
 
-## Règle de vérité des progressions
+Une progression automatique exige simultanément :
 
-Une progression automatique exige **deux conditions simultanées** :
+1. une prochaine étape documentée ;
+2. un critère observable dans les données réellement stockées.
 
-1. la prochaine étape est documentée ;
-2. le critère qui la déclenche est observable dans les données réellement stockées par Calis.
+La V1 ne stocke ni hauteur de support de pompe inclinée ni angle de rowing. Elle ne doit donc pas automatiser `pompes inclinées → pompes au sol` ou `rowing incliné → traction assistée` à partir de nombres qui pourraient provenir d’un réglage différent.
 
-La V1 ne mémorise pas la hauteur d’un support de pompe inclinée ni l’angle d’un rowing. Elle ne doit donc pas utiliser ces réglages invisibles pour déclencher automatiquement `pompes inclinées → pompes au sol` ou `rowing incliné → traction assistée`.
+Progressions automatiques conservées :
 
-Les progressions automatiques conservées dans la V1 sont celles dont le critère est suffisamment représenté par la prescription stockée : `suspension → contrôle scapulaire` et `contrôle scapulaire → rowing incliné`.
+- `suspension → contrôle scapulaire` ;
+- `contrôle scapulaire → rowing incliné`.
 
-Quand une borne haute est reproductible sans progression automatique fiable, l’état peut devenir **Base validée** au lieu de promettre une étape suivante fictive.
+Quand la borne haute est reproductible sans suite automatique fiable, utiliser **Base validée** plutôt que fabriquer une progression.
 
-## Règle de conservation de l’historique
+## Historique, réévaluation et décision
 
-L’historique de pratique est une donnée produit importante. Une action présentée comme **« Refaire mon point de départ »** ou un recalibrage ne doit pas supprimer silencieusement les séances déjà enregistrées.
+L’historique de pratique est conservé lors :
 
-- recalibrage : historique conservé ;
-- nouvelle passation du diagnostic : historique conservé ;
-- les anciennes séances peuvent rester visibles même si le point de départ change ;
-- les comparaisons automatiques restent protégées par les snapshots de prescription et les règles de comparabilité.
+- d’un recalibrage ;
+- d’une nouvelle passation du diagnostic.
 
-Une suppression totale de l’historique, si elle est ajoutée un jour, doit être une action distincte, explicite et clairement destructive.
+Mais **conserver l’historique ne signifie pas le réutiliser indéfiniment pour décider**. Depuis #57 :
 
-## Checklist de stabilisation V1
+- `Ma progression` peut afficher les anciennes séances ;
+- `Continue`, `À revoir`, `Base validée` et les progressions n’utilisent que les séances enregistrées depuis le point de départ actuel ;
+- un recalibrage ouvre donc une nouvelle fenêtre de décision sans effacer la mémoire ;
+- les deux séances déjà faites dans la semaine continuent toutefois à compter pour la limite hebdomadaire, afin qu’une réévaluation ne crée pas artificiellement du volume supplémentaire.
 
-1. **Parcours utilisateur réel** — tester le scénario complet, les retours, fermetures/réouvertures, changement d’objectif, repos, historique, progression et recalibrage.
-2. **Résilience locale** — vérifier ancien ou mauvais `localStorage`, données manquantes, rechargements et comportement sans compte. Une clé corrompue ne doit pas bloquer les autres données valides et une réévaluation ne doit pas effacer l’historique.
-3. **Vérité pédagogique** — auditer transversalement toutes les prescriptions Fondations : séries, répétitions/durée, repos, fréquence, critères de passage, régressions, consignes d’arrêt et cohérence article ↔ moteur. Il ne faut pas chercher un chiffre universel parfait, mais supprimer toute contradiction interne.
-4. **Décisions honnêtes** — ne jamais afficher `Prêt à progresser` si aucune prochaine étape documentée et observable n’existe. Une borne haute reproductible peut valider une base sans inventer une difficulté suivante.
-5. **Production** — vérifier GitHub Pages, `basePath`, routes, liens, images, métadonnées/canonicals, erreurs console majeures et affichage mobile réel.
-6. **Légal/commercial minimal** — avant traceurs ou affiliation : préparer mentions nécessaires, confidentialité selon les outils réellement utilisés et disclosure claire des liens commerciaux. Ne pas construire une usine à consentement sans traceurs qui la justifient.
-7. **Mesure produit minimale** — choisir une mesure légère avant l’alimentation intensive du site, sans imposer un backend lourd.
-8. **Documentation** — `INTEL.md`, cette passation et les documents canoniques doivent décrire la même V1 que le code.
-9. **Release** — une fois les points bloquants corrigés et CI/production vérifiées, matérialiser la frontière par un tag/release V1 stable.
+Une suppression totale de l’historique, si elle existe un jour, doit être une action distincte et explicitement destructive.
 
-## KPI produit après release
+## Résilience locale
 
-Le trafic SEO reste un canal d’acquisition, mais le funnel central doit mesurer la capacité de Calis à transformer une intention en pratique :
+Clés principales :
 
-`visiteur → objectif choisi → diagnostic terminé → première séance commencée → première séance terminée → deuxième séance → première décision utile → première progression réelle`
+- `calis.training.v2.logs` ;
+- `calis.training.v2.assessment` ;
+- `calis.training.v2.goal`.
 
-Une page à fort trafic qui n’amène personne à pratiquer peut avoir moins de valeur produit qu’une page plus petite qui conduit réellement vers la boucle d’entraînement.
+Les JSON, structures et timestamps sont validés avant usage. Une clé cassée ne doit pas empêcher les autres données valides de fonctionner.
 
-## Après V1 : programme d’alimentation
+## Vérité pédagogique
 
-Après le tag V1, le socle doit devenir relativement calme. Enrichir Calis **capacité par capacité**, pas comme une encyclopédie remplie au hasard :
+Audit transversal V1 : séries, répétitions/durée, repos, fréquence, critères de passage, régressions, consignes d’arrêt et cohérence bibliothèque ↔ moteur.
 
-1. besoin ou objectif utilisateur réel ;
-2. ressource canonique solide ;
-3. petit cluster de réponses/exercices liés ;
-4. progression documentée lorsque possible ;
-5. prescription exécutable seulement si elle est honnête ;
-6. intégration dans `Aujourd’hui` seulement après ces étapes.
+Les fiches génériques tirage/squat restent volontairement qualitatives là où aucun seuil universel n’est défendable. Les nouvelles fiches chiffrées sont alignées avec le moteur :
 
-Candidats post-V1 : poussée verticale, jambes unilatérales, compression/L-sit, rotation/anti-rotation, mobilité structurée, équilibre, explosivité et contrôle corporel. Handstand et muscle-up peuvent continuer à vivre éditorialement avant d’entrer dans le moteur.
+- gainage : **2 × 15–30 s**, repos 60 s ;
+- pont fessier : **2 × 8–12**, repos 90 s.
 
-## Affiliation et commerce
+La traction négative reste sans « chrono magique ».
+
+## Mobile / production
+
+Le téléphone reste un cadre d’application fixe sur les écrans de décision. Les informations secondaires passent par `InfoDialog`.
+
+Après #53, les séances ont quatre mouvements. #59 corrige l’ancien `grid-template-rows: repeat(3, …)` : la grille mobile réserve désormais quatre lignes, ce qui évite que le quatrième exercice tombe dans une ligne implicite sous `overflow: hidden`.
+
+Production déjà vérifiée pendant Release Readiness :
+
+- GitHub Pages déploie correctement `main` ;
+- `basePath /Calis` cohérent ;
+- routes critiques présentes dans l’artefact ;
+- `robots.txt` et `sitemap.xml` générés ;
+- canonicals cohérents ;
+- contrôle statique d’environ 1 000 références internes sans lien cassé ;
+- toutes les URLs déclarées dans le sitemap correspondent à une sortie statique.
+
+`/aujourdhui` reste volontairement hors sitemap : c’est une vue applicative/personnalisée, pas une landing SEO principale.
+
+## Confidentialité / légal / commerce
+
+La V1 actuelle :
+
+- pas de compte Calis ;
+- pas de base de données Calis pour les séances ;
+- stockage local sur l’appareil ;
+- aucun analytics, pixel publicitaire ou traceur comportemental tiers détecté dans le code lors de la revue #58 ;
+- pas d’affiliation active dans le moteur.
+
+La page publique **`/confidentialite`** décrit cet état.
+
+Voir **`docs/V1_RELEASE_LEGAL.md`** pour le gate avant lancement commercial, analytics ou affiliation.
+
+Ne pas inventer les mentions légales. Il manque encore les vraies informations d’éditeur / contact nécessaires pour finaliser cette partie selon le statut réel du projet.
+
+Pas de bannière de consentement artificielle tant qu’aucun traceur non essentiel n’est ajouté. Toute activation future d’analytics, publicité, retargeting, bouton social traçant ou outil tiers doit déclencher la revue confidentialité/consentement **avant** activation.
+
+## Ce qui reste avant le tag V1 stable
+
+Les gros blocs techniques ont désormais été traités. Les derniers gates sont :
+
+1. **validation finale du parcours réel** sur téléphone : diagnostic, quatre exercices, saisie, résumé, fermeture/réouverture, séance suivante, repos, historique, recalibrage ;
+2. **inspection visuelle finale** des petits écrans et modales après #59 ;
+3. **relecture finale des prescriptions Fondations** pour vérifier qu’aucun texte n’a divergé depuis les derniers correctifs ;
+4. **informations réelles d’éditeur/contact** pour finaliser les mentions légales si le lancement public les exige ;
+5. décider si la V1 sort **sans analytics** — option parfaitement acceptable — ou choisir plus tard une mesure légère après revue confidentialité ;
+6. reconfirmer `main`, aucune PR ouverte, CI et Pages verts ;
+7. créer alors le **tag/release V1 stable**.
+
+L’absence d’analytics ou d’affiliation **ne bloque pas** le tag si ces fonctionnalités restent désactivées. Leurs gates deviennent obligatoires avant leur activation ultérieure.
+
+## KPI après release
+
+Funnel cible :
+
+`visiteur → objectif → diagnostic → séance 1 commencée → séance 1 terminée → séance 2 → décision utile → progression réelle`
+
+Le trafic SEO est un canal d’acquisition, pas la preuve principale de valeur.
+
+## Après V1 : alimentation du site
+
+Après le tag, le socle doit devenir relativement calme. Ajouter les capacités par clusters :
+
+`besoin utilisateur → ressource canonique → contenus/exercices liés → progression documentée → prescription exécutable → intégration éventuelle dans Aujourd’hui`
+
+Candidats : poussée verticale, jambes unilatérales, compression/L-sit, rotation/anti-rotation, mobilité structurée, équilibre, explosivité, contrôle corporel.
+
+Handstand et muscle-up peuvent continuer à progresser éditorialement avant d’entrer dans le moteur.
+
+## Affiliation
 
 Principe durable : **besoin détecté → explication → options → achat éventuel**.
 
-L’affiliation doit être déclenchée par le graphe pédagogique, pas ajoutée comme une couche publicitaire générique. Exemple : si une étape de traction assistée bénéficie réellement d’un moyen de régler l’assistance, expliquer d’abord le besoin et les alternatives, puis seulement proposer un équipement pertinent.
+Commencer après V1 avec peu de catégories réellement utiles : barre, anneaux, élastiques, parallettes ; lest seulement lorsque le graphe le justifie. Disclosure claire avant tout lien rémunéré. Mesurer les clics/conversions avant de multiplier les partenaires. Utiliser ensuite de vraies données pour contacter des marques spécialisées.
 
-Après V1 :
-
-- commencer avec peu de catégories réellement utiles (barre, anneaux, élastiques, parallettes ; lest seulement quand le parcours le justifie) ;
-- distinguer recommandation éditoriale et rémunération ;
-- mesurer les clics/conversions avant de multiplier les partenaires ;
-- utiliser les données réelles de trafic, parcours et conversion pour contacter ensuite des marques spécialisées ;
-- ne jamais inventer un besoin matériel pour créer une opportunité commerciale.
-
-Le commerce soutient la mission ; il ne doit pas décider du graphe pédagogique.
+Un guide peut conclure qu’aucun achat n’est nécessaire.
 
 ## Décisions à préserver
 
@@ -127,22 +184,27 @@ Le commerce soutient la mission ; il ne doit pas décider du graphe pédagogique
 - Architecture : `désir → objectif → capacité → progression`.
 - Écrans de décision mobiles fixes ; secondaire en modale.
 - Pas de streak, badge artificiel, faux progrès ou preuve sociale simulée.
-- Progressions automatiques explicables, documentées et observables.
-- Plateau = même prescription ; recalibrage = action explicite ; historique conservé.
-- Refaire le diagnostic ne supprime pas l’historique.
+- Progressions automatiques documentées **et observables**.
+- Plateau = même prescription.
+- Recalibrage = action explicite.
+- Historique conservé, mais décisions limitées au point de départ actuel.
+- Réévaluation ≠ suppression des séances.
 - Stockage local-first tant que compte/sync n’apporte pas une vraie valeur.
-- Sessions Fondations compactes : poussée, tirage, squat + une fondation tronc/chaîne postérieure selon la séance.
+- Sessions Fondations compactes : quatre mouvements.
 - Objectif principal = priorité, pas suppression des autres fondations.
+- Affiliation = conséquence d’un besoin pédagogique, jamais source du besoin.
 
 ## À ne pas refaire
 
-- Ne pas repartir d’une architecture générique.
 - Ne pas élargir la V1 pour « compléter » toute la callisthénie.
-- Ne pas remettre tout le texte à l’écran.
+- Ne pas reconstruire une app fitness générique.
+- Ne pas remettre tout le texte sur les écrans de décision.
 - Ne pas ajouter de gamification artificielle.
-- Ne pas automatiser des progressions non documentées ou basées sur un réglage non stocké.
+- Ne pas automatiser des progressions basées sur un réglage non stocké.
 - Ne pas transformer des critères qualitatifs en chiffres arbitraires.
-- Ne pas effacer l’historique local lors d’un recalibrage ou d’une simple réévaluation.
-- Ne pas introduire une infrastructure lourde sans besoin réel.
-- Ne pas supprimer des contenus ou chemins utiles pour introduire une nouvelle idée.
-- Ne pas laisser l’affiliation influencer artificiellement les besoins ou progressions.
+- Ne pas effacer l’historique lors d’un recalibrage ou d’une réévaluation.
+- Ne pas faire contribuer les anciennes séances aux décisions du nouveau point de départ.
+- Ne pas introduire Supabase ou une infrastructure lourde sans besoin réel.
+- Ne pas inventer d’identité ou de mentions légales.
+- Ne pas ajouter analytics/affiliation avant leur gate de confidentialité/transparence.
+- Ne pas supprimer des contenus ou chemins utiles pour ajouter une nouvelle idée.
