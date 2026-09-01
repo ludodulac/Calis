@@ -12,7 +12,7 @@ Instruction recommandée dans une nouvelle conversation :
 
 ## État opérationnel actuel
 
-Dernier `main` vérifié avant ce lot : `020ef3c8b80cb87d23c4eeb1cf50aeaabb7f39ba`, fusion de #53.
+Dernier `main` vérifié avant ce lot : `84fe8631494b44fb84de0f2ae7755ea5cc8160c2`, fusion de #55.
 
 Fusionné récemment :
 
@@ -24,6 +24,8 @@ Fusionné récemment :
 - #51 : recalibrage volontaire vers une régression documentée, sans effacer l’historique.
 - #52 : passation opérationnelle rafraîchie.
 - #53 : Fondations élargies avec stabilité du tronc (`gainage`, 2 × 15–30 s) et première base de chaîne postérieure (`pont fessier`, 2 × 8–12), sans allonger les séances au-delà de quatre mouvements.
+- #54 : passage officiel en V1 Release Readiness, gel du périmètre, progression documentée + observable, résilience du stockage local.
+- #55 : diagnostic tirage rendu plus fidèle à la capacité réellement déclarée et unités de durée visibles dans l’historique.
 
 Ne jamais déduire les PR ouvertes de ce document : vérifier GitHub.
 
@@ -58,10 +60,21 @@ Les progressions automatiques conservées dans la V1 sont celles dont le critèr
 
 Quand une borne haute est reproductible sans progression automatique fiable, l’état peut devenir **Base validée** au lieu de promettre une étape suivante fictive.
 
+## Règle de conservation de l’historique
+
+L’historique de pratique est une donnée produit importante. Une action présentée comme **« Refaire mon point de départ »** ou un recalibrage ne doit pas supprimer silencieusement les séances déjà enregistrées.
+
+- recalibrage : historique conservé ;
+- nouvelle passation du diagnostic : historique conservé ;
+- les anciennes séances peuvent rester visibles même si le point de départ change ;
+- les comparaisons automatiques restent protégées par les snapshots de prescription et les règles de comparabilité.
+
+Une suppression totale de l’historique, si elle est ajoutée un jour, doit être une action distincte, explicite et clairement destructive.
+
 ## Checklist de stabilisation V1
 
 1. **Parcours utilisateur réel** — tester le scénario complet, les retours, fermetures/réouvertures, changement d’objectif, repos, historique, progression et recalibrage.
-2. **Résilience locale** — vérifier ancien ou mauvais `localStorage`, données manquantes, rechargements et comportement sans compte. Une clé corrompue ne doit pas bloquer les autres données valides.
+2. **Résilience locale** — vérifier ancien ou mauvais `localStorage`, données manquantes, rechargements et comportement sans compte. Une clé corrompue ne doit pas bloquer les autres données valides et une réévaluation ne doit pas effacer l’historique.
 3. **Vérité pédagogique** — auditer transversalement toutes les prescriptions Fondations : séries, répétitions/durée, repos, fréquence, critères de passage, régressions, consignes d’arrêt et cohérence article ↔ moteur. Il ne faut pas chercher un chiffre universel parfait, mais supprimer toute contradiction interne.
 4. **Décisions honnêtes** — ne jamais afficher `Prêt à progresser` si aucune prochaine étape documentée et observable n’existe. Une borne haute reproductible peut valider une base sans inventer une difficulté suivante.
 5. **Production** — vérifier GitHub Pages, `basePath`, routes, liens, images, métadonnées/canonicals, erreurs console majeures et affichage mobile réel.
@@ -116,6 +129,7 @@ Le commerce soutient la mission ; il ne doit pas décider du graphe pédagogique
 - Pas de streak, badge artificiel, faux progrès ou preuve sociale simulée.
 - Progressions automatiques explicables, documentées et observables.
 - Plateau = même prescription ; recalibrage = action explicite ; historique conservé.
+- Refaire le diagnostic ne supprime pas l’historique.
 - Stockage local-first tant que compte/sync n’apporte pas une vraie valeur.
 - Sessions Fondations compactes : poussée, tirage, squat + une fondation tronc/chaîne postérieure selon la séance.
 - Objectif principal = priorité, pas suppression des autres fondations.
@@ -128,7 +142,7 @@ Le commerce soutient la mission ; il ne doit pas décider du graphe pédagogique
 - Ne pas ajouter de gamification artificielle.
 - Ne pas automatiser des progressions non documentées ou basées sur un réglage non stocké.
 - Ne pas transformer des critères qualitatifs en chiffres arbitraires.
-- Ne pas effacer l’historique local lors d’un recalibrage simple.
+- Ne pas effacer l’historique local lors d’un recalibrage ou d’une simple réévaluation.
 - Ne pas introduire une infrastructure lourde sans besoin réel.
 - Ne pas supprimer des contenus ou chemins utiles pour introduire une nouvelle idée.
 - Ne pas laisser l’affiliation influencer artificiellement les besoins ou progressions.
