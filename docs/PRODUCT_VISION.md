@@ -34,11 +34,21 @@ Test de conception : l'entrée principale doit rester compréhensible par un enf
 
 Cela ne signifie pas appauvrir les ressources. Les détails, la biomécanique, les sources, le graphe de progression et les critères restent disponibles après que le visiteur a choisi ce qu'il veut faire.
 
+### Cadre de conception
+
+Calis combine quatre disciplines complémentaires : **Content Design + Progressive Disclosure + UX Writing + faible charge cognitive**.
+
+Concrètement : partir du besoin réel de la personne, montrer d'abord uniquement ce qui lui permet d'agir maintenant, écrire avec ses mots plutôt qu'avec le vocabulaire interne du produit, puis révéler les explications et options secondaires seulement lorsqu'elles deviennent utiles. La simplicité ne vient donc pas d'une suppression arbitraire de contenu, mais de son placement au bon niveau du parcours.
+
 ### Principes d'interface
 
 Calis doit reprendre l'efficacité ergonomique des meilleures interfaces mobiles sans reprendre leurs mécanismes de manipulation :
 
 - un écran de décision = une intention principale ;
+- sur un écran de décision, le titre pose la question et les choix portent la réponse ; toute explication non nécessaire à cette décision vient après le choix ou derrière une ouverture volontaire ;
+- un écran de décision mobile ne doit pas défiler : les choix principaux tiennent dans le cadre disponible ;
+- les informations secondaires ne doivent pas allonger l'écran de décision : une petite commande dédiée peut les ouvrir dans une couche temporaire au-dessus de l'écran ; si ce contenu est long, c'est cette couche qui défile, pas l'écran principal ;
+- sur ces écrans, éviter les accordéons qui agrandissent la page : préférer une logique de panneau ou fenêtre modale comme dans une interface mobile de jeu, avec retour immédiat à l'état précédent à la fermeture ;
 - le visuel porte d'abord le sens, le texte court le confirme ;
 - une action = une idée, jamais un paragraphe transformé en bouton ;
 - grandes cibles tactiles et navigation primaire courte, utilisables au pouce ;

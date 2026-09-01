@@ -13,7 +13,7 @@
 
 .skipLink:focus { transform: translateY(0); }
 
-:where(a, button, input, select):focus-visible {
+:where(a, button, input, select, summary):focus-visible {
   outline: 3px solid color-mix(in srgb, var(--accent) 65%, #fff);
   outline-offset: 3px;
 }
@@ -32,6 +32,30 @@
 .startTile { min-height: 132px; padding: 20px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); display:flex; flex-direction:column; justify-content:space-between; gap:12px; }
 .startTile strong { font-size:1.12rem; line-height:1.15; }
 .startTile span { align-self:flex-end; color:var(--accent); font-weight:900; }
+
+.libraryScreen { padding-top: 48px; padding-bottom: 64px; }
+.libraryIntro { max-width: 760px; margin-bottom: 24px; }
+.libraryIntro h1 { margin: 0; }
+.libraryQuickGrid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.libraryQuickTile { min-height:130px; padding:18px; border:1px solid var(--line); border-radius:20px; background:var(--surface); display:flex; flex-direction:column; justify-content:space-between; gap:14px; }
+.libraryQuickTile strong { font-size:1.05rem; line-height:1.15; }
+.libraryQuickTile span { align-self:flex-end; color:var(--accent); font-weight:900; }
+.libraryJourneyGrid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.libraryJourneyCard { min-height:108px; padding:16px; border:1px solid var(--line); border-radius:16px; background:var(--bg); display:flex; flex-direction:column; gap:8px; }
+.libraryJourneyCard small { color:var(--muted); line-height:1.35; }
+.libraryJourneyCard span { margin-top:auto; align-self:flex-end; color:var(--accent); font-weight:900; }
+
+.decisionPage { min-height:100%; padding:48px 0 64px; }
+.decisionIntro { margin-bottom:20px; }
+.decisionIntro h1 { margin:0; }
+.decisionGrid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.decisionTile { min-height:118px; padding:18px; border:1px solid var(--line); border-radius:20px; background:var(--surface); display:flex; flex-direction:column; justify-content:space-between; gap:12px; }
+.decisionTile strong { font-size:1.08rem; line-height:1.15; }
+.decisionTile span { align-self:flex-end; color:var(--accent); font-weight:900; }
+.decisionGridFive .decisionTile:last-child { grid-column:1 / -1; min-height:94px; }
+.compactLinks { display:grid; gap:8px; }
+.compactLinks a { min-height:50px; padding:12px 14px; border:1px solid var(--line); border-radius:14px; background:var(--bg); display:flex; align-items:center; justify-content:space-between; gap:12px; font-weight:750; }
+.compactLinks a span { color:var(--accent); font-weight:900; }
 
 @media (max-width: 600px) {
   html, body { height: 100%; overflow: hidden; }
@@ -61,6 +85,24 @@
   .startChoiceGrid { height:100%; grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:repeat(3,minmax(0,1fr)); gap:9px; }
   .startTile { min-height:0; padding:14px; border-radius:18px; }
   .startTile strong { font-size:clamp(.96rem,4.3vw,1.12rem); }
+
+  .libraryScreen { width:100%; min-height:100%; padding:18px 16px 16px; }
+  .libraryIntro { margin-bottom:14px; }
+  .libraryIntro .eyebrow { margin-bottom:4px; }
+  .libraryIntro h1 { font-size:clamp(2rem,10vw,2.55rem); line-height:1; }
+  .libraryQuickGrid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
+  .libraryQuickTile { min-height:104px; padding:13px; border-radius:17px; }
+  .libraryQuickTile strong { font-size:clamp(.92rem,4.1vw,1.02rem); }
+  .libraryJourneyGrid { grid-template-columns:1fr; }
+
+  .decisionPage { width:100%; min-height:100%; padding:18px 16px 16px; }
+  .decisionIntro { margin-bottom:14px; }
+  .decisionIntro .eyebrow { margin-bottom:4px; }
+  .decisionIntro h1 { font-size:clamp(2rem,10vw,2.55rem); line-height:1; }
+  .decisionGrid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
+  .decisionTile { min-height:92px; padding:13px; border-radius:17px; }
+  .decisionTile strong { font-size:clamp(.94rem,4.2vw,1.04rem); }
+  .decisionGridFive .decisionTile:last-child { min-height:76px; }
 }
 
 @media (max-height: 700px) and (max-width: 600px) {
@@ -69,4 +111,17 @@
   .startIntro h1 { font-size:1.9rem; }
   .startChoiceGrid { gap:7px; }
   .startTile { padding:11px; border-radius:16px; }
+
+  .libraryScreen { padding-top:12px; }
+  .libraryIntro { margin-bottom:10px; }
+  .libraryIntro h1 { font-size:1.9rem; }
+  .libraryQuickGrid { gap:7px; }
+  .libraryQuickTile { min-height:88px; padding:11px; }
+
+  .decisionPage { padding-top:12px; }
+  .decisionIntro { margin-bottom:10px; }
+  .decisionIntro h1 { font-size:1.9rem; }
+  .decisionGrid { gap:7px; }
+  .decisionTile { min-height:80px; padding:11px; }
+  .decisionGridFive .decisionTile:last-child { min-height:66px; }
 }
