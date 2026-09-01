@@ -6,6 +6,7 @@ import { InfoDialog } from "@/components/info-dialog";
 import { TrainingAssessmentFlow } from "@/components/training-assessment";
 import { adaptFoundationProgram } from "@/lib/training/adapt";
 import { getTrainingDecision, type TrainingDecision } from "@/lib/training/decision";
+import { applyProgressions, getProgressionChange } from "@/lib/training/progress";
 import type { SessionLog, TrainingAssessment, TrainingProgram } from "@/lib/training/types";
 import styles from "@/app/aujourdhui/today.module.css";
 
@@ -17,6 +18,7 @@ type SummaryItem = {
   label: string;
   values: string;
   decision: TrainingDecision;
+  nextLabel?: string;
 };
 type SessionSummary = {
   sessionLabel: string;
@@ -60,9 +62,13 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
     }
   }, []);
 
-  const activeProgram = useMemo(
+  const assessedProgram = useMemo(
     () => assessment ? adaptFoundationProgram(program, assessment) : program,
     [assessment, program],
+  );
+  const activeProgram = useMemo(
+    () => applyProgressions(assessedProgram, logs) as TrainingProgram,
+    [assessedProgram, logs],
   );
 
   const sessionIndex = logs.length % activeProgram.sessions.length;
@@ -120,12 +126,17 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
 
     const nextLogs = [...logs, log];
     const nextWeekCount = completedThisWeek + 1;
-    const nextSession = activeProgram.sessions[nextLogs.length % activeProgram.sessions.length];
-    const items = session.exercises.map((exercise) => ({
-      label: exercise.label,
-      values: values[exercise.resourceSlug].join(" / ") + (exercise.unit === "seconds" ? " s" : ""),
-      decision: getTrainingDecision(nextLogs, exercise),
-    }));
+    const nextProgram = applyProgressions(assessedProgram, nextLogs) as TrainingProgram;
+    const nextSession = nextProgram.sessions[nextLogs.length % nextProgram.sessions.length];
+    const items = session.exercises.map((exercise) => {
+      const progression = getProgressionChange(nextLogs, exercise);
+      return {
+        label: exercise.label,
+        values: values[exercise.resourceSlug].join(" / ") + (exercise.unit === "seconds" ? " s" : ""),
+        decision: getTrainingDecision(nextLogs, exercise),
+        nextLabel: progression?.to.label,
+      };
+    });
 
     setSummary({
       sessionLabel: session.label,
@@ -247,7 +258,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
                 <div className={styles.summaryRow} key={item.label}>
                   <div>
                     <strong>{item.label}</strong>
-                    <span>{item.values}</span>
+                    <span>{item.nextLabel ? `Validé → ${item.nextLabel}` : item.values}</span>
                   </div>
                   <span className={`${styles.decisionBadge} ${styles[item.decision.state]}`}>{item.decision.label}</span>
                 </div>
