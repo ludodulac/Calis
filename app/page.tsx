@@ -6,12 +6,12 @@ import styles from "./home.module.css";
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 const goals = [
-  { title: "Faire ma première traction", text: "Je veux réussir à me hisser au-dessus d'une barre.", href: "/tractions", meta: `Débutant · ${pullUpProgression.length} étapes`, cta: "Voir mon chemin →" },
-  { title: "Faire ma première pompe", text: "Même si le sol est encore trop difficile aujourd'hui.", href: "/pompes", meta: `Débutant · ${pushUpProgression.length} étapes`, cta: "Voir mon chemin →" },
-  { title: "Tenir sur les mains", text: "Apprendre progressivement sans commencer par me jeter à l'envers.", href: "/handstand", meta: `Débutant · ${handstandProgression.length} étapes`, cta: "Voir mon chemin →" },
-  { title: "Réussir un muscle-up", text: "Comprendre si je dois travailler le tirage, le passage ou la poussée.", href: "/muscle-up", meta: "Intermédiaire · diagnostic par maillon", cta: "Diagnostiquer mon blocage →" },
-  { title: "Renforcer mes jambes", text: "Commencer simplement avec le squat au poids du corps.", href: "/bibliotheque/squat-poids-du-corps", meta: "Point de départ · sans matériel", cta: "Commencer par le squat →" },
-  { title: "Bouger plus facilement", text: "Travailler la mobilité qui me sert vraiment.", href: "/bibliotheque/mobilite-debutant", meta: "Point de départ · mobilité utile", cta: "Explorer ma mobilité →" },
+  { title: "Traction", image: "/goals/traction.jpg", alt: "Personne réalisant une traction sur une barre", href: "/tractions" },
+  { title: "Pompes", image: "/goals/pompes.jpg", alt: "Personne réalisant une pompe au sol", href: "/pompes" },
+  { title: "Équilibre", image: "/goals/handstand.jpg", alt: "Personne en équilibre sur les mains", href: "/handstand" },
+  { title: "Muscle-up", image: "/goals/muscle-up.jpg", alt: "Personne au-dessus d'une barre pendant un muscle-up", href: "/muscle-up" },
+  { title: "Jambes", image: "/goals/jambes.jpg", alt: "Personne travaillant l'équilibre et les jambes", href: "/bibliotheque/squat-poids-du-corps" },
+  { title: "Mobilité", image: "/goals/mobilite.jpg", alt: "Personne étirant sa jambe dans un parc", href: "/bibliotheque/mobilite-debutant" },
 ] as const;
 
 export default function HomePage() {
@@ -24,8 +24,8 @@ export default function HomePage() {
             <h1>Qu'est-ce que tu aimerais réussir avec ton corps ?</h1>
             <p className="lead">Choisis un objectif. Calis te montre par où commencer, quoi essayer maintenant et comment savoir quand tu peux passer à l'étape suivante.</p>
             <div className="actions">
-              <Link className="button primary" href="/commencer">Je ne sais pas par où commencer</Link>
-              <Link className="button secondary" href="#objectifs">Je choisis un objectif</Link>
+              <Link className="button primary" href="/commencer">Je débute</Link>
+              <Link className="button secondary" href="#objectifs">Choisir un objectif</Link>
             </div>
           </div>
           <aside className={`manifesto ${styles.panel}`}>
@@ -45,15 +45,14 @@ export default function HomePage() {
       <section className="section sectionSoft" id="objectifs">
         <div className="shell">
           <div className="sectionHeading">
-            <div className="eyebrow">Choisis ce qui te donne envie</div>
             <h2>Je veux…</h2>
-            <p>Tu n'as pas besoin de connaître le vocabulaire de la callisthénie. Clique simplement sur ce que tu aimerais apprendre.</p>
+            <p>Choisis simplement une image.</p>
           </div>
           <div className="journeyGrid">
             {goals.map((goal) => (
-              <Link className="journeyCard" href={goal.href} key={goal.title}>
-                <span>{goal.meta}</span>
-                <strong>{goal.title}</strong><p>{goal.text}</p><b>{goal.cta}</b>
+              <Link className="journeyCard" href={goal.href} key={goal.title} aria-label={`Choisir : ${goal.title}`}>
+                <img className="journeyCardImage" src={goal.image} alt={goal.alt} />
+                <strong>{goal.title}</strong>
               </Link>
             ))}
           </div>
