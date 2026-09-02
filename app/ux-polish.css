@@ -27,11 +27,27 @@
 .startScreen { min-height: 100%; }
 .startIntro { padding: 48px 0 20px; }
 .startIntro h1 { margin: 0; }
+.startIntro p { max-width: 620px; margin: 14px 0 0; }
 .startChoices { padding-bottom: 48px; }
 .startChoiceGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
 .startTile { min-height: 132px; padding: 20px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); display:flex; flex-direction:column; justify-content:space-between; gap:12px; }
 .startTile strong { font-size:1.12rem; line-height:1.15; }
 .startTile span { align-self:flex-end; color:var(--accent); font-weight:900; }
+.startGoalGrid { grid-template-rows: none; }
+.startGoalTile { min-width:0; overflow:hidden; border:1px solid var(--line); border-radius:22px; background:var(--surface); display:grid; grid-template-rows:1fr auto; }
+.startGoalTile:hover { border-color:color-mix(in srgb,var(--accent) 42%,var(--line)); }
+.startGoalMain { position:relative; min-height:176px; padding:20px 52px 18px 20px; display:flex; flex-direction:column; }
+.startGoalIndex { color:var(--accent); font-size:.68rem; font-weight:900; letter-spacing:.12em; }
+.startGoalMain strong { max-width:280px; margin-top:22px; font-size:1.32rem; line-height:1.05; letter-spacing:-.025em; }
+.startGoalMain small { margin-top:7px; color:var(--muted); font-size:.82rem; line-height:1.35; }
+.startGoalMain b { position:absolute; right:20px; top:20px; color:var(--accent); font-size:1.2rem; }
+.startGoalTraining { min-height:48px; padding:0 18px; border-top:1px solid var(--line); background:color-mix(in srgb,var(--accent-soft) 58%,var(--surface)); color:var(--accent); display:flex; align-items:center; justify-content:space-between; font-size:.8rem; font-weight:900; }
+.startGoalTraining::after { content:"→"; }
+.startExplore { margin-top:18px; padding-top:16px; border-top:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:18px; }
+.startExplore > span { color:var(--muted); font-size:.72rem; font-weight:850; letter-spacing:.08em; text-transform:uppercase; }
+.startExplore > div { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px; }
+.startExplore a { min-height:38px; padding:0 12px; border:1px solid var(--line); border-radius:999px; background:var(--surface); display:flex; align-items:center; gap:8px; font-size:.82rem; font-weight:800; }
+.startExplore b { color:var(--accent); }
 
 .libraryScreen { padding-top: 48px; padding-bottom: 64px; }
 .libraryIntro { max-width: 760px; margin-bottom: 24px; }
@@ -77,14 +93,24 @@
   .mobileAppNav b { font-size:.7rem; line-height:1; }
   .siteFooter { display:none; }
 
-  .startScreen { height:100%; display:flex; flex-direction:column; padding:18px 16px 14px; }
+  .startScreen { min-height:100%; padding:18px 16px 16px; }
   .startIntro { width:100%; padding:0 0 14px; }
   .startIntro .eyebrow { margin-bottom:4px; }
-  .startIntro h1 { font-size:clamp(2rem,10vw,2.65rem); line-height:1; }
-  .startChoices { width:100%; flex:1; min-height:0; padding:0; }
-  .startChoiceGrid { height:100%; grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:repeat(3,minmax(0,1fr)); gap:9px; }
+  .startIntro h1 { max-width:340px; font-size:clamp(1.9rem,9.2vw,2.45rem); line-height:.98; }
+  .startIntro p { margin-top:9px; font-size:.88rem; line-height:1.4; }
+  .startChoices { width:100%; padding:0; }
+  .startChoiceGrid { height:auto; grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:none; gap:9px; }
   .startTile { min-height:0; padding:14px; border-radius:18px; }
   .startTile strong { font-size:clamp(.96rem,4.3vw,1.12rem); }
+  .startGoalTile { border-radius:18px; }
+  .startGoalMain { min-height:142px; padding:13px 38px 12px 13px; }
+  .startGoalMain strong { margin-top:14px; font-size:clamp(1.02rem,4.6vw,1.18rem); }
+  .startGoalMain small { font-size:.72rem; }
+  .startGoalMain b { right:13px; top:12px; }
+  .startGoalTraining { min-height:42px; padding:0 12px; font-size:.7rem; }
+  .startExplore { align-items:flex-start; flex-direction:column; gap:8px; margin-top:12px; padding-top:12px; }
+  .startExplore > div { width:100%; justify-content:flex-start; }
+  .startExplore a { min-height:36px; }
 
   .libraryScreen { width:100%; min-height:100%; padding:18px 16px 16px; }
   .libraryIntro { margin-bottom:14px; }
@@ -108,9 +134,15 @@
 @media (max-height: 700px) and (max-width: 600px) {
   .startScreen { padding-top:12px; }
   .startIntro { padding-bottom:10px; }
-  .startIntro h1 { font-size:1.9rem; }
+  .startIntro h1 { font-size:1.8rem; }
+  .startIntro p { font-size:.8rem; }
   .startChoiceGrid { gap:7px; }
   .startTile { padding:11px; border-radius:16px; }
+  .startGoalMain { min-height:124px; padding:10px 34px 9px 10px; }
+  .startGoalMain strong { margin-top:9px; font-size:.98rem; }
+  .startGoalMain small { margin-top:4px; font-size:.66rem; }
+  .startGoalTraining { min-height:36px; padding:0 10px; font-size:.64rem; }
+  .startExplore { margin-top:9px; padding-top:9px; }
 
   .libraryScreen { padding-top:12px; }
   .libraryIntro { margin-bottom:10px; }
