@@ -5,13 +5,14 @@ const nav = [
   ["Je débute", "/commencer"],
   ["Choisir un objectif", "/#objectifs"],
   ["Tout explorer", "/bibliotheque"],
+  ["À propos", "/a-propos"],
 ] as const;
 
 export function SiteHeader() {
   return (
     <header className="siteHeader">
       <div className="shell headerInner">
-        <Link href="/" className="brand" aria-label="Calis - Accueil">CALIS</Link>
+        <Link href="/" className="brand" aria-label="Calisthenics Atlas - Accueil">CALISTHENICS ATLAS</Link>
         <nav className="desktopNav" aria-label="Navigation principale">
           <ul className="mainNav">
             {nav.map(([label, href]) => (
