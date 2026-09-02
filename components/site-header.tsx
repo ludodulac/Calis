@@ -5,6 +5,7 @@ const nav = [
   ["Je débute", "/commencer"],
   ["Choisir un objectif", "/#objectifs"],
   ["Tout explorer", "/bibliotheque"],
+  ["Guides", "/blog"],
   ["À propos", "/a-propos"],
 ] as const;
 
