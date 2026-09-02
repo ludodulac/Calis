@@ -1,28 +1,75 @@
-/* Calis sport visual system
-   Neutral structure + one energetic blue action color + restrained section accents.
-   Color supports labels/icons; it never carries meaning alone. */
+/* Calis visual foundations
+   Quiet neutral structure, restrained sport accents and tactile interaction.
+   The system should feel physical and intentional without turning every surface into a card. */
 :root {
-  --sport-blue:#1769e0;
-  --sport-blue-dark:#0f4fae;
-  --sport-blue-soft:#eaf2ff;
-  --sport-orange:#e9652b;
-  --sport-orange-soft:#fff0e8;
-  --sport-green:#2f7a55;
-  --sport-green-soft:#e9f5ee;
-  --sport-violet:#7056b5;
-  --sport-violet-soft:#f0ecfb;
-  --sport-amber:#9a6812;
-  --sport-amber-soft:#fff5d9;
-  --sport-ink:#18202a;
-  --sport-border:#cfd6de;
-  --sport-shadow:0 2px 0 rgba(24,32,42,.12);
+  --sport-blue:#1d63d8;
+  --sport-blue-dark:#17499b;
+  --sport-blue-soft:#edf3fc;
+  --sport-orange:#c85f2f;
+  --sport-orange-soft:#f9eee8;
+  --sport-green:#2f7652;
+  --sport-green-soft:#eaf3ed;
+  --sport-violet:#6855a0;
+  --sport-violet-soft:#f0edf7;
+  --sport-amber:#93651a;
+  --sport-amber-soft:#f8f1df;
+  --sport-ink:#1c2425;
+  --sport-muted:#606967;
+  --sport-border:#d7dcd8;
+  --sport-surface:#fffefb;
+  --sport-bg:#f4f3ee;
+  --radius-sm:10px;
+  --radius-md:14px;
+  --radius-lg:18px;
+  --radius-xl:22px;
+  --surface-shadow:0 1px 0 rgba(28,36,37,.05),0 8px 24px rgba(28,36,37,.035);
+  --interactive-shadow:0 1px 0 rgba(28,36,37,.09),0 6px 16px rgba(28,36,37,.04);
   --accent:var(--sport-blue);
   --accent-soft:var(--sport-blue-soft);
   --line:var(--sport-border);
   --text:var(--sport-ink);
+  --muted:var(--sport-muted);
+  --surface:var(--sport-surface);
+  --bg:var(--sport-bg);
 }
 
-/* Physical, not game-like: compact radius, visible edge, tiny grounded shadow. */
+body {
+  font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,
+.brand,
+.button,
+.startTile strong,
+.libraryQuickTile strong,
+.decisionTile strong,
+.pathBody strong {
+  font-weight:800;
+}
+
+h1,h2,h3 {
+  letter-spacing:-.035em;
+  text-wrap:balance;
+}
+
+p,.lead { text-wrap:pretty; }
+
+.brand {
+  letter-spacing:.16em;
+  font-size:.94rem;
+}
+
+.eyebrow {
+  letter-spacing:.14em;
+  font-size:.68rem;
+  font-weight:850;
+}
+
+/* Interactive surfaces keep a visible edge; editorial surfaces stay quieter. */
 .button,
 .startTile,
 .libraryQuickTile,
@@ -31,20 +78,68 @@
 .choice,
 .nextCard,
 .pathStep,
+.resourceCard {
+  border-width:1px;
+  border-color:var(--sport-border);
+  box-shadow:var(--interactive-shadow);
+}
+
 .manifesto,
 .infoPanel,
-.resourceCard,
 .plainCard {
-  border-width:2px;
+  border-width:1px;
   border-color:var(--sport-border);
-  box-shadow:var(--sport-shadow);
+  box-shadow:var(--surface-shadow);
 }
 
 .button,
-.mobileStart { border-radius:14px; }
-.primary { background:var(--sport-blue); color:#fff; border:2px solid var(--sport-blue-dark); box-shadow:0 3px 0 var(--sport-blue-dark); }
-.primary:active { transform:translateY(2px); box-shadow:0 1px 0 var(--sport-blue-dark); }
-.secondary { border-width:2px; }
+.mobileStart { border-radius:var(--radius-md); }
+
+.startTile,
+.libraryQuickTile,
+.libraryJourneyCard,
+.decisionTile,
+.choice,
+.nextCard,
+.resourceCard { border-radius:var(--radius-lg); }
+
+.pathStep,
+.manifesto,
+.infoPanel,
+.plainCard { border-radius:var(--radius-xl); }
+
+.button,
+.startTile,
+.libraryQuickTile,
+.libraryJourneyCard,
+.decisionTile,
+.choice,
+.nextCard,
+.pathStep,
+.resourceCard {
+  transition:transform .14s ease,border-color .14s ease,background-color .14s ease,box-shadow .14s ease;
+}
+
+.button:hover,
+.startTile:hover,
+.libraryQuickTile:hover,
+.libraryJourneyCard:hover,
+.decisionTile:hover,
+.choice:hover,
+.nextCard:hover,
+.pathStep:hover {
+  transform:translateY(-1px);
+}
+
+.primary {
+  background:var(--sport-blue);
+  color:#fff;
+  border:1px solid var(--sport-blue-dark);
+  box-shadow:0 2px 0 var(--sport-blue-dark),0 8px 18px rgba(23,73,155,.12);
+}
+.primary:hover { background:#195bc8; }
+.primary:active { transform:translateY(1px); box-shadow:0 1px 0 var(--sport-blue-dark); }
+.secondary { border-width:1px; }
 
 /* A small family of section identities. Same geometry, different accent. */
 .startScreen { --section-color:var(--sport-blue); --section-soft:var(--sport-blue-soft); }
@@ -67,8 +162,9 @@
 .decisionTile::before {
   content:"";
   position:absolute;
-  inset:0 auto 0 0;
-  width:5px;
+  inset:12px auto 12px 0;
+  width:3px;
+  border-radius:0 999px 999px 0;
   background:var(--section-color);
 }
 .startTile:hover,
@@ -76,23 +172,53 @@
 .libraryQuickTile:hover,
 .libraryQuickTile:focus-visible,
 .decisionTile:hover,
-.decisionTile:focus-visible { border-color:var(--section-color); background:var(--section-soft); }
+.decisionTile:focus-visible { border-color:color-mix(in srgb,var(--section-color) 55%,var(--sport-border)); background:var(--section-soft); }
 .startTile span,
 .libraryQuickTile span,
 .decisionTile span { color:var(--section-color); }
 
+/* Numeric training data should scan like measurements, not prose. */
+.weekCount,
+.decisionBadge,
+.setInputs input,
+.pathIndex,
+.stepNumber { font-variant-numeric:tabular-nums; }
+
 /* Training state colors remain semantic and are always paired with words. */
-.decisionBadge.start { background:#f3f5f7; }
-.decisionBadge.continue { background:var(--sport-blue-soft); border-color:color-mix(in srgb,var(--sport-blue) 45%,var(--sport-border)); color:var(--sport-blue-dark) !important; }
-.decisionBadge.progress { background:var(--sport-green-soft); border-color:color-mix(in srgb,var(--sport-green) 45%,var(--sport-border)); color:var(--sport-green) !important; }
+.decisionBadge.start { background:#f1f3f2; }
+.decisionBadge.continue { background:var(--sport-blue-soft); border-color:color-mix(in srgb,var(--sport-blue) 38%,var(--sport-border)); color:var(--sport-blue-dark) !important; }
+.decisionBadge.progress { background:var(--sport-green-soft); border-color:color-mix(in srgb,var(--sport-green) 40%,var(--sport-border)); color:var(--sport-green) !important; }
 .decisionBadge.ease,
-.decisionBadge.review { background:var(--sport-amber-soft); border-color:color-mix(in srgb,var(--sport-amber) 45%,var(--sport-border)); color:var(--sport-amber) !important; }
+.decisionBadge.review { background:var(--sport-amber-soft); border-color:color-mix(in srgb,var(--sport-amber) 38%,var(--sport-border)); color:var(--sport-amber) !important; }
 
 /* Keep the shell quiet: color belongs to actions and orientation, not every surface. */
 .siteHeader,
 .mobileAppNav { border-color:var(--sport-border); }
+.siteHeader { background:color-mix(in srgb,var(--sport-bg) 94%,transparent); }
+.mobileAppNav { background:color-mix(in srgb,var(--sport-surface) 97%,transparent); }
 .mobileAppNav a:active { background:var(--sport-blue-soft); color:var(--sport-blue); }
 
+:where(a,button,input,select,summary):focus-visible {
+  outline-color:color-mix(in srgb,var(--sport-blue) 72%,#fff);
+}
+
 @media (prefers-reduced-motion:reduce) {
+  .button,
+  .startTile,
+  .libraryQuickTile,
+  .libraryJourneyCard,
+  .decisionTile,
+  .choice,
+  .nextCard,
+  .pathStep,
+  .resourceCard { transition:none; }
+  .button:hover,
+  .startTile:hover,
+  .libraryQuickTile:hover,
+  .libraryJourneyCard:hover,
+  .decisionTile:hover,
+  .choice:hover,
+  .nextCard:hover,
+  .pathStep:hover,
   .primary:active { transform:none; }
 }
