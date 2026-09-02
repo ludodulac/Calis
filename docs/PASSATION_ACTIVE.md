@@ -15,19 +15,19 @@ Si un SHA ou un état de PR diffère entre un document et GitHub, **GitHub gagne
 
 ### Prompt de reprise recommandé
 
-> **Consulte `AI_START_HERE.md`, `INTEL.md` et `docs/PASSATION_ACTIVE.md` dans `ludodulac/Calis`. Vérifie ensuite l’état réel de `main`, les PR ouvertes, la CI, l’issue #62 et le dernier déploiement GitHub Pages. Reprends exactement là où le projet s’est arrêté : Calis est dans une passe Design / UX / identité visuelle qui doit rendre le produit plus évident, humain, sportif et pédagogique sans toucher inutilement au moteur V1. Préserve la promesse « Calis sait où j’en suis et sait quelle est ma prochaine étape », n’invente aucune progression automatique et travaille par petites PR relisibles. Le dernier lot fusionné est #72 sur le hub Traction ; le prochain lot logique est le hub Pompes en rendant son chemin visible sans prétendre automatiser `pompes inclinées → pompe au sol`, car la hauteur du support n’est pas stockée.**
+> **Consulte `AI_START_HERE.md`, `INTEL.md` et `docs/PASSATION_ACTIVE.md` dans `ludodulac/Calis`. Vérifie ensuite l’état réel de `main`, les PR ouvertes, la CI, l’issue #62 et le dernier déploiement GitHub Pages. Reprends exactement là où le projet s’est arrêté : la passe Design / UX a rendu visibles les chemins Traction puis Pompes, et la cohérence des prescriptions Fondations avec les fiches pédagogiques a été resserrée jusqu’à #75. Ne fabrique pas un hub ou une progression Jambes uniquement pour symétriser l’interface : aucune progression jambes canonique n’est actuellement documentée. Préserve la promesse « Calis sait où j’en suis et sait quelle est ma prochaine étape », n’invente aucune progression automatique et n’élargis pas la V1. Le prochain gate prioritaire est #62 : test réel sur téléphone et informations réelles d’éditeur. Pour le polish responsive/accessibilité, corriger uniquement des défauts observés, pas à l’aveugle.**
 
 ---
 
 # 1. État opérationnel vérifié
 
-Dernier `main` vérifié : **`3f0a4a944efe631cb33e98ef015531c90b9c2c81`**, fusion de **PR #72 — Make the pull-up path visible**.
+Dernier `main` vérifié : **`790a06a99cc10dcd78bce322323ad2d0febb5f5c`**, fusion de **PR #75 — Align foundation learning cards with training prescriptions**.
 
 Au moment de cette passation :
 
-- aucune PR ouverte après la fusion de #72 ;
-- CI de #72 verte : install, typecheck et build statique réussis ;
-- déploiement GitHub Pages **#203** entièrement vert : build, artefact et publication réussis ;
+- aucune PR ouverte après la fusion de #75 ;
+- CI de #75 verte : install, typecheck et build statique réussis ;
+- déploiement GitHub Pages **#206** entièrement vert : build, artefact et publication réussis ;
 - export statique / GitHub Pages / `basePath /Calis` restent les contraintes de production.
 
 Toujours revérifier cet état au début d’une nouvelle conversation.
@@ -114,7 +114,7 @@ Les illustrations techniques restent séparées et doivent suivre la vérité vi
 
 ---
 
-# 5. Lots Design déjà fusionnés
+# 5. Lots Design / Release Readiness déjà fusionnés
 
 ## #65 — illustrations existantes réellement raccordées
 
@@ -200,36 +200,52 @@ CTA : **Trouver mon point de départ** → `/aujourdhui?goal=traction`.
 
 Les cinq situations d’entrée et les questions fréquentes restent présentes.
 
----
+## #74 — hub Pompes : chemin visible et honnête
 
-# 6. Prochain lot Design recommandé
-
-## Hub Pompes
-
-Reprendre le principe de #72, mais **ne pas copier mécaniquement** le hub Traction.
-
-Chemin canonique :
+Le chemin canonique Pompes est rendu plus directement actionnable :
 
 **pompes inclinées → première pompe → pompe stable**.
 
-Point essentiel : la V1 ne stocke pas la hauteur du support des pompes inclinées. Donc Calis ne peut pas honnêtement automatiser :
+La page explique explicitement que la V1 **ne stocke pas la hauteur du support** et ne peut donc pas automatiser honnêtement `pompes inclinées → pompe au sol`.
 
-`pompes inclinées → pompe au sol`.
+CTA : **Trouver mon point de départ** → `/aujourdhui?goal=pompes`.
 
-Le hub doit donner une sensation claire de chemin sans suggérer une automatisation inexistante.
+Les situations d’entrée, FAQ, ressources et branche Dips ont été conservées. Aucun changement moteur.
 
-Objectif UX :
+## #75 — prescriptions Fondations ↔ fiches pédagogiques
 
-**voici le chemin → voici comment choisir une difficulté utile → Calis peut t’entraîner aujourd’hui, mais ne prétend pas déduire automatiquement ton changement de hauteur**.
+La dernière revue de cohérence a révélé que Gainage et Pont fessier étaient prescrits par le moteur mais tombaient encore sur une fiche générique incomplète. Le lot #75 a fermé cet écart sans modifier le moteur :
 
-Ne pas modifier le moteur pour « compléter » le design.
+- `gainage-debutant` possède maintenant une vraie fiche pédagogique alignée sur **2 × 15–30 s, repos 60 s** ;
+- `pont-fessier-debutant` possède maintenant une vraie fiche alignée sur **2 × 8–12, repos 90 s** ;
+- squat, rowing incliné et pompes inclinées affichent les prescriptions Fondations déjà utilisées par Aujourd’hui ;
+- les critères de borne haute sont alignés sur **Base validée** lorsque la suite n’est pas honnêtement observable ;
+- aucune transition automatique nouvelle n’a été introduite.
 
-Après Pompes, évaluer séparément :
+---
 
-- hubs / objectifs restants ;
-- dé-cardification progressive des ressources pédagogiques ;
-- grammaire future des visuels techniques ;
-- polish responsive / accessibilité final.
+# 6. Prochain travail recommandé
+
+## Priorité : fermer le gate humain #62
+
+Le prochain bloc prioritaire n’est **pas** un nouveau hub ou une nouvelle capacité. Les deux gates encore ouverts sont :
+
+1. **test réel sur téléphone** du parcours complet ;
+2. **informations réelles d’éditeur** pour les mentions nécessaires.
+
+Le polish responsive / accessibilité peut continuer **uniquement à partir de défauts réellement observés** pendant ce test ou par inspection vérifiable. Éviter les retouches CSS à l’aveugle sur les écrans volontairement contraints.
+
+### Jambes : ne pas fabriquer une progression pour symétriser l’interface
+
+`/commencer` propose bien l’objectif Jambes et Aujourd’hui accepte `goal=jambes`, mais le contenu actuel documente surtout le squat et le pont fessier. Il n’existe pas à ce stade de `jambesProgression` canonique comparable à `pullUpProgression`, `pushUpProgression` ou `handstandProgression`.
+
+Donc :
+
+- ne pas inventer un arbre Jambes uniquement parce que Traction et Pompes ont un chemin visible ;
+- ne créer un hub / chemin Jambes que lorsqu’une progression réelle, utile et documentée le justifie ;
+- conserver l’accès actuel vers la fiche squat et l’entraînement `goal=jambes` tant qu’aucun meilleur modèle canonique n’est décidé.
+
+Après fermeture de #62, la V1 pourra être taguée stable si aucune autre anomalie bloquante n’apparaît.
 
 ---
 
