@@ -1,210 +1,338 @@
 # Calis — PASSATION ACTIVE
 
-Dernière mise à jour : **1 septembre 2026**.
+Dernière mise à jour : **2 septembre 2026**.
 
 ## Source de reprise prioritaire
 
-La passation produit complète vit dans **`INTEL.md` à la racine du dépôt**. Ce fichier résume seulement la phase de travail active. Toujours vérifier GitHub avant d’agir : `main`, les PR ouvertes, la CI et les déploiements Pages restent la vérité opérationnelle.
+Pour reprendre Calis dans une nouvelle conversation :
 
-Instruction recommandée :
+1. lire **`AI_START_HERE.md`** ;
+2. lire **`INTEL.md`** pour les décisions durables et le contexte consolidé ;
+3. lire **ce fichier (`docs/PASSATION_ACTIVE.md`) pour l’état opérationnel le plus récent** ;
+4. vérifier GitHub avant toute action : `main`, PR ouvertes, CI, issues pertinentes et dernier déploiement Pages restent la vérité.
 
-> **Consulte `INTEL.md`, puis vérifie `main`, les PR ouvertes, la CI et le dernier déploiement Pages. Calis est en V1 Release Readiness : ne rajoute aucune capacité tant qu’un blocage du parcours existant n’est pas démontré.**
+Si un SHA ou un état de PR diffère entre un document et GitHub, **GitHub gagne toujours**.
 
-## État opérationnel actuel
+### Prompt de reprise recommandé
 
-Dernier `main` vérifié avant ce lot documentaire : **`65624637d85b4e60061ea1802ba84c8d92b24a1d`**, fusion de **#59**.
+> **Consulte `AI_START_HERE.md`, `INTEL.md` et `docs/PASSATION_ACTIVE.md` dans `ludodulac/Calis`. Vérifie ensuite l’état réel de `main`, les PR ouvertes, la CI, l’issue #62 et le dernier déploiement GitHub Pages. Reprends exactement là où le projet s’est arrêté : Calis est dans une passe Design / UX / identité visuelle qui doit rendre le produit plus évident, humain, sportif et pédagogique sans toucher inutilement au moteur V1. Préserve la promesse « Calis sait où j’en suis et sait quelle est ma prochaine étape », n’invente aucune progression automatique et travaille par petites PR relisibles. Le dernier lot fusionné est #72 sur le hub Traction ; le prochain lot logique est le hub Pompes en rendant son chemin visible sans prétendre automatiser `pompes inclinées → pompe au sol`, car la hauteur du support n’est pas stockée.**
 
-Le déploiement GitHub Pages de #59 a été vérifié vert : install, typecheck, build statique, artefact Pages et déploiement final ont réussi.
+---
 
-PR récentes :
+# 1. État opérationnel vérifié
 
-- #46 : stagnation prudente avec `À revoir` ;
-- #48 : langage visuel sportif propre ; #47 fermé sans fusion ;
-- #49 : objectif principal dans le programme sans suppression des autres fondations ;
-- #50 : comparabilité exacte des prescriptions ;
-- #51 : recalibrage volontaire et documenté ;
-- #52 : passation opérationnelle rafraîchie ;
-- #53 : gainage + pont fessier dans Fondations ;
-- #54 : passage officiel en **V1 Release Readiness**, gel du périmètre, décisions `Base validée`, suppression des progressions basées sur des réglages non observés, stockage local durci ;
-- #55 : diagnostic tirage plus fidèle + unités de durée dans l’historique ;
-- #56 : refaire le diagnostic ne supprime plus les séances ;
-- #57 : l’historique complet reste visible, mais seules les séances postérieures au point de départ actuel alimentent les décisions et progressions ;
-- #58 : page publique `/confidentialite`, lien footer, sitemap et gate légal/commercial documenté ;
-- #59 : correction mobile critique : la grille `Aujourd’hui` réserve bien quatre lignes pour les quatre exercices Fondations.
+Dernier `main` vérifié : **`3f0a4a944efe631cb33e98ef015531c90b9c2c81`**, fusion de **PR #72 — Make the pull-up path visible**.
 
-Ne jamais déduire les PR ouvertes de ce document : vérifier GitHub.
+Au moment de cette passation :
 
-## Phase active : V1 Release Readiness
+- aucune PR ouverte après la fusion de #72 ;
+- CI de #72 verte : install, typecheck et build statique réussis ;
+- déploiement GitHub Pages **#203** entièrement vert : build, artefact et publication réussis ;
+- export statique / GitHub Pages / `basePath /Calis` restent les contraintes de production.
 
-Calis n’a plus besoin d’élargir la callisthénie avant de sortir. La V1 doit prouver que le parcours déjà promis fonctionne impeccablement.
+Toujours revérifier cet état au début d’une nouvelle conversation.
 
-**Règle de gel : une nouvelle idée ou capacité ne doit pas retarder la V1 sauf si son absence empêche réellement un débutant d’utiliser correctement le parcours existant.**
+---
 
-Avant le tag V1 : pas de L-sit, pistol squat, front lever, HSPU, gros moteur mobilité, périodisation avancée, Supabase, compte utilisateur ou synchronisation.
+# 2. Promesse à protéger
 
-### Parcours de sortie
+Promesse centrale :
 
-`Accueil → objectif → orientation → Aujourd’hui → diagnostic → séance A → résultats → résumé → retour ultérieur → séance B → résultats → repos → historique → décision/progression ou recalibrage`
+> **« Calis sait où j’en suis et sait quelle est ma prochaine étape. »**
 
-Le test n’est pas seulement « le code compile ». Une personne sans contexte doit comprendre quoi faire maintenant, combien, pourquoi et ce qui vient ensuite.
+Critère UX fondamental :
 
-## Vérité des progressions
+> **L’utilisateur ne doit jamais se demander : « OK… et maintenant je fais quoi ? »**
 
-Une progression automatique exige simultanément :
+Architecture : **DÉSIR → OBJECTIF → CAPACITÉ → PROGRESSION**.
+
+Boucle : **diagnostic → programme → séance → mesure → décision → prochaine étape**.
+
+La passe design actuelle ne doit pas ajouter une couche décorative sur le moteur. Elle doit rendre cette intelligence **perceptible**.
+
+---
+
+# 3. Direction Design / UX décidée
+
+Nom de travail : **Terrain calme**.
+
+Calis doit ressembler à un croisement entre :
+
+- carnet d’entraînement ;
+- magazine sportif éditorial ;
+- outil de progression très simple.
+
+Direction :
+
+- calme ;
+- sportive ;
+- tactile ;
+- lisible ;
+- humaine ;
+- pédagogique ;
+- légèrement premium ;
+- crédible sans agressivité fitness.
+
+À éviter : gradients gratuits, esthétique SaaS générique, noir + néon, dashboard dense, effets spectaculaires, streaks, XP, badges artificiels, confettis, copies de Thenx/Calistree/Freeletics, énormes grilles de cartes photo.
+
+Principe visuel distinctif : **le chemin**.
+
+Langage recherché :
+
+**TU ES ICI → TU TRAVAILLES ÇA → ENSUITE**
+
+Pas de skill tree gigantesque, pas de niveaux fictifs.
+
+---
+
+# 4. Photographie de marque
+
+Six photographies ont été fournies par le fondateur dans la conversation :
+
+1. traction ;
+2. pompe ;
+3. handstand ;
+4. travail unilatéral / jambes ;
+5. mobilité / stretching ;
+6. dips.
+
+Décision : **photographie de marque ≠ visuel pédagogique**.
+
+Les photos servent à l’identité, l’aspiration, l’humanisation, les hubs et la respiration éditoriale. Elles ne doivent pas être utilisées comme preuve technique d’un mouvement.
+
+Usage retenu pour la home :
+
+- traction : entrée / commencer ;
+- pompe : construire ;
+- handstand : maîtriser.
+
+Narration : **commencer → construire → maîtriser**.
+
+Jambes, mobilité et dips sont réservées à leurs pages / usages futurs plutôt que forcées sur l’accueil.
+
+Les illustrations techniques restent séparées et doivent suivre la vérité visuelle documentée (`docs/VISUAL_TRUTH_WORKFLOW.md`).
+
+---
+
+# 5. Lots Design déjà fusionnés
+
+## #65 — illustrations existantes réellement raccordées
+
+Six SVG déjà présents dans `public/illustrations/calis/` ont été raccordés aux fiches correspondantes : suspension, contrôle scapulaire, rowing incliné, traction négative, pompe technique, squat poids du corps.
+
+Important : ces SVG pédagogiques et les six photographies de marque sont deux systèmes différents.
+
+## #66 — fondations visuelles
+
+Premier socle de redesign : palette plus calme, fond plus chaud, hiérarchie typographique améliorée, rayons / bordures / surfaces moins uniformes, prescriptions numériques plus lisibles.
+
+Aucune logique produit modifiée.
+
+## #67 — shell / navigation
+
+- glyphes provisoires remplacés par une petite famille d’icônes cohérentes ;
+- état actif de la navigation mobile ;
+- header mieux hiérarchisé ;
+- `Vie privée` reste accessible mais n’a plus le même poids visuel que l’entrée produit.
+
+## #68 — nouvelle home
+
+La grille 2×3 d’objectifs n’est plus la composition principale.
+
+La home raconte désormais :
+
+**commencer → construire → maîtriser**
+
+et rend visible :
+
+**Tu es ici → Tu travailles ça → Ensuite**.
+
+Les destinations utiles restent accessibles. Trois photographies seulement sont utilisées comme narration : traction, pompe, handstand.
+
+Deux anciens assets annoncés comme WebP étaient en réalité invalides ; les photos nécessaires ont été remplacées / ajoutées comme vrais fichiers WebP valides.
+
+## #69 — fin de séance
+
+Le résumé de séance a été rehiérarchisé sans changer le moteur :
+
+- moins « quatre cartes + badges » ;
+- davantage « séance enregistrée → ce que ça signifie → prochaine étape » ;
+- une progression réellement calculée ressort visuellement ;
+- la prochaine étape devient le dernier repère fort.
+
+Pas de gamification artificielle.
+
+## #70 — Aujourd’hui / séance
+
+Lot CSS-only :
+
+- les quatre exercices sont lus comme une séquence `01 → 04` ;
+- prescriptions plus présentes ;
+- saisies de résultats visuellement secondaires ;
+- impression de formulaire réduite ;
+- aucune prescription, donnée, règle ou persistance modifiée.
+
+## #71 — Commencer / objectifs
+
+`/commencer` a été recentré sur les objectifs réellement compris par Aujourd’hui V1 :
+
+- traction ;
+- pompes ;
+- jambes ;
+- base générale.
+
+Mobilité et handstand restent accessibles en exploration, mais ne sont pas présentés comme des objectifs pilotés par le moteur V1.
+
+Chaque direction permet de comprendre le parcours ou de démarrer directement avec le bon paramètre `goal`.
+
+## #72 — hub Traction : progression visible
+
+Le chemin canonique traction n’est plus caché dans une modale. Il devient une partie visible du hub :
+
+**suspension → contrôle scapulaire → rowing incliné → traction assistée → négatives → première traction → plusieurs tractions**.
+
+La page distingue explicitement :
+
+- ce que Calis peut réellement décider automatiquement : `suspension → contrôle scapulaire → rowing incliné` ;
+- le reste du chemin, visible comme progression pédagogique mais **non automatisée**.
+
+CTA : **Trouver mon point de départ** → `/aujourdhui?goal=traction`.
+
+Les cinq situations d’entrée et les questions fréquentes restent présentes.
+
+---
+
+# 6. Prochain lot Design recommandé
+
+## Hub Pompes
+
+Reprendre le principe de #72, mais **ne pas copier mécaniquement** le hub Traction.
+
+Chemin canonique :
+
+**pompes inclinées → première pompe → pompe stable**.
+
+Point essentiel : la V1 ne stocke pas la hauteur du support des pompes inclinées. Donc Calis ne peut pas honnêtement automatiser :
+
+`pompes inclinées → pompe au sol`.
+
+Le hub doit donner une sensation claire de chemin sans suggérer une automatisation inexistante.
+
+Objectif UX :
+
+**voici le chemin → voici comment choisir une difficulté utile → Calis peut t’entraîner aujourd’hui, mais ne prétend pas déduire automatiquement ton changement de hauteur**.
+
+Ne pas modifier le moteur pour « compléter » le design.
+
+Après Pompes, évaluer séparément :
+
+- hubs / objectifs restants ;
+- dé-cardification progressive des ressources pédagogiques ;
+- grammaire future des visuels techniques ;
+- polish responsive / accessibilité final.
+
+---
+
+# 7. Vérité des progressions à ne jamais casser
+
+Une progression automatique exige :
 
 1. une prochaine étape documentée ;
 2. un critère observable dans les données réellement stockées.
 
-La V1 ne stocke ni hauteur de support de pompe inclinée ni angle de rowing. Elle ne doit donc pas automatiser `pompes inclinées → pompes au sol` ou `rowing incliné → traction assistée` à partir de nombres qui pourraient provenir d’un réglage différent.
-
-Progressions automatiques conservées :
+Progressions automatiques V1 conservées :
 
 - `suspension → contrôle scapulaire` ;
 - `contrôle scapulaire → rowing incliné`.
 
-Quand la borne haute est reproductible sans suite automatique fiable, utiliser **Base validée** plutôt que fabriquer une progression.
+Pas d’automatisation :
 
-## Historique, réévaluation et décision
+- `rowing incliné → traction assistée` car l’angle n’est pas stocké ;
+- `pompes inclinées → pompe au sol` car la hauteur du support n’est pas stockée.
 
-L’historique de pratique est conservé lors :
+Quand la borne haute est reproductible mais sans suite observable fiable : **Base validée**.
 
-- d’un recalibrage ;
-- d’une nouvelle passation du diagnostic.
+---
 
-Mais **conserver l’historique ne signifie pas le réutiliser indéfiniment pour décider**. Depuis #57 :
+# 8. Moteur / mémoire : ne pas toucher sans raison
 
-- `Ma progression` peut afficher les anciennes séances ;
-- `Continue`, `À revoir`, `Base validée` et les progressions n’utilisent que les séances enregistrées depuis le point de départ actuel ;
-- un recalibrage ouvre donc une nouvelle fenêtre de décision sans effacer la mémoire ;
-- les deux séances déjà faites dans la semaine continuent toutefois à compter pour la limite hebdomadaire, afin qu’une réévaluation ne crée pas artificiellement du volume supplémentaire.
-
-Une suppression totale de l’historique, si elle existe un jour, doit être une action distincte et explicitement destructive.
-
-## Résilience locale
-
-Clés principales :
+Clés locales principales :
 
 - `calis.training.v2.logs` ;
 - `calis.training.v2.assessment` ;
 - `calis.training.v2.goal`.
 
-Les JSON, structures et timestamps sont validés avant usage. Une clé cassée ne doit pas empêcher les autres données valides de fonctionner.
+Réévaluation / recalibrage :
 
-## Vérité pédagogique
+- conserve l’historique complet ;
+- ouvre une nouvelle fenêtre de décision ;
+- les anciennes séances restent visibles mais ne déclenchent pas une progression dans le nouveau point de départ ;
+- les séances déjà faites dans la semaine continuent de compter pour la fréquence.
 
-Audit transversal V1 : séries, répétitions/durée, repos, fréquence, critères de passage, régressions, consignes d’arrêt et cohérence bibliothèque ↔ moteur.
+Programme Fondations : deux séances / semaine, quatre exercices par séance.
 
-Les fiches génériques tirage/squat restent volontairement qualitatives là où aucun seuil universel n’est défendable. Les nouvelles fiches chiffrées sont alignées avec le moteur :
+Ne pas supprimer d’exercice ou de fondation uniquement pour rendre l’écran plus minimaliste.
 
-- gainage : **2 × 15–30 s**, repos 60 s ;
-- pont fessier : **2 × 8–12**, repos 90 s.
+---
 
-La traction négative reste sans « chrono magique ».
+# 9. Release gate toujours ouvert : issue #62
 
-## Mobile / production
+Issue : **#62 — Final V1 release gate: real-phone pass and publisher details**.
 
-Le téléphone reste un cadre d’application fixe sur les écrans de décision. Les informations secondaires passent par `InfoDialog`.
+Elle reste ouverte.
 
-Après #53, les séances ont quatre mouvements. #59 corrige l’ancien `grid-template-rows: repeat(3, …)` : la grille mobile réserve désormais quatre lignes, ce qui évite que le quatrième exercice tombe dans une ligne implicite sous `overflow: hidden`.
+Deux gates humains ne doivent pas être simulés :
 
-Production déjà vérifiée pendant Release Readiness :
+## A. Test réel sur téléphone
 
-- GitHub Pages déploie correctement `main` ;
-- `basePath /Calis` cohérent ;
-- routes critiques présentes dans l’artefact ;
-- `robots.txt` et `sitemap.xml` générés ;
-- canonicals cohérents ;
-- contrôle statique d’environ 1 000 références internes sans lien cassé ;
-- toutes les URLs déclarées dans le sitemap correspondent à une sortie statique.
+Scénario :
 
-`/aujourdhui` reste volontairement hors sitemap : c’est une vue applicative/personnalisée, pas une landing SEO principale.
+`Accueil → objectif → orientation → Aujourd’hui → diagnostic → séance A → résultats → résumé → fermeture du navigateur → retour ultérieur → séance B → résultats → repos → historique → progression / Base validée / recalibrage`
 
-## Confidentialité / légal / commerce
+À vérifier notamment : quatre exercices utilisables, Terminer accessible, modales internes scrollables, persistance après fermeture, historique préservé lors d’une réévaluation, ancienne fenêtre de décision isolée, Vie privée accessible, aucun contrôle important coupé.
 
-La V1 actuelle :
+## B. Informations réelles d’éditeur
 
-- pas de compte Calis ;
-- pas de base de données Calis pour les séances ;
-- stockage local sur l’appareil ;
-- aucun analytics, pixel publicitaire ou traceur comportemental tiers détecté dans le code lors de la revue #58 ;
-- pas d’affiliation active dans le moteur.
+Ne jamais inventer : identité / raison sociale, statut, adresse légalement requise, contact public, directeur de publication si applicable.
 
-La page publique **`/confidentialite`** décrit cet état.
+Hébergement déjà documenté : GitHub Pages / GitHub, Inc. La confidentialité distingue les données techniques d’hébergement des données d’entraînement Calis locales.
 
-Voir **`docs/V1_RELEASE_LEGAL.md`** pour le gate avant lancement commercial, analytics ou affiliation.
+Le texte de #62 peut contenir un ancien SHA technique : **utiliser #62 pour les gates, mais GitHub `main` / Pages pour l’état opérationnel réel**.
 
-Ne pas inventer les mentions légales. Il manque encore les vraies informations d’éditeur / contact nécessaires pour finaliser cette partie selon le statut réel du projet.
+Pas de tag/release `V1 stable` tant que ces gates ne sont pas réellement satisfaits, sauf décision explicite du fondateur d’accepter le risque.
 
-Pas de bannière de consentement artificielle tant qu’aucun traceur non essentiel n’est ajouté. Toute activation future d’analytics, publicité, retargeting, bouton social traçant ou outil tiers doit déclencher la revue confidentialité/consentement **avant** activation.
+---
 
-## Ce qui reste avant le tag V1 stable
+# 10. Contraintes et principes de travail
 
-Les gros blocs techniques ont désormais été traités. Les derniers gates sont :
+- branche → PR → CI → fusion ;
+- petites PR relisibles ;
+- pas de fusion si typecheck/build ne sont pas verts ;
+- vérifier Pages après fusion ;
+- préserver les contenus, parcours et fonctionnalités utiles ;
+- pas de Supabase / backend pendant cette passe ;
+- pas de nouvelles capacités avancées pour remplir l’interface ;
+- pas de progression automatique non documentée / non observable ;
+- export statique et `basePath` obligatoires ;
+- mobile et accessibilité à préserver ;
+- informations secondaires dans `InfoDialog` lorsque cela protège l’écran principal ;
+- ne pas transformer les photographies de marque en tutoriels techniques ;
+- ne pas reprendre une ancienne version de Calis : toujours inspecter le code actuel.
 
-1. **validation finale du parcours réel** sur téléphone : diagnostic, quatre exercices, saisie, résumé, fermeture/réouverture, séance suivante, repos, historique, recalibrage ;
-2. **inspection visuelle finale** des petits écrans et modales après #59 ;
-3. **relecture finale des prescriptions Fondations** pour vérifier qu’aucun texte n’a divergé depuis les derniers correctifs ;
-4. **informations réelles d’éditeur/contact** pour finaliser les mentions légales si le lancement public les exige ;
-5. décider si la V1 sort **sans analytics** — option parfaitement acceptable — ou choisir plus tard une mesure légère après revue confidentialité ;
-6. reconfirmer `main`, aucune PR ouverte, CI et Pages verts ;
-7. créer alors le **tag/release V1 stable**.
+---
 
-L’absence d’analytics ou d’affiliation **ne bloque pas** le tag si ces fonctionnalités restent désactivées. Leurs gates deviennent obligatoires avant leur activation ultérieure.
+# 11. Critère de design
 
-## KPI après release
+Pour chaque proposition :
 
-Funnel cible :
+> **Est-ce que ça aide réellement quelqu’un à comprendre son corps, savoir quoi faire et progresser ?**
 
-`visiteur → objectif → diagnostic → séance 1 commencée → séance 1 terminée → séance 2 → décision utile → progression réelle`
+Si non, c’est probablement décoratif.
 
-Le trafic SEO est un canal d’acquisition, pas la preuve principale de valeur.
+Le résultat recherché n’est pas seulement :
 
-## Après V1 : alimentation du site
+> « Calis est plus joli. »
 
-Après le tag, le socle doit devenir relativement calme. Ajouter les capacités par clusters :
+mais :
 
-`besoin utilisateur → ressource canonique → contenus/exercices liés → progression documentée → prescription exécutable → intégration éventuelle dans Aujourd’hui`
-
-Candidats : poussée verticale, jambes unilatérales, compression/L-sit, rotation/anti-rotation, mobilité structurée, équilibre, explosivité, contrôle corporel.
-
-Handstand et muscle-up peuvent continuer à progresser éditorialement avant d’entrer dans le moteur.
-
-## Affiliation
-
-Principe durable : **besoin détecté → explication → options → achat éventuel**.
-
-Commencer après V1 avec peu de catégories réellement utiles : barre, anneaux, élastiques, parallettes ; lest seulement lorsque le graphe le justifie. Disclosure claire avant tout lien rémunéré. Mesurer les clics/conversions avant de multiplier les partenaires. Utiliser ensuite de vraies données pour contacter des marques spécialisées.
-
-Un guide peut conclure qu’aucun achat n’est nécessaire.
-
-## Décisions à préserver
-
-- Promesse : « Calis sait où j’en suis et sait quelle est ma prochaine étape. »
-- Boucle : `diagnostic → programme → séance → mesure → décision → prochaine étape`.
-- Architecture : `désir → objectif → capacité → progression`.
-- Écrans de décision mobiles fixes ; secondaire en modale.
-- Pas de streak, badge artificiel, faux progrès ou preuve sociale simulée.
-- Progressions automatiques documentées **et observables**.
-- Plateau = même prescription.
-- Recalibrage = action explicite.
-- Historique conservé, mais décisions limitées au point de départ actuel.
-- Réévaluation ≠ suppression des séances.
-- Stockage local-first tant que compte/sync n’apporte pas une vraie valeur.
-- Sessions Fondations compactes : quatre mouvements.
-- Objectif principal = priorité, pas suppression des autres fondations.
-- Affiliation = conséquence d’un besoin pédagogique, jamais source du besoin.
-
-## À ne pas refaire
-
-- Ne pas élargir la V1 pour « compléter » toute la callisthénie.
-- Ne pas reconstruire une app fitness générique.
-- Ne pas remettre tout le texte sur les écrans de décision.
-- Ne pas ajouter de gamification artificielle.
-- Ne pas automatiser des progressions basées sur un réglage non stocké.
-- Ne pas transformer des critères qualitatifs en chiffres arbitraires.
-- Ne pas effacer l’historique lors d’un recalibrage ou d’une réévaluation.
-- Ne pas faire contribuer les anciennes séances aux décisions du nouveau point de départ.
-- Ne pas introduire Supabase ou une infrastructure lourde sans besoin réel.
-- Ne pas inventer d’identité ou de mentions légales.
-- Ne pas ajouter analytics/affiliation avant leur gate de confidentialité/transparence.
-- Ne pas supprimer des contenus ou chemins utiles pour ajouter une nouvelle idée.
+> **« Calis est plus évident, plus agréable, plus humain et plus crédible, tout en restant aussi simple. »**
