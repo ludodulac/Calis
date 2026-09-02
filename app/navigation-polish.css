@@ -1,0 +1,70 @@
+.mobileHeaderActions,
+.mobileUtility { display:none; }
+
+@media (max-width:600px) {
+  .mobileHeaderActions {
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .mobileUtility {
+    width:40px;
+    height:40px;
+    display:grid;
+    place-items:center;
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    background:transparent;
+    color:var(--muted);
+  }
+
+  .mobileUtility:active {
+    background:var(--surface);
+    color:var(--text);
+  }
+
+  .mobileStart {
+    border-radius:var(--radius-md);
+    border-color:var(--line);
+    background:var(--surface);
+    box-shadow:0 1px 0 rgba(28,36,37,.06);
+  }
+
+  .mobileAppNav a {
+    position:relative;
+    border-radius:var(--radius-md);
+    transition:background-color .14s ease,color .14s ease;
+  }
+
+  .mobileAppNav a span {
+    display:grid;
+    place-items:center;
+    color:currentColor;
+  }
+
+  .mobileAppNav a b {
+    font-weight:750;
+  }
+
+  .mobileAppNav a.isActive {
+    background:var(--sport-blue-soft);
+    color:var(--sport-blue-dark);
+  }
+
+  .mobileAppNav a.isActive::after {
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:3px;
+    width:18px;
+    height:2px;
+    border-radius:999px;
+    background:var(--sport-blue);
+    transform:translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .mobileAppNav a { transition:none; }
+}
