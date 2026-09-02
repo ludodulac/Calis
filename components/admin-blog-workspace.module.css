@@ -1,0 +1,31 @@
+.page{min-height:100vh;background:var(--bg)}
+.hero{padding:86px 0 44px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--accent-soft),var(--bg))}
+.hero h1{max-width:900px}
+.heroActions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.heroActions button,.heroActions a,.copyRow button{min-height:44px;padding:0 16px;border-radius:999px;font:inherit;font-weight:850;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.heroActions button,.copyRow button{border:0;background:var(--accent);color:#fff}
+.heroActions a{border:1px solid var(--line);background:var(--surface);color:var(--text)}
+.layout{display:grid;grid-template-columns:minmax(230px,.62fr) minmax(0,1.7fr);gap:28px;align-items:start}
+.sidebar{position:sticky;top:108px;padding:22px;border:1px solid var(--line);border-radius:22px;background:var(--surface)}
+.draftList{display:grid;gap:8px;margin-top:14px}
+.draftList button{width:100%;padding:13px;text-align:left;border:1px solid var(--line);border-radius:13px;background:transparent;color:var(--text);cursor:pointer}
+.draftList strong,.draftList span{display:block}.draftList span{margin-top:3px;color:var(--muted);font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.draftList .activeDraft{border-color:var(--accent);background:var(--accent-soft)}
+.progressBox{margin-top:20px;padding:16px;border-radius:15px;background:var(--sepia-soft);border:1px solid var(--line)}
+.progressBox span,.progressBox strong,.progressBox small{display:block}.progressBox span{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}.progressBox strong{margin:4px 0}.progressBox small{color:var(--muted);line-height:1.45}
+.deleteButton{margin-top:16px;padding:8px 0;border:0;background:transparent;color:var(--muted);font:inherit;font-size:.82rem;cursor:pointer;text-decoration:underline}
+.editor{display:grid;gap:20px}
+.panel{padding:28px;border:1px solid var(--line);border-radius:24px;background:var(--surface)}
+.panel h2{margin-bottom:8px;font-size:clamp(1.5rem,3vw,2.25rem)}
+.panel>p:not(.eyebrow){color:var(--muted);line-height:1.65}
+.panel label:not(.check){display:grid;gap:7px;margin-top:20px}
+.panel label>span{font-weight:800}
+.panel input,.panel textarea{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--text);font:inherit;outline:none}
+.panel input{min-height:47px}.panel textarea{resize:vertical;line-height:1.55}
+.panel input:focus,.panel textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent)}
+.check{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;margin-top:20px;padding-top:18px;border-top:1px dashed var(--line);cursor:pointer}
+.check input{width:19px;height:19px;margin-top:2px;accent-color:var(--accent)}
+.handoff{border-color:color-mix(in srgb,var(--accent) 38%,var(--line));box-shadow:0 18px 50px color-mix(in srgb,var(--accent) 8%,transparent)}
+.copyRow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px}.copyRow span{color:var(--muted);font-size:.88rem;line-height:1.45;max-width:540px}
+@media(max-width:860px){.layout{grid-template-columns:1fr}.sidebar{position:static}}
+@media(max-width:600px){.hero{padding-top:62px}.panel{padding:22px 18px}.heroActions{flex-direction:column;align-items:stretch}.heroActions button,.heroActions a,.copyRow button{width:100%}.copyRow{align-items:stretch;flex-direction:column}}
