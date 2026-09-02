@@ -12,23 +12,23 @@ import { SiteHeader } from "@/components/site-header";
 export const metadata: Metadata = {
   metadataBase: new URL("https://ludodulac.github.io/Calis/"),
   title: {
-    default: "Calis — Apprendre son corps et progresser en callisthénie",
-    template: "%s | Calis",
+    default: "Calisthenics Atlas — La plateforme française de callisthénie",
+    template: "%s | Calisthenics Atlas",
   },
-  description: "Une bibliothèque francophone pour apprendre la callisthénie, comprendre les mouvements et progresser par capacités, du premier appui aux figures avancées.",
-  applicationName: "Calis",
+  description: "La plateforme française de callisthénie pour comprendre les mouvements, construire ses bases et progresser étape par étape au poids du corps.",
+  applicationName: "Calisthenics Atlas",
   keywords: ["callisthénie", "calisthenics", "poids du corps", "traction", "pompe", "dips", "handstand"],
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    siteName: "Calis",
-    title: "Calis — Découvre ce dont ton corps est capable",
-    description: "Apprends les mouvements, comprends ce que tu fais et progresse à ton rythme en callisthénie.",
+    siteName: "Calisthenics Atlas",
+    title: "Calisthenics Atlas — La plateforme française de callisthénie",
+    description: "Comprendre les mouvements, construire ses bases et progresser à son rythme en callisthénie.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Calis — Découvre ce dont ton corps est capable",
-    description: "Une bibliothèque francophone pour apprendre et progresser en callisthénie.",
+    title: "Calisthenics Atlas — La plateforme française de callisthénie",
+    description: "Comprendre les mouvements, construire ses bases et progresser à son rythme en callisthénie.",
   },
 };
 
@@ -44,10 +44,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <MobileAppNav />
           <footer className="siteFooter">
             <div className="shell footerInner">
-              <strong>Calis</strong>
+              <strong>Calisthenics Atlas</strong>
               <span>Comprendre → essayer → ressentir → maîtriser → progresser.</span>
-              <small>Calis propose des informations générales sur l'activité physique et l'apprentissage des mouvements. Le site ne remplace pas un avis, un diagnostic ou une prise en charge par un professionnel de santé qualifié.</small>
-              <small><Link href="/confidentialite">Confidentialité</Link></small>
+              <small>Calisthenics Atlas propose des informations générales sur l'activité physique et l'apprentissage des mouvements. Le site ne remplace pas un avis, un diagnostic ou une prise en charge par un professionnel de santé qualifié.</small>
+              <small><Link href="/a-propos">À propos</Link> · <Link href="/confidentialite">Confidentialité</Link></small>
             </div>
           </footer>
         </div>
