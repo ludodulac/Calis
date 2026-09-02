@@ -1,3 +1,39 @@
+.trainingNote {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 880px;
+  margin: 0 0 16px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--sport-green, var(--accent));
+  background: var(--sport-green-soft, var(--accent-soft));
+}
+
+.trainingNote > div {
+  max-width: 650px;
+}
+
+.trainingNote strong {
+  color: var(--sport-green, var(--accent));
+  font-size: .82rem;
+  line-height: 1.25;
+}
+
+.trainingNote p {
+  margin: 4px 0 0;
+  font-size: .86rem;
+  line-height: 1.45;
+}
+
+.trainingNote b {
+  color: var(--text);
+}
+
+.trainingNote :global(.button) {
+  flex: 0 0 auto;
+}
+
 .compact {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   max-width: 880px;
@@ -9,7 +45,27 @@
   }
 }
 
+@media (max-width: 760px) {
+  .trainingNote {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .trainingNote :global(.button) {
+    width: 100%;
+  }
+}
+
 @media (max-width: 600px) {
+  .trainingNote {
+    padding: 11px 12px;
+  }
+
+  .trainingNote p {
+    font-size: .78rem;
+  }
+
   .compact {
     grid-template-columns: repeat(3, 78vw);
   }
