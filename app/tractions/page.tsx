@@ -3,6 +3,7 @@ import Link from "next/link";
 import { InfoDialog } from "@/components/info-dialog";
 import { ProgressionPath } from "@/components/progression-path";
 import { pullUpProgression } from "@/lib/content/v1";
+import styles from "./pull-goal.module.css";
 
 export const metadata: Metadata = {
   title: "Tractions : progression débutant, première traction et technique",
@@ -20,13 +21,13 @@ const situations = [
 ] as const;
 
 export default function PullUpsPage() {
-  return <div className="decisionPage pullGoalPage">
+  return <div className="decisionPage">
     <section className="decisionIntro shell narrow">
       <div className="decisionTitleRow">
         <div>
           <div className="eyebrow">Traction</div>
           <h1>Où ça bloque ?</h1>
-          <p className="pullGoalLead">Tu n'as pas besoin de connaître le nom de ton niveau. Pars simplement de ce que ton corps sait faire aujourd'hui.</p>
+          <p className={styles.lead}>Tu n'as pas besoin de connaître le nom de ton niveau. Pars simplement de ce que ton corps sait faire aujourd'hui.</p>
         </div>
         <div className="infoIconBar" aria-label="Informations secondaires">
           <InfoDialog label="Questions fréquentes" title="Questions fréquentes" icon="help">
@@ -41,8 +42,8 @@ export default function PullUpsPage() {
       </div>
     </section>
 
-    <section className="pullVisiblePath shell" aria-labelledby="pull-path-title">
-      <div className="pullPathHeading">
+    <section className={`${styles.pathSection} shell`} aria-labelledby="pull-path-title">
+      <div className={styles.pathHeading}>
         <div>
           <span>Le chemin</span>
           <h2 id="pull-path-title">Construire la traction, étape par étape.</h2>
@@ -50,7 +51,7 @@ export default function PullUpsPage() {
         <Link className="button primary" href="/aujourdhui?goal=traction">Trouver mon point de départ</Link>
       </div>
 
-      <div className="pullAutomationNote">
+      <div className={styles.automationNote}>
         <strong>Ce que Calis sait décider aujourd'hui</strong>
         <p>Dans le parcours V1, les résultats enregistrés peuvent faire évoluer automatiquement <b>suspension → contrôle scapulaire → rowing incliné</b>. Les étapes suivantes restent visibles comme chemin pédagogique, mais Calis n'invente pas de transition automatique sans critère observable.</p>
       </div>
@@ -59,13 +60,13 @@ export default function PullUpsPage() {
         steps={pullUpProgression}
         milestoneId="first"
         ariaLabel="Chemin de la suspension à plusieurs tractions fiables"
-        className="pullVisibleProgression"
+        className={styles.progression}
         fork={{ label: "Après plusieurs tractions fiables", links: [{ href: "/bibliotheque/traction-explosive", label: "Gagner en hauteur →" }, { href: "/bibliotheque/tractions-lestees", label: "Gagner en force →" }, { href: "/muscle-up", label: "Préparer le muscle-up →" }] }}
       />
     </section>
 
     <section className="decisionChoices shell narrow" aria-label="Choisir ma situation pour les tractions">
-      <div className="decisionChoiceHeading"><span>Maintenant</span><strong>Choisis ce qui ressemble le plus à ta situation.</strong></div>
+      <div className={styles.choiceHeading}><span>Maintenant</span><strong>Choisis ce qui ressemble le plus à ta situation.</strong></div>
       <div className="decisionGrid decisionGridFive">
         {situations.map(([title, href]) => <Link className="decisionTile" href={href} key={title}><strong>{title}</strong><span aria-hidden="true">→</span></Link>)}
       </div>
