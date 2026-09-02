@@ -270,7 +270,7 @@
   inset: 0;
   z-index: 5;
   padding: 16px;
-  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
   backdrop-filter: blur(10px);
   display: grid;
   place-items: center;
@@ -278,58 +278,118 @@
 
 .summaryCard {
   width: min(100%, 430px);
-  padding: 18px;
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 22px;
   border: 1px solid var(--line);
-  border-radius: 22px;
+  border-radius: var(--radius-xl, 22px);
   background: var(--surface);
-  box-shadow: 0 18px 60px rgba(0,0,0,.2);
+  box-shadow: 0 22px 70px rgba(28,36,37,.18);
   display: grid;
-  gap: 14px;
+  gap: 18px;
+}
+
+.summaryHeading {
+  position: relative;
+  padding-left: 46px;
+}
+
+.summaryHeading::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--sport-green-soft, var(--accent-soft));
+  color: var(--sport-green, var(--accent));
+  font-weight: 900;
 }
 
 .summaryHeading span {
   color: var(--muted);
-  font-size: .72rem;
+  font-size: .68rem;
   font-weight: 850;
-  letter-spacing: .08em;
+  letter-spacing: .12em;
   text-transform: uppercase;
 }
 
 .summaryHeading h2 {
   margin: 4px 0 0;
-  font-size: 1.8rem;
-  line-height: 1;
+  font-size: 2rem;
+  line-height: .96;
+  letter-spacing: -.035em;
 }
 
-.summaryList { display: grid; gap: 8px; }
+.summaryList {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
 
 .summaryRow {
-  min-height: 58px;
-  padding: 10px 11px;
-  border: 1px solid var(--line);
-  border-radius: 15px;
-  background: var(--bg);
+  min-height: 62px;
+  padding: 11px 4px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
+}
+
+.summaryRow + .summaryRow { border-top: 1px solid var(--line); }
+
+.summaryRow:has(.progress) {
+  margin: 0 -10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-left: 3px solid var(--sport-green, var(--accent));
+  background: var(--sport-green-soft, var(--accent-soft));
 }
 
 .summaryRow strong,
 .summaryRow span { display: block; }
 
 .summaryRow > div > span {
-  margin-top: 3px;
+  margin-top: 4px;
   color: var(--muted);
   font-size: .78rem;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .summaryNext {
-  padding: 10px 12px;
-  border-radius: 14px;
-  background: var(--accent-soft);
-  font-size: .88rem;
+  position: relative;
+  padding: 26px 14px 12px;
+  border: 1px solid color-mix(in srgb, var(--sport-green, var(--accent)) 30%, var(--line));
+  border-radius: var(--radius-md, 14px);
+  background: var(--sport-green-soft, var(--accent-soft));
+  font-size: 1rem;
+}
+
+.summaryNext::before {
+  content: "PROCHAINE ÉTAPE";
+  position: absolute;
+  left: 14px;
+  top: 8px;
+  color: var(--sport-green, var(--accent));
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.summaryNext strong {
+  font-size: 1.08rem;
+  letter-spacing: -.02em;
+}
+
+.summaryCard > .finishButton {
+  background: var(--sport-green, var(--accent));
 }
 
 @media (max-width: 600px) {
@@ -377,9 +437,12 @@
   .finishButton { min-height: 48px; }
 
   .summaryLayer { padding: 10px; }
-  .summaryCard { padding: 14px; border-radius: 19px; gap: 10px; }
-  .summaryHeading h2 { font-size: 1.55rem; }
-  .summaryRow { min-height: 52px; padding: 8px 9px; border-radius: 13px; }
+  .summaryCard { padding: 16px; border-radius: 19px; gap: 13px; }
+  .summaryHeading { padding-left: 42px; }
+  .summaryHeading::before { width: 31px; height: 31px; }
+  .summaryHeading h2 { font-size: 1.65rem; }
+  .summaryRow { min-height: 50px; padding-top: 8px; padding-bottom: 8px; }
+  .summaryNext { padding-top: 24px; }
 }
 
 @media (max-height: 700px) and (max-width: 600px) {
@@ -394,6 +457,9 @@
   .setInputs { margin-top: 5px; }
   .setInputs label { min-height: 34px; }
   .finishButton { min-height: 44px; }
-  .summaryCard { gap: 8px; }
-  .summaryRow { min-height: 46px; }
+  .summaryCard { gap: 9px; padding: 12px 14px; }
+  .summaryHeading h2 { font-size: 1.5rem; }
+  .summaryRow { min-height: 44px; }
+  .summaryNext { padding: 21px 11px 9px; }
+  .summaryNext::before { left: 11px; top: 6px; }
 }
