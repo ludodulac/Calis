@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Icon } from "@/components/icon";
 
 const nav = [
   ["Je débute", "/commencer"],
@@ -18,8 +19,8 @@ export function SiteHeader() {
             ))}
           </ul>
         </nav>
-        <div style={{ display: "flex", gap: 8 }}>
-          <Link className="mobileStart" href="/confidentialite">Vie privée</Link>
+        <div className="mobileHeaderActions">
+          <Link className="mobileUtility" href="/confidentialite" aria-label="Vie privée"><Icon name="privacy" size={18} /></Link>
           <Link className="mobileStart" href="/commencer">Je débute</Link>
         </div>
       </div>
