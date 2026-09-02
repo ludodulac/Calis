@@ -4,6 +4,7 @@ import "./globals.css";
 import "./ux-polish.css";
 import "./modal-disclosure.css";
 import "./sport-visual-system.css";
+import "./navigation-polish.css";
 import { MobileAppNav } from "@/components/mobile-app-nav";
 import { SiteHeader } from "@/components/site-header";
 
