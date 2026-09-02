@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { InfoDialog } from "@/components/info-dialog";
 import { TrainingAssessmentFlow } from "@/components/training-assessment";
@@ -101,6 +101,7 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
   const [goal, setGoal] = useState<TrainingGoal>("general");
   const [summary, setSummary] = useState<SessionSummary | null>(null);
   const [ready, setReady] = useState(false);
+  const summaryRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const storedLogs = readStoredJson<SessionLog[]>(LOGS_STORAGE_KEY, isSessionLogs);
@@ -115,6 +116,10 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
     if (requestedGoal) window.localStorage.setItem(GOAL_STORAGE_KEY, requestedGoal);
     setReady(true);
   }, []);
+
+  useEffect(() => {
+    if (summary) summaryRef.current?.focus();
+  }, [summary]);
 
   const assessedProgram = useMemo(() => assessment ? adaptFoundationProgram(program, assessment, goal) : program, [assessment, goal, program]);
   const decisionLogs = useMemo(() => {
@@ -278,7 +283,28 @@ export function TodaySession({ program }: { program: TrainingProgram }) {
       </footer>
 
       {summary && (
-        <section className={styles.summaryLayer} role="dialog" aria-modal="true" aria-labelledby="session-summary-title">
+        <section
+          className={styles.summaryLayer}
+          ref={summaryRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="session-summary-title"
+          tabIndex={-1}
+          onKeyDown={(event) => {
+            if (event.key === "Escape") {
+              event.preventDefault();
+              setSummary(null);
+              return;
+            }
+            if (event.key === "Tab") {
+              const action = event.currentTarget.querySelector<HTMLElement>("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])");
+              if (action) {
+                event.preventDefault();
+                action.focus();
+              }
+            }
+          }}
+        >
           <div className={styles.summaryCard}>
             <div className={styles.summaryHeading}><span>{summary.sessionLabel}</span><h2 id="session-summary-title">Séance terminée</h2></div>
             <div className={styles.summaryList}>
