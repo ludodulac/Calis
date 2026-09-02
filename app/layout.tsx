@@ -6,6 +6,7 @@ import "./modal-disclosure.css";
 import "./sport-visual-system.css";
 import "./navigation-polish.css";
 import { MobileAppNav } from "@/components/mobile-app-nav";
+import { OwnerModeSwitch } from "@/components/owner-mode-switch";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <a className="skipLink" href="#contenu-principal">Aller au contenu principal</a>
         <div className="appFrame">
           <SiteHeader />
+          <OwnerModeSwitch />
           <main id="contenu-principal" className="appContent" tabIndex={-1}>{children}</main>
           <MobileAppNav />
           <footer className="siteFooter">
