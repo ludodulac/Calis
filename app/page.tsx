@@ -3,13 +3,98 @@ import Link from "next/link";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const goals = [["Première traction","/tractions"],["Vraies pompes","/pompes"],["Tenir sur les mains","/handstand"],["Renforcer mes jambes","/bibliotheque/squat-poids-du-corps"],["Bouger plus librement","/bibliotheque/mobilite-debutant"],["Muscle-up","/muscle-up"]] as const;
 
-export default function HomePage(){return <div className={styles.home}>
-<section className={styles.hero}><div className={`shell ${styles.heroGrid}`}><div className={styles.heroCopy}><div className="eyebrow">Callisthénie, simplement</div><h1>Découvre ce que ton corps peut apprendre.</h1><p className={styles.heroLead}>Une idée simple à essayer maintenant. Un chemin clair quand tu veux progresser.</p><div className={styles.heroActions}><Link className="button primary" href="/essayer">Essayer quelque chose</Link><Link className={styles.secondaryAction} href="/aujourdhui">Faire une vraie séance →</Link></div></div><figure className={`${styles.brandPhoto} ${styles.heroPhoto}`}><img src={`${basePath}/brand/traction-home.webp`} alt="Personne s'entraînant à la traction sur une barre dans un parc" width="260" height="390" /></figure></div></section>
-<section className={styles.goalSection}><div className="shell"><div className={styles.sectionIntro}><div className="eyebrow">Une envie</div><h2>Qu'est-ce qui te donne envie ?</h2><p>Choisis une direction. Pas besoin d'un programme pour commencer à explorer.</p></div><div className={styles.goalLinks}>{goals.map(([label,href])=><Link href={href} key={href}><span>{label}</span><b>→</b></Link>)}</div></div></section>
-<section className={styles.methodSection}><div className={`shell ${styles.methodGrid}`}><div><div className="eyebrow">La différence Calis</div><h2>Voir. Essayer. Comprendre la suite.</h2><p>Calis doit t'aider à bouger, pas te garder devant un écran.</p></div><ol className={styles.methodPath}><li><span>01</span><strong>Tu découvres</strong><small>Un mouvement qui donne envie.</small></li><li><span>02</span><strong>Tu essaies</strong><small>Une consigne courte et concrète.</small></li><li><span>03</span><strong>Tu progresses</strong><small>Le parcours structuré est là quand tu le veux.</small></li></ol></div></section>
-<section className={styles.storySection}><div className={`shell ${styles.storyGrid}`}><figure className={`${styles.brandPhoto} ${styles.pushPhoto}`}><img src={`${basePath}/goals/pompes.webp`} alt="Personne réalisant une pompe au sol dans un parc" width="520" height="347" /></figure><div className={styles.storyCopy}><div className="eyebrow">Quand tu veux être guidé</div><h2>Le programme n'a pas disparu.</h2><p>Diagnostic, séances et progression restent disponibles quand tu veux un cadre précis.</p><Link className={styles.textAction} href="/aujourdhui">Faire ma séance →</Link></div></div></section>
-<section className={`${styles.storySection} ${styles.masterySection}`}><div className={`shell ${styles.storyGrid} ${styles.masteryGrid}`}><div className={styles.storyCopy}><div className="eyebrow">Explorer</div><h2>Une capacité peut devenir une aventure.</h2><p>Découvre d'abord. Approfondis si l'envie reste.</p><Link className={styles.textAction} href="/handstand">Explorer le handstand →</Link></div><figure className={`${styles.brandPhoto} ${styles.handstandPhoto}`}><img src={`${basePath}/brand/handstand-home.webp`} alt="Personne en équilibre sur les mains en extérieur" width="260" height="390" /></figure></div></section>
-</div>}
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+const goals = [
+  ["Première traction", "/tractions"],
+  ["Vraies pompes", "/pompes"],
+  ["Tenir sur les mains", "/handstand"],
+  ["Renforcer mes jambes", "/bibliotheque/squat-poids-du-corps"],
+  ["Bouger plus librement", "/bibliotheque/mobilite-debutant"],
+  ["Muscle-up", "/muscle-up"],
+] as const;
+
+export default function HomePage() {
+  return (
+    <div className={styles.home}>
+      <section className={styles.hero} aria-labelledby="home-title">
+        <div className={`shell ${styles.heroGrid}`}>
+          <div className={styles.heroCopy}>
+            <div className="eyebrow">Callisthénie, simplement</div>
+            <h1 id="home-title">Découvre ce que ton corps peut apprendre.</h1>
+            <p className={styles.heroLead}>Une idée simple à essayer maintenant. Un chemin clair quand tu veux progresser.</p>
+            <div className={styles.heroActions}>
+              <Link className="button primary" href="/essayer">Essayer quelque chose</Link>
+              <Link className={styles.secondaryAction} href="/aujourdhui">Faire une vraie séance <span aria-hidden="true">→</span></Link>
+            </div>
+          </div>
+
+          <figure className={`${styles.brandPhoto} ${styles.heroPhoto}`}>
+            <img src={`${basePath}/brand/traction-home.webp`} alt="Personne s'entraînant à la traction sur une barre dans un parc" width="260" height="390" />
+            <figcaption>Voir, essayer, puis progresser à son rythme.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section className={styles.goalSection} id="objectifs" aria-labelledby="goals-title">
+        <div className="shell">
+          <div className={styles.sectionIntro}>
+            <div className="eyebrow">Une envie</div>
+            <h2 id="goals-title">Qu'est-ce qui te donne envie ?</h2>
+            <p>Choisis une direction. Pas besoin d'un programme pour commencer à explorer.</p>
+          </div>
+          <div className={styles.goalLinks}>
+            {goals.map(([label, href]) => (
+              <Link href={href} key={href}><span>{label}</span><b aria-hidden="true">→</b></Link>
+            ))}
+          </div>
+          <Link className={styles.unsureLink} href="/commencer">Je ne sais pas encore par où commencer →</Link>
+        </div>
+      </section>
+
+      <section className={styles.methodSection} aria-labelledby="method-title">
+        <div className={`shell ${styles.methodGrid}`}>
+          <div>
+            <div className="eyebrow">La différence Calis</div>
+            <h2 id="method-title">Voir. Essayer. Comprendre la suite.</h2>
+            <p>Calis doit t'aider à bouger, pas te garder devant un écran.</p>
+          </div>
+          <ol className={styles.methodPath} aria-label="De la découverte à la progression">
+            <li><span>01</span><strong>Tu découvres</strong><small>Un mouvement qui donne envie.</small></li>
+            <li><span>02</span><strong>Tu essaies</strong><small>Une consigne courte et concrète.</small></li>
+            <li><span>03</span><strong>Tu progresses</strong><small>Le parcours structuré est là quand tu le veux.</small></li>
+          </ol>
+        </div>
+      </section>
+
+      <section className={styles.storySection} aria-labelledby="foundations-title">
+        <div className={`shell ${styles.storyGrid}`}>
+          <figure className={`${styles.brandPhoto} ${styles.pushPhoto}`}>
+            <img src={`${basePath}/goals/pompes.webp`} alt="Personne réalisant une pompe au sol dans un parc" width="520" height="347" />
+          </figure>
+          <div className={styles.storyCopy}>
+            <div className="eyebrow">Quand tu veux être guidé</div>
+            <h2 id="foundations-title">Le programme n'a pas disparu.</h2>
+            <p>Diagnostic, séances et progression restent disponibles quand tu veux un cadre précis.</p>
+            <Link className={styles.textAction} href="/aujourdhui">Faire ma séance →</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className={`${styles.storySection} ${styles.masterySection}`} aria-labelledby="mastery-title">
+        <div className={`shell ${styles.storyGrid} ${styles.masteryGrid}`}>
+          <div className={styles.storyCopy}>
+            <div className="eyebrow">Explorer</div>
+            <h2 id="mastery-title">Une capacité peut devenir une aventure.</h2>
+            <p>Découvre d'abord. Approfondis si l'envie reste.</p>
+            <Link className={styles.textAction} href="/handstand">Explorer le handstand →</Link>
+          </div>
+          <figure className={`${styles.brandPhoto} ${styles.handstandPhoto}`}>
+            <img src={`${basePath}/brand/handstand-home.webp`} alt="Personne en équilibre sur les mains en extérieur" width="260" height="390" />
+          </figure>
+        </div>
+      </section>
+    </div>
+  );
+}
