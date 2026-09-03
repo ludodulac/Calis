@@ -15,9 +15,10 @@ export default function AdminPage() {
       <AdminBusinessCockpit />
       <section className="section">
         <div className="shell">
-          <p className="eyebrow">Atelier disponible</p>
-          <h2>Préparer les futurs guides du blog</h2>
-          <p className="lead">L’atelier éditorial te permet de travailler un sujet, garder ta matière humaine, préparer les sources et me transmettre le dossier avant toute publication.</p>
+          <p className="eyebrow">Ateliers de travail</p>
+          <h2>Transformer la matière en contenu utile, sans brûler les étapes.</h2>
+          <p className="lead">Commence par l’atelier connaissances pour trier une source, isoler ce qui doit être vérifié et décider si cela mérite une place dans Calis. Passe ensuite à l’atelier blog uniquement quand le sujet est assez mûr pour être rédigé.</p>
+          <p><Link className="button" href="/admin/connaissances">Ouvrir l’atelier connaissances</Link></p>
           <p><Link className="button" href="/admin/blog">Ouvrir l’atelier blog</Link></p>
         </div>
       </section>
