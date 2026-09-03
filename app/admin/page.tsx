@@ -18,10 +18,8 @@ export default function AdminPage() {
           <p className="eyebrow">Ateliers de travail</p>
           <h2>Transformer la matière en contenu utile, sans brûler les étapes.</h2>
           <p className="lead">Commence par l’atelier connaissances pour trier une source, isoler ce qui doit être vérifié et décider si cela mérite une place dans Calis. Passe ensuite à l’atelier blog uniquement quand le sujet est assez mûr pour être rédigé.</p>
-          <div className="button-row">
-            <Link className="button" href="/admin/connaissances">Ouvrir l’atelier connaissances</Link>
-            <Link className="button button-secondary" href="/admin/blog">Ouvrir l’atelier blog</Link>
-          </div>
+          <p><Link className="button" href="/admin/connaissances">Ouvrir l’atelier connaissances</Link></p>
+          <p><Link className="button" href="/admin/blog">Ouvrir l’atelier blog</Link></p>
         </div>
       </section>
       <AdminBusinessRoadmap />
