@@ -73,17 +73,29 @@ Le langage `TU ES ICI → TU TRAVAILLES ÇA → ENSUITE` reste compatible avec c
 
 ## 4. Exemple prioritaire : Tractions
 
-Tractions est un bon candidat pour tester la suite de cette philosophie parce qu’un chemin canonique existe déjà.
+Tractions est le premier parcours choisi pour tester la suite de cette philosophie parce qu’un chemin canonique existe déjà.
 
-Le hub devrait tendre vers une expérience très visuelle :
+Expérience recherchée :
 
-> **je choisis Tractions → je vois le chemin → je vois où commencer / quoi essayer → je peux approfondir une étape.**
+> **je choisis Tractions → je peux faire ma séance immédiatement OU choisir ma situation → je vois le chemin complet → j’approfondis seulement si j’en ai besoin.**
 
 Chemin pédagogique déjà documenté à préserver :
 
 **suspension → contrôle scapulaire → rowing incliné → traction assistée → négatives → première traction → plusieurs tractions**.
 
 Ne pas confondre chemin pédagogique visible et progression automatique du moteur. Les limites d’observabilité déjà documentées restent vraies.
+
+### Expérience testée dans la PR #88
+
+La page Tractions de la branche `ux/direct-home-grid` est maintenant réordonnée pour tester l’action avant l’explication :
+
+1. titre court et intention directe ;
+2. bloc **Aujourd’hui → Faire ma séance** ;
+3. choix humain direct : « je ne sais pas », « je tiens mal à la barre », « je ne monte pas », « j’y suis presque », « j’en fais déjà » ;
+4. chemin complet de progression ;
+5. détail sur les limites de l’automatisation replié derrière une divulgation volontaire.
+
+Cette passe **ne modifie ni les étapes du chemin, ni le moteur, ni les critères de progression**. Elle teste uniquement l’ordre de révélation de l’information.
 
 À terme, une étape peut réunir de manière naturelle :
 
@@ -169,9 +181,10 @@ Une nouvelle idée du fondateur doit être comprise dans le but global, mais res
 Au 4 septembre 2026 :
 
 - `main` contient déjà les travaux UX précédents, notamment la réduction des décisions avant première valeur ;
-- la PR #88 teste la home en choix directs ;
-- #88 ne modifie que la présentation de l’accueil, pas le moteur ;
-- la validation CI/build et l’inspection visuelle mobile doivent être vérifiées avant fusion ;
+- la PR #88 teste la home en choix directs et le hub Tractions en révélation progressive ;
+- le dernier workflow vérifié de #88 avant la passe Tractions était vert ; après tout nouveau commit, revérifier la CI ;
+- #88 ne modifie pas le moteur ;
+- une inspection visuelle mobile reste nécessaire avant fusion ;
 - après fusion éventuelle, vérifier le déploiement Pages avant de considérer ce test comme réellement en production.
 
 Toujours revérifier ces faits dans GitHub : cette section est une photographie, pas une source éternelle.
