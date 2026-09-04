@@ -12,6 +12,15 @@ type PartialAssessment = {
 
 type Dimension = "push" | "pull" | "legs";
 
+function requestedGoal(): TrainingGoal {
+  if (typeof window === "undefined") return "general";
+  const value = new URLSearchParams(window.location.search).get("goal");
+  if (value === "traction") return "pullup";
+  if (value === "pompes") return "pushup";
+  if (value === "jambes") return "legs";
+  return "general";
+}
+
 function assessmentOrder(goal: TrainingGoal): Dimension[] {
   if (goal === "pullup") return ["pull", "push", "legs"];
   if (goal === "pushup") return ["push", "pull", "legs"];
@@ -19,10 +28,10 @@ function assessmentOrder(goal: TrainingGoal): Dimension[] {
   return ["push", "pull", "legs"];
 }
 
-export function TrainingAssessmentFlow({ onComplete, goal = "general" }: { onComplete: (assessment: TrainingAssessment) => void; goal?: TrainingGoal }) {
+export function TrainingAssessmentFlow({ onComplete, goal }: { onComplete: (assessment: TrainingAssessment) => void; goal?: TrainingGoal }) {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<PartialAssessment>({});
-  const order = assessmentOrder(goal);
+  const order = assessmentOrder(goal ?? requestedGoal());
   const dimension = order[step];
 
   function choose(next: PartialAssessment) {
