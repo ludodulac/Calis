@@ -25,9 +25,9 @@ export default function PullUpsPage() {
     <section className="decisionIntro shell narrow">
       <div className="decisionTitleRow">
         <div>
-          <div className="eyebrow">Traction</div>
-          <h1>Où ça bloque ?</h1>
-          <p className={styles.lead}>Tu n'as pas besoin de connaître le nom de ton niveau. Pars simplement de ce que ton corps sait faire aujourd'hui.</p>
+          <div className="eyebrow">Tractions</div>
+          <h1>Tu veux travailler les tractions ?</h1>
+          <p className={styles.lead}>Choisis ton point de départ ou lance une séance. Le reste du parcours est là quand tu en as besoin.</p>
         </div>
         <div className="infoIconBar" aria-label="Informations secondaires">
           <InfoDialog label="Questions fréquentes" title="Questions fréquentes" icon="help">
@@ -40,20 +40,30 @@ export default function PullUpsPage() {
           </InfoDialog>
         </div>
       </div>
+
+      <div className={styles.primaryAction}>
+        <div>
+          <span>Aujourd'hui</span>
+          <strong>Calis peut trouver ton point de départ.</strong>
+          <small>Tu réponds au diagnostic, puis tu fais la séance adaptée à ce que Calis sait réellement mesurer.</small>
+        </div>
+        <Link className="button primary" href="/aujourdhui?goal=traction">Faire ma séance</Link>
+      </div>
+    </section>
+
+    <section className="decisionChoices shell narrow" aria-label="Choisir ma situation pour les tractions">
+      <div className={styles.choiceHeading}><span>Ou choisis directement</span><strong>Qu'est-ce qui ressemble le plus à ta situation ?</strong></div>
+      <div className="decisionGrid decisionGridFive">
+        {situations.map(([title, href]) => <Link className="decisionTile" href={href} key={title}><strong>{title}</strong><span aria-hidden="true">→</span></Link>)}
+      </div>
     </section>
 
     <section className={`${styles.pathSection} shell`} aria-labelledby="pull-path-title">
       <div className={styles.pathHeading}>
         <div>
-          <span>Le chemin</span>
-          <h2 id="pull-path-title">Construire la traction, étape par étape.</h2>
+          <span>Ton chemin</span>
+          <h2 id="pull-path-title">De la suspension à plusieurs tractions.</h2>
         </div>
-        <Link className="button primary" href="/aujourdhui?goal=traction">Trouver mon point de départ</Link>
-      </div>
-
-      <div className={styles.automationNote}>
-        <strong>Ce que Calis sait décider aujourd'hui</strong>
-        <p>Dans le parcours V1, les résultats enregistrés peuvent faire évoluer automatiquement <b>suspension → contrôle scapulaire → rowing incliné</b>. Les étapes suivantes restent visibles comme chemin pédagogique, mais Calis n'invente pas de transition automatique sans critère observable.</p>
       </div>
 
       <ProgressionPath
@@ -63,13 +73,11 @@ export default function PullUpsPage() {
         className={styles.progression}
         fork={{ label: "Après plusieurs tractions fiables", links: [{ href: "/bibliotheque/traction-explosive", label: "Gagner en hauteur →" }, { href: "/bibliotheque/tractions-lestees", label: "Gagner en force →" }, { href: "/muscle-up", label: "Préparer le muscle-up →" }] }}
       />
-    </section>
 
-    <section className="decisionChoices shell narrow" aria-label="Choisir ma situation pour les tractions">
-      <div className={styles.choiceHeading}><span>Maintenant</span><strong>Choisis ce qui ressemble le plus à ta situation.</strong></div>
-      <div className="decisionGrid decisionGridFive">
-        {situations.map(([title, href]) => <Link className="decisionTile" href={href} key={title}><strong>{title}</strong><span aria-hidden="true">→</span></Link>)}
-      </div>
+      <details className={styles.pathTruth}>
+        <summary>Ce que Calis sait décider automatiquement</summary>
+        <p>Les résultats enregistrés peuvent faire évoluer automatiquement <b>suspension → contrôle scapulaire → rowing incliné</b>. Les étapes suivantes restent un chemin pédagogique : Calis n'invente pas de transition sans critère observable.</p>
+      </details>
     </section>
   </div>;
 }

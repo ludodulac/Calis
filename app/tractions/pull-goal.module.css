@@ -3,18 +3,25 @@
   margin: 10px 0 0;
 }
 
-.pathSection {
-  padding: 4px 0 34px;
-}
-
-.pathHeading {
+.primaryAction {
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 16px;
+  margin-top: 18px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
 }
 
+.primaryAction > div {
+  display: grid;
+  gap: 4px;
+  max-width: 620px;
+}
+
+.primaryAction span,
 .pathHeading > div > span,
 .choiceHeading > span {
   display: block;
@@ -25,6 +32,28 @@
   text-transform: uppercase;
 }
 
+.primaryAction strong {
+  font-size: 1.12rem;
+  line-height: 1.2;
+}
+
+.primaryAction small {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.pathSection {
+  padding: 30px 0 34px;
+}
+
+.pathHeading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
 .pathHeading h2 {
   max-width: 720px;
   margin: 5px 0 0;
@@ -32,34 +61,32 @@
   line-height: 1;
 }
 
-.automationNote {
-  display: grid;
-  grid-template-columns: minmax(170px, .45fr) minmax(0, 1.4fr);
-  gap: 18px;
-  align-items: start;
-  margin-bottom: 16px;
-  padding: 14px 16px;
-  border-left: 3px solid var(--sport-green, var(--accent));
-  background: var(--sport-green-soft, var(--accent-soft));
-}
-
-.automationNote strong {
-  color: var(--sport-green, var(--accent));
-  font-size: .82rem;
-  line-height: 1.25;
-}
-
-.automationNote p {
-  margin: 0;
-  font-size: .86rem;
-  line-height: 1.45;
-}
-
-.automationNote b { color: var(--text); }
-
 .progression {
   grid-template-columns: repeat(7, minmax(150px, 1fr));
 }
+
+.pathTruth {
+  max-width: 760px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.pathTruth summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: .82rem;
+  font-weight: 800;
+}
+
+.pathTruth p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: .82rem;
+  line-height: 1.45;
+}
+
+.pathTruth b { color: var(--text); }
 
 .choiceHeading {
   margin: 12px 0 12px;
@@ -75,19 +102,20 @@
 }
 
 @media (max-width: 760px) {
-  .pathHeading {
+  .primaryAction {
     align-items: flex-start;
     flex-direction: column;
     gap: 12px;
   }
 
-  .pathHeading :global(.button) {
+  .primaryAction :global(.button) {
     width: 100%;
   }
 
-  .automationNote {
-    grid-template-columns: 1fr;
-    gap: 6px;
+  .pathHeading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
   }
 }
 
@@ -98,27 +126,37 @@
     line-height: 1.35;
   }
 
+  .primaryAction {
+    margin-top: 14px;
+    padding: 14px;
+  }
+
+  .primaryAction strong {
+    font-size: 1rem;
+  }
+
+  .primaryAction small {
+    font-size: .78rem;
+  }
+
   .pathSection {
     width: 100%;
-    padding: 0 16px 22px;
+    padding: 22px 16px;
   }
 
   .pathHeading h2 {
     font-size: 1.55rem;
   }
 
-  .automationNote {
-    padding: 11px 12px;
-  }
-
-  .automationNote p {
-    font-size: .78rem;
-  }
-
   .progression {
     grid-template-columns: repeat(7, 74vw);
     margin-right: -16px;
     padding-right: 16px;
+  }
+
+  .pathTruth p,
+  .pathTruth summary {
+    font-size: .78rem;
   }
 
   .choiceHeading {
