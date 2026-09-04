@@ -34,10 +34,11 @@ export default function LibraryPage() {
         <div className="libraryTitleRow">
           <div>
             <div className="eyebrow">Bibliothèque</div>
-            <h1 id="library-title">Qu'est-ce que tu cherches ?</h1>
+            <h1 id="library-title">Qu'est-ce que tu veux comprendre ?</h1>
+            <p>Choisis un besoin si tu l'as déjà. Sinon, explore librement les fiches plus bas.</p>
           </div>
           <div className="infoIconBar" aria-label="Informations secondaires">
-            <InfoDialog label="Parcours" title="Parcours" icon="path">
+            <InfoDialog label="Parcours" title="Choisir un parcours" icon="path">
               <div className="libraryJourneyGrid modalGrid">
                 {journeys.map((journey) => (
                   <Link className="libraryJourneyCard" href={journey.href} key={journey.title}>
@@ -63,10 +64,6 @@ export default function LibraryPage() {
               />
               <Link className="textLink" href="/tractions">Parcours traction complet →</Link>
             </InfoDialog>
-
-            <InfoDialog label="Tout explorer" title="Toute la bibliothèque" icon="search">
-              <LibraryBrowser resources={v1Resources} />
-            </InfoDialog>
           </div>
         </div>
       </section>
@@ -77,6 +74,15 @@ export default function LibraryPage() {
             <strong>{entry.title}</strong><span aria-hidden="true">→</span>
           </Link>
         ))}
+      </section>
+
+      <section className="section" aria-labelledby="library-explore-title">
+        <div className="sectionHeading wide">
+          <div className="eyebrow">Explorer librement</div>
+          <h2 id="library-explore-title">Toutes les fiches, ici.</h2>
+          <p>Recherche directement un mouvement, un problème ou une capacité. Tu n'as pas besoin d'ouvrir une autre couche pour commencer à chercher.</p>
+        </div>
+        <LibraryBrowser resources={v1Resources} />
       </section>
     </div>
   );
