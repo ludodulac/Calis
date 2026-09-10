@@ -2,7 +2,7 @@
 
 ## Contexte transversal
 
-Calis appartient à l'écosystème **`ludodulac/Grand-p-re-`**. Le slug GitHub de Grand Père utilise des tirets à la place des caractères accentués. En nouvelle conversation : lire Grand Père `AI_START_HERE.md`, la fiche Calis via `projects/_INDEX.md` et `LOOP_ENGINEERING.md`, puis revenir ici. **Calis reste la vérité sur son code, son état et ses documents locaux. Grand Père rappelle notamment de ne pas transformer une hypothèse produit en décision acquise.**
+Calis appartient à l'écosystème **`ludodulac/Grand-pere`**. Grand Père est documenté dans le dépôt `ludodulac/Grand-pere`. En nouvelle conversation : lire Grand Père `AI_START_HERE.md`, la fiche Calis via `projects/_INDEX.md` et `LOOP_ENGINEERING.md`, puis revenir ici. **Calis reste la vérité sur son code, son état et ses documents locaux. Grand Père rappelle notamment de ne pas transformer une hypothèse produit en décision acquise.**
 
 Point d'entrée obligatoire. Utiliser `docs/_INDEX.md` pour éviter de charger toute la documentation.
 
