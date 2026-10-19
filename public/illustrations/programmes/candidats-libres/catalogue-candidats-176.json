@@ -1,0 +1,1595 @@
+{
+  "projet": "CALIS",
+  "source": "bryllim/workout-guide",
+  "source_license": "CC BY-SA 4.0",
+  "statut_global": "candidats_pour_verification_visuelle",
+  "total": 176,
+  "illustrations_candidats": 86,
+  "sans_image": 90,
+  "exercices": [
+    {
+      "numero": 1,
+      "nom": "Advanced tuck front lever",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 2,
+      "nom": "Advanced tuck planche",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 3,
+      "nom": "Appui renversé au mur (dos au mur)",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 4,
+      "nom": "Appui renversé au mur (ventre au mur)",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 5,
+      "nom": "Appui renversé libre",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 6,
+      "nom": "Appui sur les mains (grenouille)",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 7,
+      "nom": "Back lever complet",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 8,
+      "nom": "Balancements de jambes",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "balancements-de-jambes.svg",
+      "source_slug": "leg-swings-stretch",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/leg-swings-stretch/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 9,
+      "nom": "Bird dog",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "bird-dog.svg",
+      "source_slug": "bird-dog",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/bird-dog/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 10,
+      "nom": "Burpee",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "burpee.svg",
+      "source_slug": "burpee",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/burpee/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 11,
+      "nom": "Cercles d’articulations",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 12,
+      "nom": "Cercles d’épaules et de bras",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "cercles-d-epaules-et-de-bras.svg",
+      "source_slug": "arm-circles",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/arm-circles/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 13,
+      "nom": "Cercles de chevilles",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 14,
+      "nom": "Charnière de hanche",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 15,
+      "nom": "Chat-vache",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "chat-vache.svg",
+      "source_slug": "cat-cow-stretch",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/cat-cow-stretch/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 16,
+      "nom": "Corbeau",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 17,
+      "nom": "Curl biceps à l’élastique",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 18,
+      "nom": "Curl biceps sous une barre basse",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 19,
+      "nom": "Curl ischio-jambiers glissé",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "curl-ischio-jambiers-glisse.svg",
+      "source_slug": "towel-hamstring-curl",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/towel-hamstring-curl/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 20,
+      "nom": "Dead bug",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "dead-bug.svg",
+      "source_slug": "dead-bug",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/dead-bug/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 21,
+      "nom": "Développé épaules à l’élastique",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 22,
+      "nom": "Dips à une jambe",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 23,
+      "nom": "Dips lestés",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "dips-lestes.svg",
+      "source_slug": "weighted-dip",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/weighted-dip/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 24,
+      "nom": "Dips négatifs",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 25,
+      "nom": "Dips sur anneaux",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 26,
+      "nom": "Dips sur barre droite",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 27,
+      "nom": "Dips sur barres parallèles",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "dips-sur-barres-paralleles.svg",
+      "source_slug": "dip",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/dip/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 28,
+      "nom": "Dips sur chaise",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "dips-sur-chaise.svg",
+      "source_slug": "bench-dip",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/bench-dip/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 29,
+      "nom": "Drapeau du dragon complet",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "drapeau-du-dragon-complet.svg",
+      "source_slug": "dragon-flag",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/dragon-flag/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 30,
+      "nom": "Drapeau du dragon négatif",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 31,
+      "nom": "Drapeau humain complet",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 32,
+      "nom": "Drapeau humain groupé",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 33,
+      "nom": "Drapeau humain vertical",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 34,
+      "nom": "Écarté inversé à l’élastique",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "ecarte-inverse-a-l-elastique.svg",
+      "source_slug": "band-pull-apart",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/band-pull-apart/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 35,
+      "nom": "Élévation des mollets",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "elevation-des-mollets.svg",
+      "source_slug": "calf-raise",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/calf-raise/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 36,
+      "nom": "Élévation des mollets à une jambe sur marche",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "elevation-des-mollets-a-une-jambe-sur-marche.svg",
+      "source_slug": "single-leg-calf-raise",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/single-leg-calf-raise/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 37,
+      "nom": "Élévation des tibias",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 38,
+      "nom": "Élévations latérales à l’élastique",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 39,
+      "nom": "Étirement et cercles de poignets",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 40,
+      "nom": "Extension du dos au sol",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "extension-du-dos-au-sol.svg",
+      "source_slug": "back-extension",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/back-extension/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 41,
+      "nom": "Extension triceps à l’élastique",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 42,
+      "nom": "Extension triceps sur barre basse",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 43,
+      "nom": "Face pull à l’élastique",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "face-pull-a-l-elastique.svg",
+      "source_slug": "banded-face-pull",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/banded-face-pull/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 44,
+      "nom": "Fente arrière",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "fente-arriere.svg",
+      "source_slug": "reverse-lunge",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/reverse-lunge/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 45,
+      "nom": "Fente avant",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "fente-avant.svg",
+      "source_slug": "forward-lunge",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/forward-lunge/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 46,
+      "nom": "Fente bulgare",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "fente-bulgare.svg",
+      "source_slug": "bulgarian-split-squat",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/bulgarian-split-squat/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 47,
+      "nom": "Fente du grand explorateur",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "fente-du-grand-explorateur.svg",
+      "source_slug": "worlds-greatest-stretch",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/worlds-greatest-stretch/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 48,
+      "nom": "Fente latérale",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "fente-laterale.svg",
+      "source_slug": "lateral-lunge",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/lateral-lunge/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 49,
+      "nom": "Fente marchée",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "fente-marchee.svg",
+      "source_slug": "walking-lunge",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/walking-lunge/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 50,
+      "nom": "Fente sautée",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 51,
+      "nom": "Fente statique",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "fente-statique.svg",
+      "source_slug": "split-squat",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/split-squat/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 52,
+      "nom": "Front lever complet",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 53,
+      "nom": "Front lever une jambe",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 54,
+      "nom": "Gainage latéral",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "gainage-lateral.svg",
+      "source_slug": "side-plank",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/side-plank/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 55,
+      "nom": "Gainage latéral sur les genoux",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 56,
+      "nom": "Gainage sur les genoux",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 57,
+      "nom": "Hip thrust (épaules surélevées)",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "hip-thrust-epaules-surelevees.svg",
+      "source_slug": "hip-thrust",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/hip-thrust/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 58,
+      "nom": "Hip thrust à une jambe",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 59,
+      "nom": "Hollow body",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "hollow-body.svg",
+      "source_slug": "hollow-body-hold",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/hollow-body-hold/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 60,
+      "nom": "Jumping jacks",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "jumping-jacks.svg",
+      "source_slug": "jumping-jack",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/jumping-jack/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 61,
+      "nom": "L-sit complet",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "l-sit-complet.svg",
+      "source_slug": "l-sit-hold",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/l-sit-hold/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 62,
+      "nom": "L-sit pieds au sol",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 63,
+      "nom": "L-sit tuck",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 64,
+      "nom": "L-sit une jambe",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 65,
+      "nom": "Marche au mur",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "marche-au-mur.svg",
+      "source_slug": "wall-walk",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/wall-walk/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 66,
+      "nom": "Marche de l’ours",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "marche-de-l-ours.svg",
+      "source_slug": "bear-crawl",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/bear-crawl/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 67,
+      "nom": "Marche du canard",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 68,
+      "nom": "Marche du crabe",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "marche-du-crabe.svg",
+      "source_slug": "crab-walk",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/crab-walk/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 69,
+      "nom": "Marche latérale à l’élastique",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "marche-laterale-a-l-elastique.svg",
+      "source_slug": "banded-lateral-walk",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/banded-lateral-walk/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 70,
+      "nom": "Montée sur banc",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "montee-sur-banc.svg",
+      "source_slug": "step-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/step-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 71,
+      "nom": "Mountain climbers",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "mountain-climbers.svg",
+      "source_slug": "mountain-climber",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/mountain-climber/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 72,
+      "nom": "Muscle-up",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 73,
+      "nom": "Muscle-up négatif",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 74,
+      "nom": "Nordic curl",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "nordic-curl.svg",
+      "source_slug": "nordic-hamstring-curl",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/nordic-hamstring-curl/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 75,
+      "nom": "Nordic curl excentrique",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "nordic-curl-excentrique.svg",
+      "source_slug": "nordic-hamstring-curl",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/nordic-hamstring-curl/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 76,
+      "nom": "Orteils à la barre",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 77,
+      "nom": "Passage de la barre en arrière (skin the cat)",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 78,
+      "nom": "Planche (gainage sur les avant-bras)",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "planche-gainage-sur-les-avant-bras.svg",
+      "source_slug": "plank",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/plank/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 79,
+      "nom": "Planche advanced tuck",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 80,
+      "nom": "Planche avec toucher d’épaule",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "planche-avec-toucher-d-epaule.svg",
+      "source_slug": "plank-shoulder-tap",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/plank-shoulder-tap/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 81,
+      "nom": "Planche complète (figure)",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 82,
+      "nom": "Planche haute",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 83,
+      "nom": "Planche lean",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 84,
+      "nom": "Planche straddle",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 85,
+      "nom": "Planche tuck",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 86,
+      "nom": "Pompe à un bras",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 87,
+      "nom": "Pompe archer",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pompe-archer.svg",
+      "source_slug": "archer-push-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/archer-push-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 88,
+      "nom": "Pompe asymétrique",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 89,
+      "nom": "Pompe avec élastique",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 90,
+      "nom": "Pompe avec pause",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 91,
+      "nom": "Pompe claquée",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 92,
+      "nom": "Pompe classique",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pompe-classique.svg",
+      "source_slug": "push-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/push-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 93,
+      "nom": "Pompe contre le mur",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pompe-contre-le-mur.svg",
+      "source_slug": "wall-push-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/wall-push-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 94,
+      "nom": "Pompe de poirier",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pompe-de-poirier.svg",
+      "source_slug": "handstand-push-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/handstand-push-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 95,
+      "nom": "Pompe de poirier négative",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 96,
+      "nom": "Pompe déclinée",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pompe-declinee.svg",
+      "source_slug": "decline-push-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/decline-push-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 97,
+      "nom": "Pompe diamant",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pompe-diamant.svg",
+      "source_slug": "diamond-push-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/diamond-push-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 98,
+      "nom": "Pompe hindoue",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pompe-hindoue.svg",
+      "source_slug": "hindu-push-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/hindu-push-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 99,
+      "nom": "Pompe inclinée",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pompe-inclinee.svg",
+      "source_slug": "incline-push-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/incline-push-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 100,
+      "nom": "Pompe large",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pompe-large.svg",
+      "source_slug": "wide-push-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/wide-push-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 101,
+      "nom": "Pompe négative",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 102,
+      "nom": "Pompe pike",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pompe-pike.svg",
+      "source_slug": "pike-push-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/pike-push-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 103,
+      "nom": "Pompe pike surélevée",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pompe-pike-surelevee.svg",
+      "source_slug": "feet-elevated-pike-push-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/feet-elevated-pike-push-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 104,
+      "nom": "Pompe pseudo-planche",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 105,
+      "nom": "Pompe scapulaire",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pompe-scapulaire.svg",
+      "source_slug": "scapular-push-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/scapular-push-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 106,
+      "nom": "Pompe Spiderman",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 107,
+      "nom": "Pompe sur anneaux",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 108,
+      "nom": "Pompe sur les genoux",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pompe-sur-les-genoux.svg",
+      "source_slug": "knee-push-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/knee-push-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 109,
+      "nom": "Pompe sur parallettes ou barres",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 110,
+      "nom": "Pompe sur poings",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 111,
+      "nom": "Pompe tempo",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 112,
+      "nom": "Pont (bridge)",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 113,
+      "nom": "Pont fessier",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pont-fessier.svg",
+      "source_slug": "glute-bridge",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/glute-bridge/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 114,
+      "nom": "Pont fessier à une jambe",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pont-fessier-a-une-jambe.svg",
+      "source_slug": "single-leg-glute-bridge",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/single-leg-glute-bridge/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 115,
+      "nom": "Pont fessier avec élastique",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "pont-fessier-avec-elastique.svg",
+      "source_slug": "banded-glute-bridge",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/banded-glute-bridge/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 116,
+      "nom": "Relevé de buste",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "releve-de-buste.svg",
+      "source_slug": "crunch",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/crunch/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 117,
+      "nom": "Relevé de genoux suspendus",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "releve-de-genoux-suspendus.svg",
+      "source_slug": "hanging-knee-raise",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/hanging-knee-raise/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 118,
+      "nom": "Relevé de jambes allongé",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "releve-de-jambes-allonge.svg",
+      "source_slug": "lying-leg-raise",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/lying-leg-raise/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 119,
+      "nom": "Relevé de jambes suspendues",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "releve-de-jambes-suspendues.svg",
+      "source_slug": "hanging-leg-raise",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/hanging-leg-raise/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 120,
+      "nom": "Relevé en V",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "releve-en-v.svg",
+      "source_slug": "v-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/v-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 121,
+      "nom": "Reverse snow angel",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "reverse-snow-angel.svg",
+      "source_slug": "reverse-snow-angel",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/reverse-snow-angel/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 122,
+      "nom": "Rotation de thorax allongé",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 123,
+      "nom": "Rotation externe à l’élastique",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 124,
+      "nom": "Rotation russe",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "rotation-russe.svg",
+      "source_slug": "russian-twist",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/russian-twist/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 125,
+      "nom": "Roue abdominale",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "roue-abdominale.svg",
+      "source_slug": "ab-wheel",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/ab-wheel/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 126,
+      "nom": "Rowing à l’élastique",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "rowing-a-l-elastique.svg",
+      "source_slug": "banded-row",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/banded-row/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 127,
+      "nom": "Rowing à un bras",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 128,
+      "nom": "Rowing australien en supination",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 129,
+      "nom": "Rowing australien jambes fléchies",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 130,
+      "nom": "Rowing australien jambes tendues",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "rowing-australien-jambes-tendues.svg",
+      "source_slug": "inverted-row",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/inverted-row/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 131,
+      "nom": "Rowing australien pieds surélevés",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 132,
+      "nom": "Rowing aux anneaux",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 133,
+      "nom": "Rowing sous une table",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 134,
+      "nom": "Saut à la corde",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "saut-a-la-corde.svg",
+      "source_slug": "jump-rope",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/jump-rope/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 135,
+      "nom": "Saut de grenouille",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 136,
+      "nom": "Saut du patineur",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "saut-du-patineur.svg",
+      "source_slug": "skater-hop",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/skater-hop/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 137,
+      "nom": "Saut en longueur",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 138,
+      "nom": "Saut groupé",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 139,
+      "nom": "Saut sur banc",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 140,
+      "nom": "Soulevé de terre roumain à une jambe",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "souleve-de-terre-roumain-a-une-jambe.svg",
+      "source_slug": "single-leg-romanian-deadlift",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/single-leg-romanian-deadlift/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 141,
+      "nom": "Squat à l’élastique",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "squat-a-l-elastique.svg",
+      "source_slug": "banded-squat",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/banded-squat/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 142,
+      "nom": "Squat avec pause",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 143,
+      "nom": "Squat classique",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "squat-classique.svg",
+      "source_slug": "bodyweight-squat",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/bodyweight-squat/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 144,
+      "nom": "Squat cosaque",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "squat-cosaque.svg",
+      "source_slug": "cossack-squat",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/cossack-squat/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 145,
+      "nom": "Squat crevette",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "squat-crevette.svg",
+      "source_slug": "shrimp-squat",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/shrimp-squat/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 146,
+      "nom": "Squat pistolet",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "squat-pistolet.svg",
+      "source_slug": "pistol-squat",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/pistol-squat/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 147,
+      "nom": "Squat pistolet assisté",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "squat-pistolet-assiste.svg",
+      "source_slug": "assisted-pistol-squat",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/assisted-pistol-squat/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 148,
+      "nom": "Squat profond maintenu",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 149,
+      "nom": "Squat sauté",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "squat-saute.svg",
+      "source_slug": "jump-squat",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/jump-squat/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 150,
+      "nom": "Squat sumo",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 151,
+      "nom": "Squat sur chaise",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 152,
+      "nom": "Squat tempo",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 153,
+      "nom": "Straddle back lever",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 154,
+      "nom": "Straddle front lever",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 155,
+      "nom": "Superman",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "superman.svg",
+      "source_slug": "superman",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/superman/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 156,
+      "nom": "Suspension active (traction scapulaire)",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "suspension-active-traction-scapulaire.svg",
+      "source_slug": "active-hang",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/active-hang/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 157,
+      "nom": "Suspension passive",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "suspension-passive.svg",
+      "source_slug": "dead-hang",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/dead-hang/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 158,
+      "nom": "Tirage vertical à l’élastique",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "tirage-vertical-a-l-elastique.svg",
+      "source_slug": "banded-lat-pulldown",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/banded-lat-pulldown/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 159,
+      "nom": "Traction à un bras assistée",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 160,
+      "nom": "Traction archer",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 161,
+      "nom": "Traction assistée à l’élastique",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "traction-assistee-a-l-elastique.svg",
+      "source_slug": "assisted-pull-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/assisted-pull-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 162,
+      "nom": "Traction avec pause",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 163,
+      "nom": "Traction commando",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "traction-commando.svg",
+      "source_slug": "commando-pull-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/commando-pull-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 164,
+      "nom": "Traction en prise neutre",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "traction-en-prise-neutre.svg",
+      "source_slug": "neutral-grip-pull-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/neutral-grip-pull-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 165,
+      "nom": "Traction en pronation",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "traction-en-pronation.svg",
+      "source_slug": "pull-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/pull-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 166,
+      "nom": "Traction en pronation stricte",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "traction-en-pronation-stricte.svg",
+      "source_slug": "pull-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/pull-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 167,
+      "nom": "Traction en supination",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "traction-en-supination.svg",
+      "source_slug": "chin-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/chin-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 168,
+      "nom": "Traction explosive",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 169,
+      "nom": "Traction large",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 170,
+      "nom": "Traction négative",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "traction-negative.svg",
+      "source_slug": "negative-pull-up",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/negative-pull-up/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 171,
+      "nom": "Traction prise serrée",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 172,
+      "nom": "Tuck back lever",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 173,
+      "nom": "Tuck front lever",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 174,
+      "nom": "V-sit",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    },
+    {
+      "numero": 175,
+      "nom": "Vélo (bicycle crunch)",
+      "statut": "CANDIDAT_A_VALIDER",
+      "fichier": "velo-bicycle-crunch.svg",
+      "source_slug": "bicycle-crunch",
+      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/bicycle-crunch/frame-2.svg",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "numero": 176,
+      "nom": "Y-T-W",
+      "statut": "IMAGE_NON_TROUVEE",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null
+    }
+  ]
+}
