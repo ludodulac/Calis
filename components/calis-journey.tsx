@@ -84,7 +84,7 @@ export function CalisJourney() {
     setMinutes(storedMin===15||storedMin===45?storedMin:30);
     setScreen(readScreen());
     setReady(true);
-    const onHashChange=()=>setScreen(readScreen());
+    const onHashChange=()=>{ setScreen(readScreen()); window.requestAnimationFrame(()=>window.scrollTo(0,0)); };
     window.addEventListener("hashchange",onHashChange);
     return ()=>window.removeEventListener("hashchange",onHashChange);
   },[]);
