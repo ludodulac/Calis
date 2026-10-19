@@ -129,14 +129,49 @@ export const SEQUENCE_AREAS:Area[] = ["mobilite","cardio","haut","bas","tronc"];
 export function findExercise(id:string): Exercise | undefined {
   for (const l of LEVELS) { const result=l.exercises.find(item=>item.id===id); if(result) return result; }
 }
+/** Correspondances à contrôler : les 84 SVG ne sont pas certifiés biomécaniquement. */
+export const CANDIDATE_IMAGES:Record<string,string> = {
+    "squat-poids-corps":"squat-classique.svg",
+    "pompes-inclinees":"pompe-inclinee.svg",
+    "pont-fessier":"pont-fessier.svg",
+    "superman":"superman.svg",
+    "suspension-passive":"suspension-passive.svg",
+    "pompes-classiques":"pompe-classique.svg",
+    "fente-arriere":"fente-arriere.svg",
+    "planche-avantbras":"planche-gainage-sur-les-avant-bras.svg",
+    "dead-bug":"dead-bug.svg",
+    "pont-fessier-une-jambe":"pont-fessier-a-une-jambe.svg",
+    "pompes-classiques-12":"pompe-classique.svg",
+    "pompes-diamant":"pompe-diamant.svg",
+    "squat-bulgare":"fente-bulgare.svg",
+    "hollow-body":"hollow-body.svg",
+    "traction-negative":"traction-negative.svg",
+    "rowing-australien-tendu":"rowing-australien-jambes-tendues.svg",
+    "releves-jambes-allonge":"releve-de-jambes-allonge.svg",
+    "squat-saute":"squat-saute.svg",
+    "traction-pronation":"traction-en-pronation.svg",
+    "traction-supination":"traction-en-supination.svg",
+    "dips":"dips-sur-barres-paralleles.svg",
+    "pompes-declinees":"pompe-declinee.svg",
+    "pompes-pike":"pompe-pike.svg",
+    "releves-genoux-suspendus":"releve-de-genoux-suspendus.svg",
+    "squat-bulgare-10":"fente-bulgare.svg",
+    "traction-stricte":"traction-en-pronation-stricte.svg",
+    "dips-12":"dips-sur-barres-paralleles.svg",
+    "pompes-archer":"pompe-archer.svg",
+    "pistol-assiste":"squat-pistolet-assiste.svg",
+    "l-sit":"l-sit-complet.svg",
+    "releves-jambes-suspendus":"releve-de-jambes-suspendues.svg",
+    "nordic-negatif":"nordic-curl-excentrique.svg",
+    "pistol-squat":"squat-pistolet.svg",
+    "hspu":"pompe-de-poirier.svg",
+    "dragon-flag":"drapeau-du-dragon-complet.svg",
+};
 export function imageFor(id:string):string|undefined {
+  const candidate=CANDIDATE_IMAGES[id];
+  if(candidate) return "/illustrations/programmes/candidats-libres/"+candidate;
   const known:Record<string,string> = {
-    "squat-poids-corps":"/illustrations/calis/jambes/squat-poids-du-corps.svg",
-    "pompes-classiques":"/illustrations/calis/pompes/pompe-technique.svg",
-    "pompes-classiques-12":"/illustrations/calis/pompes/pompe-technique.svg",
     "rowing-australien-flechi":"/illustrations/calis/tractions/rowing-incline.svg",
-    "rowing-australien-tendu":"/illustrations/calis/tractions/rowing-incline.svg",
-    "traction-negative":"/illustrations/calis/tractions/traction-negative.svg",
   };
   return known[id];
 }
