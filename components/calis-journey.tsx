@@ -51,19 +51,26 @@ function GoalCard({goal,selected,onToggle}:{goal:(typeof GOALS)[number];selected
 
 function ExerciseVisual({exercise}:{exercise:Exercise}) {
   const image=imageFor(exercise.id);
+  const candidate=!!image?.includes("/candidats-libres/");
   const [failed,setFailed]=useState(false);
   const base=process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   useEffect(()=>setFailed(false),[exercise.id]);
   return (
-    <div className="calisExerciseVisual">
-      {image&&!failed?
-        // Les images sont locales et versionnées. Les nouveaux assets seront nommés par ID.
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={base+image} alt={"Illustration de "+exercise.name} onError={()=>setFailed(true)} />:
-        <div className="calisVisualPlaceholder" role="img" aria-label={"Illustration de "+exercise.name+" à intégrer"}>
-          <span aria-hidden="true">✦</span><strong>{exercise.name}</strong><small>Illustration à venir</small>
-        </div>}
-    </div>
+    <figure className="calisImageReview">
+      <div className="calisExerciseVisual">
+        {image&&!failed?
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={base+image} alt={(candidate?"Illustration candidate à contrôler : ":"Illustration de ")+exercise.name} onError={()=>setFailed(true)} />:
+          <div className="calisVisualPlaceholder" role="img" aria-label={"Illustration de "+exercise.name+" à intégrer"}>
+            <span aria-hidden="true">✦</span><strong>{exercise.name}</strong><small>Illustration à venir</small>
+          </div>}
+      </div>
+      {candidate&&!failed&&<figcaption className="calisImageCandidateBadge">
+        <strong>Image candidate — non validée techniquement.</strong>
+        <span>Dessin Workout Guide / Bryl Lim & Everkinetic, licence CC BY-SA 4.0.</span>
+        <Link href="/illustrations/programmes/candidats-libres/galerie.html">Examiner dans la galerie des 84 images →</Link>
+      </figcaption>}
+    </figure>
   );
 }
 
@@ -192,7 +199,10 @@ export function CalisJourney() {
           </section>}
         </>}
       </div>
-      <div className="calisAdvice"><Link href="/conseils-importants">ⓘ Conseils importants & sécurité <span aria-hidden="true">→</span></Link></div>
+      <div className="calisAdvice">
+        <Link href="/conseils-importants">ⓘ Conseils importants & sécurité <span aria-hidden="true">→</span></Link>
+        <Link href="/illustrations/programmes/candidats-libres/galerie.html">🎨 Voir et noter les 84 illustrations candidates →</Link>
+      </div>
     </div>
   );
 }
