@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#132f55">
+<title>CALIS — Vérification des 84 illustrations</title>
+<style>
+:root{color-scheme:light;--navy:#142f50;--line:#d9e3ea;--muted:#567080}*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f2f6f9;color:#15293c;line-height:1.5}
+header{background:var(--navy);color:white;padding:25px max(18px,calc((100vw - 1120px)/2))}
+header strong{font-size:.78rem;letter-spacing:.16em}h1{font-size:clamp(1.8rem,5vw,2.9rem);line-height:1.1;margin:10px 0}
+header p{max-width:710px;color:#d8e5f0;margin-bottom:0}
+main{max-width:1150px;margin:0 auto;padding:25px 18px 90px}
+.info{padding:16px;background:#fff6e6;border:1px solid #f1d5a0;border-radius:13px;margin-bottom:18px;color:#654819;font-size:.91rem}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:15px}
+button,input,select{font:inherit}
+button{min-height:44px;cursor:pointer;border:1px solid #c8d4df;background:white;border-radius:10px;padding:9px 13px;color:#15304a;font-weight:750}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #1268bf;outline-offset:3px}
+button.selected{background:#163d66;border-color:#163d66;color:white}
+input[type="search"]{min-height:44px;border:1px solid #c8d4df;border-radius:10px;padding:10px 12px;flex:1;min-width:160px;background:#fff}
+.summary{font-size:.83rem;color:#4d6575;margin:7px 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:13px}
+.card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:15px;background:#fff;overflow:hidden;min-width:0}
+.visual{display:grid;place-items:center;background:#e9eff4;width:100%;height:220px;border:0;border-radius:0;padding:12px}
+.visual img{width:100%;height:100%;object-fit:contain;display:block}
+.visual:focus-visible{outline-offset:-4px}
+.missing{color:#607789;text-align:center;font-size:1rem;font-weight:800}
+.cardBody{flex:1;padding:13px 14px 16px;display:grid;gap:9px}
+.cardBody h2{font-size:.99rem;line-height:1.25;margin:0;min-height:2.4em}
+.mini{font-size:.77rem;color:#4b677b;line-height:1.3;overflow-wrap:anywhere}
+.badge{display:inline-block;font-size:.72rem;font-weight:900;border-radius:6px;padding:4px 7px;background:#e9f0f5;color:#365777;width:max-content}
+.badge.good{background:#e1f8e8;color:#086833}.badge.bad{background:#ffe6e6;color:#a12424}
+.cardBody button{width:100%;font-size:.83rem}
+dialog{border:0;max-width:min(850px,96vw);width:100%;max-height:94vh;border-radius:18px;padding:0;box-shadow:0 20px 80px #142a4c77}
+dialog::backdrop{background:#111c2ac9}
+.detail{padding:18px 20px}
+.detailHeader{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.detail h2{font-size:1.45rem;line-height:1.14;margin:8px 0}
+.preview{width:100%;height:min(52vh,440px);object-fit:contain;background:#ecf2f6;border-radius:12px;margin:8px 0}
+.detail p{color:#52687a;font-size:.87rem}
+.detail a{color:#155b99}
+.detailActions{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+.detailActions button{flex:1;min-width:130px}
+.detailActions .yes{background:#dff6e6;border-color:#62ac79;color:#0a6530}
+.detailActions .no{background:#ffe5e5;border-color:#e39a9a;color:#922020}
+.detail label{display:block;font-weight:750;font-size:.85rem;margin-bottom:5px}
+.detail textarea{width:100%;min-height:70px;border:1px solid #bbcbd7;border-radius:10px;padding:10px;font:inherit}
+footer{max-width:1110px;margin:30px auto 0;padding:20px;border-top:1px solid #d0dce5;color:#5b7183;font-size:.85rem}
+a{color:inherit}
+@media(max-width:500px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.visual{height:160px}.cardBody{padding:9px;gap:7px}.cardBody h2{font-size:.86rem}.cardBody button{padding:8px 4px;font-size:.74rem}.detail{padding:14px}.detailActions button{min-width:100px}.preview{height:37vh}}
+</style>
+</head>
+<body>
+<header><strong>CALIS • GALERIE DE CONTRÔLE</strong><h1>84 images à examiner</h1>
+<p>Une vraie galerie pour vérifier chaque mouvement sur téléphone. Les images sont des <b>candidates</b> : elles ne sont pas encore garanties correctes pour enseigner les exercices.</p></header>
+<main>
+<div class="info"><b>Attention :</b> ce sont des dessins vectoriels repris de <i>Workout Guide</i>, pas les dessins BD colorés de ta référence. Une seule image fixe (la pose numéro 2) ne suffit pas toujours à illustrer tout un mouvement. Les évaluations « OK / à corriger » sont <b>ton avis visuel</b>, pas une validation scientifique.</div>
+<div class="actions" role="group" aria-label="Filtres des illustrations">
+<button data-filter="with" class="selected">84 images</button>
+<button data-filter="without">92 manquantes</button>
+<button data-filter="all">Toutes (176)</button>
+<button data-filter="good">Mes OK</button>
+<button data-filter="bad">À corriger</button>
+</div>
+<div class="actions">
+<input id="search" type="search" placeholder="Chercher : pompe, traction, squat…" aria-label="Chercher un exercice">
+<button id="export" type="button">Exporter mes avis ↓</button>
+</div>
+<div class="summary" id="summary">Chargement des fichiers…</div>
+<div id="grid" class="grid" aria-live="polite"></div>
+<noscript>Active JavaScript pour afficher le catalogue et les images.</noscript>
+</main>
+<dialog id="detail">
+<div class="detail">
+ <div class="detailHeader"><span class="badge">CANDIDAT — À VÉRIFIER</span><button id="close" aria-label="Fermer cette fiche">✕ Fermer</button></div>
+ <h2 id="detailName"></h2>
+ <img id="detailImage" class="preview" alt="" loading="eager">
+ <p id="detailSource"></p>
+ <div class="detailActions">
+  <button id="approve" class="yes" type="button">✓ OK visuellement</button>
+  <button id="reject" class="no" type="button">✕ Ne convient pas</button>
+  <button id="reset" type="button">Effacer l'avis</button>
+ </div>
+ <label for="note">Mon commentaire (facultatif)</label>
+ <textarea id="note" placeholder="Ex. : corps mal orienté, ce n'est pas une traction négative…"></textarea>
+ <p>Ces avis sont stockés uniquement dans ton navigateur. Le bouton « Exporter mes avis » permet de les partager ensuite.</p>
+</div>
+</dialog>
+<footer>
+ <b>Sources et licence</b> — Illustrations de <a href="https://github.com/bryllim/workout-guide" target="_blank" rel="noreferrer">Bryl Lim / Workout Guide</a>,
+ en partie d'après <a href="https://github.com/everkinetic/data" target="_blank" rel="noreferrer">Everkinetic</a>.
+ Licence des images : <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>.
+ Les SVG ont été copiés et renommés pour CALIS ; aucune modification du tracé vectoriel n'a été effectuée.
+ <a href="https://github.com/bryllim/workout-guide/blob/main/ATTRIBUTION.md" target="_blank" rel="noreferrer">Lire les crédits complets</a>.
+</footer>
+<script>
+"use strict";
+const ui={grid:document.getElementById("grid"),summary:document.getElementById("summary"),search:document.getElementById("search"),dialog:document.getElementById("detail"),name:document.getElementById("detailName"),img:document.getElementById("detailImage"),source:document.getElementById("detailSource"),note:document.getElementById("note")};
+let items=[],currentFilter="with",selected=null,decisions={};
+try{decisions=JSON.parse(localStorage.getItem("calis-verification-images-v1")||"{}")||{}}catch{decisions={}}
+function save(){try{localStorage.setItem("calis-verification-images-v1",JSON.stringify(decisions))}catch{}}
+function h(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text)e.textContent=text;return e}
+function stateFor(item){return (decisions[String(item.numero)]||{}).status||"pending"}
+function setState(status){if(!selected)return;const key=String(selected.numero);const v=decisions[key]||{};decisions[key]={...v,status};save();render()}
+function openItem(item){
+ selected=item;ui.name.textContent=item.nom;
+ ui.img.hidden=!item.fichier;
+ if(item.fichier){ui.img.src="./"+encodeURIComponent(item.fichier);ui.img.alt="Illustration candidate : "+item.nom}else ui.img.removeAttribute("src");
+ ui.source.replaceChildren();
+ if(item.source_slug){
+  ui.source.append("Source : ");
+  const link=document.createElement("a");link.textContent=item.source_slug;link.href=item.source_url;link.target="_blank";link.rel="noreferrer";ui.source.append(link);
+ }else ui.source.textContent="Aucune image candidate trouvée pour cet exercice.";
+ ui.note.value=(decisions[String(item.numero)]||{}).note||"";
+ ui.dialog.showModal();
+}
+function render(){
+ const query=ui.search.value.toLocaleLowerCase("fr").trim();
+ const filtered=items.filter(item=>{
+  const status=stateFor(item);
+  return (currentFilter==="all"||currentFilter==="with"&&!!item.fichier||currentFilter==="without"&&!item.fichier||currentFilter==="good"&&status==="good"||currentFilter==="bad"&&status==="bad") &&
+  (item.nom.toLocaleLowerCase("fr").includes(query)||(item.source_slug||"").includes(query));
+ });
+ ui.grid.replaceChildren();
+ for(const item of filtered){
+  const card=h("article","card");const v=h("button","visual");v.type="button";v.setAttribute("aria-label","Examiner : "+item.nom);
+  if(item.fichier){const img=h("img");img.loading="lazy";img.src="./"+encodeURIComponent(item.fichier);img.alt="Dessins de "+item.nom;v.append(img)}
+  else v.append(h("span","missing","Illustration manquante"));
+  v.onclick=()=>openItem(item);card.append(v);
+  const body=h("div","cardBody");body.append(h("h2","",item.nom));
+  const stat=stateFor(item);
+  body.append(h("span","badge "+(stat==="good"?"good":stat==="bad"?"bad":""),stat==="good"?"✓ Ton OK":stat==="bad"?"✕ À corriger":item.fichier?"À examiner":"Non trouvée"));
+  if(item.fichier)body.append(h("div","mini",item.fichier));
+  const action=h("button","",item.fichier?"Examiner l'image →":"Voir la fiche →");action.type="button";action.onclick=()=>openItem(item);body.append(action);
+  card.append(body);ui.grid.append(card);
+ }
+ const ok=items.filter(x=>stateFor(x)==="good").length;
+ const no=items.filter(x=>stateFor(x)==="bad").length;
+ ui.summary.textContent=filtered.length+" exercice(s) affiché(s) • "+ok+" avis OK • "+no+" à corriger • réponses conservées sur cet appareil";
+}
+document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{
+ document.querySelectorAll("[data-filter]").forEach(x=>x.classList.remove("selected"));
+ b.classList.add("selected");currentFilter=b.dataset.filter;render();
+});
+ui.search.addEventListener("input",render);
+document.getElementById("close").onclick=()=>ui.dialog.close();
+ui.dialog.addEventListener("click",e=>{if(e.target===ui.dialog)ui.dialog.close()});
+document.getElementById("approve").onclick=()=>setState("good");
+document.getElementById("reject").onclick=()=>setState("bad");
+document.getElementById("reset").onclick=()=>setState("pending");
+ui.note.oninput=()=>{if(!selected)return;const key=String(selected.numero);decisions[key]={...(decisions[key]||{}),note:ui.note.value};save()};
+document.getElementById("export").onclick=()=>{
+ const payload={projet:"CALIS",date:new Date().toISOString(),source:"galerie-84-candidats",avis:items.map(x=>({numero:x.numero,nom:x.nom,fichier:x.fichier,...(decisions[String(x.numero)]||{status:"pending"})})).filter(x=>x.status!=="pending"||(x.note||"").trim())};
+ const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json;charset=utf-8"});
+ const url=URL.createObjectURL(blob);const link=document.createElement("a");link.href=url;link.download="calis-avis-images.json";link.click();setTimeout(()=>URL.revokeObjectURL(url),15000);
+};
+fetch("./catalogue-candidats-176.json").then(r=>{if(!r.ok)throw Error("Catalogue indisponible");return r.json()}).then(data=>{
+ items=data.exercices||[];render();
+}).catch(err=>{ui.summary.textContent="Erreur de chargement : "+err.message+" — vérifie que la page est ouverte depuis un site web, et pas directement depuis un dossier local."});
+</script>
+</body></html>
