@@ -32,3 +32,30 @@ Cette branche de préparation n'est pas fusionnée sur `main` ni sur la branche 
 - Hip thrust : l'image d'origine montre une **barre chargée**, alors que la fiche demande un hip thrust sans barre.
 - Traction assistée à l'élastique : l'image d'origine montre une **machine**, pas un élastique.
 Les deux fichiers ont été exclus volontairement.
+
+
+## Galerie de contrôle interactive
+
+Ouvrir `galerie.html` **depuis un hébergement web** (pas comme fichier local sans serveur) :
+- afficher les 84 visuels et les 92 entrées sans image ;
+- rechercher un exercice par nom ;
+- agrandir chaque dessin, consulter sa référence d'origine ;
+- marquer chaque proposition **OK visuellement** ou **Ne convient pas** ;
+- exporter les réponses dans `calis-avis-images.json` pour les transmettre au projet.
+
+Cette appréciation par le fondateur **ne vaut pas certification technique ou médicale**.
+Une image de mouvement n'est pour l'instant qu'une pose fixe (frame 2), sans la trajectoire complète.
+
+## Vérifications documentées — 20 octobre 2026
+
+- 84 fichiers SVG sur la branche : **2 037 586 octets** (environ 1,94 Mio) ;
+- **82 contenus vectoriels distincts**, les deux paires suivantes sont des copies identiques :
+  - `nordic-curl.svg` / `nordic-curl-excentrique.svg` ;
+  - `traction-en-pronation.svg` / `traction-en-pronation-stricte.svg` ;
+- 6 SVG échantillonnés : balises `<svg>` et `<path>`, sans script, image distante ni contenu actif décelé dans cet échantillon ;
+- 3 fichiers comparés mot pour mot aux `frame-2.svg` originaux (traction en pronation, pompe inclinée, bird dog) : copies identiques ;
+- licences vérifiées dans `LICENSE-ASSETS` et `ATTRIBUTION.md` du dépôt d'origine ;
+- 35 associations candidat → fiche de programme ont été préparées, **toutes explicitement marquées non validées techniquement** ;
+- **aucune vérification anatomique complète des 84 images n'est encore affirmée**. L'inspection individuelle et la revue des exercices difficiles restent nécessaires.
+
+Le code MIT de Workout Guide et les images sous CC BY-SA 4.0 ont des licences différentes. Pour les SVG, respecter **CC BY-SA 4.0**.
