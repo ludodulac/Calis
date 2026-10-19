@@ -4,8 +4,8 @@
   "source_license": "CC BY-SA 4.0",
   "statut_global": "candidats_pour_verification_visuelle",
   "total": 176,
-  "illustrations_candidats": 86,
-  "sans_image": 90,
+  "illustrations_candidats": 84,
+  "sans_image": 92,
   "exercices": [
     {
       "numero": 1,
@@ -514,11 +514,12 @@
     {
       "numero": 57,
       "nom": "Hip thrust (épaules surélevées)",
-      "statut": "CANDIDAT_A_VALIDER",
-      "fichier": "hip-thrust-epaules-surelevees.svg",
-      "source_slug": "hip-thrust",
-      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/hip-thrust/frame-2.svg",
-      "licence": "CC BY-SA 4.0"
+      "statut": "IMAGE_INADAPTEE_MATERIEL",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null,
+      "note": "Source avec barre chargée alors que le mouvement demandé est sans charge"
     },
     {
       "numero": 58,
@@ -1450,11 +1451,12 @@
     {
       "numero": 161,
       "nom": "Traction assistée à l’élastique",
-      "statut": "CANDIDAT_A_VALIDER",
-      "fichier": "traction-assistee-a-l-elastique.svg",
-      "source_slug": "assisted-pull-up",
-      "source_url": "https://github.com/bryllim/workout-guide/blob/main/packages/workout-guide/assets/assisted-pull-up/frame-2.svg",
-      "licence": "CC BY-SA 4.0"
+      "statut": "IMAGE_INADAPTEE_MATERIEL",
+      "fichier": null,
+      "source_slug": null,
+      "source_url": null,
+      "licence": null,
+      "note": "Source illustrant une assistance sur machine alors que la technique prévue utilise un élastique"
     },
     {
       "numero": 162,
